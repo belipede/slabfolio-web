@@ -236,13 +236,13 @@ const CARDS=[
  {id:'schweini',name:'Bastian Schweinsteiger',set:'2024-25 Topps Inception UCC · Star Quality Auto Blue',tags:[['PSA 10','g'],['Auto','a'],['32/49','n']],graded:1,auto:1,num:1,badge:'PSA 10',
   desc:'Fußballgott. Champions League 2013, World Cup 2014, and a blue Star Quality auto that graded PSA 10 on its first try.',
   paid:350,last:null,photos:['schweini-1','schweini-2','schweini-3'],full:[2]},
- {id:'emi',name:'Emiliano Martínez',set:'Topps Pristine · Patch Auto',tags:[['Auto','a'],['Patch','a'],['06/25','n']],auto:1,num:1,
+ {id:'emi',r1k:1,name:'Emiliano Martínez',set:'Topps Pristine · Patch Auto',tags:[['Auto','a'],['Patch','a'],['06/25','n']],auto:1,num:1,
   desc:'World Cup-winning keeper in the Villa kit, with a player-worn patch and his signature. Numbered 6 of 25.',
   paid:85,last:null,photos:['emi-1']},
  {id:'moore-rev',name:'Mikey Moore',set:'2024-25 Topps Reverence UCC · Rookie Auto Purple',tags:[['Auto','a'],['19/50','n'],['RC','r']],auto:1,num:1,
   desc:'Spurs academy wonderkid. Purple rookie auto /50, lined up for grading.',
   paid:85,last:null,photos:['moore-rev-1','moore-rev-2']},
- {id:'vitinha',name:'Vitinha',set:'2025-26 Topps Inception UCC · First XI Auto Pink Foil',tags:[['Auto','a'],['71/75','n']],auto:1,num:1,
+ {id:'vitinha',r1k:1,name:'Vitinha',set:'2025-26 Topps Inception UCC · First XI Auto Pink Foil',tags:[['Auto','a'],['71/75','n']],auto:1,num:1,
   desc:'PSG\'s metronome and a Ballon d\'Or top-15 finisher. Copped under market.',
   paid:35.84,last:{p:45,d:'20 Oct 2026'},photos:['vitinha-1','vitinha-2']},
  {id:'spurs',name:'Son & Kane',set:'2022-23 Topps UCC · Spurs of the Moment Purple Foil',tags:[['31/75','n']],num:1,badge:'In the post',inc:1,
@@ -251,23 +251,23 @@ const CARDS=[
  {id:'yamal',name:'Lamine Yamal',set:'2024 Topps Now · Ballon d\'Or Kopa Trophy Winner',tags:[['RC','r'],['Topps Now','']],badge:'In the post',inc:1,
   desc:'Kopa Trophy winner, Topps Now rookie. The best teenager in the world, in a tux.',
   paid:11.86,last:null,photos:['yamal-1','yamal-2']},
- {id:'casado',name:'Marc Casadó',set:'Topps Simplicidad · Autograph',tags:[['Auto','a'],['38/99','n']],auto:1,num:1,
+ {id:'casado',r1k:1,name:'Marc Casadó',set:'Topps Simplicidad · Autograph',tags:[['Auto','a'],['38/99','n']],auto:1,num:1,
   desc:'La Masia midfielder with two Spain caps. Buying him quiet while he\'s on loan.',
   paid:20,last:null,photos:['casado-1','casado-2']},
- {id:'neymar',name:'Neymar Jr',set:'2022-23 Topps Merlin Chrome UCC · Aqua Refractor',tags:[['007/199','n']],num:1,
+ {id:'neymar',r1k:1,name:'Neymar Jr',set:'2022-23 Topps Merlin Chrome UCC · Aqua Refractor',tags:[['007/199','n']],num:1,
   desc:'PSG-era Neymar in aqua, with a James Bond serial: 007/199.',
   paid:15,last:null,photos:['neymar-1','neymar-2']},
- {id:'moore-sq',name:'Mikey Moore',set:'2024-25 Topps Inception UCC · Star Quality Pink SP',tags:[['57/75','n'],['RC','r']],num:1,
+ {id:'moore-sq',r1k:1,name:'Mikey Moore',set:'2024-25 Topps Inception UCC · Star Quality Pink SP',tags:[['57/75','n'],['RC','r']],num:1,
   desc:'S$4 for a /75 rookie of a Spurs prospect. Bin find of the month.',
   paid:4,last:null,photos:['moore-sq-1','moore-sq-2']},
- {id:'acuna',name:'Marcos Acuña',set:'2022-23 Panini Chronicles · Origins Autographs',tags:[['Auto','a'],['025/299','n']],auto:1,num:1,
+ {id:'acuna',r1k:1,name:'Marcos Acuña',set:'2022-23 Panini Chronicles · Origins Autographs',tags:[['Auto','a'],['025/299','n']],auto:1,num:1,
   desc:'World Cup winner with Argentina, signed in Sevilla colours.',
   paid:3,last:null,photos:['acuna-1','acuna-2']},
- {id:'porro',name:'Pedro Porro',set:'2023-24 Panini Prizm Premier League · Choice Red White & Blue',tags:[['Prizm','']],
+ {id:'porro',r1k:1,name:'Pedro Porro',set:'2023-24 Panini Prizm Premier League · Choice Red White & Blue',tags:[['Prizm','']],
   desc:'Spurs wing-back on one of Prizm\'s loudest parallels.',
   paid:1.28,last:null,photos:['porro-1','porro-2']},
 ];
-const FIELDS=[['photos','Photos',1,1],['name','Card name & set',1,1],['desc','Description',1,0],['paid','Price paid',1,0],['last','Last sold',1,0]];
+const FIELDS=[['photos','Photos',1,1],['name','Card name & set',1,1],['desc','Description',1,0],['paid','Price paid (Road to $1K cards)',1,0],['last','Last sold',1,0]];
 const st={fields:Object.fromEntries(FIELDS.map(f=>[f[0],!!f[2]])),hidden:new Set(),filter:'all'};
 const $=s=>document.querySelector(s);
 const money=v=>'S$'+v.toFixed(2).replace(/\.00$/,'');
@@ -280,8 +280,8 @@ function render(){
   const f=st.fields;
   $('#feed').innerHTML=list.length?list.map(c=>{
     const slides=c.photos.map((p,i)=>`<div class="slide${(c.full||[]).includes(i)?' full':''}"><img src="img/${p}.webp" alt="${c.name} photo ${i+1}" loading="lazy" data-c="${c.id}" data-i="${i}"></div>`).join('');
-    const prices=(f.paid||f.last)?`<div class="prices">
-      ${f.paid?`<div class="pt"><small>Bought</small><b>${money(c.paid)}</b><span>what I paid</span></div>`:''}
+    const prices=((f.paid&&c.r1k)||f.last)?`<div class="prices">
+      ${f.paid&&c.r1k?`<div class="pt"><small>Bought</small><b>${money(c.paid)}</b><span>shown on Road to $1K</span></div>`:''}
       ${f.last?(c.last?`<div class="pt"><small>Last sold</small><b class="${c.last.p>c.paid?'up':''}">${money(c.last.p)}</b><span>comp · ${c.last.d}</span></div>`
                :`<div class="pt none"><small>Last sold</small><b>—</b><span>no sale logged yet</span></div>`):''}
     </div>`:'';
