@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Slabfolio · Display</title>
+<meta name="description" content="A first look at Display, a new Slabfolio feature: pick your cards and choose what to show in your display carousel.">
+<meta property="og:title" content="Slabfolio · Display preview">
+<meta property="og:description" content="My cards in Slabfolio's new Display carousel. Slabfolio is coming soon.">
+<meta property="og:image" content="img/gray-1.webp">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="icon" href="../icon-192.png">
+<style>
+:root{
+  --bg:#0b1020;--card:#141b30;--card2:#1b2440;--line:#26304f;--text:#eef1f8;--mute:#8d97b5;
+  --accent:#7c5cff;--accent2:#b18cff;--ok:#2fc787;--pend:#f2a93b;--bad:#ef5350;
+  --safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#05070f;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit}
+.phone{position:relative;max-width:440px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--bg);overflow:hidden}
+@media (min-width:600px){
+  body{padding:28px 0;background:radial-gradient(1200px 600px at 50% -10%,#1d1640,#05070f 60%)}
+  .phone{min-height:0;height:min(900px,calc(100vh - 56px));border-radius:46px;box-shadow:0 0 0 10px #161a26,0 0 0 11px #2b3146,0 40px 90px rgba(0,0,0,.6)}
+  .screen{height:100%}
+}
+.screen{position:relative;display:flex;flex-direction:column;min-height:inherit}
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:calc(96px + var(--safe-b))}
+@media (min-width:600px){.screen{height:100%}.scroll{height:100%}}
+
+/* nav bar */
+.nav{position:sticky;top:0;z-index:20;padding:calc(10px + var(--safe-t)) 16px 8px;background:rgba(11,16,32,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid transparent;transition:border-color .2s}
+.nav.stuck{border-bottom-color:rgba(255,255,255,.08)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;min-height:30px}
+.nav-mini{font-weight:600;font-size:17px;opacity:0;transition:opacity .2s}
+.nav.stuck .nav-mini{opacity:1}
+.nav-btn{color:var(--accent2);font-size:17px;font-weight:500;padding:4px 0}
+.large{font-size:34px;font-weight:800;letter-spacing:-.6px;margin:2px 16px 4px}
+.large .new{display:inline-block;vertical-align:middle;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.6px;background:var(--accent);color:#fff;padding:3px 7px;border-radius:7px;transform:translateY(-4px)}
+
+/* profile */
+.profile{display:flex;align-items:center;gap:12px;margin:10px 16px 14px}
+.avatar{width:56px;height:56px;border-radius:50%;background:conic-gradient(from 200deg,#7c5cff,#2fc787,#4aa3ff,#b18cff,#7c5cff);padding:2.5px}
+.avatar span{display:flex;width:100%;height:100%;border-radius:50%;background:#10162a;align-items:center;justify-content:center;font-weight:800;font-size:22px}
+.p-name{font-weight:700;font-size:17px}
+.p-sub{color:var(--mute);font-size:13px;margin-top:2px}
+.stats{display:flex;gap:8px;margin:0 16px 14px}
+.stat{flex:1;background:var(--card);border-radius:14px;padding:10px 12px}
+.stat b{display:block;font-size:19px;letter-spacing:-.3px}
+.stat small{color:var(--mute);font-size:12px}
+
+.intro{margin:0 16px 16px;border-radius:18px;padding:14px 14px 14px 14px;background:linear-gradient(135deg,rgba(124,92,255,.28),rgba(124,92,255,.08));border:1px solid rgba(177,140,255,.28);display:flex;gap:12px;align-items:flex-start}
+.intro .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center}
+.intro p{margin:0;font-size:14px;line-height:1.38;color:#dcd6ff}
+.intro p b{color:#fff}
+
+/* segmented */
+.seg{display:flex;margin:0 16px 14px;background:#161d33;border-radius:10px;padding:2px}
+.seg button{flex:1;padding:7px 0;font-size:13px;font-weight:600;border-radius:8px;color:#c9cfe2}
+.seg button.on{background:#2c3557;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+
+/* display card */
+.feed{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 26px 4px;scroll-padding:0 26px;overscroll-behavior-x:contain}
+.feed::-webkit-scrollbar{display:none}
+.dcard{flex:0 0 calc(100% - 52px);scroll-snap-align:center;scroll-snap-stop:always;background:var(--card);border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.05);transition:transform .25s,opacity .25s}
+.dcard.side{transform:scale(.95);opacity:.55}
+.pager{display:flex;align-items:center;justify-content:space-between;margin:12px 16px 4px}
+.pager .pos{font-size:14px;font-weight:600;color:#c9cfe2}
+.pager .pos small{color:var(--mute);font-weight:500}
+.arrows{display:flex;gap:8px}
+.arrows button{width:38px;height:38px;border-radius:50%;background:#1e2644;display:flex;align-items:center;justify-content:center;font-size:18px;color:#dcd6ff}
+.arrows button:disabled{opacity:.35}
+.thumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 16px 6px}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs button{flex:none;width:46px;height:62px;border-radius:8px;overflow:hidden;background:#10162a;border:2px solid transparent;opacity:.55;transition:.2s}
+.thumbs button.on{border-color:var(--accent2);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:contain}
+.hint{color:var(--mute);font-size:12.5px;text-align:center;margin:2px 0 14px}
+.tapz{position:absolute;top:0;bottom:0;width:38%;z-index:2}
+.tapz.l{left:0}.tapz.r{right:0}
+.expand{position:absolute;right:12px;bottom:12px;z-index:3;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center}
+.car{position:relative;background:radial-gradient(120% 90% at 50% 0%,#232c4d,#0e1426 70%)}
+.track{position:relative;aspect-ratio:4/5}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .25s}
+.slide.on{opacity:1}
+.slide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;filter:drop-shadow(0 14px 24px rgba(0,0,0,.5));user-select:none;-webkit-user-drag:none}
+.slide.full{padding:0}.slide.full img{border-radius:0;width:100%;height:100%;object-fit:cover;filter:none}
+.count{z-index:3;position:absolute;top:12px;right:12px;font-size:12px;font-weight:600;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:4px 9px;border-radius:20px}
+.badge{z-index:3;position:absolute;top:12px;left:12px;font-size:11px;font-weight:800;letter-spacing:.4px;padding:4px 8px;border-radius:7px;background:#fff;color:#c1121f}
+.badge.inc{background:rgba(0,0,0,.55);color:#ffd28a;backdrop-filter:blur(10px)}
+.dots{display:flex;gap:6px;justify-content:center;padding:10px 0 0}
+.dots i{width:6px;height:6px;border-radius:50%;background:#3a4466;transition:all .2s}
+.dots i.on{background:#fff;width:16px;border-radius:4px}
+.body{padding:12px 16px 16px}
+.name{font-size:20px;font-weight:800;letter-spacing:-.3px}
+.set{color:var(--mute);font-size:14px;margin-top:3px;line-height:1.35}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{font-size:12px;font-weight:600;padding:4px 9px;border-radius:20px;background:#222b49;color:#cfd6ee}
+.chip.g{background:rgba(193,18,31,.18);color:#ff8a92}
+.chip.a{background:rgba(124,92,255,.2);color:#cbb8ff}
+.chip.n{background:rgba(74,163,255,.16);color:#9cccff}
+.chip.r{background:rgba(47,199,135,.16);color:#7fe3b9}
+.desc{font-size:14.5px;line-height:1.45;color:#d6dbea;margin-top:10px}
+.prices{display:flex;gap:8px;margin-top:14px}
+.pt{flex:1;background:var(--card2);border-radius:14px;padding:10px 12px}
+.pt small{display:block;color:var(--mute);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.pt b{display:block;font-size:20px;margin-top:3px;letter-spacing:-.3px}
+.pt span{display:block;color:var(--mute);font-size:12px;margin-top:2px}
+.pt.none b{color:#5d6789;font-size:17px}
+.up{color:var(--ok)}
+
+.foot{color:#6a7495;font-size:12px;line-height:1.5;text-align:center;margin:8px 24px 20px}
+
+/* tab bar */
+.tabbar{position:absolute;left:0;right:0;bottom:0;z-index:30;display:flex;padding:7px 4px calc(6px + var(--safe-b));background:rgba(14,19,36,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-top:.5px solid rgba(255,255,255,.1)}
+@media (max-width:599px){.tabbar{position:fixed;max-width:440px;margin:0 auto}}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:600;color:#7d87a6;position:relative}
+.tab svg{width:26px;height:26px}
+.tab.on{color:var(--accent2)}
+.tab .dot{position:absolute;top:-2px;left:calc(50% + 8px);font-size:8.5px;font-weight:800;background:var(--accent);color:#fff;padding:1px 4px;border-radius:5px}
+.tab .soon{position:absolute;top:0;left:calc(50% + 9px);width:7px;height:7px;border-radius:50%;background:#3a4466}
+
+/* coming soon view */
+.soonview{display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 30px calc(120px + var(--safe-b))}
+.soonview .big{width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,#2a2160,#151b33);display:flex;align-items:center;justify-content:center;margin-bottom:18px;border:1px solid rgba(177,140,255,.3)}
+.soonview .big svg{width:40px;height:40px;color:var(--accent2)}
+.soonview h2{margin:0 0 6px;font-size:24px;letter-spacing:-.4px}
+.soonview .pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--pend);background:rgba(242,169,59,.12);padding:5px 10px;border-radius:20px;margin-bottom:14px}
+.soonview p{color:var(--mute);font-size:15px;line-height:1.45;margin:0 0 22px;max-width:300px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-weight:700;font-size:16px;padding:13px 22px;border-radius:14px;text-decoration:none}
+.btn.ghost{background:#1e2644;color:#dcd6ff}
+.soonview .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+/* sheet */
+.dim{position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:40;opacity:0;pointer-events:none;transition:opacity .25s}
+.dim.on{opacity:1;pointer-events:auto}
+@media (max-width:599px){.dim{position:fixed}}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:41;background:#161d33;border-radius:16px 16px 0 0;max-height:86%;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+@media (max-width:599px){.sheet{position:fixed;max-width:440px;margin:0 auto;max-height:86vh}}
+.sheet.on{transform:none}
+.grab{width:38px;height:5px;border-radius:3px;background:#3a4466;margin:7px auto 0}
+.sh-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 8px}
+.sh-head h3{margin:0;font-size:17px}
+.sh-body{overflow-y:auto;padding:0 16px calc(24px + var(--safe-b))}
+.group{margin-top:14px}
+.group h4{margin:0 0 6px 4px;font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.4px}
+.list{background:#1e2644;border-radius:12px;overflow:hidden}
+.li{display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:46px;border-bottom:.5px solid rgba(255,255,255,.07)}
+.li:last-child{border-bottom:0}
+.li .t{flex:1;font-size:15.5px}
+.li .t small{display:block;color:var(--mute);font-size:12.5px}
+.li img{width:34px;height:46px;object-fit:contain;border-radius:4px;background:#10162a}
+.sw{position:relative;width:51px;height:31px;flex:none}
+.sw input{opacity:0;width:0;height:0;position:absolute}
+.sw span{position:absolute;inset:0;background:#3a4466;border-radius:31px;transition:.2s}
+.sw span:before{content:"";position:absolute;width:27px;height:27px;left:2px;top:2px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 2px 4px rgba(0,0,0,.3)}
+.sw input:checked+span{background:var(--ok)}
+.sw input:checked+span:before{transform:translateX(20px)}
+.sw input:disabled+span{opacity:.5}
+.note{color:var(--mute);font-size:12.5px;margin:8px 4px 0;line-height:1.4}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center}
+.lb.on{display:flex}
+.lb img{max-width:94vw;max-height:84vh;object-fit:contain}
+.lb .x{position:absolute;top:calc(14px + var(--safe-t));right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.14);font-size:20px;display:flex;align-items:center;justify-content:center}
+.lb .cap{position:absolute;bottom:calc(20px + var(--safe-b));left:0;right:0;text-align:center;color:#aab3cf;font-size:13px}
+.toast{position:absolute;left:50%;bottom:calc(100px + var(--safe-b));transform:translate(-50%,20px);background:rgba(30,38,68,.96);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;z-index:50;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:599px){.toast{position:fixed}}
+.empty{color:var(--mute);text-align:center;padding:40px 20px;font-size:15px}
+</style>
+</head>
+<body>
+<div class="phone"><div class="screen">
+
+  <!-- DISPLAY TAB -->
+  <div class="scroll" id="v-display">
+    <div class="nav" id="nav"><div class="nav-row"><span style="width:60px"></span><span class="nav-mini">Display</span><button class="nav-btn" id="editBtn">Edit</button></div></div>
+    <h1 class="large">Display<span class="new">NEW</span></h1>
+
+    <div class="profile">
+      <div class="avatar"><span>B</span></div>
+      <div>
+        <div class="p-name">@blooperscollect</div>
+        <div class="p-sub">Football cards · Singapore · Road to $1K</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="sCards">0</b><small>on display</small></div>
+      <div class="stat"><b id="sGraded">0</b><small>PSA 10s</small></div>
+      <div class="stat"><b id="sAutos">0</b><small>autos</small></div>
+    </div>
+
+    <div class="intro">
+      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="6" height="14" rx="1.5"/><rect x="9" y="3" width="6" height="18" rx="1.5"/><rect x="16" y="5" width="6" height="14" rx="1.5"/></svg></div>
+      <p><b>New in Slabfolio: Display.</b> Pick the cards you want to show off, choose what info appears (photos, price paid, last sold), and share your display carousel with one link. Swipe through mine below, or tap <b>Edit</b> to try it.</p>
+    </div>
+
+    <div class="seg" id="seg">
+      <button class="on" data-f="all">All</button><button data-f="graded">Graded</button><button data-f="auto">Autos</button><button data-f="num">Numbered</button>
+    </div>
+
+    <div class="pager" id="pager"></div><div class="feed" id="feed"></div><div class="thumbs" id="thumbs"></div><div class="hint">Swipe for more cards · tap a card photo to flip it</div>
+    <div class="foot">Prices in SGD. "Last sold" is the latest comparable sale logged in Slabfolio. Some cards are seller photos and still in the post. Not financial advice.<br><br>Slabfolio · preview build</div>
+  </div>
+
+  <!-- COMING SOON VIEW -->
+  <div class="soonview" id="v-soon">
+    <div class="big" id="soonIcon"></div>
+    <span class="pill">Coming at launch</span>
+    <h2 id="soonTitle">Home</h2>
+    <p id="soonText"></p>
+    <div class="row">
+      <a class="btn" href="https://www.tiktok.com/@blooperscollect" target="_blank" rel="noopener">Follow for launch news</a>
+      <button class="btn ghost" data-go="display">See Display</button>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
+  <nav class="tabbar" id="tabbar"></nav>
+
+  <!-- SHEET -->
+  <div class="dim" id="dim"></div>
+  <div class="sheet" id="sheet">
+    <div class="grab"></div>
+    <div class="sh-head"><span style="width:44px"></span><h3>Edit display</h3><button class="nav-btn" id="doneBtn" style="font-weight:700">Done</button></div>
+    <div class="sh-body">
+      <div class="group"><h4>Show on each card</h4>
+        <div class="list" id="fieldList"></div>
+        <div class="note">Your display only shows what you switch on here. Values stay private unless you choose to share them.</div>
+      </div>
+      <div class="group"><h4>Cards in your carousel</h4>
+        <div class="list" id="cardList"></div>
+        <div class="note">In this preview your changes only last until you refresh.</div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+</div></div>
+
+<div class="lb" id="lb"><button class="x" id="lbx">✕</button><img id="lbimg" alt=""><div class="cap" id="lbcap"></div></div>
+
+<script>
+const CARDS=[
+ {id:'gray',name:'Archie Gray',set:'2024-25 Topps Chrome UCC · Rookie Auto Orange Lava Refractor',tags:[['PSA 10','g'],['Auto','a'],['22/25','n'],['RC','r']],graded:1,auto:1,num:1,badge:'PSA 10',
+  desc:'Europa League winner at 19, now a perfect 10. Sent raw, came back Gem Mint: one of only 2 PSA 10s of this card.',
+  paid:147.50,last:null,photos:['gray-1','gray-2','gray-3'],full:[2]},
+ {id:'schweini',name:'Bastian Schweinsteiger',set:'2024-25 Topps Inception UCC · Star Quality Auto Blue',tags:[['PSA 10','g'],['Auto','a'],['32/49','n']],graded:1,auto:1,num:1,badge:'PSA 10',
+  desc:'Fußballgott. Champions League 2013, World Cup 2014, and a blue Star Quality auto that graded PSA 10 on its first try.',
+  paid:350,last:null,photos:['schweini-1','schweini-2','schweini-3'],full:[2]},
+ {id:'emi',r1k:1,name:'Emiliano Martínez',set:'Topps Pristine · Patch Auto',tags:[['Auto','a'],['Patch','a'],['06/25','n']],auto:1,num:1,
+  desc:'World Cup-winning keeper in the Villa kit, with a player-worn patch and his signature. Numbered 6 of 25.',
+  paid:85,last:null,photos:['emi-1']},
+ {id:'moore-rev',name:'Mikey Moore',set:'2024-25 Topps Reverence UCC · Rookie Auto Purple',tags:[['Auto','a'],['19/50','n'],['RC','r']],auto:1,num:1,
+  desc:'Spurs academy wonderkid. Purple rookie auto /50, lined up for grading.',
+  paid:85,last:null,photos:['moore-rev-1','moore-rev-2']},
+ {id:'vitinha',r1k:1,name:'Vitinha',set:'2025-26 Topps Inception UCC · First XI Auto Pink Foil',tags:[['Auto','a'],['71/75','n']],auto:1,num:1,
+  desc:'PSG\'s metronome and a Ballon d\'Or top-15 finisher. Copped under market.',
+  paid:35.84,last:{p:45,d:'20 Oct 2026'},photos:['vitinha-1','vitinha-2']},
+ {id:'spurs',name:'Son & Kane',set:'2022-23 Topps UCC · Spurs of the Moment Purple Foil',tags:[['31/75','n']],num:1,badge:'In the post',inc:1,
+  desc:'The most prolific duo in Premier League history on one card. Purple foil /75.',
+  paid:21.46,last:null,photos:['spurs-1','spurs-2']},
+ {id:'yamal',name:'Lamine Yamal',set:'2024 Topps Now · Ballon d\'Or Kopa Trophy Winner',tags:[['RC','r'],['Topps Now','']],badge:'In the post',inc:1,
+  desc:'Kopa Trophy winner, Topps Now rookie. The best teenager in the world, in a tux.',
+  paid:11.86,last:null,photos:['yamal-1','yamal-2']},
+ {id:'casado',r1k:1,name:'Marc Casadó',set:'Topps Simplicidad · Autograph',tags:[['Auto','a'],['38/99','n']],auto:1,num:1,
+  desc:'La Masia midfielder with two Spain caps. Buying him quiet while he\'s on loan.',
+  paid:20,last:null,photos:['casado-1','casado-2']},
+ {id:'neymar',r1k:1,name:'Neymar Jr',set:'2022-23 Topps Merlin Chrome UCC · Aqua Refractor',tags:[['007/199','n']],num:1,
+  desc:'PSG-era Neymar in aqua, with a James Bond serial: 007/199.',
+  paid:15,last:null,photos:['neymar-1','neymar-2']},
+ {id:'moore-sq',r1k:1,name:'Mikey Moore',set:'2024-25 Topps Inception UCC · Star Quality Pink SP',tags:[['57/75','n'],['RC','r']],num:1,
+  desc:'S$4 for a /75 rookie of a Spurs prospect. Bin find of the month.',
+  paid:4,last:null,photos:['moore-sq-1','moore-sq-2']},
+ {id:'acuna',r1k:1,name:'Marcos Acuña',set:'2022-23 Panini Chronicles · Origins Autographs',tags:[['Auto','a'],['025/299','n']],auto:1,num:1,
+  desc:'World Cup winner with Argentina, signed in Sevilla colours.',
+  paid:3,last:null,photos:['acuna-1','acuna-2']},
+ {id:'porro',r1k:1,name:'Pedro Porro',set:'2023-24 Panini Prizm Premier League · Choice Red White & Blue',tags:[['Prizm','']],
+  desc:'Spurs wing-back on one of Prizm\'s loudest parallels.',
+  paid:1.28,last:null,photos:['porro-1','porro-2']},
+];
+const FIELDS=[['photos','Photos',1,1],['name','Card name & set',1,1],['desc','Description',1,0],['paid','Price paid (Road to $1K cards)',1,0],['last','Last sold',1,0]];
+const st={fields:Object.fromEntries(FIELDS.map(f=>[f[0],!!f[2]])),hidden:new Set(),filter:'all'};
+const $=s=>document.querySelector(s);
+const money=v=>'S$'+v.toFixed(2).replace(/\.00$/,'');
+
+function render(){
+  const list=CARDS.filter(c=>!st.hidden.has(c.id)).filter(c=>st.filter==='all'||c[st.filter]);
+  $('#sCards').textContent=CARDS.filter(c=>!st.hidden.has(c.id)).length;
+  $('#sGraded').textContent=CARDS.filter(c=>!st.hidden.has(c.id)&&c.graded).length;
+  $('#sAutos').textContent=CARDS.filter(c=>!st.hidden.has(c.id)&&c.auto).length;
+  const f=st.fields;
+  $('#feed').innerHTML=list.length?list.map(c=>{
+    const slides=c.photos.map((p,i)=>`<div class="slide${(c.full||[]).includes(i)?' full':''}${i?'':' on'}"><img src="img/${p}.webp" alt="${c.name} photo ${i+1}" loading="lazy" data-c="${c.id}" data-i="${i}"></div>`).join('');
+    const prices=((f.paid&&c.r1k)||f.last)?`<div class="prices">
+      ${f.paid&&c.r1k?`<div class="pt"><small>Bought</small><b>${money(c.paid)}</b><span>shown on Road to $1K</span></div>`:''}
+      ${f.last?(c.last?`<div class="pt"><small>Last sold</small><b class="${c.last.p>c.paid?'up':''}">${money(c.last.p)}</b><span>comp · ${c.last.d}</span></div>`
+               :`<div class="pt none"><small>Last sold</small><b>—</b><span>no sale logged yet</span></div>`):''}
+    </div>`:'';
+    return `<article class="dcard" data-id="${c.id}">
+      ${f.photos?`<div class="car"><div class="track" data-c="${c.id}" data-p="0">${slides}${c.photos.length>1?'<button class="tapz l" data-d="-1" aria-label="Previous photo"></button><button class="tapz r" data-d="1" aria-label="Next photo"></button>':''}</div>
+        <button class="expand" data-x="${c.id}" aria-label="Full screen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+        ${c.badge?`<span class="badge${c.inc?' inc':''}">${c.badge}</span>`:''}
+        ${c.photos.length>1?`<span class="count"><span class="n">1</span>/${c.photos.length}</span>`:''}
+      </div>${c.photos.length>1?`<div class="dots">${c.photos.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}`:''}
+      <div class="body">
+        ${f.name?`<div class="name">${c.name}</div><div class="set">${c.set}</div>`:''}
+        <div class="chips">${c.tags.map(t=>`<span class="chip ${t[1]}">${t[0]}</span>`).join('')}</div>
+        ${f.desc?`<div class="desc">${c.desc}</div>`:''}
+        ${prices}
+      </div></article>`;
+  }).join(''):`<div class="empty">No cards match. Try another filter or add cards in Edit.</div>`;
+  $('#thumbs').innerHTML=list.map((c,i)=>`<button data-j="${i}" aria-label="${c.name}"><img src="img/${c.photos[0]}.webp" alt=""></button>`).join('');
+  $('#feed').scrollLeft=0; cur=-1; onFeed();
+}
+let cur=-1;
+function cards(){return [...document.querySelectorAll('#feed .dcard')];}
+function onFeed(){
+  const f=$('#feed'),cs=cards();if(!cs.length){$('#pager').innerHTML='';return;}
+  const mid=f.scrollLeft+f.clientWidth/2;let best=0,bd=1e9;
+  cs.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d<bd){bd=d;best=i;}});
+  cs.forEach((c,i)=>c.classList.toggle('side',i!==best));
+  if(best===cur)return;cur=best;
+  $('#pager').innerHTML=`<span class="pos">${best+1} <small>of ${cs.length} cards</small></span><span class="arrows"><button data-step="-1" ${best?'':'disabled'} aria-label="Previous card">‹</button><button data-step="1" ${best<cs.length-1?'':'disabled'} aria-label="Next card">›</button></span>`;
+  document.querySelectorAll('#thumbs button').forEach((b,i)=>b.classList.toggle('on',i===best));
+  const tb=document.querySelectorAll('#thumbs button')[best];if(tb)tb.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+function goCard(i){const c=cards()[i];if(!c)return;const f=$('#feed');f.scrollTo({left:c.offsetLeft-(f.clientWidth-c.offsetWidth)/2,behavior:'smooth'});}
+$('#feed').addEventListener('scroll',onFeed,{passive:true});
+$('#pager').addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b)goCard(cur+(+b.dataset.step));});
+$('#thumbs').addEventListener('click',e=>{const b=e.target.closest('[data-j]');if(b)goCard(+b.dataset.j);});
+function flip(t,d){const sl=t.querySelectorAll('.slide');let p=(+t.dataset.p+d+sl.length)%sl.length;t.dataset.p=p;
+  sl.forEach((x,k)=>x.classList.toggle('on',k===p));const card=t.closest('.dcard');
+  card.querySelectorAll('.dots i').forEach((x,k)=>x.classList.toggle('on',k===p));const n=card.querySelector('.count .n');if(n)n.textContent=p+1;}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goCard(cur+1);if(e.key==='ArrowLeft')goCard(cur-1);});
+
+/* filters */
+$('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));st.filter=b.dataset.f;render();});
+
+/* nav shadow */
+const sc=$('#v-display');sc.addEventListener('scroll',()=>$('#nav').classList.toggle('stuck',sc.scrollTop>40),{passive:true});
+window.addEventListener('scroll',()=>$('#nav').classList.toggle('stuck',window.scrollY>40),{passive:true});
+
+/* edit sheet */
+function buildSheet(){
+  $('#fieldList').innerHTML=FIELDS.map(([k,l,,lock])=>`<label class="li"><span class="t">${l}${lock?'<small>Always shown</small>':''}</span>
+    <span class="sw"><input type="checkbox" data-k="${k}" ${st.fields[k]?'checked':''} ${lock?'disabled':''}><span></span></span></label>`).join('');
+  $('#cardList').innerHTML=CARDS.map(c=>`<label class="li"><img src="img/${c.photos[0]}.webp" alt=""><span class="t">${c.name}<small>${c.set.split(' · ')[1]||c.set}</small></span>
+    <span class="sw"><input type="checkbox" data-id="${c.id}" ${st.hidden.has(c.id)?'':'checked'}><span></span></span></label>`).join('');
+}
+function openSheet(o){$('#sheet').classList.toggle('on',o);$('#dim').classList.toggle('on',o);if(o)buildSheet();}
+$('#editBtn').onclick=()=>openSheet(true);
+$('#doneBtn').onclick=()=>{openSheet(false);toast('Display updated');};
+$('#dim').onclick=()=>openSheet(false);
+$('#sheet').addEventListener('change',e=>{const i=e.target;
+  if(i.dataset.k)st.fields[i.dataset.k]=i.checked;
+  if(i.dataset.id){i.checked?st.hidden.delete(i.dataset.id):st.hidden.add(i.dataset.id);}
+  render();});
+
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1600);}
+
+/* lightbox */
+$('#feed').addEventListener('click',e=>{
+  const z=e.target.closest('.tapz');if(z){const card=z.closest('.dcard');if(card.classList.contains('side')){goCard(cards().indexOf(card));return;}flip(z.closest('.track'),+z.dataset.d);return;}
+  const card=e.target.closest('.dcard');if(card&&card.classList.contains('side')){goCard(cards().indexOf(card));return;}
+  const x=e.target.closest('.expand');if(!x)return;const t=x.parentElement.querySelector('.track');const c=CARDS.find(q=>q.id===x.dataset.x);const p=+t.dataset.p;
+  $('#lbimg').src='img/'+c.photos[p]+'.webp';$('#lbcap').textContent=c.name+' · '+(p+1)+'/'+c.photos.length;$('#lb').classList.add('on');});
+$('#lb').onclick=e=>{if(e.target.id!=='lbimg')$('#lb').classList.remove('on');};
+
+/* tabs */
+const ICON={
+ home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+ collection:'<rect x="4" y="3" width="12" height="16" rx="2"/><path d="M8 21h10a2 2 0 0 0 2-2V7"/>',
+ display:'<rect x="2" y="5" width="6" height="14" rx="1.5"/><rect x="9" y="3" width="6" height="18" rx="1.5"/><rect x="16" y="5" width="6" height="14" rx="1.5"/>',
+ finder:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+ me:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>'
+};
+const TABS=[
+ ['home','Home','Your collection value, live: what you spent, what it\'s worth now, and your biggest movers this week.'],
+ ['collection','Collection','Every card you own in one place, with grades, serials, photos and what you paid. Import straight from your spreadsheet.'],
+ ['display','Display',''],
+ ['finder','Finder','Hunt the rarest parallels. See which /1s and low numbers have been pulled, and log your own finds.'],
+ ['me','Me','Grading calculator, backups, settings and your public profile.'],
+];
+const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>`;
+$('#tabbar').innerHTML=TABS.map(([k,l])=>`<button class="tab${k==='display'?' on':''}" data-go="${k}">${svg(k)}<span>${l}</span>${k==='display'?'<span class="dot">NEW</span>':'<span class="soon"></span>'}</button>`).join('');
+function go(k){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.go===k));
+  const isD=k==='display';$('#v-display').style.display=isD?'':'none';$('#v-soon').style.display=isD?'none':'flex';
+  if(!isD){const t=TABS.find(x=>x[0]===k);$('#soonTitle').textContent=t[1];$('#soonText').textContent=t[2];$('#soonIcon').innerHTML=svg(k);}
+  window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go);});
+render();
+</script>
+</body>
+</html>
