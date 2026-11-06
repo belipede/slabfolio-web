@@ -65,15 +65,33 @@ a{color:inherit}
 .seg button.on{background:#2c3557;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
 
 /* display card */
-.dcard{margin:0 12px 18px;background:var(--card);border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.05)}
+.feed{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 26px 4px;scroll-padding:0 26px;overscroll-behavior-x:contain}
+.feed::-webkit-scrollbar{display:none}
+.dcard{flex:0 0 calc(100% - 52px);scroll-snap-align:center;scroll-snap-stop:always;background:var(--card);border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.05);transition:transform .25s,opacity .25s}
+.dcard.side{transform:scale(.95);opacity:.55}
+.pager{display:flex;align-items:center;justify-content:space-between;margin:12px 16px 4px}
+.pager .pos{font-size:14px;font-weight:600;color:#c9cfe2}
+.pager .pos small{color:var(--mute);font-weight:500}
+.arrows{display:flex;gap:8px}
+.arrows button{width:38px;height:38px;border-radius:50%;background:#1e2644;display:flex;align-items:center;justify-content:center;font-size:18px;color:#dcd6ff}
+.arrows button:disabled{opacity:.35}
+.thumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 16px 6px}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs button{flex:none;width:46px;height:62px;border-radius:8px;overflow:hidden;background:#10162a;border:2px solid transparent;opacity:.55;transition:.2s}
+.thumbs button.on{border-color:var(--accent2);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:contain}
+.hint{color:var(--mute);font-size:12.5px;text-align:center;margin:2px 0 14px}
+.tapz{position:absolute;top:0;bottom:0;width:38%;z-index:2}
+.tapz.l{left:0}.tapz.r{right:0}
+.expand{position:absolute;right:12px;bottom:12px;z-index:3;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center}
 .car{position:relative;background:radial-gradient(120% 90% at 50% 0%,#232c4d,#0e1426 70%)}
-.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:4/5}
-.track::-webkit-scrollbar{display:none}
-.slide{flex:0 0 100%;scroll-snap-align:center;display:flex;align-items:center;justify-content:center;padding:18px}
+.track{position:relative;aspect-ratio:4/5}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .25s}
+.slide.on{opacity:1}
 .slide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;filter:drop-shadow(0 14px 24px rgba(0,0,0,.5));user-select:none;-webkit-user-drag:none}
 .slide.full{padding:0}.slide.full img{border-radius:0;width:100%;height:100%;object-fit:cover;filter:none}
-.count{position:absolute;top:12px;right:12px;font-size:12px;font-weight:600;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:4px 9px;border-radius:20px}
-.badge{position:absolute;top:12px;left:12px;font-size:11px;font-weight:800;letter-spacing:.4px;padding:4px 8px;border-radius:7px;background:#fff;color:#c1121f}
+.count{z-index:3;position:absolute;top:12px;right:12px;font-size:12px;font-weight:600;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:4px 9px;border-radius:20px}
+.badge{z-index:3;position:absolute;top:12px;left:12px;font-size:11px;font-weight:800;letter-spacing:.4px;padding:4px 8px;border-radius:7px;background:#fff;color:#c1121f}
 .badge.inc{background:rgba(0,0,0,.55);color:#ffd28a;backdrop-filter:blur(10px)}
 .dots{display:flex;gap:6px;justify-content:center;padding:10px 0 0}
 .dots i{width:6px;height:6px;border-radius:50%;background:#3a4466;transition:all .2s}
@@ -181,14 +199,14 @@ a{color:inherit}
 
     <div class="intro">
       <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="6" height="14" rx="1.5"/><rect x="9" y="3" width="6" height="18" rx="1.5"/><rect x="16" y="5" width="6" height="14" rx="1.5"/></svg></div>
-      <p><b>New in Slabfolio: Display.</b> Pick the cards you want to show off, choose what info appears (photos, price paid, last sold), and share your display carousel with one link. Tap <b>Edit</b> to try it.</p>
+      <p><b>New in Slabfolio: Display.</b> Pick the cards you want to show off, choose what info appears (photos, price paid, last sold), and share your display carousel with one link. Swipe through mine below, or tap <b>Edit</b> to try it.</p>
     </div>
 
     <div class="seg" id="seg">
       <button class="on" data-f="all">All</button><button data-f="graded">Graded</button><button data-f="auto">Autos</button><button data-f="num">Numbered</button>
     </div>
 
-    <div id="feed"></div>
+    <div class="pager" id="pager"></div><div class="feed" id="feed"></div><div class="thumbs" id="thumbs"></div><div class="hint">Swipe for more cards · tap a card photo to flip it</div>
     <div class="foot">Prices in SGD. "Last sold" is the latest comparable sale logged in Slabfolio. Some cards are seller photos and still in the post. Not financial advice.<br><br>Slabfolio · preview build</div>
   </div>
 
@@ -279,14 +297,15 @@ function render(){
   $('#sAutos').textContent=CARDS.filter(c=>!st.hidden.has(c.id)&&c.auto).length;
   const f=st.fields;
   $('#feed').innerHTML=list.length?list.map(c=>{
-    const slides=c.photos.map((p,i)=>`<div class="slide${(c.full||[]).includes(i)?' full':''}"><img src="img/${p}.webp" alt="${c.name} photo ${i+1}" loading="lazy" data-c="${c.id}" data-i="${i}"></div>`).join('');
+    const slides=c.photos.map((p,i)=>`<div class="slide${(c.full||[]).includes(i)?' full':''}${i?'':' on'}"><img src="img/${p}.webp" alt="${c.name} photo ${i+1}" loading="lazy" data-c="${c.id}" data-i="${i}"></div>`).join('');
     const prices=((f.paid&&c.r1k)||f.last)?`<div class="prices">
       ${f.paid&&c.r1k?`<div class="pt"><small>Bought</small><b>${money(c.paid)}</b><span>shown on Road to $1K</span></div>`:''}
       ${f.last?(c.last?`<div class="pt"><small>Last sold</small><b class="${c.last.p>c.paid?'up':''}">${money(c.last.p)}</b><span>comp · ${c.last.d}</span></div>`
                :`<div class="pt none"><small>Last sold</small><b>—</b><span>no sale logged yet</span></div>`):''}
     </div>`:'';
-    return `<article class="dcard">
-      ${f.photos?`<div class="car"><div class="track" data-c="${c.id}">${slides}</div>
+    return `<article class="dcard" data-id="${c.id}">
+      ${f.photos?`<div class="car"><div class="track" data-c="${c.id}" data-p="0">${slides}${c.photos.length>1?'<button class="tapz l" data-d="-1" aria-label="Previous photo"></button><button class="tapz r" data-d="1" aria-label="Next photo"></button>':''}</div>
+        <button class="expand" data-x="${c.id}" aria-label="Full screen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
         ${c.badge?`<span class="badge${c.inc?' inc':''}">${c.badge}</span>`:''}
         ${c.photos.length>1?`<span class="count"><span class="n">1</span>/${c.photos.length}</span>`:''}
       </div>${c.photos.length>1?`<div class="dots">${c.photos.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}`:''}
@@ -297,15 +316,29 @@ function render(){
         ${prices}
       </div></article>`;
   }).join(''):`<div class="empty">No cards match. Try another filter or add cards in Edit.</div>`;
-  document.querySelectorAll('.track').forEach(t=>{
-    const card=t.closest('.dcard');
-    t.addEventListener('scroll',()=>{
-      const i=Math.round(t.scrollLeft/t.clientWidth);
-      card.querySelectorAll('.dots i').forEach((d,k)=>d.classList.toggle('on',k===i));
-      const n=card.querySelector('.count .n'); if(n) n.textContent=i+1;
-    },{passive:true});
-  });
+  $('#thumbs').innerHTML=list.map((c,i)=>`<button data-j="${i}" aria-label="${c.name}"><img src="img/${c.photos[0]}.webp" alt=""></button>`).join('');
+  $('#feed').scrollLeft=0; cur=-1; onFeed();
 }
+let cur=-1;
+function cards(){return [...document.querySelectorAll('#feed .dcard')];}
+function onFeed(){
+  const f=$('#feed'),cs=cards();if(!cs.length){$('#pager').innerHTML='';return;}
+  const mid=f.scrollLeft+f.clientWidth/2;let best=0,bd=1e9;
+  cs.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d<bd){bd=d;best=i;}});
+  cs.forEach((c,i)=>c.classList.toggle('side',i!==best));
+  if(best===cur)return;cur=best;
+  $('#pager').innerHTML=`<span class="pos">${best+1} <small>of ${cs.length} cards</small></span><span class="arrows"><button data-step="-1" ${best?'':'disabled'} aria-label="Previous card">‹</button><button data-step="1" ${best<cs.length-1?'':'disabled'} aria-label="Next card">›</button></span>`;
+  document.querySelectorAll('#thumbs button').forEach((b,i)=>b.classList.toggle('on',i===best));
+  const tb=document.querySelectorAll('#thumbs button')[best];if(tb)tb.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+function goCard(i){const c=cards()[i];if(!c)return;const f=$('#feed');f.scrollTo({left:c.offsetLeft-(f.clientWidth-c.offsetWidth)/2,behavior:'smooth'});}
+$('#feed').addEventListener('scroll',onFeed,{passive:true});
+$('#pager').addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b)goCard(cur+(+b.dataset.step));});
+$('#thumbs').addEventListener('click',e=>{const b=e.target.closest('[data-j]');if(b)goCard(+b.dataset.j);});
+function flip(t,d){const sl=t.querySelectorAll('.slide');let p=(+t.dataset.p+d+sl.length)%sl.length;t.dataset.p=p;
+  sl.forEach((x,k)=>x.classList.toggle('on',k===p));const card=t.closest('.dcard');
+  card.querySelectorAll('.dots i').forEach((x,k)=>x.classList.toggle('on',k===p));const n=card.querySelector('.count .n');if(n)n.textContent=p+1;}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goCard(cur+1);if(e.key==='ArrowLeft')goCard(cur-1);});
 
 /* filters */
 $('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
@@ -334,8 +367,11 @@ $('#sheet').addEventListener('change',e=>{const i=e.target;
 let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1600);}
 
 /* lightbox */
-$('#feed').addEventListener('click',e=>{const im=e.target.closest('.slide img');if(!im)return;
-  const c=CARDS.find(x=>x.id===im.dataset.c);$('#lbimg').src=im.src;$('#lbcap').textContent=c.name+' · '+(+im.dataset.i+1)+'/'+c.photos.length;$('#lb').classList.add('on');});
+$('#feed').addEventListener('click',e=>{
+  const z=e.target.closest('.tapz');if(z){const card=z.closest('.dcard');if(card.classList.contains('side')){goCard(cards().indexOf(card));return;}flip(z.closest('.track'),+z.dataset.d);return;}
+  const card=e.target.closest('.dcard');if(card&&card.classList.contains('side')){goCard(cards().indexOf(card));return;}
+  const x=e.target.closest('.expand');if(!x)return;const t=x.parentElement.querySelector('.track');const c=CARDS.find(q=>q.id===x.dataset.x);const p=+t.dataset.p;
+  $('#lbimg').src='img/'+c.photos[p]+'.webp';$('#lbcap').textContent=c.name+' · '+(p+1)+'/'+c.photos.length;$('#lb').classList.add('on');});
 $('#lb').onclick=e=>{if(e.target.id!=='lbimg')$('#lb').classList.remove('on');};
 
 /* tabs */
