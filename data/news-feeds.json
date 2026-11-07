@@ -1,0 +1,10 @@
+[
+ {"id": "bbc", "name": "BBC Sport", "kind": "football", "url": "https://feeds.bbci.co.uk/sport/football/rss.xml"},
+ {"id": "guardian", "name": "The Guardian", "kind": "football", "url": "https://www.theguardian.com/football/rss"},
+ {"id": "sky", "name": "Sky Sports", "kind": "football", "url": "https://www.skysports.com/rss/12040"},
+ {"id": "espn", "name": "ESPN", "kind": "football", "url": "https://www.espn.com/espn/rss/soccer/news"},
+ {"id": "f365", "name": "Football365", "kind": "football", "url": "https://www.football365.com/feed"},
+ {"id": "beckett", "name": "Beckett", "kind": "cards", "url": "https://www.beckett.com/news/feed/"},
+ {"id": "scd", "name": "Sports Collectors Daily", "kind": "cards", "url": "https://www.sportscollectorsdaily.com/feed/"},
+ {"id": "cbc", "name": "Cardboard Connection", "kind": "cards", "url": "https://www.cardboardconnection.com/feed"}
+]

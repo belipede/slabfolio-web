@@ -1,8 +1,9 @@
 const SETS = __SETS__;
 const SEEN = __SEEN__;
-const NEWS = __NEWS__;
+let NEWS = __NEWS__;   // snapshot from build time; refreshData() swaps in the latest data/news.json
+let FINDS = { finds: [], penalties: {} };   // shared finds from GitHub issues, loaded from data/finds.json
 const SAMPLE_CARDS = __SAMPLE_CARDS__;
-const APP_VERSION = '0.1 (31 Oct 2026)';
+const APP_VERSION = '0.2 (7 Nov 2026)';
 const REPO = 'belipede/slabfolio-web';
 
 // ---------- storage ----------
@@ -34,7 +35,13 @@ const cls = r => r ? ({ verified: 'v', pending: 'p', seen: 's' })[r.status] : ''
 // online sightings found by searching eBay (not community reports)
 const seenReports = () => SEEN.map((x, i) => { const s = setById(x[0]), g = grpOf(s, x[1]), p = g.pars.find(q => q.n === x[3]);
   return { id: 'seen' + i, seen: true, set: x[0], grp: x[1], card: x[2], par: x[3], run: p.r, serial: x[4], ev: 'listing', link: x[5], note: x[6], user: 'ebay', status: 'seen', t: Date.parse('2026-10-31T02:30:00Z') - i * 6e4 }; });
-const allReports = () => seenReports().concat(S.reports);
+// finds shared on the public registry (GitHub issues, verified by a moderator label)
+let sharedCache = null;
+const sharedReports = () => sharedCache || (sharedCache = FINDS.finds.filter(f => setById(f.set)).map(f => ({ ...f, shared: true, t: Date.parse(f.t) || 0 })));
+const sharedKey = r => slotKey(r.set, r.grp, r.card, r.par, r.serial) + '|' + (r.code || '');
+// a local report that has since shown up on the public registry is shown once, as the shared copy
+const localReports = () => { const sh = new Set(sharedReports().map(sharedKey)); return S.reports.filter(r => !(r.sharedAt && sh.has(sharedKey(r)))); };
+const allReports = () => seenReports().concat(sharedReports(), localReports());
 
 // best status per slot: verified > pending > seen online; rejected ignored; serial 0 = copy number unknown
 function slotIndex(){
@@ -49,9 +56,13 @@ function slotIndex(){
 function unknownCounts(){ const m = new Map(); for (const r of allReports()) if (!ser(r) && r.status !== 'rejected'){ const k = slotKey(r.set, r.grp, r.card, r.par, 0); m.set(k, (m.get(k) || 0) + 1); } return m; }
 const unknownFor = (set, grp, card, par) => allReports().filter(r => !ser(r) && r.status !== 'rejected' && r.set === set && r.grp === grp && r.card === card && r.par === par);
 function userPoints(u){
-  return S.reports.filter(r => r.user === u && r.status === 'verified' && r.firstVerified).reduce((a, r) => a + r.points, 0)
-       - S.reports.filter(r => r.user === u && r.status === 'rejected' && r.fake).length * 50;
+  const gh = (S.gh || '').toLowerCase(), shared = gh ? sharedReports().filter(r => r.user.toLowerCase() === gh) : [];
+  return localReports().filter(r => r.user === u && r.status === 'verified' && r.firstVerified).reduce((a, r) => a + r.points, 0)
+       - localReports().filter(r => r.user === u && r.status === 'rejected' && r.fake).length * 50
+       + shared.filter(r => r.status === 'verified' && r.firstVerified).reduce((a, r) => a + r.points, 0)
+       - (gh ? Object.entries(FINDS.penalties || {}).filter(([k]) => k.toLowerCase() === gh).reduce((a, [, n]) => a + n, 0) * 50 : 0);
 }
+const myShared = () => { const gh = (S.gh || '').toLowerCase(); return gh ? sharedReports().filter(r => r.user.toLowerCase() === gh) : []; };
 
 // ---------- state / routing ----------
 let view = { tab: 'home', cq: '', cseg: 'owned', cf: '', csort: 'value', cmore: 60, set: null, grp: 0, par: 0, q: '', filter: 'all', news: 'football', np: '' };
@@ -191,7 +202,7 @@ function openCard(setId, grpIdx, code, parIdx){
   });
 }
 function statusLine(r){
-  const t = r.status === 'verified' ? 'Verified' : r.status === 'pending' ? 'Reported, waiting for review' : 'Seen for sale on eBay';
+  const t = r.status === 'verified' ? 'Verified' : r.status === 'pending' ? (r.shared ? 'Shared, waiting for a moderator' : 'Reported, waiting for review') : 'Seen for sale on eBay';
   return `<b>${t}</b><span class="sub">${r.seen ? esc(r.note) : 'by ' + esc(shownUser(r)) + ' · ' + fmtDate(r.t)}</span>`;
 }
 function shownUser(r){ return r.seen ? 'eBay listing' : r.anon ? 'anonymous collector' : '@' + r.user; }
@@ -248,7 +259,7 @@ function openReport(pre){
     const dup = slotIndex().get(slotKey(r.set, r.grp, r.card, r.par, r.serial));
     if (dup && !dup.seen) r.dupOf = dup.id;
     if (r.ev === 'graded'){ r.autoNote = 'Cert check simulated in this test build'; verify(r, true); }
-    S.reports.push(r); save(); closeSheet(); render();
+    S.reports.push(r); save(); closeSheet(); render(); openDetail(r.id);
     toast(r.status === 'verified' ? 'Verified by cert check (simulated)' : r.dupOf ? 'Reported. Someone already reported this copy, so a moderator will compare both.' : 'Reported. It shows as pending until reviewed.');
   };
 }
@@ -271,10 +282,11 @@ function reject(r, fake){ r.status = 'rejected'; r.fake = !!fake; r.vt = Date.no
 function openDetail(id){
   const r = allReports().find(x => x.id === id); if (!r) return;
   const s = setById(r.set), g = grpOf(s, r.grp), c = cardOf(g, r.card);
-  const evName = r.seen ? 'Found by searching eBay' : { graded: 'Graded slab (cert on file, hidden)', listing: 'Listing link', photo: 'Photos with code ' + r.code, video: 'Break video', inventory: 'From my collection (needs photos or a slab before it can be verified)' }[r.ev];
+  const evName = r.seen ? 'Found by searching eBay' : r.shared && r.ev === 'graded' ? 'Graded slab (photos on GitHub)' : { graded: 'Graded slab (cert on file, hidden)', listing: 'Listing link', photo: 'Photos with code ' + r.code, video: 'Break video', inventory: 'From my collection (needs photos or a slab before it can be verified)' }[r.ev];
   let h = `<h2>${esc(c[1])} ${r.run === 1 ? '1/1' : (r.serial || '?') + '/' + r.run}</h2>
   <div class="sub">${esc(short(s.name))} · ${esc(g.n)} · ${esc(r.par)} · ${esc(cardNo(g, c[0]))}</div>
-  <div style="margin-top:12px">${badge(r)} ${r.sample ? '<span class="badge b-s">SAMPLE</span>' : ''}</div>
+  ${r.sample ? '<div style="margin-top:12px"><span class="badge b-s">SAMPLE</span></div>' : ''}
+  <div style="margin-top:12px">${badge(r)} ${r.shared ? '<span class="badge b-o">PUBLIC</span>' : r.sample ? '' : '<span class="badge b-s">ONLY ON THIS PHONE</span>'}</div>
   <div class="item" style="margin-top:12px"><div class="m">${r.seen ? 'Added from an eBay search on 31 Oct' : `Reported by ${esc(shownUser(r))} on ${fmtDate(r.t)}`}</div>
   <div class="m">Proof: ${esc(evName)}</div>
   ${r.link ? `<div class="m"><a href="${esc(r.link)}" target="_blank" rel="noopener">Open ${r.seen ? 'eBay page' : 'link'}</a></div>` : ''}
@@ -283,22 +295,42 @@ function openDetail(id){
   ${r.autoNote ? `<div class="m">${esc(r.autoNote)}</div>` : ''}
   ${r.dupOf ? `<div class="m" style="color:var(--pend)">Another report already exists for this copy</div>` : ''}
   ${r.status === 'verified' ? `<div class="m">${r.firstVerified ? `First verified report · +${r.points} points` : 'Already verified earlier, no points'}</div>` : ''}
-  ${r.photo ? `<img class="thumb" src="${r.photo}">` : ''}</div>`;
-  if (S.mod && r.status === 'pending') h += `<div class="btns"><button class="btn" data-v="${r.id}">Verify</button><button class="btn ghost" data-x="${r.id}">Reject</button></div><button class="btn red" data-f="${r.id}">Reject as fake (−50 points)</button>`;
+  ${r.photo ? `<img class="thumb" src="${esc(r.photo)}" alt="" referrerpolicy="no-referrer">` : ''}
+  ${r.shared ? `<div class="m"><a href="${esc(r.url)}" target="_blank" rel="noopener">${r.status === 'pending' && S.mod ? 'Review it on GitHub (add the verified or rejected label)' : 'See the photos and proof on GitHub'} ↗</a></div>` : ''}</div>`;
+  if (!r.shared && !r.seen && !r.sample && r.status !== 'rejected') h += r.sharedAt
+    ? `<div class="hint">You opened the share page on ${fmtDate(r.sharedAt)}. It shows here as public once the issue is posted (a few minutes).</div><button class="btn ghost" data-share="${r.id}">Open the share page again</button>`
+    : `<button class="btn" data-share="${r.id}">Share on the public registry</button><div class="hint">Opens a GitHub issue with this report filled in. You add your photos there and post it. Everyone sees it as pending until a moderator checks it. You need a free GitHub account, and your GitHub username shows on the issue.</div>`;
+  if (S.mod && r.status === 'pending' && !r.shared) h += `<div class="btns"><button class="btn" data-v="${r.id}">Verify</button><button class="btn ghost" data-x="${r.id}">Reject</button></div><button class="btn red" data-f="${r.id}">Reject as fake (−50 points)</button>`;
   if (r.seen) h += `<button class="btn ghost" data-own="${r.id}">I own this card, report it</button>`;
   openSheet(h);
+  const sb = $('#sheet [data-share]'); if (sb) sb.onclick = () => { r.sharedAt = r.sharedAt || Date.now(); save(); window.open(shareUrl(r), '_blank'); openDetail(r.id); };
   const own = $('#sheet [data-own]'); if (own) own.onclick = () => openReport({ set: r.set, grp: r.grp, card: r.card, par: r.par, serial: r.serial || 1 });
+}
+// pre-filled GitHub issue for the public registry; scripts/update_finds.py reads the block back
+function shareUrl(r){
+  const s = setById(r.set), g = grpOf(s, r.grp), c = cardOf(g, r.card), num = r.run === 1 ? '1/1' : (r.serial || '?') + '/' + r.run;
+  const proof = { graded: 'Add a photo of the slab, front and back. You can cover the cert number.',
+    listing: 'The listing link is above. Add a screenshot too, in case the listing comes down.',
+    video: 'The video link is above. Add a screenshot of the moment you pull it.',
+    photo: `Add photos of the front and back with the serial number readable and a paper note saying **${r.code}** in the shot.`,
+    inventory: `Add photos of the front and back with the serial number readable and a paper note saying **${r.code}** in the shot.` }[r.ev] || '';
+  const data = { v: 1, set: r.set, grp: r.grp, card: r.card, par: r.par, serial: r.serial || 0, ev: r.ev === 'inventory' ? 'photo' : r.ev, link: r.link || '', code: r.code || '', note: r.note || '', anon: !!r.anon };
+  const body = `**${c[1]}** · ${r.par} ${num}\n${short(s.name)} · ${g.n} · ${cardNo(g, c[0])}\n\n` +
+    (r.link ? `Proof link: ${r.link}\n\n` : '') + (r.note ? `> ${r.note}\n\n` : '') +
+    `### Photos\n${proof}\n\n_Drag your photos into this box, then tap Submit. A moderator adds the **verified** label once the proof checks out._\n\n` +
+    `<!-- slabfolio-find\n${JSON.stringify(data)}\n-->\n<sub>Shared from Slabfolio ${APP_VERSION}. Please leave the hidden block above as it is.</sub>`;
+  return `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(`Find: ${c[1]} ${r.par} ${num} (${short(s.name)})`)}&body=${encodeURIComponent(body)}`;
 }
 function badge(r){ return r.status === 'verified' ? `<span class="badge b-v">VERIFIED${r.auto ? ' · CERT' : ''}</span>` : r.status === 'pending' ? '<span class="badge b-p">PENDING</span>' : r.status === 'seen' ? '<span class="badge b-o">SEEN ON EBAY</span>' : `<span class="badge b-r">${r.fake ? 'FAKE' : 'REJECTED'}</span>`; }
 function itemHtml(r){
   const s = setById(r.set), g = grpOf(s, r.grp), c = cardOf(g, r.card);
   return `<div class="item" data-detail="${r.id}"><div class="t">${esc(c[1])} · ${esc(r.par)} ${r.run === 1 ? '1/1' : (r.serial || '?') + '/' + r.run}</div>
-  <div class="m">${esc(short(s.name))} · ${esc(g.n)} · ${esc(shownUser(r))}${r.seen ? '' : ' · ' + fmtDate(r.t)}</div><div style="margin-top:6px">${badge(r)} ${r.sample ? '<span class="badge b-s">SAMPLE</span>' : ''}</div></div>`;
+  <div class="m">${esc(short(s.name))} · ${esc(g.n)} · ${esc(shownUser(r))}${r.seen ? '' : ' · ' + fmtDate(r.t)}</div><div style="margin-top:6px">${badge(r)} ${r.sample ? '<span class="badge b-s">SAMPLE</span>' : ''}${r.shared ? ' <span class="badge b-o">PUBLIC</span>' : ''}</div></div>`;
 }
 
 // ---------- feed / review / me ----------
 function finderTop(){
-  const n = S.reports.filter(r => r.status === 'pending').length;
+  const n = allReports().filter(r => r.status === 'pending').length;
   return `<header class="top"><h1>Card Finder</h1><button class="mini acc" data-act="report">+ Report a pull</button></header>
   <div class="seg wide" style="margin-bottom:12px">${[['hunt','Sets'],['feed','Latest finds'],['review','Review' + (n ? ' (' + n + ')' : '')]].map(([k, l]) => `<button data-go="${k}" class="${view.tab === k ? 'on' : ''}">${l}</button>`).join('')}</div>`;
 }
@@ -307,11 +339,13 @@ function renderFeed(){
   return finderTop() + list.map(itemHtml).join('');
 }
 function renderReview(){
-  const list = S.reports.filter(r => r.status === 'pending').sort((a, b) => a.t - b.t);
+  const list = localReports().filter(r => r.status === 'pending').sort((a, b) => a.t - b.t);
+  const shared = sharedReports().filter(r => r.status === 'pending').sort((a, b) => a.t - b.t);
   return finderTop() + `
   ${S.mod ? '' : `<div class="banner">Turn on Moderator mode in Me to verify or reject reports.</div>`}
   <div class="sub" style="margin-bottom:10px">Graded cards with a cert number skip this queue. Everything else waits here for a check.</div>` +
-  (list.length ? list.map(itemHtml).join('') : `<div class="empty">Nothing waiting for review.</div>`);
+  (list.length ? list.map(itemHtml).join('') : `<div class="empty">Nothing waiting for review on this phone.</div>`) +
+  (shared.length ? `<div class="sec">Shared on GitHub, waiting for a label</div><div class="sub" style="margin-bottom:8px">Open one, check the photos on GitHub, then add the <b>verified</b> or <b>rejected</b> label there (or <b>fake</b> to take 50 points off). The registry updates a minute or two later.</div>` + shared.map(itemHtml).join('') : '');
 }
 // ---------- sample data (clearly marked) ----------
 const SAMPLE = [
@@ -335,23 +369,56 @@ function loadSample(){
 }
 
 // ---------- news ----------
+// Headlines only: title, publisher, link, date. "n" holds name-like words from the headline and teaser for matching.
+const newsItems = k => (NEWS.items || []).filter(n => n.k === k);
+const ago = iso => { const m = (Date.now() - Date.parse(iso)) / 6e4; return !(m >= 0) ? '' : m < 60 ? Math.max(1, Math.round(m)) + 'm ago' : m < 1440 ? Math.round(m / 60) + 'h ago' : m < 1440 * 7 ? Math.round(m / 1440) + 'd ago' : fmtDate(iso); };
+const PARTICLES = new Set(['van', 'de', 'der', 'den', 'da', 'di', 'dos', 'el', 'al', 'ten', 'ter', 'le', 'la']);
+// owned players, with the value of their cards so news about bigger holdings ranks first
+function myPlayers(){
+  const m = new Map();
+  for (const c of S.cards.filter(owned)) for (const p of String(c.player || '').split(/\s*(?:\/|&|,|\+|\band\b)\s*/)){
+    const name = p.trim(); if (!name) continue;
+    const toks = norm(name).replace(/[^a-z'\s-]/g, ' ').split(/\s+/).filter(Boolean); if (!toks.length) continue;
+    // surname = everything after the first name ("van de ven"); single names (Pedri) match on their own
+    const sur = toks.length > 1 ? toks.slice(1) : toks;
+    if (sur.join('').length < 4 && toks.length < 2) continue;
+    const cur = m.get(name) || { name, sur: sur.length === 1 && sur[0].length < 4 ? toks : sur, v: 0, n: 0 };
+    cur.v += (val(c).v || 0) * qty(c); cur.n += qty(c); m.set(name, cur);
+  }
+  return [...m.values()].sort((x, y) => y.v - x.v || y.n - x.n);
+}
+function tagNews(list, players){
+  return list.map(n => { const w = new Set(n.n || []);
+    const ps = players.filter(p => p.sur.every(t => w.has(t)) && !(p.sur.length === 1 && PARTICLES.has(p.sur[0])));
+    const hrs = Math.max(0, (Date.now() - Date.parse(n.d)) / 36e5);
+    return { ...n, ps, score: ps.length ? (1 + Math.log10(1 + Math.max(...ps.map(p => p.v)))) * Math.exp(-hrs / 72) : 0 }; });
+}
+function forYou(){ return tagNews(newsItems('football'), myPlayers()).filter(n => n.ps.length).sort((a, b) => b.score - a.score); }
+const newsHtml = (n, chips) => `<a class="item news" href="${esc(n.u)}" target="_blank" rel="noopener">${chips}<div class="t">${esc(n.t)}</div><div class="m">${esc(n.s)}${n.d ? ' · ' + ago(n.d) : ''} ↗</div></a>`;
+const playerChips = n => n.ps.slice(0, 3).map(p => `<span class="chip">${esc(p.name)}</span>`).join(' ');
 function renderNews(){
   const sub = view.news;
   let h = `<header class="top"><h1>News</h1></header>
-  <div class="seg wide">${[['football','Football news'],['cards','Card news']].map(([k, n]) => `<button data-news="${k}" class="${sub === k ? 'on' : ''}">${n}</button>`).join('')}</div>`;
+  <div class="seg wide">${[['football','Your players'],['cards','Card news']].map(([k, n]) => `<button data-news="${k}" class="${sub === k ? 'on' : ''}">${n}</button>`).join('')}</div>`;
   if (sub === 'football'){
-    const mine = new Set(S.cards.filter(c => c.status !== 'Sold').map(c => norm(c.player)));
-    const players = [...new Set(NEWS.football.map(n => n.p))].sort((x, y) => mine.has(norm(y)) - mine.has(norm(x)));
-    const list = NEWS.football.filter(n => !view.np || n.p === view.np);
-    h += `<div class="sub" style="margin:12px 0 6px">Players · ★ = in your collection</div>
-    <div class="pills"><button class="pill ${view.np ? '' : 'on'}" data-np="">All</button>${players.map(x => `<button class="pill ${view.np === x ? 'on' : ''}" data-np="${esc(x)}">${mine.has(norm(x)) ? '★ ' : ''}${esc(x)}</button>`).join('')}</div>` +
-    list.map(n => `<a class="item news" href="${esc(n.u)}" target="_blank" rel="noopener"><span class="chip">${esc(n.p)}</span><div class="t">${esc(n.t)}</div><div class="m">${esc(n.s)}${n.d ? ' · ' + esc(n.d) : ''} ↗</div></a>`).join('');
+    const players = myPlayers(), tagged = tagNews(newsItems('football'), players), mine = tagged.filter(n => n.ps.length);
+    const withNews = players.filter(p => mine.some(n => n.ps.includes(p)));
+    const list = (view.np ? mine.filter(n => n.ps.some(p => p.name === view.np)) : mine).sort((a, b) => b.score - a.score);
+    h += withNews.length ? `<div class="sub" style="margin:12px 0 6px">Players in your collection with news, biggest holdings first</div>
+    <div class="pills"><button class="pill ${view.np ? '' : 'on'}" data-np="">All</button>${withNews.map(p => `<button class="pill ${view.np === p.name ? 'on' : ''}" data-np="${esc(p.name)}">${esc(p.name)}</button>`).join('')}</div>` : '';
+    h += list.length ? list.slice(0, 60).map(n => newsHtml(n, playerChips(n))).join('')
+      : `<div class="empty">No headlines about the ${players.length} players in your collection in the last two weeks.</div>`;
+    const rest = tagged.filter(n => !n.ps.length).slice(0, 15);
+    if (!view.np && rest.length) h += `<div class="sec">Latest football</div>` + rest.map(n => newsHtml(n, '')).join('');
   } else {
-    h += `<div class="sub" style="margin:12px 0 6px">Releases and checklists</div>` +
-    NEWS.cards.map(n => `<a class="item news" href="${esc(n.u)}" target="_blank" rel="noopener"><span class="chip c">${esc(n.tag)}</span><div class="t">${esc(n.t)}</div><div class="m">${esc(n.s)} ↗</div></a>`).join('') +
+    const lines = new Set(S.cards.filter(owned).map(c => norm(c.line)).filter(x => x.length > 3));
+    const cards = newsItems('cards').map(n => ({ ...n, mine: [...lines].some(l => norm(n.t).includes(l)) })).sort((a, b) => b.mine - a.mine || b.d.localeCompare(a.d));
+    h += `<div class="sub" style="margin:12px 0 6px">Releases and checklists · ★ = a product line you collect</div>` +
+    (cards.length ? cards.slice(0, 30).map(n => newsHtml(n, `<span class="chip c">${n.mine ? '★ ' : ''}${esc(n.tag || 'Cards')}</span>`)).join('') : `<div class="empty">No football card news in the last two weeks.</div>`) +
     `<div class="sub" style="margin:16px 0 6px">Notable listings in your tracked sets</div>` + seenReports().map(itemHtml).join('');
   }
-  return h + `<p class="sub">Headlines link to the publisher; Slabfolio never copies the article. Pulled ${esc(NEWS.pulled)} for this test. The real app would refresh these from a news feed and follow every player in your collection automatically.</p>`;
+  const src = (NEWS.sources || []).join(', ');
+  return h + `<p class="sub">Headlines link to the publisher; Slabfolio never copies the article. Updated ${ago(NEWS.pulled) || esc(NEWS.pulled)}${src ? ' from ' + esc(src) : ''}. Refreshed every 6 hours.</p>`;
 }
 function bindNews(a){
   a.querySelectorAll('[data-news]').forEach(el => el.onclick = () => { view.news = el.dataset.news; render(); });
@@ -448,6 +515,7 @@ function bind(){
   a.querySelectorAll('[data-detail]').forEach(el => el.onclick = () => openDetail(el.dataset.detail));
   const on = a.querySelector('.pill.on'); if (on) on.parentNode.scrollLeft = on.offsetLeft - 40;
   const q = $('#q'); if (q) q.oninput = () => { view.q = q.value; const pos = q.selectionStart; render(); const n = $('#q'); n.focus(); n.setSelectionRange(pos, pos); };
+  const gn = $('#ghname'); if (gn) gn.onchange = () => { S.gh = gn.value.trim().replace(/^@/, ''); save(); render(); };
   const un = $('#uname'); if (un) un.onchange = () => { S.user = un.value.trim().replace(/^@/, '') || 'ben'; save(); render(); };
   const mod = $('#mod'); if (mod) mod.onclick = () => { S.mod = !S.mod; save(); render(); };
   const sm = $('#sample'); if (sm) sm.onclick = () => { if (S.sampleLoaded){ S.reports = S.reports.filter(r => !r.sample); S.sampleLoaded = false; } else loadSample(); save(); render(); toast(S.sampleLoaded ? 'Sample reports loaded' : 'Sample reports removed'); };
@@ -504,7 +572,7 @@ function renderDash(){
   const moves = own.filter(c => val(c).kind === 'sold' && money(c.cost) !== null).map(c => ({ c, d: val(c).v - money(c.cost) })).sort((a, b) => b.d - a.d);
   const sold = S.cards.filter(c => !owned(c) && c.soldDate).sort((a, b) => b.soldDate.localeCompare(a.soldDate)).slice(0, 3);
   const scan = invRows().filter(r => matchInv(r[1], r[2], r[3], r[4]).out && !S.invAdded[r[0]]).length;
-  const mine = new Set(own.map(c => norm(c.player))), news = NEWS.football.filter(n => mine.has(norm(n.p))).slice(0, 2);
+  const news = forYou().slice(0, 3);
   const tb = Object.values(t.tones).reduce((a, b) => a + b, 0) || 1;
   const row = (c, right) => `<div class="crow" data-c="${esc(c.id)}"><div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div></div><div class="r">${right}</div></div>`;
   return `<header class="top"><h1>Slabfolio</h1><button class="mini" data-act="bug">Report a bug</button></header>
@@ -520,7 +588,7 @@ function renderDash(){
   ${sold.length ? `<div class="sec">Latest sales</div>${sold.map(c => { const p = profitSold(c); return row(c, `<b>${sgd(money(c.sold))}</b><span class="${p >= 0 ? 'g' : 'rd'}">${p >= 0 ? '+' : ''}${sgd(p)}</span>`); }).join('')}` : ''}
   <div class="sec">Card Finder</div>
   <div class="item" data-go="${scan ? 'scan' : 'hunt'}" style="cursor:pointer"><div class="t">${scan ? `${scan} of your cards can go on the pull registry` : 'Browse the pull registry'}</div><div class="m">6 sets tracked · ${allReports().filter(r => r.status !== 'rejected').length} copies found so far</div></div>
-  ${news.length ? `<div class="sec">News about your players</div>${news.map(n => `<a class="item news" href="${esc(n.u)}" target="_blank" rel="noopener"><span class="chip">${esc(n.p)}</span><div class="t">${esc(n.t)}</div><div class="m">${esc(n.s)} ↗</div></a>`).join('')}<button class="btn ghost" data-go="news" style="margin-top:4px">All news</button>` : ''}`;
+  ${news.length ? `<div class="sec">News about your players</div>${news.map(n => newsHtml(n, playerChips(n))).join('')}<button class="btn ghost" data-go="news" style="margin-top:4px">All news</button>` : ''}`;
 }
 
 // ---------- collection list ----------
@@ -663,7 +731,7 @@ function doImport(text){
 
 // ---------- me ----------
 function renderMe(){
-  const pts = userPoints(S.user), mine = S.reports.filter(r => r.user === S.user);
+  const pts = userPoints(S.user), mine = localReports().filter(r => r.user === S.user).concat(myShared());
   const ym = new Date().toISOString().slice(0, 7), earned = S.monthsEarned[ym] || 0;
   return `<header class="top"><h1>Me</h1><button class="mini" data-act="bug">Report a bug</button></header>
   <div class="prof"><b>Your collection</b><div class="sub" style="margin-top:4px">${S.sampleCards ? 'Showing the sample collection.' : `${S.cards.length} cards imported, ${S.cards.filter(owned).length} owned.`} Everything stays on this phone.</div>
@@ -680,6 +748,8 @@ function renderMe(){
   <div class="prof"><b>Tools</b><button class="btn ghost" data-go="grade">Grading calculator</button><button class="btn ghost" data-go="scan">Scan my collection for the pull registry</button></div>
   <div class="prof"><b>Card Finder points</b>
   <div class="sub" style="margin-top:6px">Username</div><input class="inp" id="uname" value="${esc(S.user)}" style="margin-top:6px">
+  <div class="sub" style="margin-top:10px">GitHub username, so finds you share publicly count here</div><input class="inp" id="ghname" value="${esc(S.gh || '')}" placeholder="e.g. belipede" autocapitalize="off" autocorrect="off" style="margin-top:6px">
+  ${S.gh ? `<div class="hint">${myShared().length} shared finds from @${esc(S.gh)} on the public registry.</div>` : ''}
   <div style="display:flex;gap:20px;margin-top:14px"><div><div class="big">${pts}</div><div class="sub">points</div></div>
   <div><div class="big">${mine.filter(r => r.status === 'verified').length}</div><div class="sub">verified</div></div>
   <div><div class="big">${mine.filter(r => r.status === 'pending').length}</div><div class="sub">pending</div></div></div>
@@ -689,7 +759,7 @@ function renderMe(){
   <ul class="rules"><li>Only the first verified report of each numbered copy earns points.</li><li>1/1 = 100 · /5 or lower = 40 · /10 or lower = 20 · /25 or lower = 10</li>
   <li>${POINTS_PER_MONTH} points = 1 free month of Pro, at most 1 a month. A fake report costs 50 points.</li></ul></div>
   <div class="prof"><b>Testing</b>
-  <div class="switch"><span>Moderator mode<br><span class="sub">Lets you verify reports while testing</span></span><button class="tog ${S.mod ? 'on' : ''}" id="mod"></button></div>
+  <div class="switch"><span>Moderator mode<br><span class="sub">Lets you verify reports on this phone. Shared finds are verified with labels on GitHub.</span></span><button class="tog ${S.mod ? 'on' : ''}" id="mod"></button></div>
   <div class="switch"><span>Sample pull reports<br><span class="sub">Fills the registry with marked sample data</span></span><button class="pill" id="sample">${S.sampleLoaded ? 'Remove' : 'Load'}</button></div>
   <div class="switch"><span>Start over<br><span class="sub">Deletes everything in this app. Export first.</span></span><button class="pill" id="clear">Delete</button></div></div>
   <p class="sub">Slabfolio test build ${APP_VERSION}. Checklists from collectosk.com and cardsmithsbreaks.com. Not affiliated with Topps, Panini or the leagues. Values are estimates, not financial advice.</p>`;
@@ -743,3 +813,17 @@ function bindApp(a){
 
 const h0 = location.hash.slice(1); if (ROUTES.includes(h0)) view.tab = h0;
 render();
+
+// ---------- live data ----------
+// news.json is refreshed by a GitHub Action every 6 hours, finds.json whenever a Card Finder issue changes.
+async function refreshData(){
+  const get = f => fetch(`data/${f}?t=${Math.floor(Date.now() / 3e5)}`, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+  const [n, f] = await Promise.all([get('news.json'), get('finds.json')]);
+  let changed = false;
+  if (n && Array.isArray(n.items) && n.pulled !== NEWS.pulled){ NEWS = n; changed = true; }
+  if (f && Array.isArray(f.finds) && JSON.stringify(f) !== JSON.stringify(FINDS)){ FINDS = { finds: f.finds, penalties: f.penalties || {} }; sharedCache = null; changed = true; }
+  const typing = document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+  if (changed && !typing && view.tab !== 'me' && view.tab !== 'grade') render();
+}
+refreshData();
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') refreshData(); });
