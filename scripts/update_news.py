@@ -7,7 +7,7 @@ in each person's own collection on their phone.
 
 Run: python3 scripts/update_news.py [--dry-run] [--fixtures DIR]
 """
-import argparse, datetime as dt, email.utils, html, json, pathlib, re, sys, unicodedata
+import argparse, datetime as dt, email.utils, gzip, html, json, pathlib, re, sys, unicodedata
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -89,7 +89,8 @@ def parse(xml_bytes):
 def fetch(url):
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': 'application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.5'})
     with urllib.request.urlopen(req, timeout=20) as r:
-        return r.read()
+        body = r.read()
+    return gzip.decompress(body) if body[:2] == b'\x1f\x8b' else body  # some servers gzip even when not asked
 
 
 def main():
