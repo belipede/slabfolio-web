@@ -199,6 +199,67 @@ a{color:inherit}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:599px){.toast{position:fixed}}
 .empty{color:var(--mute);text-align:center;padding:40px 20px;font-size:15px}
+/* v2: compact header */
+.nav-mini{opacity:1!important}
+.nav-ic{width:60px;display:flex;align-items:center;color:var(--accent2)}
+.nav-ic svg{width:22px;height:22px}
+.profile{margin:6px 16px 10px}
+.avatar{width:44px;height:44px}.avatar span{font-size:17px}
+.p-sub b{color:#dfe4f3;font-weight:600}
+.introbar{display:flex;align-items:center;gap:8px;width:calc(100% - 32px);margin:0 16px 12px;padding:9px 12px;border-radius:12px;background:linear-gradient(135deg,rgba(124,92,255,.26),rgba(124,92,255,.08));border:1px solid rgba(177,140,255,.26);font-size:13.5px;color:#dcd6ff;text-align:left}
+.introbar .new{flex:none;font-size:10px;font-weight:800;letter-spacing:.6px;background:var(--accent);color:#fff;padding:2px 6px;border-radius:6px}
+.introbar span.t{flex:1}.introbar span.go{color:#fff;font-weight:600;white-space:nowrap}
+.segrow{display:flex;gap:8px;margin:0 16px 10px;align-items:center}
+.segrow .seg{flex:1;margin:0}
+.viewbtn{flex:none;width:36px;height:34px;border-radius:10px;background:#161d33;display:flex;align-items:center;justify-content:center;color:#c9cfe2}
+.viewbtn svg{width:18px;height:18px}
+.sorts{display:flex;gap:6px;margin:0 16px 4px;overflow-x:auto;scrollbar-width:none}
+.sorts::-webkit-scrollbar{display:none}
+.sorts button{flex:none;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:20px;background:#161d33;color:#aab3cf}
+.sorts button.on{background:#2c3557;color:#fff}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 16px 4px}
+.tile{display:block;text-align:left;background:var(--card);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.05)}
+.tile .timg{position:relative;aspect-ratio:4/5;background:radial-gradient(120% 90% at 50% 0%,#232c4d,#0e1426 70%);display:flex;align-items:center;justify-content:center;padding:10px}
+.tile .timg img{max-width:100%;max-height:100%;object-fit:contain;border-radius:5px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5))}
+.tile .tb{padding:9px 11px 11px}
+.tile b{display:block;font-size:14.5px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile small{display:block;color:var(--mute);font-size:12px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile .tp{display:block;font-size:14px;font-weight:700;margin-top:6px}
+.tile .badge{font-size:10px;top:8px;left:8px}
+.tile .inb{position:absolute;right:8px;bottom:8px;width:22px;height:22px;border-radius:50%;background:var(--ok);color:#04130c;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+/* share + sheen */
+.sharebtn{position:absolute;right:52px;bottom:12px;z-index:3;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center}
+.car{overflow:hidden}
+.dcard:not(.side) .car::after{content:"";position:absolute;inset:-20% -60%;z-index:1;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);transform:translateX(-70%);animation:sheen 1.1s .15s ease-out 1 both}
+@keyframes sheen{to{transform:translateX(70%)}}
+@media (prefers-reduced-motion:reduce){.dcard:not(.side) .car::after{animation:none;display:none}}
+.badge.sold{background:var(--ok);color:#04130c}
+/* bundle */
+.addb{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:8px;padding:10px;border-radius:14px;font-size:14px;font-weight:600;color:#c9cfe2;border:1px dashed #3a4466}
+.addb.in{border-style:solid;border-color:rgba(47,199,135,.5);color:#7fe3b9;background:rgba(47,199,135,.08)}
+.bbar{position:absolute;left:12px;right:12px;bottom:calc(84px + var(--safe-b));z-index:31;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;border-radius:20px;background:rgba(36,44,76,.78);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.45);transform:translateY(160%);opacity:0;transition:.3s cubic-bezier(.2,.8,.2,1)}
+.bbar.on{transform:none;opacity:1}
+@media (max-width:599px){.bbar{position:fixed;max-width:416px;margin:0 auto}}
+.bbar .bt{flex:1;font-size:14px;font-weight:700}.bbar .bt small{display:block;color:var(--mute);font-weight:500;font-size:12px}
+.bbar .btn{padding:9px 14px;font-size:14px;border-radius:13px}
+.bbar .clr{color:var(--mute);font-size:13px;padding:6px}
+.msg{white-space:pre-line}
+/* floating glass tab bar */
+.tabbar{left:12px;right:12px;bottom:calc(10px + var(--safe-b));padding:6px;border-radius:32px;background:rgba(28,34,58,.62);backdrop-filter:saturate(190%) blur(26px);-webkit-backdrop-filter:saturate(190%) blur(26px);border:1px solid rgba(255,255,255,.13);border-top:1px solid rgba(255,255,255,.2);box-shadow:0 12px 34px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+@media (max-width:599px){.tabbar{max-width:416px}}
+.tab{padding:6px 0 5px;border-radius:26px;transition:background .2s}
+.tab svg{width:24px;height:24px}
+.tab.on{background:rgba(255,255,255,.1);color:#fff}
+.tab.on svg{fill:currentColor;fill-opacity:.22}
+.tab .dot{top:2px}.tab .soon{top:5px}
+.scroll{padding-bottom:calc(150px + var(--safe-b))}
+.toast{bottom:calc(150px + var(--safe-b))}
+.about p{font-size:15px;line-height:1.45;color:#d6dbea;margin:8px 4px 0}
+.about ul{margin:10px 0 0;padding:0;list-style:none}
+.about li{display:flex;gap:10px;align-items:flex-start;padding:9px 4px;font-size:14.5px;line-height:1.35;color:#d6dbea;border-top:.5px solid rgba(255,255,255,.07)}
+.about li b{color:#fff}.about li i{flex:none;font-style:normal;width:22px;text-align:center}
+
 </style>
 </head>
 <body>
@@ -206,33 +267,26 @@ a{color:inherit}
 
   <!-- DISPLAY TAB -->
   <div class="scroll" id="v-display">
-    <div class="nav" id="nav"><div class="nav-row"><span style="width:60px"></span><span class="nav-mini">Display</span><button class="nav-btn" id="editBtn">Edit</button></div></div>
-    <h1 class="large">Display<span class="new">NEW</span></h1>
+    <div class="nav" id="nav"><div class="nav-row"><button class="nav-ic" id="shareAll" aria-label="Share this display"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></button><span class="nav-mini">Display</span><button class="nav-btn" id="editBtn" style="width:60px;text-align:right">Edit</button></div></div>
 
     <div class="profile">
       <div class="avatar"><span>B</span></div>
       <div>
         <div class="p-name">@bloopercollects</div>
-        <div class="p-sub">Football cards · Singapore · Road to $1K</div>
+        <div class="p-sub"><b id="sSale">0</b> for sale · <b id="sPc">0</b> in my PC · <b id="sGraded">0</b> PSA 10s</div>
       </div>
     </div>
-    <div class="stats">
-      <div class="stat"><b id="sSale">0</b><small>for sale</small></div>
-      <div class="stat"><b id="sPc">0</b><small>in my PC</small></div>
-      <div class="stat"><b id="sGraded">0</b><small>PSA 10s</small></div>
-    </div>
 
-    <div class="intro">
-      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="6" height="14" rx="1.5"/><rect x="9" y="3" width="6" height="18" rx="1.5"/><rect x="16" y="5" width="6" height="14" rx="1.5"/></svg></div>
-      <p><b>New in Slabfolio: Display.</b> Pick the cards you want to show off, split them into <b>For sale</b> and <b>PC</b>, choose what info shows, and share it with one link. Buyers can message you straight from a card. Tap <b>Edit</b> to try it.</p>
-    </div>
+    <button class="introbar" id="introBtn"><span class="new">NEW</span><span class="t">Display, a new Slabfolio feature</span><span class="go">How it works ›</span></button>
 
-    <div class="seg" id="seg">
-      <button class="on" data-f="sale">For sale</button><button data-f="pc">PC</button>
+    <div class="segrow">
+      <div class="seg" id="seg"><button data-f="sale">For sale</button><button data-f="pc">PC</button><button data-f="sold">Sold</button></div>
+      <button class="viewbtn" id="viewBtn" aria-label="Switch between carousel and grid"></button>
     </div>
+    <div class="sorts" id="sorts"></div>
 
-    <div class="pager" id="pager"></div><div class="feed" id="feed"></div><div class="thumbs" id="thumbs"></div><div class="hint">Swipe for more cards · tap a card photo to flip it</div>
-    <div class="foot">Prices in SGD. To buy, DM @bloopercollects on Instagram or TikTok. Cards marked "In the post" arrive in December and are seller photos. Not financial advice.<br><br>Slabfolio · preview build</div>
+    <div class="pager" id="pager"></div><div class="feed" id="feed"></div><div class="grid" id="grid"></div><div class="thumbs" id="thumbs"></div><div class="hint" id="hint">Swipe for more cards · tap a card photo to flip it</div>
+    <div class="foot">Prices in SGD. To buy, DM @bloopercollects on Instagram or TikTok. Cards marked "In the post" arrive in December and are seller photos.<br><br>Slabfolio · preview build</div>
   </div>
 
   <!-- COMING SOON VIEW -->
@@ -281,6 +335,22 @@ a{color:inherit}
       <div class="note">1. Tap <b>Copy message</b>. 2. Open my Instagram or TikTok and tap <b>Message</b> on my profile. 3. Paste and send. Payment and postage are sorted in DMs.</div>
     </div>
   </div>
+  <div class="sheet about" id="about">
+    <div class="grab"></div>
+    <div class="sh-head"><span style="width:44px"></span><h3>What is Display?</h3><button class="nav-btn" id="abClose" style="font-weight:700">Close</button></div>
+    <div class="sh-body">
+      <p><b>Display</b> is a new feature in Slabfolio, the card tracking app I'm building. It turns your collection into a page you can share with one link.</p>
+      <ul>
+        <li><i>🃏</i><span><b>Pick your cards.</b> Split them into For sale, PC and Sold.</span></li>
+        <li><i>👁️</i><span><b>Choose what shows.</b> Prices, descriptions and grading notes are yours to switch on or off. Tap <b>Edit</b> to try it.</span></li>
+        <li><i>💬</i><span><b>Buyers message you.</b> Buy, make an offer, or bundle a few cards into one message.</span></li>
+        <li><i>🔗</i><span><b>Share any card.</b> Every card has its own link.</span></li>
+      </ul>
+      <div class="dm"><a class="btn" href="https://www.tiktok.com/@bloopercollects">Follow for launch news</a></div>
+      <div class="note">Slabfolio isn't out yet. This page is a live preview using my own cards.</div>
+    </div>
+  </div>
+  <div class="bbar" id="bbar"><div class="bt" id="bbT"></div><button class="clr" id="bbClr">Clear</button><button class="btn" id="bbGo">Message</button></div>
   <div class="toast" id="toast"></div>
 </div></div>
 
@@ -300,6 +370,9 @@ const CARDS=[
  {id:'moore-rev',mode:'pc',remark:['Grading next','Raw for now, going in my next PSA sub'],name:'Mikey Moore',set:'2024-25 Topps Reverence UCC · Rookie Auto Purple',tags:[['Auto','a'],['19/50','n'],['RC','r']],auto:1,num:1,
   desc:'Spurs academy wonderkid. Purple rookie auto /50, the next one off to PSA.',
   paid:85,last:{p:76.54,d:'9 Oct 2026'},photos:['moore-rev-1','moore-rev-2']},
+ {id:'vitinha',mode:'sold',sold:60,soldOn:'6 Nov 2026',badge:'Sold',name:'Vitinha',set:'2025-26 Topps Inception UCC · First XI Auto Pink Foil',tags:[['Auto','a'],['71/75','n']],auto:1,num:1,
+  desc:'PSG\'s metronome and a Ballon d\'Or top-15 finisher. Pink foil First XI auto, numbered 71/75.',
+  paid:35.84,last:null,photos:['vitinha-1','vitinha-2']},
  {id:'spurs',mode:'sale',ask:null,name:'Son & Kane',set:'2022-23 Topps UCC · Spurs of the Moment Purple Foil',tags:[['31/75','n']],num:1,badge:'In the post',inc:1,
   desc:'The most prolific duo in Premier League history on one card. Purple foil /75.',
   paid:21.46,last:{p:19.81,d:'30 Oct 2026'},photos:['spurs-1','spurs-2']},
@@ -322,23 +395,37 @@ const CARDS=[
   desc:'Spurs wing-back on one of Prizm\'s loudest parallels.',
   paid:1.28,last:{p:1.27,d:'17 Oct 2026'},photos:['porro-1','porro-2']},
 ];
-const FIELDS=[['photos','Photos',1,1],['name','Card name & set',1,1],['desc','Description',1,0],['ask','Asking price (For sale)',1,0],['paid','Bought price (PC)',1,0],['remark','Grading remarks (PC)',1,0]];
-const st={fields:Object.fromEntries(FIELDS.map(f=>[f[0],!!f[2]])),hidden:new Set(),filter:'sale'};
+const FIELDS=[['photos','Photos',1,1],['name','Card name & set',1,1],['desc','Description',1,0],['ask','Asking price (For sale)',1,0],['paid','Bought price (PC)',1,0],['remark','Grading remarks (PC)',1,0],['sold','Sold price (Sold)',1,0]];
+const st={fields:Object.fromEntries(FIELDS.map(f=>[f[0],!!f[2]])),hidden:new Set(),filter:'sale',view:'car',sort:'feat',bundle:new Set()};
+const LABEL={sale:'For sale',pc:'PC',sold:'Sold'};
+const SORTS=[['feat','Featured'],['lo','Price: low to high'],['hi','Price: high to low']];
+const VIEWIC={car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',grid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="5" height="12" rx="1.5"/><rect x="9" y="3" width="6" height="18" rx="1.5"/><rect x="17" y="6" width="5" height="12" rx="1.5"/></svg>'};
+const shortSet=c=>c.set.split(' · ')[1]||c.set;
+const priceOf=c=>c.mode==='sale'?(c.ask?money(c.ask):'Make an offer'):c.mode==='sold'?'Sold '+money(c.sold):'';
 const $=s=>document.querySelector(s);
 const money=v=>'S$'+v.toFixed(2).replace(/\.00$/,'');
 
 function render(){
-  const list=CARDS.filter(c=>!st.hidden.has(c.id)&&c.mode===st.filter);
+  let list=CARDS.filter(c=>!st.hidden.has(c.id)&&c.mode===st.filter);
+  if(st.filter==='sale'&&st.sort!=='feat')list=[...list].sort((a,b)=>(a.ask==null)-(b.ask==null)||(st.sort==='lo'?a.ask-b.ask:b.ask-a.ask));
+  shown=list;
   const vis=CARDS.filter(c=>!st.hidden.has(c.id));
   $('#sSale').textContent=vis.filter(c=>c.mode==='sale').length;$('#sPc').textContent=vis.filter(c=>c.mode==='pc').length;$('#sGraded').textContent=vis.filter(c=>c.graded).length;
-  document.querySelectorAll('#seg button').forEach(b=>{const n=vis.filter(c=>c.mode===b.dataset.f).length;b.textContent=(b.dataset.f==='sale'?'For sale':'PC')+' ('+n+')';});
+  document.querySelectorAll('#seg button').forEach(b=>{const n=vis.filter(c=>c.mode===b.dataset.f).length;b.textContent=LABEL[b.dataset.f]+' ('+n+')';b.classList.toggle('on',b.dataset.f===st.filter);b.style.display=n||b.dataset.f!=='sold'?'':'none';});
+  $('#sorts').innerHTML=st.filter==='sale'?SORTS.map(([k,l])=>`<button data-s="${k}" class="${st.sort===k?'on':''}">${l}</button>`).join(''):'';
+  const grid=st.view==='grid';$('#viewBtn').innerHTML=VIEWIC[st.view];
+  ['#pager','#feed','#thumbs','#hint'].forEach(q=>$(q).style.display=grid?'none':'');$('#grid').style.display=grid?'':'none';
+  $('#grid').innerHTML=grid?(list.length?list.map(c=>`<button class="tile" data-open="${c.id}"><div class="timg"><img src="img/${c.photos[0]}.webp" alt="" loading="lazy">${c.badge?`<span class="badge${c.inc?' inc':''}${c.mode==='sold'?' sold':''}">${c.badge}</span>`:''}${st.bundle.has(c.id)?'<span class="inb">✓</span>':''}</div><div class="tb"><b>${c.name}</b><small>${shortSet(c)}</small>${priceOf(c)&&(c.mode!=='sold'||st.fields.sold)&&(c.mode!=='sale'||st.fields.ask)?`<span class="tp">${priceOf(c)}</span>`:''}</div></button>`).join(''):'<div class="empty" style="grid-column:1/3">No cards here yet.</div>'):'';
   const f=st.fields;
   $('#feed').innerHTML=list.length?list.map(c=>{
     const slides=c.photos.map((p,i)=>`<div class="slide${(c.full||[]).includes(i)?' full':''}${i?'':' on'}"><img src="img/${p}.webp" alt="${c.name} photo ${i+1}" loading="lazy" data-c="${c.id}" data-i="${i}"></div>`).join('');
     let extra='';
     if(c.mode==='sale'){
       extra=`${f.ask?`<div class="prices"><div class="pt askp"><small>Asking</small><b>${c.ask?money(c.ask):'Make an offer'}</b><span>${c.ask?'open to offers':'arrives December'}</span></div></div>`:''}
-      <div class="buyrow">${c.ask?`<button class="btn" data-buy="${c.id}" data-kind="buy">Buy</button>`:''}<button class="btn ghost" data-buy="${c.id}" data-kind="offer">Make offer</button></div>`;
+      <div class="buyrow">${c.ask?`<button class="btn" data-buy="${c.id}" data-kind="buy">Buy</button>`:''}<button class="btn ghost" data-buy="${c.id}" data-kind="offer">Make offer</button></div>
+      <button class="addb${st.bundle.has(c.id)?' in':''}" data-bun="${c.id}">${st.bundle.has(c.id)?'✓ In your bundle':'＋ Add to bundle'}</button>`;
+    }else if(c.mode==='sold'){
+      extra=f.sold?`<div class="prices"><div class="pt"><small>Sold for</small><b class="up">${money(c.sold)}</b><span>${c.soldOn}</span></div></div>`:'';
     }else{
       extra=`${f.paid?`<div class="prices"><div class="pt"><small>Bought for</small><b>${money(c.paid)}</b><span>${c.graded?'raw, before grading':'raw'}</span></div></div>`:''}
       ${f.remark&&c.remark?`<div class="remark"><span class="rb${c.graded?'':' next'}">${c.remark[0]}</span><span>${c.remark[1]}</span></div>`:''}`;
@@ -346,7 +433,8 @@ function render(){
     return `<article class="dcard" data-id="${c.id}">
       ${f.photos?`<div class="car"><div class="track" data-c="${c.id}" data-p="0">${slides}${c.photos.length>1?'<button class="tapz l" data-d="-1" aria-label="Previous photo"></button><button class="tapz r" data-d="1" aria-label="Next photo"></button>':''}</div>
         <button class="expand" data-x="${c.id}" aria-label="Full screen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
-        ${c.badge?`<span class="badge${c.inc?' inc':''}">${c.badge}</span>`:''}
+        ${c.badge?`<span class="badge${c.inc?' inc':''}${c.mode==='sold'?' sold':''}">${c.badge}</span>`:''}
+        <button class="sharebtn" data-share="${c.id}" aria-label="Share this card"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg></button>
         ${c.photos.length>1?`<span class="count"><span class="n">1</span>/${c.photos.length}</span>`:''}
       </div>${c.photos.length>1?`<div class="dots">${c.photos.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}`:''}
       <div class="body">
@@ -359,7 +447,7 @@ function render(){
   $('#thumbs').innerHTML=list.map((c,i)=>`<button data-j="${i}" aria-label="${c.name}"><img src="img/${c.photos[0]}.webp" alt=""></button>`).join('');
   $('#feed').scrollLeft=0; cur=-1; onFeed();
 }
-let cur=-1;
+let cur=-1,shown=[];
 function cards(){return [...document.querySelectorAll('#feed .dcard')];}
 function onFeed(){
   const f=$('#feed'),cs=cards();if(!cs.length){$('#pager').innerHTML='';return;}
@@ -367,11 +455,11 @@ function onFeed(){
   cs.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d<bd){bd=d;best=i;}});
   cs.forEach((c,i)=>c.classList.toggle('side',i!==best));
   if(best===cur)return;cur=best;
-  $('#pager').innerHTML=`<span class="pos">${best+1} <small>of ${cs.length} cards</small></span><span class="arrows"><button data-step="-1" ${best?'':'disabled'} aria-label="Previous card">‹</button><button data-step="1" ${best<cs.length-1?'':'disabled'} aria-label="Next card">›</button></span>`;
+  $('#pager').innerHTML=`<span class="pos">${best+1} <small>of ${cs.length} card${cs.length>1?'s':''}</small></span><span class="arrows"><button data-step="-1" ${best?'':'disabled'} aria-label="Previous card">‹</button><button data-step="1" ${best<cs.length-1?'':'disabled'} aria-label="Next card">›</button></span>`;
   document.querySelectorAll('#thumbs button').forEach((b,i)=>b.classList.toggle('on',i===best));
-  const tb=document.querySelectorAll('#thumbs button')[best];if(tb)tb.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+  const tb=document.querySelectorAll('#thumbs button')[best];if(tb){const th=$('#thumbs');th.scrollTo({left:tb.offsetLeft-(th.clientWidth-tb.offsetWidth)/2,behavior:'smooth'});}
 }
-function goCard(i){const c=cards()[i];if(!c)return;const f=$('#feed');f.scrollTo({left:c.offsetLeft-(f.clientWidth-c.offsetWidth)/2,behavior:'smooth'});}
+function goCard(i,jump){const c=cards()[i];if(!c)return;const f=$('#feed');f.scrollTo({left:c.offsetLeft-(f.clientWidth-c.offsetWidth)/2,behavior:jump?'auto':'smooth'});}
 $('#feed').addEventListener('scroll',onFeed,{passive:true});
 $('#pager').addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b)goCard(cur+(+b.dataset.step));});
 $('#thumbs').addEventListener('click',e=>{const b=e.target.closest('[data-j]');if(b)goCard(+b.dataset.j);});
@@ -382,7 +470,34 @@ document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goCard(cur+1);if
 
 /* filters */
 $('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
-  document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));st.filter=b.dataset.f;render();});
+  st.filter=b.dataset.f;render();});
+$('#sorts').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;st.sort=b.dataset.s;render();});
+$('#viewBtn').onclick=()=>{st.view=st.view==='car'?'grid':'car';render();};
+function openCard(id){const c=CARDS.find(x=>x.id===id);if(!c||st.hidden.has(id))return;st.filter=c.mode;st.view='car';render();requestAnimationFrame(()=>{goCard(shown.findIndex(x=>x.id===id),true);onFeed();});}
+$('#grid').addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openCard(b.dataset.open);});
+
+/* share */
+const BASE=location.origin+location.pathname;
+async function share(id){const c=id&&CARDS.find(x=>x.id===id);const url=c?BASE+'?c='+id:BASE;
+  const d={title:c?c.name+' · Slabfolio':'Slabfolio · My Display',text:c?`${c.name}, ${shortSet(c)}${c.mode==='sale'&&c.ask?' · '+money(c.ask):''}`:'My cards on Slabfolio Display',url};
+  if(navigator.share){try{await navigator.share(d);}catch(e){}return;}
+  try{await navigator.clipboard.writeText(url);toast('Link copied');}catch(e){toast(url);}}
+$('#shareAll').onclick=()=>share();
+document.addEventListener('click',e=>{const b=e.target.closest('[data-share]');if(b){e.stopPropagation();share(b.dataset.share);}},true);
+
+/* about */
+$('#introBtn').onclick=()=>{$('#about').classList.add('on');$('#dim').classList.add('on');};
+$('#abClose').onclick=()=>{$('#about').classList.remove('on');$('#dim').classList.remove('on');};
+
+/* bundle */
+function bunList(){return CARDS.filter(c=>st.bundle.has(c.id)&&c.mode==='sale'&&!st.hidden.has(c.id));}
+function bunTotal(){return bunList().reduce((t,c)=>t+(c.ask||0),0);}
+function bunBar(){const l=bunList();$('#bbar').classList.toggle('on',l.length>0);if(!l.length)return;
+  const open=l.some(c=>!c.ask);$('#bbT').innerHTML=`Bundle · ${l.length} card${l.length>1?'s':''}<small>${bunTotal()?'Asking '+money(bunTotal())+(open?' + offer':''):'Make an offer'}</small>`;}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-bun]');if(!b)return;const id=b.dataset.bun;const on=!st.bundle.has(id);on?st.bundle.add(id):st.bundle.delete(id);
+  b.classList.toggle('in',on);b.textContent=on?'✓ In your bundle':'＋ Add to bundle';bunBar();if(on&&st.bundle.size===1)toast('Add more cards, then message me once');});
+$('#bbClr').onclick=()=>{st.bundle.clear();bunBar();render();};
+$('#bbGo').onclick=()=>openBuy(null,'bundle');
 
 /* nav shadow */
 const sc=$('#v-display');sc.addEventListener('scroll',()=>$('#nav').classList.toggle('stuck',sc.scrollTop>40),{passive:true});
@@ -398,22 +513,26 @@ function buildSheet(){
 function openSheet(o){$('#sheet').classList.toggle('on',o);$('#dim').classList.toggle('on',o);if(o)buildSheet();}
 $('#editBtn').onclick=()=>openSheet(true);
 $('#doneBtn').onclick=()=>{openSheet(false);toast('Display updated');};
-$('#dim').onclick=()=>{openSheet(false);closeBuy();};
+$('#dim').onclick=()=>{openSheet(false);closeBuy();$('#about').classList.remove('on');};
 $('#sheet').addEventListener('change',e=>{const i=e.target;
   if(i.dataset.k)st.fields[i.dataset.k]=i.checked;
   if(i.dataset.id){i.checked?st.hidden.delete(i.dataset.id):st.hidden.add(i.dataset.id);}
-  render();});
+  render();bunBar();});
 
 let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1600);}
 
 /* buy / offer */
 let buyC=null,buyK='buy';
-function buyMsg(){const c=buyC;const name=`${c.name} ${c.set.split(' · ')[1]||c.set}`;
+function buyMsg(){if(buyK==='bundle'){const l=bunList(),v=parseFloat($('#offerIn').value),t=bunTotal();
+    return `Hi! I'd like to bundle these from your Slabfolio display:\n`+l.map(c=>`• ${c.name} ${shortSet(c)}${c.ask?' ('+money(c.ask)+')':''}`).join('\n')+`\n`+(v>0?`Would you take ${money(v)} for the lot?`:(t?`Asking total ${money(t)}. `:'')+`Is everything still available?`);}
+  const c=buyC;const name=`${c.name} ${c.set.split(' · ')[1]||c.set}`;
   if(buyK==='buy')return `Hi! I'd like to buy your ${name} for ${money(c.ask)}. Seen on your Slabfolio display. Is it still available?`;
   const v=parseFloat($('#offerIn').value);return `Hi! I saw your ${name} on your Slabfolio display. Would you take ${v>0?money(v):'S$__'} for it?`;}
-function openBuy(id,k){buyC=CARDS.find(c=>c.id===id);buyK=k;$('#byTitle').textContent=k==='buy'?'Buy':'Make an offer';
-  $('#byImg').src='img/'+buyC.photos[0]+'.webp';$('#byName').innerHTML=`${buyC.name}<small>${buyC.ask?'Asking '+money(buyC.ask):'Make an offer · arrives December'}</small>`;
-  $('#byOffer').style.display=k==='offer'?'flex':'none';$('#offerIn').value='';$('#byMsg').textContent=buyMsg();
+function openBuy(id,k){buyK=k;if(k==='bundle'){const l=bunList();if(!l.length)return;buyC=l[0];$('#byTitle').textContent='Bundle';$('#byImg').src='img/'+buyC.photos[0]+'.webp';
+    $('#byName').innerHTML=`${l.length} card${l.length>1?'s':''}<small>${bunTotal()?'Asking '+money(bunTotal())+' in total':'Make an offer'}</small>`;$('#offerIn').placeholder='Your offer for the lot (optional)';}
+  else{buyC=CARDS.find(c=>c.id===id);$('#byTitle').textContent=k==='buy'?'Buy':'Make an offer';$('#offerIn').placeholder='Your offer';
+  $('#byImg').src='img/'+buyC.photos[0]+'.webp';$('#byName').innerHTML=`${buyC.name}<small>${buyC.ask?'Asking '+money(buyC.ask):'Make an offer · arrives December'}</small>`;}
+  $('#byOffer').style.display=k==='buy'?'none':'flex';$('#offerIn').value='';$('#byMsg').textContent=buyMsg();
   $('#buy').classList.add('on');$('#dim').classList.add('on');}
 function closeBuy(){$('#buy').classList.remove('on');$('#dim').classList.remove('on');}
 $('#offerIn').addEventListener('input',()=>$('#byMsg').textContent=buyMsg());
@@ -454,6 +573,7 @@ function go(k){
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go);});
 render();
+const deep=new URLSearchParams(location.search).get('c');if(deep)openCard(deep);
 </script>
 </body>
 </html>
