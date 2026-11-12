@@ -255,6 +255,20 @@ a{color:inherit}
 .tab .dot{top:2px}.tab .soon{top:5px}
 .scroll{padding-bottom:calc(150px + var(--safe-b))}
 .toast{bottom:calc(150px + var(--safe-b))}
+.field{display:block;margin-top:14px}
+.field>span{display:block;margin:0 0 6px 4px;font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.4px}
+.field input{width:100%;background:#1e2644;border:1px solid transparent;border-radius:12px;color:#fff;font:inherit;font-size:17px;padding:13px 14px;outline:none}
+.field input:focus{border-color:var(--accent2)}
+.field input.err{border-color:var(--bad)}
+.picks{display:flex;gap:8px;flex-wrap:wrap}
+.picks button{font-size:14px;font-weight:600;padding:9px 13px;border-radius:20px;background:#1e2644;color:#c9cfe2;border:1px solid transparent}
+.picks button.on{background:rgba(124,92,255,.22);border-color:var(--accent2);color:#fff}
+.wl-hero{display:flex;gap:12px;align-items:center;margin-top:6px;padding:14px;border-radius:16px;background:linear-gradient(135deg,rgba(124,92,255,.3),rgba(47,199,135,.12));border:1px solid rgba(177,140,255,.28)}
+.wl-hero .ic{flex:none;width:44px;height:44px;border-radius:13px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px}
+.wl-hero b{display:block;font-size:16px}.wl-hero small{display:block;color:#cfd6ee;font-size:13.5px;line-height:1.35;margin-top:2px}
+.wl-done{text-align:center;padding:26px 10px 6px}
+.wl-done .tick{width:64px;height:64px;border-radius:50%;background:var(--ok);color:#04130c;font-size:32px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.wl-done h4{margin:0 0 6px;font-size:20px}.wl-done p{color:var(--mute);font-size:15px;line-height:1.4;margin:0 0 18px}
 .about p{font-size:15px;line-height:1.45;color:#d6dbea;margin:8px 4px 0}
 .about ul{margin:10px 0 0;padding:0;list-style:none}
 .about li{display:flex;gap:10px;align-items:flex-start;padding:9px 4px;font-size:14.5px;line-height:1.35;color:#d6dbea;border-top:.5px solid rgba(255,255,255,.07)}
@@ -296,7 +310,7 @@ a{color:inherit}
     <h2 id="soonTitle">Home</h2>
     <p id="soonText"></p>
     <div class="row">
-      <a class="btn" href="https://www.tiktok.com/@bloopercollects" target="_blank" rel="noopener">Follow for launch news</a>
+      <button class="btn" data-wl>Notify me at launch</button>
       <button class="btn ghost" data-go="display">See Display</button>
     </div>
   </div>
@@ -346,8 +360,22 @@ a{color:inherit}
         <li><i>💬</i><span><b>Buyers message you.</b> Buy, make an offer, or bundle a few cards into one message.</span></li>
         <li><i>🔗</i><span><b>Share any card.</b> Every card has its own link.</span></li>
       </ul>
-      <div class="dm"><a class="btn" href="https://www.tiktok.com/@bloopercollects">Follow for launch news</a></div>
+      <div class="dm"><button class="btn" data-wl>Notify me at launch</button><a class="btn ghost" href="https://www.tiktok.com/@bloopercollects">Follow on TikTok</a></div>
       <div class="note">Slabfolio isn't out yet. This page is a live preview using my own cards.</div>
+    </div>
+  </div>
+  <div class="sheet" id="wl">
+    <div class="grab"></div>
+    <div class="sh-head"><span style="width:44px"></span><h3>Get Slabfolio first</h3><button class="nav-btn" id="wlClose" style="font-weight:700">Close</button></div>
+    <div class="sh-body">
+      <div id="wlForm">
+        <div class="wl-hero"><div class="ic">🔔</div><div><b>Be first in when it launches</b><small>One message on launch day, plus early access. No spam.</small></div></div>
+        <label class="field"><span>Email or TikTok / IG handle</span><input id="wlIn" type="text" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="you@email.com or @yourhandle" maxlength="120"></label>
+        <div class="field"><span>I mostly… (optional)</span><div class="picks" id="wlPick"><button data-v="Collect">Collect</button><button data-v="Flip">Flip</button><button data-v="Both">Both</button><button data-v="Just looking">Just looking</button></div></div>
+        <div class="dm"><button class="btn" id="wlGo">Notify me</button></div>
+        <div class="note">Only used to tell you when Slabfolio launches. Never shared.</div>
+      </div>
+      <div id="wlDone" class="wl-done" style="display:none"><div class="tick">✓</div><h4>You're on the list</h4><p>I'll message you the day Slabfolio launches. Follow along in the meantime.</p><a class="btn" href="https://www.tiktok.com/@bloopercollects">Follow on TikTok</a></div>
     </div>
   </div>
   <div class="bbar" id="bbar"><div class="bt" id="bbT"></div><button class="clr" id="bbClr">Clear</button><button class="btn" id="bbGo">Message</button></div>
@@ -489,6 +517,23 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-share]');i
 $('#introBtn').onclick=()=>{$('#about').classList.add('on');$('#dim').classList.add('on');};
 $('#abClose').onclick=()=>{$('#about').classList.remove('on');$('#dim').classList.remove('on');};
 
+/* launch waitlist: posts to a Google Form in the background. Fill FORM once the form exists. */
+const FORM={id:'',contact:'',use:''};
+let wlUse='';
+function wlState(){let d=false;try{d=localStorage.getItem('sf-wl')==='1';}catch(e){}$('#wlForm').style.display=d?'none':'';$('#wlDone').style.display=d?'':'none';}
+document.addEventListener('click',e=>{if(!e.target.closest('[data-wl]'))return;$('#about').classList.remove('on');wlState();$('#wl').classList.add('on');$('#dim').classList.add('on');});
+$('#wlClose').onclick=()=>{$('#wl').classList.remove('on');$('#dim').classList.remove('on');};
+$('#wlPick').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;wlUse=wlUse===b.dataset.v?'':b.dataset.v;document.querySelectorAll('#wlPick button').forEach(x=>x.classList.toggle('on',x.dataset.v===wlUse));});
+$('#wlIn').addEventListener('input',()=>$('#wlIn').classList.remove('err'));
+$('#wlGo').onclick=async()=>{const v=$('#wlIn').value.trim();
+  if(!(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)||/^@?[\w.]{2,30}$/.test(v))){$('#wlIn').classList.add('err');toast('Enter an email or a handle');return;}
+  if(!FORM.id){toast('Preview only: sign-ups are not switched on yet');return;}
+  const body=new URLSearchParams();body.append(FORM.contact,v);if(wlUse&&FORM.use)body.append(FORM.use,wlUse);
+  $('#wlGo').disabled=true;$('#wlGo').textContent='Sending…';
+  try{await fetch(`https://docs.google.com/forms/d/e/${FORM.id}/formResponse`,{method:'POST',mode:'no-cors',body});try{localStorage.setItem('sf-wl','1');}catch(e){}wlState();}
+  catch(e){toast('Could not send. Check your connection and try again');}
+  $('#wlGo').disabled=false;$('#wlGo').textContent='Notify me';};
+
 /* bundle */
 function bunList(){return CARDS.filter(c=>st.bundle.has(c.id)&&c.mode==='sale'&&!st.hidden.has(c.id));}
 function bunTotal(){return bunList().reduce((t,c)=>t+(c.ask||0),0);}
@@ -513,7 +558,7 @@ function buildSheet(){
 function openSheet(o){$('#sheet').classList.toggle('on',o);$('#dim').classList.toggle('on',o);if(o)buildSheet();}
 $('#editBtn').onclick=()=>openSheet(true);
 $('#doneBtn').onclick=()=>{openSheet(false);toast('Display updated');};
-$('#dim').onclick=()=>{openSheet(false);closeBuy();$('#about').classList.remove('on');};
+$('#dim').onclick=()=>{openSheet(false);closeBuy();$('#about').classList.remove('on');$('#wl').classList.remove('on');};
 $('#sheet').addEventListener('change',e=>{const i=e.target;
   if(i.dataset.k)st.fields[i.dataset.k]=i.checked;
   if(i.dataset.id){i.checked?st.hidden.delete(i.dataset.id):st.hidden.add(i.dataset.id);}
