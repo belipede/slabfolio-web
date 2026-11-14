@@ -11,13 +11,13 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Slabfolio">
 <meta property="og:url" content="https://belipede.github.io/slabfolio-web/display/">
-<meta property="og:title" content="Slabfolio · Swipe through my PC">
-<meta property="og:description" content="My cards in Slabfolio's new Display carousel. Slabfolio is coming soon.">
-<meta property="og:image" content="https://belipede.github.io/slabfolio-web/display/og.jpg">
+<meta property="og:title" content="Slabfolio · My cards, for sale and PC">
+<meta property="og:description" content="Swipe my cards for sale and my PC in Slabfolio's new Display. Slabfolio is coming soon.">
+<meta property="og:image" content="https://belipede.github.io/slabfolio-web/display/og.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://belipede.github.io/slabfolio-web/display/og.jpg">
+<meta name="twitter:image" content="https://belipede.github.io/slabfolio-web/display/og.jpg?v=2">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="icon" href="../icon-192.png">
 <style>
@@ -245,6 +245,7 @@ a{color:inherit}
 .bbar .btn{padding:9px 14px;font-size:14px;border-radius:13px}
 .bbar .clr{color:var(--mute);font-size:13px;padding:6px}
 .msg{white-space:pre-line}
+.offer input::placeholder{font-size:16px;font-weight:500}
 /* floating glass tab bar */
 .tabbar{left:12px;right:12px;bottom:calc(10px + var(--safe-b));padding:6px;border-radius:32px;background:rgba(28,34,58,.62);backdrop-filter:saturate(190%) blur(26px);-webkit-backdrop-filter:saturate(190%) blur(26px);border:1px solid rgba(255,255,255,.13);border-top:1px solid rgba(255,255,255,.2);box-shadow:0 12px 34px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
 @media (max-width:599px){.tabbar{max-width:416px}}
@@ -574,7 +575,7 @@ function buyMsg(){if(buyK==='bundle'){const l=bunList(),v=parseFloat($('#offerIn
   if(buyK==='buy')return `Hi! I'd like to buy your ${name} for ${money(c.ask)}. Seen on your Slabfolio display. Is it still available?`;
   const v=parseFloat($('#offerIn').value);return `Hi! I saw your ${name} on your Slabfolio display. Would you take ${v>0?money(v):'S$__'} for it?`;}
 function openBuy(id,k){buyK=k;if(k==='bundle'){const l=bunList();if(!l.length)return;buyC=l[0];$('#byTitle').textContent='Bundle';$('#byImg').src='img/'+buyC.photos[0]+'.webp';
-    $('#byName').innerHTML=`${l.length} card${l.length>1?'s':''}<small>${bunTotal()?'Asking '+money(bunTotal())+' in total':'Make an offer'}</small>`;$('#offerIn').placeholder='Your offer for the lot (optional)';}
+    $('#byName').innerHTML=`${l.length} card${l.length>1?'s':''}<small>${bunTotal()?'Asking '+money(bunTotal())+' in total':'Make an offer'}</small>`;$('#offerIn').placeholder='Offer for the lot (optional)';}
   else{buyC=CARDS.find(c=>c.id===id);$('#byTitle').textContent=k==='buy'?'Buy':'Make an offer';$('#offerIn').placeholder='Your offer';
   $('#byImg').src='img/'+buyC.photos[0]+'.webp';$('#byName').innerHTML=`${buyC.name}<small>${buyC.ask?'Asking '+money(buyC.ask):'Make an offer · arrives December'}</small>`;}
   $('#byOffer').style.display=k==='buy'?'none':'flex';$('#offerIn').value='';$('#byMsg').textContent=buyMsg();
@@ -612,7 +613,7 @@ const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 $('#tabbar').innerHTML=TABS.map(([k,l])=>`<button class="tab${k==='display'?' on':''}" data-go="${k}">${svg(k)}<span>${l}</span>${k==='display'?'<span class="dot">NEW</span>':'<span class="soon"></span>'}</button>`).join('');
 function go(k){
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.go===k));
-  const isD=k==='display';$('#v-display').style.display=isD?'':'none';$('#v-soon').style.display=isD?'none':'flex';
+  const isD=k==='display';$('#bbar').style.display=isD?'':'none';$('#v-display').style.display=isD?'':'none';$('#v-soon').style.display=isD?'none':'flex';
   if(!isD){const t=TABS.find(x=>x[0]===k);$('#soonTitle').textContent=t[1];$('#soonText').textContent=t[2];$('#soonIcon').innerHTML=svg(k);}
   window.scrollTo(0,0);
 }
