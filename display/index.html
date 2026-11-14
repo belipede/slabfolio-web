@@ -518,7 +518,7 @@ $('#introBtn').onclick=()=>{$('#about').classList.add('on');$('#dim').classList.
 $('#abClose').onclick=()=>{$('#about').classList.remove('on');$('#dim').classList.remove('on');};
 
 /* launch waitlist: posts to a Google Form in the background. Fill FORM once the form exists. */
-const FORM={id:'',contact:'',use:''};
+const FORM={id:'1FAIpQLSfyDjQ-N-untGnOs9GQLL1QuBIyThwZd7Uc5Dn-szGkhSMwsQ',contact:'entry.1472630169',use:'entry.1276176260'};
 let wlUse='';
 function wlState(){let d=false;try{d=localStorage.getItem('sf-wl')==='1';}catch(e){}$('#wlForm').style.display=d?'none':'';$('#wlDone').style.display=d?'':'none';}
 document.addEventListener('click',e=>{if(!e.target.closest('[data-wl]'))return;$('#about').classList.remove('on');wlState();$('#wl').classList.add('on');$('#dim').classList.add('on');});
@@ -531,7 +531,7 @@ $('#wlGo').onclick=async()=>{const v=$('#wlIn').value.trim();
   const body=new URLSearchParams();body.append(FORM.contact,v);if(wlUse&&FORM.use)body.append(FORM.use,wlUse);
   $('#wlGo').disabled=true;$('#wlGo').textContent='Sending…';
   try{await fetch(`https://docs.google.com/forms/d/e/${FORM.id}/formResponse`,{method:'POST',mode:'no-cors',body});try{localStorage.setItem('sf-wl','1');}catch(e){}wlState();}
-  catch(e){toast('Could not send. Check your connection and try again');}
+  catch(e){location.href=`https://docs.google.com/forms/d/e/${FORM.id}/viewform?usp=pp_url&${FORM.contact}=${encodeURIComponent(v)}`;}
   $('#wlGo').disabled=false;$('#wlGo').textContent='Notify me';};
 
 /* bundle */
