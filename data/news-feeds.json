@@ -1,0 +1,8 @@
+[
+ {"id": "bbc", "name": "BBC Sport", "kind": "football", "url": "https://feeds.bbci.co.uk/sport/football/rss.xml"},
+ {"id": "guardian", "name": "The Guardian", "kind": "football", "url": "https://www.theguardian.com/football/rss"},
+ {"id": "sky", "name": "Sky Sports", "kind": "football", "url": "https://www.skysports.com/rss/11095"},
+ {"id": "independent", "name": "The Independent", "kind": "football", "url": "https://www.independent.co.uk/sport/football/rss"},
+ {"id": "cbc", "name": "Cardboard Connection", "kind": "cards", "url": "https://www.cardboardconnection.com/feed"},
+ {"id": "cardlines", "name": "Cardlines", "kind": "cards", "url": "https://cardlines.com/feed/"}
+]

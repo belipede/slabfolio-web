@@ -1,0 +1,101 @@
+[
+ {
+  "number": 1,
+  "state": "open",
+  "created_at": "2026-11-07T01:00:00Z",
+  "html_url": "https://github.com/x/1",
+  "user": {
+   "login": "alice"
+  },
+  "labels": [
+   {
+    "name": "find"
+   },
+   {
+    "name": "verified"
+   }
+  ],
+  "body": "Reporting a pull\n\n<!-- slabfolio-find\n{\"set\": \"merlin\", \"grp\": \"Base\", \"card\": \"1\", \"par\": \"Black\", \"serial\": 1, \"ev\": \"photo\", \"code\": \"ABCDE\", \"note\": \"Hit in a case break\"}\n-->\n![IMG](https://github.com/user-attachments/assets/abc-123)"
+ },
+ {
+  "number": 2,
+  "state": "open",
+  "created_at": "2026-11-07T02:00:00Z",
+  "html_url": "https://github.com/x/2",
+  "user": {
+   "login": "bob"
+  },
+  "labels": [
+   {
+    "name": "find"
+   },
+   {
+    "name": "verified"
+   }
+  ],
+  "body": "Reporting a pull\n\n<!-- slabfolio-find\n{\"set\": \"merlin\", \"grp\": \"Base\", \"card\": \"1\", \"par\": \"Black\", \"serial\": 1, \"ev\": \"photo\", \"code\": \"ABCDE\", \"note\": \"Hit in a case break\"}\n-->\n"
+ },
+ {
+  "number": 3,
+  "state": "open",
+  "created_at": "2026-11-07T03:00:00Z",
+  "html_url": "https://github.com/x/3",
+  "user": {
+   "login": "carl"
+  },
+  "labels": [
+   {
+    "name": "find"
+   }
+  ],
+  "body": "Reporting a pull\n\n<!-- slabfolio-find\n{\"set\": \"merlin\", \"grp\": \"Base\", \"card\": \"1\", \"par\": \"Black\", \"serial\": 2, \"ev\": \"photo\", \"code\": \"ABCDE\", \"note\": \"Hit in a case break\", \"user\": \"alice\"}\n-->\n"
+ },
+ {
+  "number": 4,
+  "state": "closed",
+  "created_at": "2026-11-07T03:00:00Z",
+  "html_url": "https://github.com/x/4",
+  "user": {
+   "login": "dan"
+  },
+  "labels": [
+   {
+    "name": "find"
+   },
+   {
+    "name": "fake"
+   }
+  ],
+  "body": "Reporting a pull\n\n<!-- slabfolio-find\n{\"set\": \"merlin\", \"grp\": \"Base\", \"card\": \"1\", \"par\": \"Black\", \"serial\": 3, \"ev\": \"photo\", \"code\": \"ABCDE\", \"note\": \"Hit in a case break\"}\n-->\n"
+ },
+ {
+  "number": 5,
+  "state": "open",
+  "created_at": "2026-11-07T03:00:00Z",
+  "html_url": "https://github.com/x/5",
+  "user": {
+   "login": "eve"
+  },
+  "labels": [
+   {
+    "name": "find"
+   }
+  ],
+  "body": "Reporting a pull\n\n<!-- slabfolio-find\n{\"set\": \"nope\", \"grp\": \"Base\", \"card\": \"1\", \"par\": \"Black\", \"serial\": 1, \"ev\": \"photo\", \"code\": \"ABCDE\", \"note\": \"Hit in a case break\"}\n-->\n"
+ },
+ {
+  "number": 6,
+  "state": "open",
+  "created_at": "2026-11-07T03:00:00Z",
+  "html_url": "https://github.com/x/6",
+  "user": {
+   "login": "eve"
+  },
+  "labels": [
+   {
+    "name": "find"
+   }
+  ],
+  "body": "hello"
+ }
+]
