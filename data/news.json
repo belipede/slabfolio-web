@@ -1,209 +1,1823 @@
 {
-"pulled":"2026-10-31T02:30:00Z",
+"pulled":"2026-11-15T05:24:34Z",
 "sources":[
-"Beckett",
+"BBC Sport",
+"Cardboard Connection",
 "Cardlines",
-"Cardsmiths Breaks",
-"Collectosk",
-"FC Barcelona",
-"Football365",
-"License Global",
 "Sky Sports",
-"Sports Collectors Daily",
-"Sports Illustrated",
-"Sports Mole",
-"The Scotsman",
-"beIN Sports"
+"The Guardian",
+"The Independent"
 ],
 "items":[
 {
 "k":"football",
-"t":"Rangers given Mikey Moore transfer verdict as Spurs told to make their mind up",
-"s":"The Scotsman",
-"u":"https://scotsman.com/sport/football/rangers/rangers-given-mikey-moore-transfer-verdict-as-spurs-told-to-make-their-mind-up-amid-celtic-links-to-21-yo-8505068",
-"d":"2026-10-31T00:00:00Z",
+"t":"The 'manager's dream' who has put NI one game from history",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c84gn2dl4zleo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T23:21:45Z",
 "n":[
-"mikey",
-"moore",
-"rangers",
-"spurs"
+"devlin",
+"ireland",
+"michael",
+"ni",
+"northern",
+"o'neill",
+"terry",
+"ukraine"
 ]
 },
 {
 "k":"football",
-"t":"Rangers boss issues Mikey Moore return pledge as transfer plan laid out",
-"s":"The Scotsman",
-"u":"https://scotsman.com/sport/football/rangers/latest-rangers-news/rangers-boss-issues-mikey-moore-return-pledge-as-transfer-plan-laid-out-for-final-day-hat-trick-hero-8549704",
-"d":"2026-10-31T00:00:00Z",
+"t":"Liverpool put three past Brighton to end winless run",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/c6p3ewwezqy2o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T23:00:29Z",
 "n":[
-"mikey",
-"moore",
-"rangers"
+"beata",
+"brighton",
+"liverpool",
+"olsson",
+"super",
+"women"
 ]
 },
 {
 "k":"football",
-"t":"Rooney issues Dowman warning after Everton display",
-"s":"Football365",
-"u":"https://www.football365.com/news/arsenal-rooney-dowman-warning-everton",
-"d":"2026-10-31T00:00:00Z",
-"n":[
-"dowman",
-"everton",
-"max",
-"rooney"
-]
-},
-{
-"k":"football",
-"t":"Lucas Bergvall asks to leave",
+"t":"Man City latest: Haaland 'hasn't read much' about PL charges guilty verdict",
 "s":"Sky Sports",
-"u":"https://www.skysports.com/share/13556507",
-"d":"2026-10-31T00:00:00Z",
+"u":"https://www.skysports.com/football/live-blog/11095/13025499/man-city-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-14T22:50:00Z",
 "n":[
-"bergvall",
-"lucas"
+"city",
+"haaland",
+"man",
+"pl"
 ]
 },
 {
 "k":"football",
-"t":"Tottenham, Nottingham Forest and Lucas Bergvall",
-"s":"Football365",
-"u":"https://www.football365.com/news/tottenham-hotspur-nottingham-forest-lucas-bergvall",
-"d":"2026-10-31T00:00:00Z",
+"t":"Hallgrimsson rues 'painful' defeat for Republic of Ireland",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cr15e4w75wxpo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T22:40:02Z",
 "n":[
-"bergvall",
-"forest",
-"lucas",
-"nottingham",
-"tottenham"
+"austria",
+"hallgrimsson",
+"heimir",
+"ireland",
+"nations",
+"republic"
 ]
 },
 {
 "k":"football",
-"t":"Lamine Yamal injury news",
-"s":"FC Barcelona",
-"u":"https://www.fcbarcelona.com/en/football/first-team/news/4148804/lamine-yamal-injury-news",
-"d":"2026-10-31T00:00:00Z",
+"t":"Devlin nets winner as NI top Nations League group",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/c6z9dxk71538o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T22:38:02Z",
 "n":[
-"lamine",
-"yamal"
-]
-},
-{
-"k":"cards",
-"t":"Premier League is back for the 2026-27 season with Topps Flagship",
-"s":"Sports Illustrated",
-"u":"https://www.si.com/collectibles/premier-league-back-2026-27-season-topps-flagship",
-"d":"2026-10-31T00:00:00Z",
-"tag":"Premier League",
-"n":[
-"flagship",
-"topps"
-]
-},
-{
-"k":"cards",
-"t":"Topps launches Premier League 2026/27 trading card collection",
-"s":"License Global",
-"u":"https://www.licenseglobal.com/football-soccer/topps-launches-premier-league-2026-27-trading-card-collection",
-"d":"2026-10-31T00:00:00Z",
-"tag":"Premier League",
-"n":[
-"topps"
-]
-},
-{
-"k":"cards",
-"t":"October 2026 card release preview: the biggest sports and TCG products to watch",
-"s":"Cardlines",
-"u":"https://cardlines.com/october-2026-card-release-preview-the-biggest-sports-and-tcg-products-to-watch/",
-"d":"2026-10-31T00:00:00Z",
-"tag":"Release dates",
-"n":[
-"tcg"
-]
-},
-{
-"k":"cards",
-"t":"Sports card release calendar, 14 to 27 October 2026",
-"s":"Sports Collectors Daily",
-"u":"https://www.sportscollectorsdaily.com/sports-card-release-calendar-10-14-26-10-27-26/",
-"d":"2026-10-31T00:00:00Z",
-"tag":"Release dates",
-"n":[
-"sports"
-]
-},
-{
-"k":"cards",
-"t":"Soccer card release calendar 2026",
-"s":"Cardsmiths Breaks",
-"u":"https://cardsmithsbreaks.com/?p=880568",
-"d":"2026-10-31T00:00:00Z",
-"tag":"Release dates",
-"n":[]
-},
-{
-"k":"cards",
-"t":"Sports card release dates, calendar and what's new",
-"s":"Beckett",
-"u":"https://www.beckett.com/news/sports-card-release-calendar-dates/",
-"d":"2026-10-31T00:00:00Z",
-"tag":"Release dates",
-"n":[
-"sports"
-]
-},
-{
-"k":"cards",
-"t":"2026 Topps Chrome MLS checklist",
-"s":"Collectosk",
-"u":"https://www.collectosk.com/2026-topps-chrome-mls-soccer-cards/",
-"d":"2026-10-31T00:00:00Z",
-"tag":"MLS",
-"n":[
-"chrome",
-"mls",
-"topps"
+"devlin",
+"ireland",
+"nations",
+"ni",
+"northern",
+"park",
+"ukraine",
+"windsor"
 ]
 },
 {
 "k":"football",
-"t":"Spurs reject Archie Gray transfer approach from mystery club",
-"s":"Sports Mole",
-"u":"https://www.sportsmole.co.uk/football/spurs/transfer-talk/news/spurs-reject-archie-gray-transfer-approach-from-mystery-club_604185.html",
-"d":"2026-09-01T00:00:00Z",
+"t":"Spurs latest: Kulusevski makes first appearance for Sweden in 725 days",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025489/tottenham-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-14T22:33:00Z",
 "n":[
-"archie",
-"gray",
-"spurs"
+"kulusevski",
+"spurs",
+"sweden"
 ]
 },
 {
 "k":"football",
-"t":"Van de Ven signs new Spurs contract",
-"s":"beIN Sports",
-"u":"https://www.beinsports.com/en-nz/football/premier-league/articles-video/van-de-ven-signs-new-spurs-contract-2026-08-10",
-"d":"2026-08-10T00:00:00Z",
+"t":"White has 'exciting future' despite boos - Rice",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cq0mdzrjn0j2o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T22:26:56Z",
+"n":[
+"arsenal",
+"ben",
+"croatia",
+"declan",
+"england",
+"midfielder",
+"rice",
+"wembley",
+"white"
+]
+},
+{
+"k":"football",
+"t":"Nations League roundup: Portugal mauled by Denmark as Norway sink Wales",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/clinical-norway-dent-wales-nations-league-top-tier-hopes-with-victory-in-oslo",
+"d":"2026-11-14T22:23:39Z",
+"n":[
+"a4",
+"cristiano",
+"denmark",
+"group",
+"hjlund",
+"nations",
+"norway",
+"portugal",
+"rasmus",
+"ronaldo",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"Arsenal latest: Gyokeres continues superb Sweden form",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025486/arsenal-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-14T22:00:00Z",
+"n":[
+"arsenal",
+"gyokeres",
+"sweden"
+]
+},
+{
+"k":"football",
+"t":"Arsenal target Nusa could cost £66m - Sunday's gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6e9kgn532gxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T21:48:45Z",
+"n":[
+"antonio",
+"arsenal",
+"betis",
+"chelsea",
+"jose",
+"leipzig",
+"morante",
+"nusa",
+"rb",
+"real",
+"sunday"
+]
+},
+{
+"k":"football",
+"t":"Kalajdzic scores late as Republic of Ireland taste defeat in Austria",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/austria-vs-republic-of-ireland/report/554103",
+"d":"2026-11-14T21:35:00Z",
+"n":[
+"arena",
+"austria",
+"ireland",
+"kalajdzic",
+"linz",
+"nations",
+"raiffeisen",
+"republic",
+"sasa"
+]
+},
+{
+"k":"football",
+"t":"Devlin nets first international goal as Northern Ireland beat Ukraine",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/northern-ireland-vs-ukraine/report/554106",
+"d":"2026-11-14T21:35:00Z",
+"n":[
+"devlin",
+"hungary",
+"ireland",
+"nations",
+"northern",
+"terry",
+"ukraine"
+]
+},
+{
+"k":"football",
+"t":"Tuchel unhappy as anti-racism protocol questions overshadow Spain clash",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13612301/thomas-tuchel-england-boss-unhappy-as-anti-racism-protocol-questions-overshadow-nations-league-test-in-spain",
+"d":"2026-11-14T21:00:00Z",
+"n":[
+"england",
+"madrid",
+"nations",
+"spain",
+"thomas",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"Palace latest: Sage thanks fans after exit",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13279298/crystal-palace-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
+"d":"2026-11-14T21:00:00Z",
+"n":[
+"palace",
+"sage"
+]
+},
+{
+"k":"football",
+"t":"Spurs held to a draw by Everton in the WSL",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/ck9q8vvz81rxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T20:56:46Z",
+"n":[
+"everton",
+"spurs",
+"super",
+"tottenham",
+"women",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"What Wales need to stay in Nations League top tier",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmx28nxw1elvo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T20:52:48Z",
+"n":[
+"bbc",
+"nations",
+"sport",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"'No racism in Spain' – De la Fuente message for Tuchel",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c893r74ryy3qo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T20:43:57Z",
 "n":[
 "de",
-"micky",
-"spurs",
-"van",
-"ven"
+"england",
+"fuente",
+"luis",
+"madrid",
+"nations",
+"spain",
+"sunday",
+"thomas",
+"tuchel"
 ]
 },
 {
 "k":"football",
-"t":"Julián Álvarez confirms he wants Atleti exit",
-"s":"beIN Sports",
-"u":"https://www.beinsports.com/en-au/football/laliga/articles-video/julian-alvarez-confirms-he-wants-atleti-exit-2026-06-22",
-"d":"2026-06-22T00:00:00Z",
+"t":"Declan Rice on ‘average’ World Cup, managing minutes and Graeme Souness criticism: ‘Football’s way different now’",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/declan-rice-interview-graeme-souness-criticism-england-spain-b3085035.html",
+"d":"2026-11-14T20:36:53Z",
 "n":[
-"alvarez",
-"atleti",
-"julian"
+"arsenal",
+"declan",
+"delaney",
+"england",
+"graeme",
+"madrid",
+"miguel",
+"rice",
+"souness",
+"world"
+]
+},
+{
+"k":"football",
+"t":"Clara Luvanga strikes as Washington Spirit beat Utah to reach third straight NWSL final",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/washington-spirit-utah-royals-nwsl-semi-final-clara-luvanga",
+"d":"2026-11-14T20:33:50Z",
+"n":[
+"championship",
+"clara",
+"luvanga",
+"nwsl",
+"royals",
+"sat",
+"spirit",
+"tanzanian",
+"utah",
+"washington"
+]
+},
+{
+"k":"football",
+"t":"Declan Rice accepts he had an ‘average World Cup’ as England gear up for Spain showdown",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/declan-rice-england-spain-nations-league-world-cup-thomas-tuchel",
+"d":"2026-11-14T20:30:00Z",
+"n":[
+"arsenal",
+"declan",
+"england",
+"james",
+"midfielder",
+"rice",
+"spain",
+"trafford",
+"world"
+]
+},
+{
+"k":"football",
+"t":"De la Fuente adamant there is no racism in Spain despite England reminder to players",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/luis-de-la-fuente-spain-england-racism-thomas-tuchel-natiions-league",
+"d":"2026-11-14T20:27:02Z",
+"n":[
+"de",
+"england",
+"fuente",
+"luis",
+"madr",
+"metropolitano",
+"spain",
+"thomas",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"Spain test will reveal if Tuchel and England have learned World Cup lessons",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cq2d9l3e313zo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T20:22:00Z",
+"n":[
+"england",
+"mcnulty",
+"phil",
+"spain",
+"thomas",
+"tuchel",
+"world"
+]
+},
+{
+"k":"football",
+"t":"Here Manchester United go again, taking the Two Ronnies route to hiring a new boss | Jonathan Wilson",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/here-manchester-united-go-again-taking-the-two-ronnies-route-to-hiring-a-new-boss",
+"d":"2026-11-14T20:00:53Z",
+"n":[
+"bur",
+"correct",
+"geoffrey",
+"here",
+"howe",
+"jonathan",
+"len",
+"magnusson",
+"manchester",
+"mauricio",
+"murray",
+"pochettino",
+"ronnies",
+"sir",
+"smithers",
+"two",
+"united",
+"wilson"
+]
+},
+{
+"k":"football",
+"t":"Haaland helps Norway to win over Wales in Nations League",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cr20vgxv43p8o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T19:23:13Z",
+"n":[
+"haaland",
+"nations",
+"norway",
+"oslo",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"Portugal immortalise Cristiano Ronaldo’s No 7 shirt in tribute to national legend",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/portugal-immortalise-cristiano-ronaldos-no-7-shirt-in-tribute-to-national-legend",
+"d":"2026-11-14T19:13:43Z",
+"n":[
+"career",
+"cristiano",
+"original",
+"portugal",
+"ronaldo"
+]
+},
+{
+"k":"football",
+"t":"Wales beaten in Norway as threat of Nations League relegation grows",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/norway-vs-wales/report/554107",
+"d":"2026-11-14T19:00:00Z",
+"n":[
+"bellamy",
+"craig",
+"nations",
+"norway",
+"oslo",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"Bompastor's risks pay off as Chelsea go top of WSL",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmvg25w18q9qo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T18:55:34Z",
+"n":[
+"bompastor",
+"chelsea",
+"sonia",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Le Tissier stars as Man Utd beat Crystal Palace to extend unbeaten run",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cqglrkk7gr1xo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T18:27:23Z",
+"n":[
+"crystal",
+"le",
+"man",
+"manchester",
+"maya",
+"palace",
+"tissier",
+"united",
+"utd",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"How Sonia Bompastor’s ruthless changes inspired Chelsea’s win over Man City",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/chelsea-man-city-women-bompastor-buchanan-substitution-b3085013.html",
+"d":"2026-11-14T17:44:29Z",
+"n":[
+"baltimore",
+"blues",
+"bompastor",
+"chelsea",
+"city",
+"man",
+"manchester",
+"sandy",
+"sonia"
+]
+},
+{
+"k":"football",
+"t":"England latest: Tuchel confirms Spence and Konsa available to face Spain",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13427059/england-football-news-live-updates-schedule-and-analysis-of-thomas-tuchels-three-lions",
+"d":"2026-11-14T17:00:00Z",
+"n":[
+"england",
+"konsa",
+"spain",
+"spence",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"Tenerife boss says Owono's 12-match ban 'feels light'",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmjeq0x815zko?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T16:26:49Z",
+"n":[
+"alvaro",
+"cervera",
+"de",
+"jesus",
+"miguel",
+"owono",
+"tenerife"
+]
+},
+{
+"k":"football",
+"t":"'I just play where the manager tells me to play!' - Walsh",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/c6d91n2x0e7ko?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T16:17:49Z",
+"n":[
+"chelsea",
+"city",
+"keira",
+"manchester",
+"super",
+"walsh",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Trafford to start in Spain - but what are Tuchel's other selection issues?",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13612238/spain-vs-england-james-trafford-set-to-replace-jordan-pickford-as-goalkeeper-and-how-does-thomas-tuchel-stop-lamine-yamal",
+"d":"2026-11-14T16:02:00Z",
+"n":[
+"against",
+"spain",
+"thomas",
+"trafford",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"Chelsea go top with 1-0 win against Man City",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cm702wwpj9keo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T15:50:34Z",
+"n":[
+"chelsea",
+"city",
+"man",
+"manchester",
+"super",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Chelsea go top of WSL as Sandy Baltimore bullet sees off Manchester City",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/chelsea-manchester-city-womens-super-league-match-report",
+"d":"2026-11-14T15:36:15Z",
+"n":[
+"bal",
+"baltimore",
+"bompastor",
+"bronze",
+"chelsea",
+"city",
+"katie",
+"lucy",
+"manchester",
+"mccabe",
+"pragmatic",
+"sandy",
+"sonia",
+"super",
+"women",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Former Stoke City manager Thordarson dies aged 71",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c98r7l5yrn6go?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T15:04:59Z",
+"n":[
+"city",
+"english",
+"former",
+"gudjon",
+"stoke",
+"thordarson"
+]
+},
+{
+"k":"football",
+"t":"Mauricio Pochettino asked the US to believe in his project. Did he believe in it himself?",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/mauricio-pochettino-usmnt-legacy-belief",
+"d":"2026-11-14T14:06:37Z",
+"n":[
+"america",
+"copa",
+"did",
+"mauricio",
+"pochettino",
+"us",
+"usmnt"
+]
+},
+{
+"k":"football",
+"t":"Raphinha sees red as Brazil stunned by Japan while Argentina’s post-Messi era starts with defeat",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/brazil-argentina-japan-uruguay-wales-norway-portugal-denmark",
+"d":"2026-11-14T13:07:33Z",
+"n":[
+"aires",
+"argentina",
+"barcelona",
+"brazil",
+"buenos",
+"japan",
+"messi",
+"raphinha",
+"sakamoto",
+"singapore",
+"tatsuhiro",
+"uruguay"
+]
+},
+{
+"k":"football",
+"t":"Raphinha AND Ancelotti sent off as Brazil beaten by Japan",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/12507208/football-latest-news-gossip",
+"d":"2026-11-14T13:01:00Z",
+"n":[
+"ancelotti",
+"and",
+"brazil",
+"japan",
+"raphinha"
+]
+},
+{
+"k":"football",
+"t":"Big tactical calls and restricting Shaw - How Chelsea got better of Man City",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/chelsea-women-vs-manchester-city-women/report/575819",
+"d":"2026-11-14T10:54:00Z",
+"n":[
+"baltimore",
+"big",
+"bridge",
+"chelsea",
+"city",
+"man",
+"manchester",
+"sandy",
+"shaw",
+"stamford",
+"super",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Le Tissier hits stunner to mark milestone in Man Utd win",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/manchester-united-women-vs-crystal-palace-women/report/575822",
+"d":"2026-11-14T10:54:00Z",
+"n":[
+"crystal",
+"le",
+"man",
+"manchester",
+"maya",
+"palace",
+"tissier",
+"united",
+"utd",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Tuchel to remind England of anti-racism protocols before Spain game",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c60mdzn2dk1eo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T09:13:30Z",
+"n":[
+"england",
+"madrid",
+"manager",
+"nations",
+"spain",
+"sunday",
+"thomas",
+"tuchel",
+"uefa"
+]
+},
+{
+"k":"football",
+"t":"Who would make your England-Spain combined XI?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cw77p0v78exlo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T08:57:49Z",
+"n":[
+"england",
+"england-spain",
+"spain",
+"xi"
+]
+},
+{
+"k":"football",
+"t":"Clough's longevity: landmark achievement or indictment on football?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqr7grl145zpo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T08:35:00Z",
+"n":[
+"clough",
+"mansfield",
+"nigel"
+]
+},
+{
+"k":"football",
+"t":"Titz and Clarke on Aberdeen shortlist - gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmgre0jlw24yo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T08:28:16Z",
+"n":[
+"aberdeen",
+"christian",
+"clarke",
+"robinson",
+"stephen",
+"steve",
+"titz"
+]
+},
+{
+"k":"football",
+"t":"Six goals to go - will McGinn catch Dalglish & Law?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cke89156y10zo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T07:49:46Z",
+"n":[
+"dalglish",
+"denis",
+"gallacher",
+"hughie",
+"john",
+"kenny",
+"law",
+"mcginn",
+"scotland",
+"six"
+]
+},
+{
+"k":"football",
+"t":"Goalkeeper Owono given 12-match ban after De Miguel's death from collision",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13612118/goalkeeper-jesus-owono-given-12-match-ban-after-tenerife-forward-jesus-de-miguels-death-following-collision",
+"d":"2026-11-14T07:22:00Z",
+"n":[
+"andorra",
+"de",
+"fc",
+"goalkeeper",
+"jesus",
+"miguel",
+"owono",
+"tenerife"
+]
+},
+{
+"k":"football",
+"t":"What does a Pochettino team look like?",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13611443/mauricio-pochettino-to-man-utd-what-does-a-pochettino-team-look-like-and-how-will-he-set-up-struggling-red-devils",
+"d":"2026-11-14T07:00:00Z",
+"n":[
+"carrick",
+"manchester",
+"mauricio",
+"michael",
+"pochettino",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Portugal did the extraordinary with Cristiano Ronaldo. Can they do it without him?",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/14/portugal-cristiano-ronaldo-football-memories-future",
+"d":"2026-11-14T06:53:23Z",
+"n":[
+"cristiano",
+"portugal",
+"ronaldo",
+"there"
+]
+},
+{
+"k":"football",
+"t":"Who am I? Plus today's other quizzes",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6n83ld3le95o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-14T06:27:36Z",
+"n":[
+"am",
+"brainteaser",
+"five",
+"plus",
+"test"
+]
+},
+{
+"k":"football",
+"t":"Fitness obsessed & 'control freak' - what can Man Utd expect from Pochettino?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c85y13pv69xwo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T22:53:17Z",
+"n":[
+"alderweireld",
+"bbc",
+"fitness",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"sport",
+"spurs",
+"toby",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"'If that penalty is given against you, you're furious'",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/c34gn5k2lk9lo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T22:34:20Z",
+"n":[
+"brown",
+"crichton",
+"if",
+"leanne",
+"macedonia",
+"north",
+"scotland",
+"scott",
+"sportscene"
+]
+},
+{
+"k":"football",
+"t":"John McGinn double saves Scotland’s blushes against North Macedonia",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/13/scotland-north-macedonia-nations-league-match-report",
+"d":"2026-11-13T22:16:31Z",
+"n":[
+"andy",
+"collection",
+"dalglish",
+"john",
+"kenny",
+"macedonia",
+"mcginn",
+"north",
+"robertson",
+"scotland",
+"scottish"
+]
+},
+{
+"k":"football",
+"t":"Portugal honour Ronaldo with shirt design - then lose 4-1 in first game without him",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13575723/european-football-news-and-transfers-barcelona-real-madrid-psg-bayern-munich-latest-and-more",
+"d":"2026-11-13T22:14:00Z",
+"n":[
+"portugal",
+"ronaldo"
+]
+},
+{
+"k":"football",
+"t":"Salah scores twice as Egypt and Nigeria win Afcon 2027 qualifiers",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cw1md9jx2r3po?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T22:11:27Z",
+"n":[
+"afcon",
+"africa",
+"egypt",
+"malawi",
+"mohamed",
+"nations",
+"nigeria",
+"salah",
+"tanzania"
+]
+},
+{
+"k":"football",
+"t":"Jesús Owono given 12-match ban for tackle that resulted in Jesús de Miguel’s death",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/13/jesus-owono-given-12-match-ban-for-tackle-that-resulted-in-jesus-de-miguels-death",
+"d":"2026-11-13T22:04:08Z",
+"n":[
+"andorra",
+"de",
+"equatorial",
+"fc",
+"guinea",
+"jesus",
+"miguel",
+"owono",
+"spanish",
+"tenerife"
+]
+},
+{
+"k":"football",
+"t":"Dowman breaks record after making England U21s debut in loss to Portugal",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/england-u21-vs-portugal-u21/report/578797",
+"d":"2026-11-13T22:00:00Z",
+"n":[
+"bellingham",
+"carsley",
+"dowman",
+"england",
+"jude",
+"lee",
+"max",
+"portugal",
+"u21",
+"u21s"
+]
+},
+{
+"k":"football",
+"t":"McGinn double seals win for ragged Scotland",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/scotland-vs-north-macedonia/report/554098",
+"d":"2026-11-13T21:35:00Z",
+"n":[
+"john",
+"macedonia",
+"mcginn",
+"nations",
+"north",
+"scotland"
+]
+},
+{
+"k":"football",
+"t":"Ronaldinho, 46, to play first game since 2015",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqz0k4e00v0mo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T19:12:37Z",
+"n":[
+"brazil",
+"forli",
+"italy",
+"ravenna",
+"ronaldinho"
+]
+},
+{
+"k":"football",
+"t":"‘No one is unbeatable’: Tuchel eager for England to impose style on Spain",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/13/no-one-is-unbeatable-tuchel-eager-for-england-to-impose-style-on-spain",
+"d":"2026-11-13T19:00:23Z",
+"n":[
+"england",
+"euro",
+"manager",
+"nations",
+"proof",
+"spain",
+"thomas",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"All done deals from September-November 2026",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cvgyxyxplkvo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T17:21:23Z",
+"n":[
+"check",
+"efl",
+"premiership",
+"scottish",
+"september-november",
+"super",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Rugby League World Cup finals, ATP and WTA tennis, plus WSL – follow with us",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/sport/2026/nov/13/rugby-league-world-cup-finals-atp-and-wta-tennis-plus-wsl-follow-with-us",
+"d":"2026-11-13T16:42:46Z",
+"n":[
+"atp",
+"continue",
+"here",
+"rugby",
+"world",
+"wsl",
+"wta"
+]
+},
+{
+"k":"football",
+"t":"Tearful Pochettino on 'difficult' decision to leave USA for Man Utd",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmd61qne8352o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T15:28:06Z",
+"n":[
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"tearful",
+"united",
+"usa",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Football Daily | Taking a brief minute to remember Pierre Sage’s impact at Crystal Palace",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/13/pierre-sage-crystal-palace-football-daily-newsletter",
+"d":"2026-11-13T15:21:47Z",
+"n":[
+"crystal",
+"daily",
+"many",
+"palace",
+"pierre",
+"sage",
+"sign",
+"so",
+"taking"
+]
+},
+{
+"k":"football",
+"t":"Tearful Pochettino admits he 'couldn't say no to Man Utd'",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13611887/mauricio-pochettino-new-man-utd-head-coach-in-tears-as-he-labels-leaving-usmnt-toughest-decision-of-career",
+"d":"2026-11-13T15:00:00Z",
+"n":[
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"states",
+"tearful",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Mauricio Pochettino to Manchester United and record breaker Kane | Football Weekly video",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/video/2026/nov/13/mauricio-pochettino-to-manchester-united-and-record-breaker-kane-football-weekly-video",
+"d":"2026-11-13T13:41:07Z",
+"n":[
+"continue",
+"cowen",
+"england",
+"harry",
+"jacob",
+"kane",
+"lars",
+"manchester",
+"mauricio",
+"paul",
+"pochettino",
+"robyn",
+"sivertsen",
+"steinberg",
+"united",
+"watson",
+"weekly"
+]
+},
+{
+"k":"football",
+"t":"How Ferguson-inspired Pochettino can succeed where Carrick failed at Man Utd",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm2kljzkw77ko?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T12:09:48Z",
+"n":[
+"carrick",
+"ferguson-inspired",
+"man",
+"mauricio",
+"pochettino",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Man Utd latest: Poch explains why he won't join immediately as Carrick pens farewell",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-13T12:00:00Z",
+"n":[
+"carrick",
+"man",
+"poch",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"BBC to show Dover v Leicester and Salisbury v Blackpool",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c64gndwd2l0xo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T10:49:07Z",
+"n":[
+"athletic",
+"bbc",
+"blackpool",
+"dover",
+"fa",
+"leicester",
+"non-league",
+"salisbury"
+]
+},
+{
+"k":"football",
+"t":"Fernandes rejects second Man Utd contract offer",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm782d4pz9jyo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T09:55:01Z",
+"n":[
+"bruno",
+"fernandes",
+"man",
+"manchester",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"From postcards to texts, the different ways a manager gets the sack - Pulis",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cve8716dg46xo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-13T08:13:19Z",
+"n":[
+"bbc",
+"pulis",
+"sport",
+"tony"
+]
+},
+{
+"k":"football",
+"t":"The beautiful game: revived art prize gives football its creative due once more | Emma John",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/13/football-association-art-prize",
+"d":"2026-11-13T08:00:12Z",
+"n":[
+"beautiful",
+"boccioni",
+"dynamism",
+"emma",
+"futurist",
+"game",
+"italian",
+"john",
+"player",
+"umberto",
+"you"
+]
+},
+{
+"k":"football",
+"t":"Pochettino’s Chelsea maelstrom the best yardstick for what lies ahead at United",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/13/pochettino-chelsea-maelstrom-yardstick-what-lies-ahead-manchester-united",
+"d":"2026-11-13T07:00:12Z",
+"n":[
+"alex",
+"among",
+"argentinian",
+"arsene",
+"chelsea",
+"ferguson",
+"guardiola",
+"jose",
+"jurgen",
+"klopp",
+"manchester",
+"mauricio",
+"mourinho",
+"opta",
+"pep",
+"pochettino",
+"united",
+"wenger"
+]
+},
+{
+"k":"football",
+"t":"Nations League: Italy roar back to beat France despite Donnarumma’s early howler",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/12/nations-league-italy-france-spain-czechia",
+"d":"2026-11-12T22:31:35Z",
+"n":[
+"czechia",
+"donnarumma",
+"esposito",
+"france",
+"gianluigi",
+"italy",
+"loss",
+"michael",
+"nations",
+"olise",
+"pio",
+"san",
+"siro",
+"spain",
+"zidane",
+"zinedine"
+]
+},
+{
+"k":"football",
+"t":"Where does Kane rank among all-time England greats?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cxj0lvqpn94qo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-12T22:09:59Z",
+"n":[
+"england",
+"harry",
+"kane",
+"lions",
+"three"
+]
+},
+{
+"k":"football",
+"t":"Arsenal dig in for draw at Barcelona to extend unbeaten start",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/crlye55q790yo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-12T20:09:07Z",
+"n":[
+"arsenal",
+"barcelona",
+"camp",
+"nou",
+"renee",
+"slegers",
+"uefa",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Arsenal dig deep to earn WCL draw in face of Barcelona dominance",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/12/barcelona-arsenal-womens-champions-league-match-report",
+"d":"2026-11-12T20:00:16Z",
+"n":[
+"arsenal",
+"barcelona",
+"camp",
+"caroline",
+"european",
+"frida",
+"graham",
+"gunners",
+"hansen",
+"maanum",
+"nou",
+"wcl"
+]
+},
+{
+"k":"football",
+"t":"How will the USMNT replace Mauricio Pochettino? There’s no clear answer",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/12/mauricio-pochettino-replacements-usmnt-manchester-united",
+"d":"2026-11-12T19:20:01Z",
+"n":[
+"even",
+"federation",
+"manchester",
+"mauricio",
+"pochettino",
+"sign",
+"there",
+"united",
+"us",
+"usmnt",
+"world"
+]
+},
+{
+"k":"football",
+"t":"How Pochettino came on Man Utd's radar - and what Carrick was told when",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqdr1jlr1707o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-12T16:12:39Z",
+"n":[
+"carrick",
+"man",
+"mauricio",
+"michael",
+"pochettino",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"‘Pregnancy does not mean game over’: meet the footballers challenging the myths | Moving the Goalposts",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/12/pregnancy-womens-football-moving-the-goalposts-newsletter",
+"d":"2026-11-12T12:00:47Z",
+"n":[
+"angel",
+"city",
+"claire",
+"emma",
+"emslie",
+"fc",
+"goalposts",
+"kelly",
+"moving",
+"pregnancy",
+"scotland"
+]
+},
+{
+"k":"football",
+"t":"‘Second ball’ may be a Sunday league mantra but Yates showed its top-flight relevance",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/12/ryan-yates-nottingham-forest-manchester-city-premier-league-second-ball",
+"d":"2026-11-12T11:00:48Z",
+"n":[
+"city",
+"forest",
+"manchester",
+"midfielder",
+"modern",
+"nottingham",
+"second",
+"winning",
+"yates"
+]
+},
+{
+"k":"football",
+"t":"Less drama, more listening, but is Kozo Tashima the candidate to topple Infantino?",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/12/fifa-kozo-tashima-seeks-change-of-tone",
+"d":"2026-11-12T08:00:13Z",
+"n":[
+"association",
+"fa",
+"fifa",
+"giann",
+"infantino",
+"japan",
+"kozo",
+"tashima",
+"world"
+]
+},
+{
+"k":"football",
+"t":"England's Blues brothers - how the Bellinghams helped save Birmingham",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm1j3j20r2rzo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-12T07:12:41Z",
+"n":[
+"bellingham",
+"bellinghams",
+"birmingham",
+"blues",
+"boyhood",
+"city",
+"england",
+"jobe",
+"jude"
+]
+},
+{
+"k":"football",
+"t":"Complaint filed to IRS in relation to Fifa head Gianni Infantino’s housekeeper",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/11/complaint-us-irs-fifa-gianni-infantino-housekeeper",
+"d":"2026-11-11T19:00:01Z",
+"n":[
+"complaint",
+"fifa",
+"gianni",
+"if",
+"infantino",
+"internal",
+"irs",
+"revenue",
+"service",
+"states",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Sisters in Sweat: how a former Spurs player got 20,000 Indian women into sport",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/10/sisters-in-sweat-indian-women-sport-moving-the-goalposts",
+"d":"2026-11-10T12:00:51Z",
+"n":[
+"british",
+"hans",
+"hey",
+"indian",
+"indian-born",
+"nine",
+"sisters",
+"spurs",
+"subbiah",
+"sweat",
+"swetha",
+"tanvie"
+]
+},
+{
+"k":"football",
+"t":"Bunny Shaw shines again for five-star Manchester City – Women’s Football Weekly",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/audio/2026/nov/10/bunny-shaw-shines-again-for-five-star-manchester-city-womens-football-weekly",
+"d":"2026-11-10T11:24:58Z",
+"n":[
+"alessia",
+"arsenal",
+"bunny",
+"carruthers",
+"chelsea",
+"city",
+"downey",
+"everton",
+"faye",
+"kreel",
+"manchester",
+"marva",
+"plus",
+"russo",
+"shaw",
+"sophie",
+"suzanne",
+"weekly",
+"women",
+"wrack",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"David Squires on … You Can MUFC Everything",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/picture/2026/nov/10/david-squires-on-you-can-mufc-everything-manchester-united",
+"d":"2026-11-10T11:02:54Z",
+"n":[
+"box",
+"buy",
+"chaos",
+"continue",
+"david",
+"everything",
+"manchester",
+"mufc",
+"squires",
+"united",
+"you"
+]
+},
+{
+"k":"football",
+"t":"How Germany's greatest goalscorer is guiding the next generation",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmq8nnddpllqo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-10T07:34:07Z",
+"n":[
+"german",
+"germany",
+"klose",
+"miroslav",
+"world"
+]
+},
+{
+"k":"football",
+"t":"Cast your vote for BBC Women's Footballer of the Year 2026",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cj20velkgnypo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-10T06:24:50Z",
+"n":[
+"bbc",
+"cast",
+"footballer",
+"voting",
+"women",
+"year"
+]
+},
+{
+"k":"football",
+"t":"Ultimate 1-50: the male footballers best associated with each squad number",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/ng-interactive/2026/nov/10/ultimate-1-50-the-male-footballers-best-associated-with-each-squad-number",
+"d":"2026-11-10T06:00:30Z",
+"n":[
+"balotelli",
+"guardian",
+"here",
+"mario",
+"ultimate"
+]
+},
+{
+"k":"football",
+"t":"Manchester City’s weaknesses under Enzo Maresca are being exposed",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/09/manchester-city-enzo-maresca-premier-league",
+"d":"2026-11-09T16:30:13Z",
+"n":[
+"city",
+"enzo",
+"forest",
+"manchester",
+"maresca",
+"nottingham",
+"sign"
+]
+},
+{
+"k":"football",
+"t":"That’s a Mora: Rodrigo and Roma rise with Lazio to give Eternal City new life | Nicky Bandini",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/09/rodrigo-mora-roma-lazio-rome-serie-a",
+"d":"2026-11-09T14:18:45Z",
+"n":[
+"bandini",
+"city",
+"eternal",
+"gasperini",
+"genoa",
+"gian",
+"italian",
+"lazio",
+"liguria",
+"mora",
+"nello",
+"nicky",
+"piero",
+"rodrigo",
+"roma",
+"scudetto",
+"serie",
+"sport",
+"stelle"
+]
+},
+{
+"k":"football",
+"t":"Felix Nmecha’s faith is forcing Borussia Dortmund into an uncomfortable debate",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/09/felix-nmecha-faith-borussia-dortmund-debate-bundesliga",
+"d":"2026-11-09T14:10:43Z",
+"n":[
+"borussia",
+"dortmund",
+"elversberg",
+"felix",
+"midfielder",
+"nmecha"
+]
+},
+{
+"k":"football",
+"t":"WSL talking points: Tullis-Joyce takes charge and is Shaw the perfect striker?",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/09/wsl-talking-points-khadija-shaw-manchester-city-phallon-tullis-joyce",
+"d":"2026-11-09T11:24:37Z",
+"n":[
+"against",
+"bunny",
+"city",
+"eva",
+"ham",
+"jamaica",
+"khadija",
+"olid",
+"shaw",
+"tullis-joyce",
+"united",
+"west",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Football comes together across Spain to honour Jesús de Miguel: ‘We’ve seen how fragile life is’",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/09/football-comes-together-spain-honour-jesus-de-miguel-tenerife",
+"d":"2026-11-09T11:00:13Z",
+"n":[
+"across",
+"de",
+"jesus",
+"la",
+"liga",
+"miguel",
+"osasuna",
+"spain"
+]
+},
+{
+"k":"football",
+"t":"Which Premier League players are set for yellow card suspensions?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/articles/cr3wj7wg35pxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-09T10:33:57Z",
+"n":[
+"thirteen"
+]
+},
+{
+"k":"football",
+"t":"Premier League: 10 talking points from the weekend’s action",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/09/premier-league-10-talking-points-weekend-action",
+"d":"2026-11-09T08:00:04Z",
+"n":[
+"brighton",
+"city",
+"delap",
+"everton",
+"glasner",
+"gomez",
+"ipswich",
+"liam",
+"manchester",
+"oliver"
+]
+},
+{
+"k":"football",
+"t":"'I can't believe he is one of us' - inside Salah's life in Trabzon",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmwyqzy934lxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-08T07:30:01Z",
+"n":[
+"bbc",
+"black",
+"egyptian",
+"king",
+"mohamed",
+"salah",
+"sea",
+"sport",
+"trabzon",
+"trabzonspor",
+"turkey"
+]
+},
+{
+"k":"football",
+"t":"Rise of the ‘schooligans’: how a wave of antisocial behaviour threatens non-league football",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/07/antisocial-behaviour-non-league-football-youth-hooligans-police",
+"d":"2026-11-07T06:00:05Z",
+"n":[
+"but",
+"chester",
+"hednesford",
+"national",
+"north",
+"rise",
+"teenage",
+"town"
+]
+},
+{
+"k":"football",
+"t":"Who is close to a yellow card suspension in Champions League?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c54g1vpypgw3o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-05T10:54:52Z",
+"n":[
+"anything",
+"ask",
+"bbc",
+"me",
+"sport"
+]
+},
+{
+"k":"football",
+"t":"Billions in revenue proves Fifa right on the World Cup – but only on things it cares about",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/04/fifa-world-cup-billions-revenue",
+"d":"2026-11-04T19:02:48Z",
+"n":[
+"billions",
+"fifa",
+"gianni",
+"infantino",
+"still",
+"world"
+]
+},
+{
+"k":"football",
+"t":"Choke of the century? Chengdu collapse sets up thrilling Chinese Super League climax",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/04/choke-of-the-century-chengdu-collapse-sets-up-thrilling-chinese-super-league-climax",
+"d":"2026-11-04T08:00:29Z",
+"n":[
+"aloisi",
+"asian",
+"chengdu",
+"chinese",
+"choke",
+"john",
+"rongcheng",
+"super"
+]
+},
+{
+"k":"football",
+"t":"Manager ins and outs - 2026-27",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cd94713djgyo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-01T11:11:40Z",
+"n":[
+"bbc",
+"english",
+"manager",
+"national",
+"premiership",
+"scottish",
+"sport",
+"super",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Rampant Salford hint that Beckham’s lofty ambitions are not a pipe dream",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/01/salford-city-david-beckham-lofty-ambitions-football",
+"d":"2026-11-01T08:00:07Z",
+"n":[
+"beckham",
+"championship",
+"city",
+"class",
+"david",
+"gary",
+"manchester",
+"neville",
+"rampant",
+"salford",
+"two",
+"united"
+]
+},
+{
+"k":"cards",
+"t":"2026 Topps Stadium Club Football Preview: Photography, Rookie Chases And What We Know So Far",
+"s":"Cardlines",
+"u":"https://cardlines.com/2026-topps-stadium-club-football-checklist/",
+"d":"2026-11-14T05:20:30Z",
+"tag":"Topps",
+"n":[
+"cardlines",
+"chases",
+"club",
+"far",
+"know",
+"photography",
+"preview",
+"rookie",
+"so",
+"stadium",
+"topps"
 ]
 }
 ]
