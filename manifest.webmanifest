@@ -1,6 +1,6 @@
 {
-  "name": "Slabfolio",
-  "short_name": "Slabfolio",
+  "name": "Vaultd",
+  "short_name": "Vaultd",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

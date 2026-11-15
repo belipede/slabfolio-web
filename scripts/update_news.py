@@ -14,7 +14,7 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / 'data' / 'news.json'
 FEEDS = json.loads((ROOT / 'data' / 'news-feeds.json').read_text())
-UA = 'SlabfolioNews/0.2 (+https://github.com/belipede/slabfolio-web)'
+UA = 'VaultdNews/0.2 (+https://github.com/belipede/slabfolio-web)'
 MAX_AGE_DAYS = 14
 MAX_FOOTBALL, MAX_CARDS = 400, 60
 
