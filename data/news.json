@@ -1,5 +1,5 @@
 {
-"pulled":"2026-11-15T22:48:46Z",
+"pulled":"2026-11-16T06:29:27Z",
 "sources":[
 "BBC Sport",
 "Cardboard Connection",
@@ -11,10 +11,124 @@
 "items":[
 {
 "k":"football",
+"t":"Who am I? Plus today's other quizzes",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqy0el2jy17ro?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-16T06:23:57Z",
+"n":[
+"am",
+"brainteaser",
+"five",
+"plus",
+"test"
+]
+},
+{
+"k":"football",
+"t":"How did England cling on against Spain and what did Tuchel do differently?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6742l4z91lwo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-16T00:02:22Z",
+"n":[
+"england",
+"spain",
+"trying",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"60 minutes of perfection, 30 minutes of chaos - an England win for the ages",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c933ge310n33o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-15T23:52:43Z",
+"n":[
+"england",
+"mcnulty",
+"phil",
+"spain",
+"thomas",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"Three Lions’ win over Spain comes in two acts: the first superb, the second heroic | Sid Lowe",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/15/england-superb-heroic-spain-nations-league",
+"d":"2026-11-15T23:50:31Z",
+"n":[
+"burn",
+"dan",
+"england",
+"harry",
+"kane",
+"lions",
+"lowe",
+"sid",
+"spain",
+"three",
+"visitors"
+]
+},
+{
+"k":"football",
+"t":"Football Daily",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sounds/play/p0pn5rdk?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-15T23:16:00Z",
+"n":[
+"daily",
+"england",
+"nations",
+"reaction",
+"spain"
+]
+},
+{
+"k":"football",
+"t":"Thomas Tuchel offers verdict in battle for England’s No 1 spot after landmark win over Spain",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/thomas-tuchel-england-verdict-james-trafford-jordan-pickford-b3085345.html",
+"d":"2026-11-15T23:08:28Z",
+"n":[
+"england",
+"james",
+"jordan",
+"madrid",
+"pickford",
+"spain",
+"thomas",
+"trafford",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"Hopkins’ late stunner sends Kansas City past Gotham and into NWSL final",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/15/kansas-city-current-gotham-fc-nwsl-semi-final-haley-hopkins",
+"d":"2026-11-15T23:03:38Z",
+"n":[
+"bethune",
+"city",
+"current",
+"fc",
+"gotham",
+"hopkins",
+"kansas",
+"nwsl",
+"spirit",
+"washington",
+"york"
+]
+},
+{
+"k":"football",
 "t":"Spain vs England LIVE: Visitors hold on to secure famous win against world champions",
 "s":"The Independent",
 "u":"https://www.independent.co.uk/sport/football/spain-england-live-stream-score-result-nations-league-b3085204.html",
-"d":"2026-11-15T22:33:19Z",
+"d":"2026-11-15T23:03:17Z",
 "n":[
 "england",
 "live",
@@ -22,6 +136,20 @@
 "thomas",
 "tuchel",
 "visitors"
+]
+},
+{
+"k":"football",
+"t":"Papers: Guardiola to reject USA approach to replace Pochettino",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13612630/pep-guardiola-usa-approach-to-replace-mauricio-pochettino-to-be-rejected-by-ex-man-city-boss-paper-talk",
+"d":"2026-11-15T22:45:00Z",
+"n":[
+"guardiola",
+"monday",
+"papers",
+"pochettino",
+"usa"
 ]
 },
 {
@@ -48,6 +176,26 @@
 "england",
 "spain",
 "thomas",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"Is Trafford England's new No 1 after Spain heroics?",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13612624/james-trafford-has-leeds-goalkeeper-overtaken-jordan-pickford-as-englands-no-1-after-starring-display-against-spain",
+"d":"2026-11-15T22:20:00Z",
+"n":[
+"but",
+"do",
+"england",
+"james",
+"jordan",
+"pickford",
+"spain",
+"there",
+"thomas",
+"trafford",
 "tuchel"
 ]
 },
@@ -136,6 +284,20 @@
 "portugal",
 "spain",
 "thomas",
+"tuchel"
+]
+},
+{
+"k":"football",
+"t":"England talking points: Tuchel learns Argentina lesson as full-backs shine",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13612611/spain-2-3-england-talking-points-thomas-tuchel-learns-lessons-from-argentina-as-harry-kane-ben-white-and-lewis-hall-shine",
+"d":"2026-11-15T21:52:00Z",
+"n":[
+"argentina",
+"england",
+"madrid",
+"spain",
 "tuchel"
 ]
 },
@@ -821,13 +983,13 @@
 },
 {
 "k":"football",
-"t":"England latest: Tuchel speaks after famous win in Madrid",
+"t":"England latest: 'Complete performance' our best so far, says Tuchel",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/live-blog/11095/13427059/england-football-news-live-updates-schedule-and-analysis-of-thomas-tuchels-three-lions",
 "d":"2026-11-15T10:28:00Z",
 "n":[
+"complete",
 "england",
-"madrid",
 "tuchel"
 ]
 },
