@@ -318,7 +318,7 @@ function shareUrl(r){
   const body = `**${c[1]}** · ${r.par} ${num}\n${short(s.name)} · ${g.n} · ${cardNo(g, c[0])}\n\n` +
     (r.link ? `Proof link: ${r.link}\n\n` : '') + (r.note ? `> ${r.note}\n\n` : '') +
     `### Photos\n${proof}\n\n_Drag your photos into this box, then tap Submit. A moderator adds the **verified** label once the proof checks out._\n\n` +
-    `<!-- slabfolio-find\n${JSON.stringify(data)}\n-->\n<sub>Shared from Slabfolio ${APP_VERSION}. Please leave the hidden block above as it is.</sub>`;
+    `<!-- slabfolio-find\n${JSON.stringify(data)}\n-->\n<sub>Shared from Cappd ${APP_VERSION}. Please leave the hidden block above as it is.</sub>`;
   return `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(`Find: ${c[1]} ${r.par} ${num} (${short(s.name)})`)}&body=${encodeURIComponent(body)}`;
 }
 function badge(r){ return r.status === 'verified' ? `<span class="badge b-v">VERIFIED${r.auto ? ' · CERT' : ''}</span>` : r.status === 'pending' ? '<span class="badge b-p">PENDING</span>' : r.status === 'seen' ? '<span class="badge b-o">SEEN ON EBAY</span>' : `<span class="badge b-r">${r.fake ? 'FAKE' : 'REJECTED'}</span>`; }
@@ -418,7 +418,7 @@ function renderNews(){
     `<div class="sub" style="margin:16px 0 6px">Notable listings in your tracked sets</div>` + seenReports().map(itemHtml).join('');
   }
   const src = (NEWS.sources || []).join(', ');
-  return h + `<p class="sub">Headlines link to the publisher; Slabfolio never copies the article. Updated ${ago(NEWS.pulled) || esc(NEWS.pulled)}${src ? ' from ' + esc(src) : ''}. Refreshed every 6 hours.</p>`;
+  return h + `<p class="sub">Headlines link to the publisher; Cappd never copies the article. Updated ${ago(NEWS.pulled) || esc(NEWS.pulled)}${src ? ' from ' + esc(src) : ''}. Refreshed every 6 hours.</p>`;
 }
 function bindNews(a){
   a.querySelectorAll('[data-news]').forEach(el => el.onclick = () => { view.news = el.dataset.news; render(); });
@@ -575,7 +575,7 @@ function renderDash(){
   const news = forYou().slice(0, 3);
   const tb = Object.values(t.tones).reduce((a, b) => a + b, 0) || 1;
   const row = (c, right) => `<div class="crow" data-c="${esc(c.id)}"><div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div></div><div class="r">${right}</div></div>`;
-  return `<header class="top"><h1>Slabfolio</h1><button class="mini" data-act="bug">Report a bug</button></header>
+  return `<header class="top"><h1>Cappd</h1><button class="mini" data-act="bug">Report a bug</button></header>
   ${S.sampleCards ? `<div class="banner">You're looking at a <b>sample collection</b> with made-up prices. Import your Cards v2 sheet from <b>Me</b> to see your own.</div>` : ''}
   <div class="prof"><div class="sub">Collection value</div><div class="big">${sgd(t.value)}</div>
   <div class="sub">${t.n} cards you own · paid ${sgd(t.paid)} · <span class="${diff > 5 ? 'g' : diff < -5 ? 'rd' : 'o'}">${diff >= 0 ? '+' : ''}${sgd(diff)}</span></div>
@@ -655,7 +655,7 @@ function openC(id, mode){
     <label class="f">Status</label><select class="inp" name="status">${['Held', 'PC', 'To list', 'Listed', 'Sealed', 'Sold'].map(s => `<option ${s === c.status ? 'selected' : ''}>${s}</option>`).join('')}</select>
     <label class="f">Grading</label><select class="inp" name="stage">${['Raw', 'To be graded', 'At grader', 'Graded'].map(s => `<option ${(c.stage || 'Raw').startsWith(s) ? 'selected' : ''}>${s}</option>`).join('')}</select><button class="btn">Save</button></form>`;
   else if (mode === 'caro') { const txt = `${c.player} ${c.desc}${c.serial ? ' ' + c.serial : ''}${c.grade && c.grade !== 'Raw' ? ' ' + c.grade : ''}\n${money(c.ask) !== null ? 'S$' + money(c.ask) + ' ' : ''}(price negotiable)\nCondition: as pictured. Card sleeved and toploaded.\nMeet-up or mailing available.`;
-    h += `<label class="f">Carousell listing text</label><textarea class="inp" id="caro" style="min-height:120px">${esc(txt)}</textarea><button class="btn" data-copy>Copy text</button><div class="hint">Paste it into Carousell with your photos. Slabfolio never posts for you.</div>`; }
+    h += `<label class="f">Carousell listing text</label><textarea class="inp" id="caro" style="min-height:120px">${esc(txt)}</textarea><button class="btn" data-copy>Copy text</button><div class="hint">Paste it into Carousell with your photos. Cappd never posts for you.</div>`; }
   else {
     h += owned(c) ? `<div class="btns"><button class="btn ghost" data-mode="sale">Add a sale you saw</button><button class="btn ghost" data-mode="sold">Mark sold</button></div>
     <div class="btns"><button class="btn ghost" data-mode="edit" style="margin-top:8px">Edit</button><button class="btn ghost" data-mode="caro" style="margin-top:8px">Sell on Carousell</button></div>` : `<button class="btn ghost" data-mode="edit">Edit</button>`;
@@ -762,7 +762,7 @@ function renderMe(){
   <div class="switch"><span>Moderator mode<br><span class="sub">Lets you verify reports on this phone. Shared finds are verified with labels on GitHub.</span></span><button class="tog ${S.mod ? 'on' : ''}" id="mod"></button></div>
   <div class="switch"><span>Sample pull reports<br><span class="sub">Fills the registry with marked sample data</span></span><button class="pill" id="sample">${S.sampleLoaded ? 'Remove' : 'Load'}</button></div>
   <div class="switch"><span>Start over<br><span class="sub">Deletes everything in this app. Export first.</span></span><button class="pill" id="clear">Delete</button></div></div>
-  <p class="sub">Slabfolio test build ${APP_VERSION}. Checklists from collectosk.com and cardsmithsbreaks.com. Not affiliated with Topps, Panini or the leagues. Values are estimates, not financial advice.</p>`;
+  <p class="sub">Cappd test build ${APP_VERSION}. Checklists from collectosk.com and cardsmithsbreaks.com. Not affiliated with Topps, Panini or the leagues. Values are estimates, not financial advice.</p>`;
 }
 
 // ---------- grading calculator ----------
@@ -806,8 +806,8 @@ function bindApp(a){
   const ex = $('#exp'); if (ex) ex.onclick = () => { view.exp = !view.exp; view.rest = false; render(); };
   const rs = $('#restore'); if (rs) rs.onclick = () => { view.rest = !view.rest; view.exp = false; render(); };
   const ce = $('#copyexp'); if (ce) ce.onclick = async () => { const ta = $('#expt'); try { await navigator.clipboard.writeText(ta.value); toast('Copied. Paste it somewhere safe, like Notes.'); } catch (e) { ta.select(); toast('Select all the text and copy it'); } };
-  const se = $('#saveexp'); if (se) se.onclick = () => { const b = new Blob([JSON.stringify(S)], { type: 'application/json' }), u = URL.createObjectURL(b), l = document.createElement('a'); l.href = u; l.download = `slabfolio-backup-${new Date().toISOString().slice(0, 10)}.json`; l.click(); setTimeout(() => URL.revokeObjectURL(u), 1000); };
-  const rg = $('#restgo'); if (rg) rg.onclick = () => { try { const d = JSON.parse($('#restt').value); if (!Array.isArray(d.cards) || !Array.isArray(d.reports)) throw 0; S = d; S.comps = S.comps || {}; S.invAdded = S.invAdded || {}; view.rest = false; save(); render(); toast('Backup restored'); } catch (e) { toast('That is not a Slabfolio export'); } };
+  const se = $('#saveexp'); if (se) se.onclick = () => { const b = new Blob([JSON.stringify(S)], { type: 'application/json' }), u = URL.createObjectURL(b), l = document.createElement('a'); l.href = u; l.download = `cappd-backup-${new Date().toISOString().slice(0, 10)}.json`; l.click(); setTimeout(() => URL.revokeObjectURL(u), 1000); };
+  const rg = $('#restgo'); if (rg) rg.onclick = () => { try { const d = JSON.parse($('#restt').value); if (!Array.isArray(d.cards) || !Array.isArray(d.reports)) throw 0; S = d; S.comps = S.comps || {}; S.invAdded = S.invAdded || {}; view.rest = false; save(); render(); toast('Backup restored'); } catch (e) { toast('That is not a Cappd export'); } };
   const cl = $('#clear'); if (cl) cl.onclick = () => { if (cl.dataset.armed){ localStorage.removeItem(KEY); location.hash = ''; location.reload(); } else { cl.dataset.armed = 1; cl.textContent = 'Tap again'; } };
 }
 

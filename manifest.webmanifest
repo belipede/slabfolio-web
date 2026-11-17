@@ -1,6 +1,6 @@
 {
-  "name": "Slabfolio",
-  "short_name": "Slabfolio",
+  "name": "Cappd",
+  "short_name": "Cappd",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

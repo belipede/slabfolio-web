@@ -37,7 +37,7 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           git diff --quiet data/finds.json && exit 0
-          git config user.name 'slabfolio-bot'
+          git config user.name 'cappd-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/finds.json
           git commit -m 'Update shared Card Finder finds'
