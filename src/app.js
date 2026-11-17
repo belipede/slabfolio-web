@@ -3,16 +3,20 @@ const SEEN = __SEEN__;
 let NEWS = __NEWS__;   // snapshot from build time; refreshData() swaps in the latest data/news.json
 let FINDS = { finds: [], penalties: {} };   // shared finds from GitHub issues, loaded from data/finds.json
 const SAMPLE_CARDS = __SAMPLE_CARDS__;
-const APP_VERSION = '0.2 (7 Nov 2026)';
+const APP_VERSION = '0.3 (17 Nov 2026)';
 const REPO = 'belipede/slabfolio-web';
 
 // ---------- storage ----------
 const KEY = 'slabfolio-web-v1';
 function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || null }catch(e){ return null } }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)) }catch(e){} }
+function save(quiet){
+  if (!quiet) S.changedAt = Date.now();
+  try{ localStorage.setItem(KEY, JSON.stringify(S)); return true }
+  catch(e){ toast('This phone\'s app storage is full. Remove some photos, or export a backup and start over.'); return false }
+}
 let S = load() || { user:'ben', reports:[], mod:true, monthsEarned:{}, sampleLoaded:false };
 if (!S.cards){ S.cards = SAMPLE_CARDS.map(c => ({ ...c })); S.sampleCards = true; }
-S.comps = S.comps || {}; S.invAdded = S.invAdded || {};
+S.comps = S.comps || {}; S.invAdded = S.invAdded || {}; S.photos = S.photos || {};
 
 // ---------- helpers ----------
 const $ = s => document.querySelector(s);
@@ -66,8 +70,8 @@ const myShared = () => { const gh = (S.gh || '').toLowerCase(); return gh ? shar
 
 // ---------- state / routing ----------
 let view = { tab: 'home', cq: '', cseg: 'owned', cf: '', csort: 'value', cmore: 60, set: null, grp: 0, par: 0, q: '', filter: 'all', news: 'football', np: '' };
-const ROUTES = ['home','cards','hunt','news','feed','review','me','scan','grade'];
-const NAV_OF = { feed: 'hunt', review: 'hunt', scan: 'hunt', grade: 'me' };
+const ROUTES = ['home','cards','display','comps','hunt','news','feed','review','me','scan','grade'];
+const NAV_OF = { feed: 'hunt', review: 'hunt', scan: 'hunt', grade: 'me', comps: 'cards' };
 function go(tab){ closeSheet(); view.tab = tab; if (tab !== 'hunt') view.set = null; location.hash = tab; render(); window.scrollTo(0,0); }
 window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (h && h !== view.tab && ROUTES.includes(h)){ view.tab = h; view.set = null; render(); } });
 document.querySelectorAll('nav.tabs button').forEach(b => b.onclick = () => go(b.dataset.tab));
@@ -77,6 +81,8 @@ function render(){
   const a = $('#app');
   if (view.tab === 'home') a.innerHTML = renderDash();
   else if (view.tab === 'cards') a.innerHTML = renderCards();
+  else if (view.tab === 'display') a.innerHTML = renderDisplay();
+  else if (view.tab === 'comps') a.innerHTML = renderComps();
   else if (view.tab === 'grade') a.innerHTML = renderGrade();
   else if (view.tab === 'hunt') a.innerHTML = view.set ? renderSet() : renderHunt();
   else if (view.tab === 'feed') a.innerHTML = renderFeed();
@@ -113,9 +119,11 @@ function sbar(t, total){
   const w = n => n ? Math.max(.8, pct(n, total)).toFixed(2) : 0;
   return `<div class="sbar"><i style="width:${w(t.v)}%;background:var(--ok)"></i><i style="width:${w(t.p)}%;background:var(--pend)"></i><i style="width:${w(t.s)}%;background:var(--seen)"></i></div>`;
 }
+// early on the share found is tiny, so lead with the count; the percentage and bar only show once they mean something (1% or more)
 function progHtml(t, label, noOnes){
-  return `<div class="prog"><div class="pl"><span>${label}</span><b>${t.found.toLocaleString()} of ${t.slots.toLocaleString()} · ${pctTxt(t.found, t.slots)}</b></div>${sbar(t, t.slots)}
-  ${t.ones && !noOnes ? `<div class="pl" style="margin-top:8px"><span>1/1s found</span><b>${t.onesF} of ${t.ones} · ${pctTxt(t.onesF, t.ones)}</b></div><div class="sbar"><i style="width:${t.onesF ? Math.max(.8, pct(t.onesF, t.ones)).toFixed(2) : 0}%;background:var(--accent)"></i></div>` : ''}</div>`;
+  const line = (n, of) => pct(n, of) >= 1 ? `<b>${n.toLocaleString()} of ${of.toLocaleString()} · ${pctTxt(n, of)}</b>` : `<b>${n.toLocaleString()} <span class="sub" style="font-weight:400">of ${of.toLocaleString()} tracked</span></b>`;
+  return `<div class="prog"><div class="pl"><span>${label}</span>${line(t.found, t.slots)}</div>${pct(t.found, t.slots) >= 1 ? sbar(t, t.slots) : ''}
+  ${t.ones && !noOnes ? `<div class="pl" style="margin-top:8px"><span>1/1s found</span>${line(t.onesF, t.ones)}</div>${pct(t.onesF, t.ones) >= 1 ? `<div class="sbar"><i style="width:${pct(t.onesF, t.ones).toFixed(2)}%;background:var(--accent)"></i></div>` : ''}` : ''}</div>`;
 }
 function renderHunt(){
   const idx = slotIndex();
@@ -263,10 +271,10 @@ function openReport(pre){
     toast(r.status === 'verified' ? 'Verified by cert check (simulated)' : r.dupOf ? 'Reported. Someone already reported this copy, so a moderator will compare both.' : 'Reported. It shows as pending until reviewed.');
   };
 }
-function shrink(file){
+function shrink(file, max = 800, q = .7){
   return new Promise(res => { if (!file) return res(''); const fr = new FileReader(); fr.onload = () => { const img = new Image(); img.onload = () => {
-    const k = Math.min(1, 800 / Math.max(img.width, img.height)), c = document.createElement('canvas'); c.width = img.width * k; c.height = img.height * k;
-    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', .7)); }; img.src = fr.result; }; fr.readAsDataURL(file); });
+    const k = Math.min(1, max / Math.max(img.width, img.height)), c = document.createElement('canvas'); c.width = img.width * k; c.height = img.height * k;
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', q)); }; img.src = fr.result; }; fr.readAsDataURL(file); });
 }
 
 // ---------- verification + points ----------
@@ -582,7 +590,8 @@ function renderDash(){
   <div class="sbar" style="height:10px;margin-top:12px">${['g', 'o', 'rd', 'pu', 'nt'].map(k => `<i style="width:${pct(t.tones[k], tb)}%;background:${{ g: 'var(--ok)', o: 'var(--pend)', rd: 'var(--bad)', pu: '#b18cff', nt: 'var(--line)' }[k]}"></i>`).join('')}</div>
   <div class="legend2"><span style="--c:var(--ok)">${t.tones.g} up</span><span style="--c:var(--pend)">${t.tones.o} flat</span><span style="--c:var(--bad)">${t.tones.rd} down</span><span style="--c:#b18cff">${t.tones.pu} your value</span>${t.tones.nt ? `<span style="--c:var(--line)">${t.tones.nt} no price</span>` : ''}</div>
   <div class="kpis"><div><b>${sgd(t.spent)}</b><span>spent</span></div><div><b>${sgd(t.got)}</b><span>received</span></div><div><b class="${t.got - t.spent >= 0 ? 'g' : 'rd'}">${sgd(t.got - t.spent)}</b><span>net cash</span></div></div></div>
-  ${t.needs ? `<div class="item" data-go="cards" data-cf="needs" style="cursor:pointer"><div class="t">${t.needs} ${t.needs === 1 ? 'hit needs' : 'hits need'} a comp</div><div class="m">They show your own value in purple until you log a real sale. Tap to see them.</div></div>` : ''}
+  ${backupDue() ? `<div class="item warn" data-act="backup" style="cursor:pointer"><div class="t">Back up your collection</div><div class="m">${backupWhen()} Your cards, photos and sales only live on this phone, so a lost or reset phone loses them. Tap to export a copy.</div></div>` : ''}
+  ${t.needs ? `<div class="item" data-go="comps" style="cursor:pointer"><div class="t">${t.needs} ${t.needs === 1 ? 'hit needs' : 'hits need'} a comp</div><div class="m">They show your own value in purple until you log a real sale. Tap to start a comp sprint: one card at a time, straight to eBay sold.</div></div>` : ''}
   ${moves.length ? `<div class="sec">Biggest gains</div>${moves.slice(0, 3).filter(m => m.d > 0).map(m => row(m.c, `<b class="g">+${sgd(m.d)}</b><span>${sgd(val(m.c).v)}</span>`)).join('') || '<div class="sub">None yet.</div>'}
   <div class="sec">Biggest drops</div>${moves.slice(-3).reverse().filter(m => m.d < 0).map(m => row(m.c, `<b class="rd">${sgd(m.d)}</b><span>${sgd(val(m.c).v)}</span>`)).join('') || '<div class="sub">None yet.</div>'}` : ''}
   ${sold.length ? `<div class="sec">Latest sales</div>${sold.map(c => { const p = profitSold(c); return row(c, `<b>${sgd(money(c.sold))}</b><span class="${p >= 0 ? 'g' : 'rd'}">${p >= 0 ? '+' : ''}${sgd(p)}</span>`); }).join('')}` : ''}
@@ -617,11 +626,12 @@ function renderCards(){
   <div class="pills">${CFILTERS.map(([k, n]) => `<button class="pill ${view.cf === k ? 'on' : ''}" data-cf="${k}">${n}</button>`).join('')}</div>
   <div class="row" style="align-items:center"><span class="sub" style="flex:1">${list.length} cards${S.sampleCards ? ' · sample collection' : ''}</span>
   <select class="mini" id="csort">${[['value', 'Value, high to low'], ['low', 'Value, low to high'], ['profit', 'Profit'], ['id', 'Newest']].map(([k, n]) => `<option value="${k}" ${view.csort === k ? 'selected' : ''}>${n}</option>`).join('')}</select></div>`;
+  if (view.cf === 'needs' && list.length) h += `<button class="btn" data-go="comps" style="margin:0 0 10px">Start a comp sprint (${compQueue().length} cards)</button>`;
   for (const c of list.slice(0, view.cmore)){
     let right;
     if (owned(c)){ const x = val(c); right = `<b class="${tone(c)}">${sgd(x.v)}</b><span>${esc(c.status)}${money(c.cost) !== null ? ' · paid ' + sgd(money(c.cost)) : ''}</span>`; }
     else { const p = profitSold(c); right = `<b>${sgd(money(c.sold))}</b><span class="${p === null ? '' : p >= 0 ? 'g' : 'rd'}">${p === null ? 'Sold' : (p >= 0 ? '+' : '') + sgd(p)}</span>`; }
-    h += `<div class="crow" data-c="${esc(c.id)}"><div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div>
+    h += `<div class="crow" data-c="${esc(c.id)}">${thumbHtml(c)}<div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div>
     <div style="margin-top:3px">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div></div><div class="r">${right}</div></div>`;
   }
   if (list.length > view.cmore) h += `<button class="btn ghost" data-act="more">Show ${Math.min(60, list.length - view.cmore)} more</button>`;
@@ -635,13 +645,19 @@ function openC(id, mode){
   const c = S.cards.find(x => x.id === id); if (!c) return;
   const x = val(c), cost = money(c.cost), comps = compsOf(c), m = matchInv(c.line, c.desc, c.player, c.serial);
   const dl = (k, v) => v === null || v === undefined || v === '' ? '' : `<dt>${k}</dt><dd>${v}</dd>`;
-  let h = `<h2>${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}${c.id && !/^S\d/.test(c.id) ? ' · ' + esc(c.id) : ''}</div>
+  const phs = photosOf(c), editing = mode === 'photos';
+  let h = `<div class="phs">${phs.map((u, i) => `<div class="ph"><img src="${esc(u)}" alt="">${editing ? `<button class="phx" data-rmph="${i}" aria-label="Remove photo">×</button>` : ''}</div>`).join('')}
+  ${phs.length < MAX_PHOTOS ? `<label class="ph add"><input type="file" accept="image/*" id="phin" hidden><span>+</span>${phs.length ? 'Add photo' : 'Add a photo of the front'}</label>` : ''}</div>
+  ${phs.length && !editing ? `<button class="mini" data-mode="photos" style="margin-bottom:8px">Remove photos</button>` : ''}
+  <h2>${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}${c.id && !/^S\d/.test(c.id) ? ' · ' + esc(c.id) : ''}</div>
   <div style="margin-top:8px">${cardTags(c).map(t => `<span class="tag">${esc(t)}</span>`).join('')}<span class="tag">${esc(c.status)}</span></div>
   <dl class="kv">${owned(c) ? dl('Value', `<b class="${tone(c)}">${sgd(x.v)}</b>`) + dl('Based on', `<span class="sub">${esc(x.src)}</span>`) : dl('Sold for', sgd(money(c.sold))) + dl('Sold', esc([c.soldDate, c.channel].filter(Boolean).join(' · ')))}
   ${dl('Paid', cost === null ? null : sgd(cost))}${owned(c) && x.v !== null && cost !== null ? dl('Up / down', `<span class="${tone(c)}">${x.v - cost >= 0 ? '+' : ''}${sgd(x.v - cost)}</span>`) : ''}
   ${!owned(c) && profitSold(c) !== null ? dl('Profit', `<span class="${profitSold(c) >= 0 ? 'g' : 'rd'}">${sgd(profitSold(c))}</span>`) : ''}
   ${dl('Asking', money(c.ask) === null ? null : sgd(money(c.ask)))}${dl('Grading', c.stage && c.stage !== 'Raw' ? esc(c.stage) : null)}</dl>
-  <div class="links"><a href="${ebaySold(c)}" target="_blank" rel="noopener">eBay sold ↗</a><a href="https://130point.com/sales/" target="_blank" rel="noopener">130point ↗</a></div>`;
+  ${owned(c) ? `<a class="btn${x.kind === 'sold' ? ' ghost' : ''}" data-ebay href="${ebaySold(c)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Check eBay sold ↗</a>` : ''}
+  <div class="links"><a href="https://130point.com/sales/" target="_blank" rel="noopener">130point ↗</a>${owned(c) ? '' : `<a href="${ebaySold(c)}" target="_blank" rel="noopener">eBay sold ↗</a>`}</div>
+  <div class="switch" style="border:0;padding:12px 0 0"><span>Show on Display<br><span class="sub">${{ sale: 'Under For sale', pc: 'Under PC', sold: 'Under Sold' }[dispGroup(c)]}</span></span><button class="tog ${c.hideDisp ? '' : 'on'}" id="dtog"></button></div>`;
   if (comps.length) h += `<label class="f">Sales you logged</label>` + comps.map(s => `<div class="item"><div class="t">${sgd(s.p)}</div><div class="m">${esc(s.s)}${s.d ? ' · ' + esc(s.d) : ''}</div></div>`).join('');
   if (mode === 'sale') h += `<form id="cf"><label class="f">Sale price (S$, the price it actually sold for)</label><input class="inp" name="p" inputmode="decimal" required>
     <label class="f">Date sold</label><input class="inp" name="d" type="date" value="${new Date().toISOString().slice(0, 10)}">
@@ -657,6 +673,7 @@ function openC(id, mode){
   else if (mode === 'caro') { const txt = `${c.player} ${c.desc}${c.serial ? ' ' + c.serial : ''}${c.grade && c.grade !== 'Raw' ? ' ' + c.grade : ''}\n${money(c.ask) !== null ? 'S$' + money(c.ask) + ' ' : ''}(price negotiable)\nCondition: as pictured. Card sleeved and toploaded.\nMeet-up or mailing available.`;
     h += `<label class="f">Carousell listing text</label><textarea class="inp" id="caro" style="min-height:120px">${esc(txt)}</textarea><button class="btn" data-copy>Copy text</button><div class="hint">Paste it into Carousell with your photos. Displayd never posts for you.</div>`; }
   else {
+    if (editing) h += `<button class="btn" data-mode="">Done</button>`;
     h += owned(c) ? `<div class="btns"><button class="btn ghost" data-mode="sale">Add a sale you saw</button><button class="btn ghost" data-mode="sold">Mark sold</button></div>
     <div class="btns"><button class="btn ghost" data-mode="edit" style="margin-top:8px">Edit</button><button class="btn ghost" data-mode="caro" style="margin-top:8px">Sell on Carousell</button></div>` : `<button class="btn ghost" data-mode="edit">Edit</button>`;
     if (owned(c) && m.out) h += `<button class="btn" data-act="toscan">This card is on the pull registry · report it</button>`;
@@ -664,6 +681,10 @@ function openC(id, mode){
   openSheet(h);
   const sh = $('#sheet');
   sh.querySelectorAll('[data-mode]').forEach(el => el.onclick = () => openC(id, el.dataset.mode));
+  const pin = $('#phin'); if (pin) pin.onchange = () => addPhoto(id, pin.files[0]);
+  sh.querySelectorAll('[data-rmph]').forEach(el => el.onclick = () => removePhoto(id, +el.dataset.rmph));
+  const eb = sh.querySelector('[data-ebay]'); if (eb) eb.addEventListener('click', () => setTimeout(() => openC(id, 'sale'), 400));
+  const dt = $('#dtog'); if (dt) dt.onclick = () => { c.hideDisp = !c.hideDisp; save(); render(); openC(id, mode); };
   const ts = sh.querySelector('[data-act=toscan]'); if (ts) ts.onclick = () => { closeSheet(); go('scan'); };
   const cp = sh.querySelector('[data-copy]'); if (cp) cp.onclick = async () => { const ta = $('#caro'); try { await navigator.clipboard.writeText(ta.value); toast('Copied'); } catch (e) { ta.select(); toast('Select the text and copy it'); } };
   const f = $('#cf'); if (f) f.onsubmit = e => {
@@ -691,6 +712,102 @@ function openAdd(){
     S.cards.unshift(c); save(); closeSheet(); render(); toast('Card added');
   };
 }
+
+// ---------- photos ----------
+// Photos you add are shrunk and kept on this phone with the rest of your data. Cards from the public Display page come with their photos.
+const PHOTO_DIR = 'display/img/';
+const BUILTIN_PHOTOS = { C0083: ['gray-1', 'gray-2', 'gray-3'], C0159: ['schweini-1', 'schweini-2', 'schweini-3'], C0376: ['emi-1'], C0394: ['moore-rev-1', 'moore-rev-2'],
+  C0402: ['vitinha-1', 'vitinha-2'], C0471: ['spurs-1', 'spurs-2'], C0465: ['yamal-1', 'yamal-2'], C0406: ['casado-1', 'casado-2'], C0388: ['neymar-1', 'neymar-2'],
+  C0403: ['moore-sq-1', 'moore-sq-2'], C0391: ['acuna-1', 'acuna-2'], C0405: ['porro-1', 'porro-2'], S02: ['emi-1'], S05: ['gray-1', 'gray-2', 'gray-3'] };
+const MAX_PHOTOS = 4;
+const photosOf = c => S.photos[c.id] ? S.photos[c.id] : (BUILTIN_PHOTOS[c.id] || []).map(n => PHOTO_DIR + n + '.webp');
+const initials = c => (c.player || '?').split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+const thumbHtml = c => { const ph = photosOf(c)[0]; return `<div class="cth">${ph ? `<img src="${esc(ph)}" alt="" loading="lazy">` : `<span>${esc(initials(c))}</span>`}</div>`; };
+async function addPhoto(id, file){
+  const c = S.cards.find(x => x.id === id); if (!c || !file) return;
+  const list = photosOf(c).slice(); if (list.length >= MAX_PHOTOS) return toast(`Up to ${MAX_PHOTOS} photos a card`);
+  const d = await shrink(file, 700, .68); if (!d) return;
+  const before = S.photos[id]; S.photos[id] = list.concat(d);
+  if (!save()){ if (before) S.photos[id] = before; else delete S.photos[id]; return; }
+  toast('Photo added'); render(); openC(id, 'photos');
+}
+function removePhoto(id, i){
+  const c = S.cards.find(x => x.id === id); if (!c) return;
+  const list = photosOf(c).slice(); list.splice(i, 1); S.photos[id] = list; save(); render(); openC(id, 'photos');
+}
+
+// ---------- display (your cards as a photo showcase) ----------
+const forSale = c => owned(c) && (/to list|listed/i.test(c.status) || (money(c.ask) !== null && c.status !== 'PC'));
+const dispGroup = c => !owned(c) ? 'sold' : forSale(c) ? 'sale' : 'pc';
+const dispPrice = c => { const g = dispGroup(c);
+  if (g === 'sale') return money(c.ask) !== null ? sgd(money(c.ask)) : 'Make an offer';
+  if (g === 'sold') return money(c.sold) !== null ? 'Sold ' + sgd(money(c.sold)) : 'Sold';
+  return val(c).v !== null ? sgd(val(c).v) : ''; };
+function saleText(){
+  const list = S.cards.filter(c => dispGroup(c) === 'sale' && !c.hideDisp);
+  return `Cards for sale (${list.length})\n\n` + list.map((c, i) => `${i + 1}. ${c.player} · ${[cardLine(c), c.serial, c.grade && c.grade !== 'Raw' ? c.grade : ''].filter(Boolean).join(' · ')} · ${dispPrice(c)}`).join('\n')
+    + `\n\nPrices negotiable. Bundle discounts available. DM to buy. Meet-up or mailing in Singapore.`;
+}
+function renderDisplay(){
+  const g = view.dg || 'sale', all = S.cards.filter(c => dispGroup(c) === g), list = all.filter(c => view.dhidden || !c.hideDisp);
+  const n = k => S.cards.filter(c => dispGroup(c) === k && !c.hideDisp).length, noPh = list.filter(c => !photosOf(c).length).length, hid = all.filter(c => c.hideDisp).length;
+  list.sort((a, b) => (photosOf(b).length ? 1 : 0) - (photosOf(a).length ? 1 : 0) || (val(b).v ?? money(b.sold) ?? 0) - (val(a).v ?? money(a.sold) ?? 0));
+  let h = `<header class="top"><h1>Display</h1>${g === 'sale' && n('sale') ? `<button class="mini acc" data-act="saletext">Copy sale post</button>` : ''}</header>
+  <div class="sub" style="margin:-6px 2px 12px">Your cards as a photo showcase, sorted into For sale, PC and Sold from your collection. Tap a card to add photos or hide it.</div>
+  <div class="seg wide" style="margin-bottom:12px">${[['sale', 'For sale'], ['pc', 'PC'], ['sold', 'Sold']].map(([k, l]) => `<button data-dg="${k}" class="${g === k ? 'on' : ''}">${l} (${n(k)})</button>`).join('')}</div>`;
+  if (!list.length) h += `<div class="empty">${g === 'sale' ? 'Nothing for sale yet. Give a card an asking price, or set its status to To list.' : g === 'pc' ? 'No PC cards yet.' : 'Nothing sold yet.'}</div>`;
+  h += `<div class="dgrid">` + list.map(c => { const ph = photosOf(c)[0];
+    return `<button class="dtile${c.hideDisp ? ' hid' : ''}" data-c="${esc(c.id)}"><div class="dimg">${ph ? `<img src="${esc(ph)}" alt="" loading="lazy">` : `<span class="noph">${esc(initials(c))}<small>+ Add photo</small></span>`}
+    ${c.serial ? `<span class="dbadge">${esc(c.serial)}</span>` : ''}${c.grade && c.grade !== 'Raw' ? `<span class="dbadge gr">${esc(c.grade)}</span>` : ''}</div>
+    <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'pu' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
+  if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Cards with photos show first.</p>`;
+  if (hid) h += `<button class="btn ghost" data-act="dhidden">${view.dhidden ? 'Hide' : 'Show'} ${hid} hidden ${hid === 1 ? 'card' : 'cards'}</button>`;
+  return h + `<p class="sub">Only you see this for now. A public link you can put in your bio comes with accounts at launch.</p>`;
+}
+
+// ---------- comp sprint: log real sold prices for cards that only have your own value ----------
+const USD_SGD = 1.28;
+const compQueue = () => S.cards.filter(c => owned(c) && val(c).kind !== 'sold' && (isHit(c) || money(c.ask) !== null || money(c.cost) >= 20))
+  .sort((a, b) => ((money(b.ask) ?? money(b.cost) ?? 0) - (money(a.ask) ?? money(a.cost) ?? 0)));
+function renderComps(){
+  const skip = view.cskip || (view.cskip = new Set()), q = compQueue(), left = q.filter(c => !skip.has(c.id)), c = left[0], done = view.cdone || 0;
+  let h = `<header class="top"><button class="back" data-go="cards">‹ Collection</button></header><h1 style="margin:0 0 4px;font-size:22px">Comp sprint</h1>
+  <div class="sub">One card at a time: check what it last sold for on eBay, type it in, next. Exact matches only (same parallel, print run and grade).</div>
+  <div class="prog" style="margin:14px 0"><div class="pl"><span>${done} logged this sprint · ${skip.size} skipped</span><b>${left.length} to go</b></div><div class="bar"><i style="width:${pct(done + skip.size, done + q.length)}%;background:var(--accent)"></i></div></div>`;
+  if (!c) return h + `<div class="empty">${q.length ? 'You skipped the rest. ' : 'Every card has a real sale logged. '}Nice work.</div>${skip.size ? `<button class="btn ghost" data-act="unskip">Go through the skipped ones again</button>` : ''}`;
+  const ph = photosOf(c)[0];
+  return h + `<div class="prof">${ph ? `<img class="cimg" src="${esc(ph)}" alt="">` : ''}<h2 style="margin:0;font-size:19px">${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}</div>
+  <div style="margin-top:6px">${cardTags(c).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+  <dl class="kv"><dt>Your value now</dt><dd class="pu">${sgd(val(c).v)}</dd>${money(c.cost) !== null ? `<dt>Paid</dt><dd>${sgd(money(c.cost))}</dd>` : ''}</dl>
+  <a class="btn" href="${ebaySold(c)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Check eBay sold ↗</a>
+  <div class="links" style="justify-content:center"><a href="https://130point.com/sales/" target="_blank" rel="noopener">130point ↗</a><a href="https://www.carousell.sg/search/${encodeURIComponent(c.player + ' ' + (c.serial || c.desc))}" target="_blank" rel="noopener">Carousell ↗</a></div>
+  <form id="sprint"><label class="f">Latest exact sale</label><div class="btns"><input class="inp" name="p" inputmode="decimal" placeholder="e.g. 42.50" style="flex:2">
+  <select class="inp" name="cur" style="flex:1"><option value="sgd">S$</option><option value="usd" ${view.ccur === 'usd' ? 'selected' : ''}>US$</option></select></div>
+  <div class="btns"><div style="flex:1"><label class="f">Date sold</label><input class="inp" name="d" type="date" value="${new Date().toISOString().slice(0, 10)}"></div>
+  <div style="flex:1"><label class="f">Where</label><select class="inp" name="s"><option>eBay sold</option><option>130point</option><option>Carousell</option><option>Facebook group</option></select></div></div>
+  <div class="hint">US$ is converted at ${USD_SGD} to S$. Leave out shipping.</div>
+  <div class="btns"><button class="btn ghost" type="button" data-act="skip">No sale found, skip</button><button class="btn">Save and next</button></div></form></div>`;
+}
+function bindComps(a){
+  const f = a.querySelector('#sprint'), skip = view.cskip;
+  if (f) f.onsubmit = e => { e.preventDefault(); let p = money(f.p.value); if (p === null) return toast('Type the sold price, or skip');
+    view.ccur = f.cur.value; if (f.cur.value === 'usd') p = Math.round(p * USD_SGD * 100) / 100;
+    const c = compQueue().find(x => !skip.has(x.id)); (S.comps[c.id] = S.comps[c.id] || []).push({ p, d: f.d.value, s: f.s.value }); save();
+    view.cdone = (view.cdone || 0) + 1; toast(`${c.player}: ${sgd(p)} saved`); render(); window.scrollTo(0, 0); };
+  a.querySelectorAll('[data-act=skip]').forEach(el => el.onclick = () => { const c = compQueue().find(x => !skip.has(x.id)); skip.add(c.id); render(); window.scrollTo(0, 0); });
+  a.querySelectorAll('[data-act=unskip]').forEach(el => el.onclick = () => { skip.clear(); render(); });
+}
+
+// ---------- backup reminder ----------
+const DAY = 864e5;
+const daysAgo = t => Math.floor((Date.now() - t) / DAY);
+function backupDue(){
+  if (S.sampleCards || !S.changedAt) return false;
+  if (S.backupAt && S.backupAt >= S.changedAt) return false;
+  return Date.now() - (S.backupAt || S.importAt || S.changedAt) > 7 * DAY;
+}
+const backupWhen = () => S.backupAt ? `Last backup ${daysAgo(S.backupAt) ? daysAgo(S.backupAt) + (daysAgo(S.backupAt) === 1 ? ' day' : ' days') + ' ago' : 'today'}.` : 'No backup yet.';
+const markBackup = () => { S.backupAt = Date.now(); save(true); };
 
 // ---------- import / export ----------
 function parseCSV(t){
@@ -725,7 +842,7 @@ function importRows(rows){
 function doImport(text){
   const cards = importRows(parseCSV(text));
   if (!cards || !cards.length) return toast('Could not read that. Use the Inventory tab saved as CSV.');
-  S.cards = cards; S.sampleCards = false; S.invAdded = {}; save(); render();
+  S.cards = cards; S.sampleCards = false; S.invAdded = {}; S.importAt = S.importAt || Date.now(); save(); render();
   toast(`Imported ${cards.length} cards · ${cards.filter(owned).length} owned`);
 }
 
@@ -741,7 +858,7 @@ function renderMe(){
   <textarea class="inp" id="csvtext" style="margin-top:8px" placeholder="…or paste CSV here"></textarea>
   <button class="btn" id="csvgo">Import</button>
   ${S.sampleCards ? '' : `<button class="btn ghost" id="usesample">Go back to the sample collection</button>`}</div>
-  <div class="prof"><b>Back up</b><div class="sub" style="margin-top:4px">Your sales, reports and edits only live in this app. Export now and then and keep the copy in Notes or Files.</div>
+  <div class="prof"><b>Back up</b><div class="sub" style="margin-top:4px">Your cards, photos, sales and reports only live in this app. Export now and then and keep the copy in Files or Google Drive. ${S.sampleCards ? '' : `<b class="${backupDue() ? 'rd' : ''}">${backupWhen()}</b>`}</div>
   <div class="btns"><button class="btn ghost" id="exp">${view.exp ? 'Hide' : 'Export data'}</button><button class="btn ghost" id="restore">Restore</button></div>
   ${view.exp ? `<textarea class="inp" id="expt" readonly style="margin-top:8px">${esc(JSON.stringify(S))}</textarea><div class="btns"><button class="btn" id="copyexp">Copy</button><button class="btn ghost" id="saveexp">Save as file</button></div>` : ''}
   ${view.rest ? `<textarea class="inp" id="restt" style="margin-top:8px" placeholder="Paste an export here"></textarea><button class="btn" id="restgo">Restore this backup</button>` : ''}</div>
@@ -797,6 +914,11 @@ function bindApp(a){
   a.querySelectorAll('[data-act=bug]').forEach(el => el.onclick = () => window.open(bugUrl(), '_blank'));
   a.querySelectorAll('[data-act=addcard]').forEach(el => el.onclick = openAdd);
   a.querySelectorAll('[data-act=more]').forEach(el => el.onclick = () => { view.cmore += 60; render(); });
+  a.querySelectorAll('[data-dg]').forEach(el => el.onclick = () => { view.dg = el.dataset.dg; render(); });
+  a.querySelectorAll('[data-act=dhidden]').forEach(el => el.onclick = () => { view.dhidden = !view.dhidden; render(); });
+  a.querySelectorAll('[data-act=saletext]').forEach(el => el.onclick = async () => { try { await navigator.clipboard.writeText(saleText()); toast('Sale post copied. Paste it into Instagram, Facebook or Carousell.'); } catch (e) { openSheet(`<h2>Sale post</h2><textarea class="inp" style="min-height:220px">${esc(saleText())}</textarea><div class="hint">Select all and copy.</div>`); } });
+  a.querySelectorAll('[data-act=backup]').forEach(el => el.onclick = () => { view.exp = true; view.rest = false; go('me'); const t = $('#expt'); if (t) t.scrollIntoView({ block: 'center' }); });
+  bindComps(a);
   a.querySelectorAll('[data-graw]').forEach(el => el.onclick = () => { const c = S.cards.find(x => x.id === el.dataset.graw); view.g.raw = String(val(c).v ?? ''); render(); });
   const cs = $('#csort'); if (cs) cs.onchange = () => { view.csort = cs.value; render(); };
   const cq = $('#cq'); if (cq) cq.oninput = () => { view.cq = cq.value; view.cmore = 60; const pos = cq.selectionStart; render(); const n = $('#cq'); n.focus(); n.setSelectionRange(pos, pos); };
@@ -805,9 +927,9 @@ function bindApp(a){
   const us = $('#usesample'); if (us) us.onclick = () => { S.cards = SAMPLE_CARDS.map(c => ({ ...c })); S.sampleCards = true; save(); render(); toast('Sample collection back'); };
   const ex = $('#exp'); if (ex) ex.onclick = () => { view.exp = !view.exp; view.rest = false; render(); };
   const rs = $('#restore'); if (rs) rs.onclick = () => { view.rest = !view.rest; view.exp = false; render(); };
-  const ce = $('#copyexp'); if (ce) ce.onclick = async () => { const ta = $('#expt'); try { await navigator.clipboard.writeText(ta.value); toast('Copied. Paste it somewhere safe, like Notes.'); } catch (e) { ta.select(); toast('Select all the text and copy it'); } };
-  const se = $('#saveexp'); if (se) se.onclick = () => { const b = new Blob([JSON.stringify(S)], { type: 'application/json' }), u = URL.createObjectURL(b), l = document.createElement('a'); l.href = u; l.download = `displayd-backup-${new Date().toISOString().slice(0, 10)}.json`; l.click(); setTimeout(() => URL.revokeObjectURL(u), 1000); };
-  const rg = $('#restgo'); if (rg) rg.onclick = () => { try { const d = JSON.parse($('#restt').value); if (!Array.isArray(d.cards) || !Array.isArray(d.reports)) throw 0; S = d; S.comps = S.comps || {}; S.invAdded = S.invAdded || {}; view.rest = false; save(); render(); toast('Backup restored'); } catch (e) { toast('That is not a Displayd export'); } };
+  const ce = $('#copyexp'); if (ce) ce.onclick = async () => { const ta = $('#expt'); try { await navigator.clipboard.writeText(ta.value); markBackup(); toast('Copied. Paste it somewhere safe, like Notes.'); } catch (e) { ta.select(); toast('Select all the text and copy it'); } };
+  const se = $('#saveexp'); if (se) se.onclick = () => { const b = new Blob([JSON.stringify(S)], { type: 'application/json' }), u = URL.createObjectURL(b), l = document.createElement('a'); l.href = u; l.download = `displayd-backup-${new Date().toISOString().slice(0, 10)}.json`; l.click(); markBackup(); render(); setTimeout(() => URL.revokeObjectURL(u), 1000); };
+  const rg = $('#restgo'); if (rg) rg.onclick = () => { try { const d = JSON.parse($('#restt').value); if (!Array.isArray(d.cards) || !Array.isArray(d.reports)) throw 0; S = d; S.comps = S.comps || {}; S.invAdded = S.invAdded || {}; S.photos = S.photos || {}; view.rest = false; S.backupAt = Date.now(); save(true); render(); toast('Backup restored'); } catch (e) { toast('That is not a Displayd export'); } };
   const cl = $('#clear'); if (cl) cl.onclick = () => { if (cl.dataset.armed){ localStorage.removeItem(KEY); location.hash = ''; location.reload(); } else { cl.dataset.armed = 1; cl.textContent = 'Tap again'; } };
 }
 
