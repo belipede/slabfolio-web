@@ -1,6 +1,6 @@
 {
-  "name": "Displayd",
-  "short_name": "Displayd",
+  "name": "Cappd",
+  "short_name": "Cappd",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
