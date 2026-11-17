@@ -238,8 +238,8 @@ a{color:inherit}
 /* bundle */
 .addb{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:8px;padding:10px;border-radius:14px;font-size:14px;font-weight:600;color:#c9cfe2;border:1px dashed #3a4466}
 .addb.in{border-style:solid;border-color:rgba(47,199,135,.5);color:#7fe3b9;background:rgba(47,199,135,.08)}
-.bbar{position:absolute;left:12px;right:12px;bottom:calc(84px + var(--safe-b));z-index:31;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;border-radius:20px;background:rgba(36,44,76,.78);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.45);transform:translateY(160%);opacity:0;transition:.3s cubic-bezier(.2,.8,.2,1)}
-.bbar.on{transform:none;opacity:1}
+.bbar{position:absolute;left:12px;right:12px;bottom:calc(84px + var(--safe-b));z-index:31;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;border-radius:20px;background:rgba(36,44,76,.78);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.45);transform:translateY(160%);opacity:0;pointer-events:none;transition:.3s cubic-bezier(.2,.8,.2,1)}
+.bbar.on{transform:none;opacity:1;pointer-events:auto}
 @media (max-width:599px){.bbar{position:fixed;max-width:416px;margin:0 auto}}
 .bbar .bt{flex:1;font-size:14px;font-weight:700}.bbar .bt small{display:block;color:var(--mute);font-weight:500;font-size:12px}
 .bbar .btn{padding:9px 14px;font-size:14px;border-radius:13px}
@@ -275,6 +275,57 @@ a{color:inherit}
 .about li{display:flex;gap:10px;align-items:flex-start;padding:9px 4px;font-size:14.5px;line-height:1.35;color:#d6dbea;border-top:.5px solid rgba(255,255,255,.07)}
 .about li b{color:#fff}.about li i{flex:none;font-style:normal;width:22px;text-align:center}
 
+
+/* at a glance (display tab) */
+.glance{margin:0 16px 14px;border-radius:20px;padding:14px;background:linear-gradient(140deg,rgba(124,92,255,.22),rgba(47,199,135,.10) 60%,rgba(74,163,255,.14));border:1px solid rgba(177,140,255,.25);display:flex;gap:14px;align-items:center}
+.glance .donut{flex:none;width:96px;height:96px;position:relative}
+.glance .donut b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:22px;letter-spacing:-.4px}
+.glance .donut b small{font-size:10.5px;color:var(--mute);font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+.glance .gk{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.glance .gk div{background:rgba(11,16,32,.45);border-radius:12px;padding:8px 10px}
+.glance .gk small{display:block;font-size:11px;color:var(--mute);font-weight:600}
+.glance .gk b{font-size:17px;letter-spacing:-.3px}
+.glance .gk i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
+/* locked tabs */
+.lockview{display:none}
+.lk-head{padding:calc(18px + var(--safe-t)) 18px 6px}
+.lk-pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:#1a1200;background:linear-gradient(90deg,#ffcf5c,#ff9f43);padding:5px 10px;border-radius:20px}
+.lk-head h2{margin:10px 0 4px;font-size:32px;font-weight:800;letter-spacing:-.6px}
+.lk-head p{margin:0;color:#c9cfe2;font-size:15px;line-height:1.45}
+.prev{position:relative;margin:14px 16px 0;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#18204099,#0e1426);border:1px solid rgba(255,255,255,.07);padding:14px;max-height:430px}
+.prev:after{content:'';position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(to bottom,rgba(11,16,32,0),var(--bg) 85%);pointer-events:none}
+.prev .tag{position:absolute;top:12px;right:12px;z-index:2;font-size:10.5px;font-weight:700;color:#cbb8ff;background:rgba(124,92,255,.22);padding:3px 8px;border-radius:8px}
+.lockbadge{position:relative;z-index:3;margin:-46px auto 0;width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#7c5cff,#4aa3ff);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(124,92,255,.45)}
+.lockbadge svg{width:28px;height:28px;color:#fff}
+.lk-cta{margin:14px 16px 0;text-align:center}
+.lk-cta h3{margin:0 0 4px;font-size:20px;letter-spacing:-.3px}
+.lk-cta p{margin:0 0 14px;color:var(--mute);font-size:14px;line-height:1.4}
+.lk-cta .btn{width:100%}
+.lk-cta .btn+.btn{margin-top:8px}
+.lk-feats{margin:16px 16px 0;display:grid;gap:8px}
+.lk-feats div{display:flex;gap:10px;align-items:flex-start;background:var(--card);border-radius:14px;padding:11px 12px;font-size:14px;line-height:1.38;color:#d6dbea}
+.lk-feats i{flex:none;font-style:normal;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.pv-big{font-size:34px;font-weight:800;letter-spacing:-.8px}
+.pv-sub{color:var(--mute);font-size:13px;margin-top:2px}
+.pv-up{color:var(--ok);font-weight:700}
+.pv-row{display:flex;gap:8px;margin-top:12px}
+.pv-row div{flex:1;background:rgba(255,255,255,.04);border-radius:12px;padding:8px 10px}
+.pv-row small{display:block;color:var(--mute);font-size:11px;font-weight:600}
+.pv-row b{font-size:16px}
+.pv-h{font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.6px;margin:16px 0 8px}
+.pv-bar{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}
+.pv-bar span:first-child{width:92px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#d6dbea}
+.pv-bar .tr{flex:1;height:12px;border-radius:6px;background:rgba(255,255,255,.05);overflow:hidden}
+.pv-bar .tr i{display:block;height:100%;border-radius:6px}
+.pv-bar b{width:56px;text-align:right;font-size:12.5px}
+.pv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pv-grid div{position:relative;aspect-ratio:3/4;border-radius:10px;background:radial-gradient(120% 90% at 50% 0%,#232c4d,#0e1426 70%);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pv-grid img{max-width:88%;max-height:88%;object-fit:contain}
+.pv-grid span{position:absolute;left:6px;bottom:6px;font-size:10px;font-weight:800;padding:2px 6px;border-radius:6px;background:rgba(0,0,0,.6)}
+.pv-hunt{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border-radius:12px;padding:10px;margin-bottom:8px}
+.pv-hunt .sw{flex:none;width:34px;height:46px;border-radius:6px}
+.pv-hunt .t{flex:1;font-size:13.5px;font-weight:700}.pv-hunt .t small{display:block;color:var(--mute);font-weight:500;font-size:12px;margin-top:2px}
+.pv-hunt .pts{font-size:12px;font-weight:800;color:#ffcf5c}
 </style>
 </head>
 <body>
@@ -292,6 +343,8 @@ a{color:inherit}
       </div>
     </div>
 
+    <div class="glance" id="glance"></div>
+
     <button class="introbar" id="introBtn"><span class="new">NEW</span><span class="t">A first look at Displayd</span><span class="go">How it works ›</span></button>
 
     <div class="segrow">
@@ -304,16 +357,15 @@ a{color:inherit}
     <div class="foot">Prices in SGD. To buy, DM @bloopercollects on Instagram or TikTok. Cards marked "In the post" arrive in December and are seller photos.<br><br>Displayd · preview build</div>
   </div>
 
-  <!-- COMING SOON VIEW -->
-  <div class="soonview" id="v-soon">
-    <div class="big" id="soonIcon"></div>
-    <span class="pill">Coming at launch</span>
-    <h2 id="soonTitle">Home</h2>
-    <p id="soonText"></p>
-    <div class="row">
-      <button class="btn" data-wl>Notify me at launch</button>
-      <button class="btn ghost" data-go="display">See Display</button>
-    </div>
+  <!-- LOCKED (IN DEVELOPMENT) VIEW -->
+  <div class="scroll lockview" id="v-lock">
+    <div class="lk-head"><span class="lk-pill">🔒 In development</span><h2 id="lkTitle">Home</h2><p id="lkText"></p></div>
+    <div class="prev" id="lkPrev"></div>
+    <div class="lockbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+    <div class="lk-cta"><h3>Unlocks at launch</h3><p>Only Display is open in this preview. Join the launch list and you'll be first in when Displayd opens.</p>
+      <button class="btn" data-wl>Join the launch list</button><button class="btn ghost" data-go="display">Back to Display</button></div>
+    <div class="lk-feats" id="lkFeats"></div>
+    <div class="foot" style="margin-top:18px">Preview with sample numbers. Displayd · preview build</div>
   </div>
 
   <!-- TAB BAR -->
@@ -437,7 +489,7 @@ const money=v=>'S$'+v.toFixed(2).replace(/\.00$/,'');
 function render(){
   let list=CARDS.filter(c=>!st.hidden.has(c.id)&&c.mode===st.filter);
   if(st.filter==='sale'&&st.sort!=='feat')list=[...list].sort((a,b)=>(a.ask==null)-(b.ask==null)||(st.sort==='lo'?a.ask-b.ask:b.ask-a.ask));
-  shown=list;
+  shown=list;glance();
   const vis=CARDS.filter(c=>!st.hidden.has(c.id));
   $('#sSale').textContent=vis.filter(c=>c.mode==='sale').length;$('#sPc').textContent=vis.filter(c=>c.mode==='pc').length;$('#sGraded').textContent=vis.filter(c=>c.graded).length;
   document.querySelectorAll('#seg button').forEach(b=>{const n=vis.filter(c=>c.mode===b.dataset.f).length;b.textContent=LABEL[b.dataset.f]+' ('+n+')';b.classList.toggle('on',b.dataset.f===st.filter);b.style.display=n||b.dataset.f!=='sold'?'':'none';});
@@ -609,12 +661,57 @@ const TABS=[
  ['finder','Finder','Hunt the rarest parallels. See which /1s and low numbers have been pulled, and log your own finds.'],
  ['me','Me','Grading calculator, backups, settings and your public profile.'],
 ];
+
+/* ---------- charts + locked previews ---------- */
+const COL={sale:'#7c5cff',pc:'#2fc787',sold:'#4aa3ff'};
+function donut(parts,size=96,w=13){const r=(size-w)/2,c=2*Math.PI*r,t=parts.reduce((a,p)=>a+p.v,0)||1;let o=0;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="transform:rotate(-90deg)"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="${w}"/>`+
+  parts.map(p=>{const l=c*p.v/t,g=parts.length>1?3:0;const el=`<circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${p.c}" stroke-width="${w}" stroke-linecap="round" stroke-dasharray="${Math.max(l-g,0.01)} ${c}" stroke-dashoffset="${-o}"/>`;o+=l;return el;}).join('')+'</svg>';}
+function glance(){const v=CARDS.filter(c=>!st.hidden.has(c.id));const n=m=>v.filter(c=>c.mode===m).length;
+  const ask=v.filter(c=>c.mode==='sale'&&c.ask).reduce((a,c)=>a+c.ask,0);const sold=v.filter(c=>c.mode==='sold').reduce((a,c)=>a+(c.sold||0),0);
+  const lo=Math.min(...v.filter(c=>c.mode==='sale'&&c.ask).map(c=>c.ask));
+  $('#glance').innerHTML=`<div class="donut">${donut([{v:n('sale'),c:COL.sale},{v:n('pc'),c:COL.pc},{v:n('sold'),c:COL.sold}])}<b>${v.length}<small>cards</small></b></div>
+  <div class="gk"><div><small><i style="background:${COL.sale}"></i>For sale</small><b>${n('sale')}</b></div><div><small><i style="background:${COL.pc}"></i>In my PC</small><b>${n('pc')}</b></div>
+  <div><small>Listed total</small><b>${money(ask)}</b></div><div><small>${isFinite(lo)?'Cards from':'Sold'}</small><b>${isFinite(lo)?money(lo):money(sold)}</b></div></div>`;}
+function area(vals,w=300,h=110,c='#7c5cff'){const mx=Math.max(...vals),mn=Math.min(...vals),sx=w/(vals.length-1),y=v=>h-8-(v-mn)/(mx-mn||1)*(h-24);
+  const pts=vals.map((v,i)=>`${(i*sx).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" preserveAspectRatio="none"><defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c}" stop-opacity=".55"/><stop offset="1" stop-color="${c}" stop-opacity="0"/></linearGradient></defs><polygon points="0,${h} ${pts} ${w},${h}" fill="url(#ag)"/><polyline points="${pts}" fill="none" stroke="${c}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${w}" cy="${y(vals[vals.length-1])}" r="4" fill="#fff"/></svg>`;}
+const GRAD=['linear-gradient(90deg,#7c5cff,#b18cff)','linear-gradient(90deg,#2fc787,#7fe3b9)','linear-gradient(90deg,#4aa3ff,#9cccff)','linear-gradient(90deg,#ff9f43,#ffcf5c)','linear-gradient(90deg,#ef5350,#ff8a92)','linear-gradient(90deg,#b18cff,#4aa3ff)'];
+const PREV={
+ home(){const own=CARDS.filter(c=>c.mode!=='sold');const val=c=>c.last?c.last.p:(c.ask||c.paid||0);
+  const worth=own.reduce((a,c)=>a+val(c),0),paid=own.reduce((a,c)=>a+(c.paid||0),0);
+  const trend=[.78,.8,.79,.84,.83,.88,.9,.89,.94,.97,1].map(f=>worth*f);
+  const top=[...own].sort((a,b)=>val(b)-val(a)).slice(0,5),mx=val(top[0]);
+  return `<span class="tag">Sample</span><div class="pv-sub">Collection value</div><div class="pv-big">${money(Math.round(worth))}</div>
+  <div class="pv-sub"><span class="pv-up" style="color:${worth>=paid?'var(--ok)':'var(--bad)'}">${worth>=paid?'▲':'▼'} ${money(Math.round(Math.abs(worth-paid)))}</span> vs what you paid</div>${area(trend)}
+  <div class="pv-row"><div><small>Spent</small><b>${money(Math.round(paid))}</b></div><div><small>Cards</small><b>${own.length}</b></div><div><small>Up</small><b class="pv-up">${own.filter(c=>c.last&&c.last.p>c.paid).length}</b></div></div>
+  <div class="pv-h">Most valuable</div>${top.map((c,i)=>`<div class="pv-bar"><span>${c.name}</span><span class="tr"><i style="width:${Math.max(6,val(c)/mx*100)}%;background:${GRAD[i]}"></i></span><b>${money(Math.round(val(c)))}</b></div>`).join('')}`;},
+ collection(){const own=CARDS.filter(c=>c.mode!=='sold');const sets={};own.forEach(c=>{const k=(c.set.match(/Topps|Panini/)||['Other'])[0];sets[k]=(sets[k]||0)+1;});
+  const cols=['#7c5cff','#2fc787','#ff9f43'];const parts=Object.entries(sets).map(([k,v],i)=>({k,v,c:cols[i%3]}));
+  return `<span class="tag">Sample</span><div style="display:flex;gap:14px;align-items:center"><div style="position:relative;width:86px;height:86px">${donut(parts,86,12)}</div>
+  <div><div class="pv-big" style="font-size:28px">${own.length} cards</div>${parts.map(p=>`<div class="pv-sub"><i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${p.c};margin-right:6px"></i>${p.k} · ${p.v}</div>`).join('')}</div></div>
+  <div class="pv-h">Your cards</div><div class="pv-grid">${own.slice(0,9).map(c=>`<div><img src="img/${c.photos[0]}.webp" alt="" loading="lazy">${c.graded?'<span style="color:#ff8a92">PSA 10</span>':c.auto?'<span style="color:#cbb8ff">AUTO</span>':''}</div>`).join('')}</div>`;},
+ finder(){const H=[['Topps Chrome UCC 25-26','Superfractor 1/1','linear-gradient(135deg,#ffd76a,#b8860b)','2 of 64 found','+500'],['Panini Select WC','Gold Prizm /10','linear-gradient(135deg,#ffcf5c,#ff9f43)','5 of 120 found','+120'],['Topps Merlin','Red Refractor /5','linear-gradient(135deg,#ef5350,#8b1a1a)','9 of 90 found','+200'],['Topps Inception','Green /99 Auto','linear-gradient(135deg,#2fc787,#14603f)','31 of 110 found','+40']];
+  return `<span class="tag">Sample</span><div class="pv-sub">This week in the hunt</div><div class="pv-big" style="font-size:28px">16 rare pulls logged</div>
+  ${area([2,3,2,5,4,6,5,8,7,9,12],300,80,'#ff9f43')}<div class="pv-h">Chase list</div>${H.map(h=>`<div class="pv-hunt"><span class="sw" style="background:${h[2]}"></span><span class="t">${h[1]}<small>${h[0]} · ${h[3]}</small></span><span class="pts">${h[4]} pts</span></div>`).join('')}`;},
+ me(){return `<span class="tag">Sample</span><div class="pv-sub">Should I grade it?</div><div class="pv-big" style="font-size:26px">Example: rookie auto /50</div>
+  <div class="pv-row"><div><small>Raw value</small><b>S$77</b></div><div><small>PSA 10</small><b class="pv-up">S$190</b></div><div><small>Grading</small><b>S$32</b></div></div>
+  <div class="pv-h">Profit by grade</div>${[['PSA 10',81,'S$81',0],['PSA 9',38,'S$38',2],['PSA 8',6,'S$6',3],['Raw','0','S$0',4]].map(r=>`<div class="pv-bar"><span>${r[0]}</span><span class="tr"><i style="width:${Math.max(4,r[1])}%;background:${GRAD[r[3]]}"></i></span><b>${r[2]}</b></div>`).join('')}
+  <div class="pv-h">Profile</div><div class="pv-row"><div><small>Followers</small><b>—</b></div><div><small>Trades</small><b>—</b></div><div><small>Rep</small><b>★★★★★</b></div></div>`;}
+};
+const FEATS={
+ home:[['📈','rgba(124,92,255,.2)','Your collection value, updated from real sales'],['🔥','rgba(255,159,67,.2)','Biggest movers this week, up and down'],['💸','rgba(47,199,135,.2)','What you spent vs what it\'s worth now']],
+ collection:[['🗂️','rgba(124,92,255,.2)','Every card with grade, serial, photos and cost'],['📥','rgba(74,163,255,.2)','Import straight from your spreadsheet'],['🔎','rgba(47,199,135,.2)','Filter by player, set, parallel or club']],
+ finder:[['🎯','rgba(255,159,67,.2)','See which /1s and low numbers have been pulled'],['📸','rgba(124,92,255,.2)','Log your own pulls with photo proof'],['🏆','rgba(255,207,92,.2)','Earn points for verified rare finds']],
+ me:[['🧮','rgba(124,92,255,.2)','Grading calculator: is it worth sending to PSA?'],['🛡️','rgba(47,199,135,.2)','Backups so you never lose your collection'],['👤','rgba(74,163,255,.2)','Your public collector profile']]
+};
 const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>`;
 $('#tabbar').innerHTML=TABS.map(([k,l])=>`<button class="tab${k==='display'?' on':''}" data-go="${k}">${svg(k)}<span>${l}</span>${k==='display'?'<span class="dot">NEW</span>':'<span class="soon"></span>'}</button>`).join('');
 function go(k){
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.go===k));
-  const isD=k==='display';$('#bbar').style.display=isD?'':'none';$('#v-display').style.display=isD?'':'none';$('#v-soon').style.display=isD?'none':'flex';
-  if(!isD){const t=TABS.find(x=>x[0]===k);$('#soonTitle').textContent=t[1];$('#soonText').textContent=t[2];$('#soonIcon').innerHTML=svg(k);}
+  const isD=k==='display';$('#bbar').style.display=isD?'':'none';$('#v-display').style.display=isD?'':'none';$('#v-lock').style.display=isD?'none':'block';
+  if(!isD){const t=TABS.find(x=>x[0]===k);$('#lkTitle').textContent=t[1];$('#lkText').textContent=t[2];$('#lkPrev').innerHTML=PREV[k]();
+    $('#lkFeats').innerHTML=FEATS[k].map(f=>`<div><i style="background:${f[1]}">${f[0]}</i><span>${f[2]}</span></div>`).join('');$('#v-lock').scrollTop=0;}
   window.scrollTo(0,0);
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go);});
