@@ -3,7 +3,7 @@ const SEEN = __SEEN__;
 let NEWS = __NEWS__;   // snapshot from build time; refreshData() swaps in the latest data/news.json
 let FINDS = { finds: [], penalties: {} };   // shared finds from GitHub issues, loaded from data/finds.json
 const SAMPLE_CARDS = __SAMPLE_CARDS__;
-const APP_VERSION = '0.3 (17 Nov 2026)';
+const APP_VERSION = '0.4 (17 Nov 2026)';
 const REPO = 'belipede/slabfolio-web';
 
 // ---------- storage ----------
@@ -77,7 +77,7 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
 document.querySelectorAll('nav.tabs button').forEach(b => b.onclick = () => go(b.dataset.tab));
 
 function render(){
-  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === (NAV_OF[view.tab] || view.tab)));
+  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === (!pro() && ['hunt', 'feed', 'review', 'scan'].includes(view.tab) ? 'me' : NAV_OF[view.tab] || view.tab)));
   const a = $('#app');
   if (view.tab === 'home') a.innerHTML = renderDash();
   else if (view.tab === 'cards') a.innerHTML = renderCards();
@@ -90,7 +90,9 @@ function render(){
   else if (view.tab === 'scan') a.innerHTML = renderScan();
   else if (view.tab === 'review') a.innerHTML = renderReview();
   else a.innerHTML = renderMe();
-  bind();
+  bind(); bindChart();
+  const hb = document.querySelector('nav.tabs button[data-tab=hunt]'); if (hb) hb.style.display = pro() ? '' : 'none';
+  if (!S.mode && !askMode.done){ askMode.done = true; askMode(); }
 }
 const defaultPar = g => Math.max(0, g.pars.findIndex(p => p.r === 1 && !/Plate|Club|Rose|Gloves|Manufacturer/.test(p.n)));
 
@@ -574,27 +576,134 @@ function totals(){
   return t;
 }
 
+// ---------- easy / pro ----------
+// Easy: plain words, photos first, fewer tabs. Pro: denser, trading-app style with % change, breakdowns and every tool.
+const pro = () => S.mode === 'pro';
+const modeSeg = () => `<div class="seg mode" role="group" aria-label="App style">${[['easy', 'Easy'], ['pro', 'Pro']].map(([k, n]) => `<button data-setmode="${k}" class="${(S.mode || 'easy') === k ? 'on' : ''}">${n}</button>`).join('')}</div>`;
+function setMode(m){ S.mode = m; save(true); closeSheet(); if (m !== 'pro' && view.tab === 'hunt') view.tab = 'home'; render(); }
+function askMode(){
+  openSheet(`<h2>How do you collect?</h2><div class="sub" style="margin-top:4px">Pick a style. You can switch any time from Home or Me.</div>
+  <button class="pick" data-setmode="easy"><b>Easy</b><span>I want to see my cards, what they're worth, and show them off. Big photos, plain words.</span></button>
+  <button class="pick" data-setmode="pro"><b>Pro</b><span>I track costs, comps, profit and flips. Charts, % change, breakdowns and every tool.</span></button>`);
+  $('#sheet').querySelectorAll('[data-setmode]').forEach(el => el.onclick = () => setMode(el.dataset.setmode));
+}
+
+// ---------- value history ----------
+// One point a day, saved on this phone from the day you start. The sample collection gets a made-up month so the chart has something to show.
+const dayKey = t => new Date(t).toISOString().slice(0, 10);
+function trackHist(t){
+  if (S.sampleCards) return;
+  const h = S.hist = S.hist || [], d = dayKey(Date.now()), v = Math.round(t.value * 100) / 100, last = h[h.length - 1];
+  if (last && last.d === d){ if (last.v === v) return; last.v = v; } else h.push({ d, v });
+  if (h.length > 730) h.splice(0, h.length - 730);
+  save(true);
+}
+function histPoints(t){
+  if (!S.sampleCards) return S.hist || [];
+  const n = 30, end = t.value, start = t.paid * .96, out = []; let seed = 7;
+  const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  for (let i = 0; i < n; i++){ const k = i / (n - 1), wob = i === n - 1 ? 0 : (rnd() - .5) * end * .06 * Math.sin(k * Math.PI);
+    out.push({ d: dayKey(Date.now() - (n - 1 - i) * DAY), v: Math.round((start + (end - start) * (k * k * (3 - 2 * k)) + wob) * 100) / 100 }); }
+  return out;
+}
+const RANGES = [['1w', '1W', 7], ['1m', '1M', 31], ['3m', '3M', 92], ['all', 'All', 1e9]];
+const inRange = (pts, r) => { const days = RANGES.find(x => x[0] === r)[2], from = dayKey(Date.now() - days * DAY); const p = pts.filter(x => x.d >= from); return p.length >= 2 ? p : pts.slice(-2); };
+const fmtDay = d => new Date(d + 'T00:00:00').toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
+// up / down / flat marker: an arrow plus the number, so it never relies on colour alone
+function delta(d, base, opt = {}){
+  const dir = d > .005 ? 'up' : d < -.005 ? 'dn' : 'fl', p = base ? Math.abs(d) / base * 100 : null;
+  return `<span class="chg ${dir}${opt.big ? ' big' : ''}">${{ up: '▲', dn: '▼', fl: '–' }[dir]} ${opt.pctOnly ? '' : sgd(Math.abs(d))}${p !== null ? (opt.pctOnly ? '' : ' (') + (p < 10 ? p.toFixed(1) : Math.round(p)) + '%' + (opt.pctOnly ? '' : ')') : ''}</span>`;
+}
+// single-series value chart: 2px line over a soft wash, hairline + readout on touch or hover
+function chartHtml(pts){
+  const W = 320, H = 120, P = 6, vs = pts.map(p => p.v), mn = Math.min(...vs), mx = Math.max(...vs), sp = mx - mn || 1;
+  const x = i => pts.length === 1 ? W / 2 : i / (pts.length - 1) * W, y = v => P + (1 - (v - mn) / sp) * (H - 2 * P - 14);
+  const line = pts.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)} ${y(p.v).toFixed(1)}`).join(' ');
+  const up = vs[vs.length - 1] >= vs[0], col = up ? 'var(--ok)' : 'var(--bad)';
+  return `<div class="chart" id="chart" data-pts='${esc(JSON.stringify(pts))}' tabindex="0" role="img" aria-label="Collection value from ${fmtDay(pts[0].d)} to ${fmtDay(pts[pts.length - 1].d)}: ${sgd(vs[0])} to ${sgd(vs[vs.length - 1])}">
+  <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${up ? '#2fc787' : '#ef5350'}" stop-opacity=".28"/><stop offset="1" stop-color="${up ? '#2fc787' : '#ef5350'}" stop-opacity="0"/></linearGradient></defs>
+  <path d="${line} L${W} ${H} L0 ${H} Z" fill="url(#cg)"/><path d="${line}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>
+  <i class="hair" id="hair"></i><i class="cdot" id="cdot" style="background:${col}"></i><div class="ctip" id="ctip"></div>
+  <div class="cax"><span>${fmtDay(pts[0].d).replace(/ \d{4}$/, '')}</span><span>${fmtDay(pts[pts.length - 1].d).replace(/ \d{4}$/, '')}</span></div></div>`;
+}
+function bindChart(){
+  const el = $('#chart'); if (!el) return;
+  const pts = JSON.parse(el.dataset.pts), hair = $('#hair'), dot = $('#cdot'), tip = $('#ctip');
+  const vs = pts.map(p => p.v), mn = Math.min(...vs), mx = Math.max(...vs), sp = mx - mn || 1;
+  const show = i => { const r = el.getBoundingClientRect(), px = pts.length === 1 ? r.width / 2 : i / (pts.length - 1) * r.width, h = r.height - 18, py = (6 + (1 - (pts[i].v - mn) / sp) * (120 - 12 - 14)) / 120 * h;
+    hair.style.cssText = `display:block;left:${px}px`; dot.style.display = 'block'; dot.style.left = px + 'px'; dot.style.top = py + 'px';
+    tip.textContent = ''; const b = document.createElement('b'); b.textContent = sgd(pts[i].v); const s = document.createElement('span'); s.textContent = fmtDay(pts[i].d); tip.append(b, s);
+    tip.style.display = 'block'; tip.style.left = Math.min(Math.max(px, 56), r.width - 56) + 'px'; el.dataset.i = i; };
+  const hide = () => { hair.style.display = dot.style.display = tip.style.display = 'none'; };
+  const at = e => { const r = el.getBoundingClientRect(); show(Math.max(0, Math.min(pts.length - 1, Math.round((e.clientX - r.left) / r.width * (pts.length - 1))))); };
+  el.onpointerdown = el.onpointermove = at; el.onpointerleave = el.onpointercancel = hide; el.onblur = hide;
+  el.onkeydown = e => { if (!/Arrow(Left|Right)/.test(e.key)) return; e.preventDefault(); const i = +(el.dataset.i ?? pts.length - 1); show(Math.max(0, Math.min(pts.length - 1, i + (e.key === 'ArrowRight' ? 1 : -1)))); };
+}
+// what the collection is made of. Colours follow the category, never its rank; "Other" is always grey.
+const SERIES = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181'], OTHER_COL = '#6b7591';
+const TYPE_ORDER = ['Graded', 'Autographs', 'Numbered', 'Rookies', 'Base and inserts'], STATUS_ORDER = ['Held', 'PC', 'To list', 'Listed', 'Sealed'];
+const typeOf = c => c.grade && c.grade !== 'Raw' ? 'Graded' : /yes/i.test(c.auto || '') || /auto/i.test(c.hit || '') ? 'Autographs' : c.serial ? 'Numbered' : /yes/i.test(c.rc || '') ? 'Rookies' : 'Base and inserts';
+function breakdown(dim){
+  const m = new Map(); let total = 0;
+  for (const c of S.cards.filter(owned)){ const k = dim === 'type' ? typeOf(c) : dim === 'status' ? (c.status || 'Held') : c.player, v = (val(c).v || 0) * qty(c); total += v; const e = m.get(k) || { k, v: 0, n: 0 }; e.v += v; e.n += qty(c); m.set(k, e); }
+  let rows = [...m.values()];
+  if (dim === 'player'){ rows.sort((a, b) => b.v - a.v); const top = rows.slice(0, 5), rest = rows.slice(5); rows = top.map((r, i) => ({ ...r, col: SERIES[i] }));
+    if (rest.length) rows.push({ k: `${rest.length} other players`, v: rest.reduce((a, r) => a + r.v, 0), n: rest.reduce((a, r) => a + r.n, 0), col: OTHER_COL }); }
+  else { const order = dim === 'type' ? TYPE_ORDER : STATUS_ORDER; rows = rows.map(r => ({ ...r, col: SERIES[order.indexOf(r.k)] || OTHER_COL })).sort((a, b) => b.v - a.v); }
+  return { rows: rows.filter(r => r.v > 0), total };
+}
+function breakdownHtml(){
+  const dim = view.bd || 'type', { rows, total } = breakdown(dim);
+  return `<div class="sec">What it's made of</div><div class="prof" style="padding:14px">
+  <div class="seg wide sm" style="margin-bottom:12px">${[['type', 'Type'], ['player', 'Player'], ['status', 'Status']].map(([k, n]) => `<button data-bd="${k}" class="${dim === k ? 'on' : ''}">${n}</button>`).join('')}</div>
+  ${total ? `<div class="stack" role="img" aria-label="Share of collection value by ${dim}">${rows.map(r => `<i style="flex:${r.v};background:${r.col}" title="${esc(r.k)}: ${sgd(r.v)}"></i>`).join('')}</div>
+  <table class="bd"><tbody>${rows.map(r => `<tr><td><i class="key" style="background:${r.col}"></i>${esc(r.k)}<span class="sub"> · ${r.n}</span></td><td>${sgd(r.v)}</td><td class="sub">${Math.round(pct(r.v, total))}%</td></tr>`).join('')}</tbody></table>` : `<div class="sub">Add values to your cards to see the split.</div>`}</div>`;
+}
+// a card row like a stock row: photo, name, then value with its change since you bought it
+function chgOf(c){ const x = val(c), cost = money(c.cost);
+  if (x.kind === 'own') return `<span class="chg own">Your value</span>`;
+  if (x.v === null || cost === null || !cost) return '';
+  return delta(x.v - cost, cost, { pctOnly: true }); }
+const tRow = (c, right) => `<div class="crow" data-c="${esc(c.id)}">${thumbHtml(c)}<div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div></div><div class="r">${right}</div></div>`;
+
 // ---------- home ----------
 function renderDash(){
-  const t = totals(), own = S.cards.filter(owned), diff = t.value - t.paid;
-  const moves = own.filter(c => val(c).kind === 'sold' && money(c.cost) !== null).map(c => ({ c, d: val(c).v - money(c.cost) })).sort((a, b) => b.d - a.d);
+  const t = totals(), own = S.cards.filter(owned), diff = t.value - t.paid; trackHist(t);
+  const all = histPoints(t), range = view.range || '1m', pts = all.length >= 2 ? inRange(all, range) : all;
+  const moves = own.filter(c => val(c).kind === 'sold' && money(c.cost)).map(c => ({ c, d: val(c).v - money(c.cost), p: (val(c).v - money(c.cost)) / money(c.cost) }));
   const sold = S.cards.filter(c => !owned(c) && c.soldDate).sort((a, b) => b.soldDate.localeCompare(a.soldDate)).slice(0, 3);
+  const news = forYou().slice(0, 3), needs = compQueue().length;
+  const head = `<header class="top"><h1>Cappd</h1>${modeSeg()}</header>
+  ${S.sampleCards ? `<div class="banner">This is a <b>sample collection</b> with made-up prices${pro() ? ' and a made-up value chart' : ''}. Import your own from <b>Me</b>.</div>` : ''}`;
+  const chart = pts.length >= 2 ? chartHtml(pts) : `<div class="chart0">Your value chart starts today. It fills in day by day as prices change and you log sales.</div>`;
+  const rangeD = pts.length >= 2 ? pts[pts.length - 1].v - pts[0].v : null;
+  const backup = backupDue() ? `<div class="item warn" data-act="backup" style="cursor:pointer"><div class="t">Back up your collection</div><div class="m">${backupWhen()} Your cards, photos and sales only live on this phone. Tap to save a copy.</div></div>` : '';
+
+  if (!pro()){
+    const top = own.slice().sort((a, b) => (val(b).v ?? 0) - (val(a).v ?? 0)).slice(0, 8), noPh = own.filter(c => !photosOf(c).length).length;
+    const next = backup || (needs ? `<div class="item" data-go="comps" style="cursor:pointer"><div class="t">Check ${needs} ${needs === 1 ? 'price' : 'prices'}</div><div class="m">${needs === 1 ? 'One card is' : 'These cards are'} using your own guess. See what ${needs === 1 ? 'it' : 'they'} really sold for, one card at a time.</div></div>`
+      : noPh ? `<div class="item" data-go="display" style="cursor:pointer"><div class="t">Add photos to ${noPh} ${noPh === 1 ? 'card' : 'cards'}</div><div class="m">Cards with photos look better on your Display.</div></div>` : '');
+    return head + `<div class="hero"><div class="sub">Your collection is worth</div><div class="hv">${sgd(t.value)}</div>
+    <div class="hs">${t.n} ${t.n === 1 ? 'card' : 'cards'} · ${Math.abs(diff) < .005 ? 'the same as you paid' : `${delta(diff, t.paid)} ${diff > 0 ? 'more' : 'less'} than you paid`}</div>${chart}</div>
+    <div class="acts"><button data-act="addcard"><span>＋</span>Add a card</button><button data-go="comps"><span>◎</span>Check prices</button><button data-go="display"><span>▦</span>Show off</button></div>
+    ${next ? `<div class="sec">Next step</div>${next}` : ''}
+    ${top.length ? `<div class="sec">Your top cards</div><div class="hscroll">${top.map(c => { const ph = photosOf(c)[0]; return `<button class="hcard" data-c="${esc(c.id)}"><div class="dimg">${ph ? imgTag(ph) + (phStock(ph) ? '<i class="stk">Stock photo</i>' : '') : `<span class="noph">${esc(initials(c))}</span>`}</div><div class="dpl">${esc(c.player)}</div><div class="dpr">${sgd(val(c).v)}</div></button>`; }).join('')}</div>` : ''}
+    ${news.length ? `<div class="sec">News about your players</div>${news.map(n => newsHtml(n, playerChips(n))).join('')}<button class="btn ghost" data-go="news" style="margin-top:4px">All news</button>` : ''}
+    <p class="sub" style="margin-top:16px">Want charts, % change and breakdowns? Switch to <b>Pro</b> at the top.</p>`;
+  }
+
+  const mv = view.mv || 'up', list = moves.filter(m => mv === 'up' ? m.d > 0 : m.d < 0).sort((a, b) => mv === 'up' ? b.p - a.p : a.p - b.p).slice(0, 5);
   const scan = invRows().filter(r => matchInv(r[1], r[2], r[3], r[4]).out && !S.invAdded[r[0]]).length;
-  const news = forYou().slice(0, 3);
-  const tb = Object.values(t.tones).reduce((a, b) => a + b, 0) || 1;
-  const row = (c, right) => `<div class="crow" data-c="${esc(c.id)}"><div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div></div><div class="r">${right}</div></div>`;
-  return `<header class="top"><h1>Cappd</h1><button class="mini" data-act="bug">Report a bug</button></header>
-  ${S.sampleCards ? `<div class="banner">You're looking at a <b>sample collection</b> with made-up prices. Import your Cards v2 sheet from <b>Me</b> to see your own.</div>` : ''}
-  <div class="prof"><div class="sub">Collection value</div><div class="big">${sgd(t.value)}</div>
-  <div class="sub">${t.n} cards you own · paid ${sgd(t.paid)} · <span class="${diff > 5 ? 'g' : diff < -5 ? 'rd' : 'o'}">${diff >= 0 ? '+' : ''}${sgd(diff)}</span></div>
-  <div class="sbar" style="height:10px;margin-top:12px">${['g', 'o', 'rd', 'pu', 'nt'].map(k => `<i style="width:${pct(t.tones[k], tb)}%;background:${{ g: 'var(--ok)', o: 'var(--pend)', rd: 'var(--bad)', pu: '#b18cff', nt: 'var(--line)' }[k]}"></i>`).join('')}</div>
-  <div class="legend2"><span style="--c:var(--ok)">${t.tones.g} up</span><span style="--c:var(--pend)">${t.tones.o} flat</span><span style="--c:var(--bad)">${t.tones.rd} down</span><span style="--c:#b18cff">${t.tones.pu} your value</span>${t.tones.nt ? `<span style="--c:var(--line)">${t.tones.nt} no price</span>` : ''}</div>
-  <div class="kpis"><div><b>${sgd(t.spent)}</b><span>spent</span></div><div><b>${sgd(t.got)}</b><span>received</span></div><div><b class="${t.got - t.spent >= 0 ? 'g' : 'rd'}">${sgd(t.got - t.spent)}</b><span>net cash</span></div></div></div>
-  ${backupDue() ? `<div class="item warn" data-act="backup" style="cursor:pointer"><div class="t">Back up your collection</div><div class="m">${backupWhen()} Your cards, photos and sales only live on this phone, so a lost or reset phone loses them. Tap to export a copy.</div></div>` : ''}
-  ${t.needs ? `<div class="item" data-go="comps" style="cursor:pointer"><div class="t">${t.needs} ${t.needs === 1 ? 'hit needs' : 'hits need'} a comp</div><div class="m">They show your own value in purple until you log a real sale. Tap to start a comp sprint: one card at a time, straight to eBay sold.</div></div>` : ''}
-  ${moves.length ? `<div class="sec">Biggest gains</div>${moves.slice(0, 3).filter(m => m.d > 0).map(m => row(m.c, `<b class="g">+${sgd(m.d)}</b><span>${sgd(val(m.c).v)}</span>`)).join('') || '<div class="sub">None yet.</div>'}
-  <div class="sec">Biggest drops</div>${moves.slice(-3).reverse().filter(m => m.d < 0).map(m => row(m.c, `<b class="rd">${sgd(m.d)}</b><span>${sgd(val(m.c).v)}</span>`)).join('') || '<div class="sub">None yet.</div>'}` : ''}
-  ${sold.length ? `<div class="sec">Latest sales</div>${sold.map(c => { const p = profitSold(c); return row(c, `<b>${sgd(money(c.sold))}</b><span class="${p >= 0 ? 'g' : 'rd'}">${p >= 0 ? '+' : ''}${sgd(p)}</span>`); }).join('')}` : ''}
+  return head + `<div class="hero"><div class="sub">Collection value</div><div class="hv">${sgd(t.value)}</div>
+  <div class="hs">${delta(diff, t.paid)} <span class="sub">vs paid</span>${rangeD !== null ? ` · ${delta(rangeD, pts[0].v, { pctOnly: true })} <span class="sub">${{ '1w': 'past week', '1m': 'past month', '3m': 'past 3 months', all: 'all time' }[range]}</span>` : ''}</div>
+  ${chart}${all.length >= 2 ? `<div class="seg wide sm ranges">${RANGES.map(([k, n]) => `<button data-range="${k}" class="${range === k ? 'on' : ''}">${n}</button>`).join('')}</div>` : ''}</div>
+  <div class="kpis k4"><div><span>Cards</span><b>${t.n}</b></div><div><span>Paid</span><b>${sgd(t.paid)}</b></div><div><span>Sold</span><b>${sgd(t.got)}</b></div><div><span>Net cash</span><b>${sgd(t.got - t.spent)}</b></div></div>
+  ${backup}
+  ${needs ? `<div class="item" data-go="comps" style="cursor:pointer"><div class="t">${needs} ${needs === 1 ? 'card needs' : 'cards need'} a comp</div><div class="m">Values in purple are your own until a real sale is logged. Start a comp sprint: one card at a time, straight to eBay sold.</div></div>` : ''}
+  ${moves.length ? `<div class="sec row2"><span>Movers</span><div class="seg sm">${[['up', 'Gainers'], ['dn', 'Losers']].map(([k, n]) => `<button data-mv="${k}" class="${mv === k ? 'on' : ''}">${n}</button>`).join('')}</div></div>
+  ${list.map(m => tRow(m.c, `<b>${sgd(val(m.c).v)}</b>${delta(m.d, money(m.c.cost), { pctOnly: true })}`)).join('') || `<div class="sub" style="padding:4px 2px">No ${mv === 'up' ? 'gainers' : 'losers'} yet.</div>`}` : ''}
+  ${breakdownHtml()}
+  ${sold.length ? `<div class="sec">Latest sales</div>${sold.map(c => { const p = profitSold(c); return tRow(c, `<b>${sgd(money(c.sold))}</b>${delta(p, money(c.cost))}`); }).join('')}` : ''}
   <div class="sec">Card Finder</div>
   <div class="item" data-go="${scan ? 'scan' : 'hunt'}" style="cursor:pointer"><div class="t">${scan ? `${scan} of your cards can go on the pull registry` : 'Browse the pull registry'}</div><div class="m">6 sets tracked · ${allReports().filter(r => r.status !== 'rejected').length} copies found so far</div></div>
   ${news.length ? `<div class="sec">News about your players</div>${news.map(n => newsHtml(n, playerChips(n))).join('')}<button class="btn ghost" data-go="news" style="margin-top:4px">All news</button>` : ''}`;
@@ -619,24 +728,33 @@ function cardsList(){
   return list.sort(sorters[view.csort]);
 }
 function renderCards(){
-  const list = cardsList();
+  const list = cardsList(), sum = list.reduce((a, c) => a + (owned(c) ? (val(c).v || 0) * qty(c) : (money(c.sold) || 0)), 0);
   let h = `<header class="top"><h1>Collection</h1><button class="mini acc" data-act="addcard">+ Add card</button></header>
-  <div class="row"><input class="search" id="cq" placeholder="Search player, set or ID" value="${esc(view.cq)}">
-  <div class="seg">${[['owned', 'Owned'], ['sold', 'Sold'], ['all', 'All']].map(([k, n]) => `<button data-cseg="${k}" class="${view.cseg === k ? 'on' : ''}">${n}</button>`).join('')}</div></div>
-  <div class="pills">${CFILTERS.map(([k, n]) => `<button class="pill ${view.cf === k ? 'on' : ''}" data-cf="${k}">${n}</button>`).join('')}</div>
-  <div class="row" style="align-items:center"><span class="sub" style="flex:1">${list.length} cards${S.sampleCards ? ' · sample collection' : ''}</span>
+  <div class="row"><input class="search" id="cq" placeholder="${pro() ? 'Search player, set or ID' : 'Search your cards'}" value="${esc(view.cq)}">
+  <div class="seg">${[['owned', 'Owned'], ['sold', 'Sold']].concat(pro() ? [['all', 'All']] : []).map(([k, n]) => `<button data-cseg="${k}" class="${view.cseg === k ? 'on' : ''}">${n}</button>`).join('')}</div></div>`;
+  if (!pro()){
+    h += `<div class="sub" style="margin:0 2px 10px">${list.length} ${list.length === 1 ? 'card' : 'cards'} · ${sgd(sum)}${S.sampleCards ? ' · sample collection' : ''}</div><div class="dgrid">` + list.slice(0, view.cmore).map(c => { const ph = photosOf(c)[0];
+      return `<button class="dtile" data-c="${esc(c.id)}"><div class="dimg">${ph ? imgTag(ph) + (phStock(ph) ? '<i class="stk">Stock photo</i>' : '') : `<span class="noph">${esc(initials(c))}<small>+ Add photo</small></span>`}
+      ${c.serial ? `<span class="dbadge">${esc(c.serial)}</span>` : ''}${c.grade && c.grade !== 'Raw' ? `<span class="dbadge gr">${esc(c.grade)}</span>` : ''}</div>
+      <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr">${owned(c) ? sgd(val(c).v) : 'Sold ' + sgd(money(c.sold))}</div></button>`; }).join('') + `</div>`;
+    if (list.length > view.cmore) h += `<button class="btn ghost" data-act="more">Show ${Math.min(60, list.length - view.cmore)} more</button>`;
+    if (!list.length) h += `<div class="empty">${view.cq ? 'No cards match.' : 'No cards here yet. Tap + Add card.'}</div>`;
+    return h;
+  }
+  h += `<div class="pills">${CFILTERS.map(([k, n]) => `<button class="pill ${view.cf === k ? 'on' : ''}" data-cf="${k}">${n}</button>`).join('')}</div>
+  <div class="row" style="align-items:center"><span class="sub" style="flex:1">${list.length} cards · <b class="nt">${sgd(sum)}</b>${S.sampleCards ? ' · sample' : ''}</span>
   <select class="mini" id="csort">${[['value', 'Value, high to low'], ['low', 'Value, low to high'], ['profit', 'Profit'], ['id', 'Newest']].map(([k, n]) => `<option value="${k}" ${view.csort === k ? 'selected' : ''}>${n}</option>`).join('')}</select></div>`;
   if (view.cf === 'needs' && list.length) h += `<button class="btn" data-go="comps" style="margin:0 0 10px">Start a comp sprint (${compQueue().length} cards)</button>`;
   for (const c of list.slice(0, view.cmore)){
     let right;
-    if (owned(c)){ const x = val(c); right = `<b class="${tone(c)}">${sgd(x.v)}</b><span>${esc(c.status)}${money(c.cost) !== null ? ' · paid ' + sgd(money(c.cost)) : ''}</span>`; }
-    else { const p = profitSold(c); right = `<b>${sgd(money(c.sold))}</b><span class="${p === null ? '' : p >= 0 ? 'g' : 'rd'}">${p === null ? 'Sold' : (p >= 0 ? '+' : '') + sgd(p)}</span>`; }
+    if (owned(c)) right = `<b>${sgd(val(c).v)}</b>${chgOf(c)}`;
+    else { const p = profitSold(c); right = `<b>${sgd(money(c.sold))}</b>${p === null ? '<span>Sold</span>' : delta(p, money(c.cost))}`; }
     h += `<div class="crow" data-c="${esc(c.id)}">${thumbHtml(c)}<div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div>
-    <div style="margin-top:3px">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div></div><div class="r">${right}</div></div>`;
+    <div class="tl">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}<span class="sub">${esc(c.status)}${money(c.cost) !== null ? ' · paid ' + sgd(money(c.cost)) : ''}</span></div></div><div class="r">${right}</div></div>`;
   }
   if (list.length > view.cmore) h += `<button class="btn ghost" data-act="more">Show ${Math.min(60, list.length - view.cmore)} more</button>`;
   if (!list.length) h += `<div class="empty">No cards match.</div>`;
-  return h + `<p class="sub">Green = worth over S$5 more than you paid, orange = within S$5, red = down S$5 or more, purple = your own value until a sale is logged. Asking prices never count as sales.</p>`;
+  return h + `<p class="sub">▲ ▼ show the change from what you paid, using the latest real sale. Purple "Your value" means no sale is logged yet, so it's your own asking price.</p>`;
 }
 
 // ---------- card detail ----------
@@ -891,6 +1009,7 @@ function renderMe(){
   const pts = userPoints(S.user), mine = localReports().filter(r => r.user === S.user).concat(myShared());
   const ym = new Date().toISOString().slice(0, 7), earned = S.monthsEarned[ym] || 0;
   return `<header class="top"><h1>Me</h1><button class="mini" data-act="bug">Report a bug</button></header>
+  <div class="prof"><div style="display:flex;align-items:center;gap:10px"><div style="flex:1"><b>App style</b><div class="sub" style="margin-top:2px">${pro() ? 'Pro: charts, % change, breakdowns and every tool.' : 'Easy: big photos and plain words.'}</div></div>${modeSeg()}</div></div>
   <div class="prof"><b>Your collection</b><div class="sub" style="margin-top:4px">${S.sampleCards ? 'Showing the sample collection.' : `${S.cards.length} cards imported, ${S.cards.filter(owned).length} owned.`} Everything stays on this phone.</div>
   <label class="f">Import your Cards v2 sheet</label>
   <div class="hint" style="margin-top:0">In the Google Sheets app, open the Inventory tab, then ⋮ › Share &amp; export › Save as › CSV. Pick that file here, or paste the CSV text below.</div>
@@ -902,7 +1021,7 @@ function renderMe(){
   <div class="btns"><button class="btn ghost" id="exp">${view.exp ? 'Hide' : 'Export data'}</button><button class="btn ghost" id="restore">Restore</button></div>
   ${view.exp ? `<textarea class="inp" id="expt" readonly style="margin-top:8px">${esc(JSON.stringify(S))}</textarea><div class="btns"><button class="btn" id="copyexp">Copy</button><button class="btn ghost" id="saveexp">Save as file</button></div>` : ''}
   ${view.rest ? `<textarea class="inp" id="restt" style="margin-top:8px" placeholder="Paste an export here"></textarea><button class="btn" id="restgo">Restore this backup</button>` : ''}</div>
-  <div class="prof"><b>Tools</b><button class="btn ghost" data-go="grade">Grading calculator</button><button class="btn ghost" data-go="scan">Scan my collection for the pull registry</button></div>
+  <div class="prof"><b>Tools</b>${pro() ? '' : `<button class="btn ghost" data-go="hunt">Card Finder (pull registry)</button>`}<button class="btn ghost" data-go="grade">Grading calculator</button><button class="btn ghost" data-go="scan">Scan my collection for the pull registry</button></div>
   <div class="prof"><b>Card Finder points</b>
   <div class="sub" style="margin-top:6px">Username</div><input class="inp" id="uname" value="${esc(S.user)}" style="margin-top:6px">
   <div class="sub" style="margin-top:10px">GitHub username, so finds you share publicly count here</div><input class="inp" id="ghname" value="${esc(S.gh || '')}" placeholder="e.g. belipede" autocapitalize="off" autocorrect="off" style="margin-top:6px">
@@ -959,6 +1078,10 @@ function bindApp(a){
   a.querySelectorAll('[data-act=saletext]').forEach(el => el.onclick = async () => { try { await navigator.clipboard.writeText(saleText()); toast('Sale post copied. Paste it into Instagram, Facebook or Carousell.'); } catch (e) { openSheet(`<h2>Sale post</h2><textarea class="inp" style="min-height:220px">${esc(saleText())}</textarea><div class="hint">Select all and copy.</div>`); } });
   a.querySelectorAll('[data-act=backup]').forEach(el => el.onclick = () => { view.exp = true; view.rest = false; go('me'); const t = $('#expt'); if (t) t.scrollIntoView({ block: 'center' }); });
   bindComps(a);
+  a.querySelectorAll('[data-setmode]').forEach(el => el.onclick = () => setMode(el.dataset.setmode));
+  a.querySelectorAll('[data-range]').forEach(el => el.onclick = () => { view.range = el.dataset.range; render(); });
+  a.querySelectorAll('[data-mv]').forEach(el => el.onclick = () => { view.mv = el.dataset.mv; render(); });
+  a.querySelectorAll('[data-bd]').forEach(el => el.onclick = () => { view.bd = el.dataset.bd; render(); });
   a.querySelectorAll('[data-graw]').forEach(el => el.onclick = () => { const c = S.cards.find(x => x.id === el.dataset.graw); view.g.raw = String(val(c).v ?? ''); render(); });
   const cs = $('#csort'); if (cs) cs.onchange = () => { view.csort = cs.value; render(); };
   const cq = $('#cq'); if (cq) cq.oninput = () => { view.cq = cq.value; view.cmore = 60; const pos = cq.selectionStart; render(); const n = $('#cq'); n.focus(); n.setSelectionRange(pos, pos); };
