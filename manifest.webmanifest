@@ -1,6 +1,6 @@
 {
-  "name": "Vaultd",
-  "short_name": "Vaultd",
+  "name": "Displayd",
+  "short_name": "Displayd",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

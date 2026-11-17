@@ -1,10 +1,10 @@
-# Vaultd web prototype
+# Displayd web prototype
 
-A one-page test version of Vaultd (formerly Slabfolio) for trying on iPhone Safari. Published with GitHub Pages at https://belipede.github.io/slabfolio-web/.
+A one-page test version of Displayd (formerly Slabfolio) for trying on iPhone Safari. Published with GitHub Pages at https://belipede.github.io/slabfolio-web/.
 It opens with a sample collection; import your own sheet from Me. Your collection is stored only in the browser (localStorage); use Export in the app to back it up.
 Report bugs and ideas as issues.
 
-The app was renamed from Slabfolio to Vaultd in November 2026. The repository name, the live URL, the saved-data key (`slabfolio-web-v1`) and the `slabfolio-find` marker in registry issues keep the old name on purpose, so existing installs, saved collections, bio links and shared finds keep working.
+The app was renamed from Slabfolio to Displayd in November 2026. The repository name, the live URL, the saved-data key (`slabfolio-web-v1`) and the `slabfolio-find` marker in registry issues keep the old name on purpose, so existing installs, saved collections, bio links and shared finds keep working.
 
 ## Editing the app
 
