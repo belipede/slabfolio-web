@@ -153,6 +153,10 @@ select.inp{-webkit-appearance:none;appearance:none}
 .dpr{font-weight:700;font-size:14px;margin-top:4px}
 .cimg{display:block;max-height:260px;max-width:100%;margin:0 auto 12px;border-radius:10px}
 .item.warn{border-color:#6b5320;background:#2e2412}
+.stk{position:absolute;left:6px;top:6px;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.2px;padding:2px 7px;border-radius:999px;background:rgba(11,16,32,.82);color:#ffd08a;border:1px solid rgba(242,169,59,.55);pointer-events:none}
+.stk.sm{left:0;right:0;top:auto;bottom:0;border-radius:0;border:0;padding:1px 0;font-size:7px;text-align:center}
+.stk.inl{position:static;display:inline-block;vertical-align:1px}
+.links .mini{margin:0}
 </style>
 </head>
 <body>
@@ -818,9 +822,18 @@ function openC(id, mode){
   const x = val(c), cost = money(c.cost), comps = compsOf(c), m = matchInv(c.line, c.desc, c.player, c.serial);
   const dl = (k, v) => v === null || v === undefined || v === '' ? '' : `<dt>${k}</dt><dd>${v}</dd>`;
   const phs = photosOf(c), editing = mode === 'photos';
-  let h = `<div class="phs">${phs.map((u, i) => `<div class="ph"><img src="${esc(u)}" alt="">${editing ? `<button class="phx" data-rmph="${i}" aria-label="Remove photo">×</button>` : ''}</div>`).join('')}
+  const web = sameEveryCopy(c) && phs.length < MAX_PHOTOS;
+  let h = `<div class="phs">${phs.map((u, i) => `<div class="ph">${imgTag(u)}${phStock(u) ? '<i class="stk" title="A photo of the same card from the web, not this copy">Stock photo</i>' : ''}${editing ? `<button class="phx" data-rmph="${i}" aria-label="Remove photo">×</button>` : ''}</div>`).join('')}
   ${phs.length < MAX_PHOTOS ? `<label class="ph add"><input type="file" accept="image/*" id="phin" hidden><span>+</span>${phs.length ? 'Add photo' : 'Add a photo of the front'}</label>` : ''}</div>
-  ${phs.length && !editing ? `<button class="mini" data-mode="photos" style="margin-bottom:8px">Remove photos</button>` : ''}
+  ${(phs.length && !editing) || (web && mode !== 'web') ? `<div class="links" style="margin:0 0 8px">${web && mode !== 'web' ? `<button class="mini" data-mode="web">Use a photo from the web</button>` : ''}${phs.length && !editing ? `<button class="mini" data-mode="photos">Remove photos</button>` : ''}</div>` : ''}
+  ${mode === 'web' ? `<div class="prof" style="margin:0 0 10px"><b>Use a photo from the web</b>
+    <div class="sub" style="margin-top:4px">Every copy of this card looks the same, so a photo of another copy works. It gets a small <i class="stk inl">Stock photo</i> tag so nobody mistakes it for yours.</div>
+    <div class="links"><a href="${imgSearch(c)}" target="_blank" rel="noopener">Google Images ↗</a><a href="${ebayListings(c)}" target="_blank" rel="noopener">eBay listings ↗</a></div>
+    <div class="hint">Find a clear photo of the front, long-press it and tap Copy, then come back:</div>
+    <button class="btn" data-act="pastestock" style="margin-top:8px">Paste copied photo</button>
+    <label class="f">…or paste the image link</label><div class="btns"><input class="inp" id="stkurl" placeholder="https://…" autocapitalize="off" autocorrect="off" style="flex:3"><button class="btn ghost" data-act="stkurl" style="margin:0;flex:1">Add</button></div>
+    <label class="btn ghost" style="text-align:center">Pick a saved photo<input type="file" accept="image/*" id="stkfile" hidden></label>
+    <button class="mini" data-mode="" style="margin-top:10px">Cancel</button></div>` : ''}
   <h2>${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}${c.id && !/^S\d/.test(c.id) ? ' · ' + esc(c.id) : ''}</div>
   <div style="margin-top:8px">${cardTags(c).map(t => `<span class="tag">${esc(t)}</span>`).join('')}<span class="tag">${esc(c.status)}</span></div>
   <dl class="kv">${owned(c) ? dl('Value', `<b class="${tone(c)}">${sgd(x.v)}</b>`) + dl('Based on', `<span class="sub">${esc(x.src)}</span>`) : dl('Sold for', sgd(money(c.sold))) + dl('Sold', esc([c.soldDate, c.channel].filter(Boolean).join(' · ')))}
@@ -854,6 +867,9 @@ function openC(id, mode){
   const sh = $('#sheet');
   sh.querySelectorAll('[data-mode]').forEach(el => el.onclick = () => openC(id, el.dataset.mode));
   const pin = $('#phin'); if (pin) pin.onchange = () => addPhoto(id, pin.files[0]);
+  const sf = $('#stkfile'); if (sf) sf.onchange = () => addPhoto(id, sf.files[0], true);
+  const ps = sh.querySelector('[data-act=pastestock]'); if (ps) ps.onclick = () => pasteStock(id);
+  const su = sh.querySelector('[data-act=stkurl]'); if (su) su.onclick = () => addStockLink(id, $('#stkurl').value);
   sh.querySelectorAll('[data-rmph]').forEach(el => el.onclick = () => removePhoto(id, +el.dataset.rmph));
   const eb = sh.querySelector('[data-ebay]'); if (eb) eb.addEventListener('click', () => setTimeout(() => openC(id, 'sale'), 400));
   const dt = $('#dtog'); if (dt) dt.onclick = () => { c.hideDisp = !c.hideDisp; save(); render(); openC(id, mode); };
@@ -892,20 +908,48 @@ const BUILTIN_PHOTOS = { C0083: ['gray-1', 'gray-2', 'gray-3'], C0159: ['schwein
   C0402: ['vitinha-1', 'vitinha-2'], C0471: ['spurs-1', 'spurs-2'], C0465: ['yamal-1', 'yamal-2'], C0406: ['casado-1', 'casado-2'], C0388: ['neymar-1', 'neymar-2'],
   C0403: ['moore-sq-1', 'moore-sq-2'], C0391: ['acuna-1', 'acuna-2'], C0405: ['porro-1', 'porro-2'], S02: ['emi-1'], S05: ['gray-1', 'gray-2', 'gray-3'] };
 const MAX_PHOTOS = 4;
-const photosOf = c => S.photos[c.id] ? S.photos[c.id] : (BUILTIN_PHOTOS[c.id] || []).map(n => PHOTO_DIR + n + '.webp');
+// A photo is a URL / data URL string (a photo of your own copy) or { u, stock: 1 } (a photo from the web of the same card, tagged "Stock photo").
+const phU = x => typeof x === 'string' ? x : x.u;
+const phStock = x => !!(x && typeof x === 'object' && x.stock);
+// Google Drive share links don't load in an <img>; the thumbnail endpoint does (the file must be shared "anyone with the link")
+const driveImg = u => { const m = /drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]+)/.exec(u || ''); return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w800` : u; };
+const sheetPhotos = c => [c.photoF, c.photoB].filter(u => /^https?:\/\//.test(u || '')).map(driveImg);
+const photosOf = c => S.photos[c.id] ? S.photos[c.id] : BUILTIN_PHOTOS[c.id] ? BUILTIN_PHOTOS[c.id].map(n => PHOTO_DIR + n + '.webp') : sheetPhotos(c);
+// web photos only make sense when every copy looks the same: not numbered or a 1/1, not graded (the slab label is unique), no patch or relic (every swatch differs)
+const sameEveryCopy = c => !c.serial && !c.run && !/1\s*\/\s*1|one of one|patch|relic|jersey|memorabilia/i.test(c.desc || '') && !/yes/i.test(c.patch || '') && (!c.grade || c.grade === 'Raw') && !/^graded/i.test(c.stage || '');
 const initials = c => (c.player || '?').split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
-const thumbHtml = c => { const ph = photosOf(c)[0]; return `<div class="cth">${ph ? `<img src="${esc(ph)}" alt="" loading="lazy">` : `<span>${esc(initials(c))}</span>`}</div>`; };
-async function addPhoto(id, file){
+const imgTag = (x, cls = '') => `<img src="${esc(phU(x))}" alt="" loading="lazy" referrerpolicy="no-referrer"${cls ? ` class="${cls}"` : ''}>`;
+const thumbHtml = c => { const ph = photosOf(c)[0]; return `<div class="cth">${ph ? imgTag(ph) + (phStock(ph) ? '<i class="stk sm">Stock</i>' : '') : `<span>${esc(initials(c))}</span>`}</div>`; };
+async function addPhoto(id, file, stock){
   const c = S.cards.find(x => x.id === id); if (!c || !file) return;
   const list = photosOf(c).slice(); if (list.length >= MAX_PHOTOS) return toast(`Up to ${MAX_PHOTOS} photos a card`);
-  const d = await shrink(file, 700, .68); if (!d) return;
-  const before = S.photos[id]; S.photos[id] = list.concat(d);
-  if (!save()){ if (before) S.photos[id] = before; else delete S.photos[id]; return; }
-  toast('Photo added'); render(); openC(id, 'photos');
+  const d = await shrink(file, 700, .68); if (!d) return toast('Could not read that image');
+  return keepPhoto(c, list, stock ? { u: d, stock: 1 } : d);
 }
+function keepPhoto(c, list, entry){
+  const before = S.photos[c.id]; S.photos[c.id] = list.concat([entry]);
+  if (!save()){ if (before) S.photos[c.id] = before; else delete S.photos[c.id]; return; }
+  toast(phStock(entry) ? 'Stock photo added' : 'Photo added'); render(); openC(c.id);
+}
+// iPhone: long-press a photo in Safari › Copy, then this reads it from the clipboard (needs a tap, and Safari asks to allow Paste)
+async function pasteStock(id){
+  try {
+    const items = await navigator.clipboard.read();
+    for (const it of items){ const t = it.types.find(x => x.startsWith('image/')); if (t) return addPhoto(id, await it.getType(t), true); }
+    toast('No photo on the clipboard. Long-press a photo and tap Copy first.');
+  } catch (e) { toast('Pasting photos isn\'t allowed here. Save the photo instead, then pick it below.'); }
+}
+function addStockLink(id, url){
+  const c = S.cards.find(x => x.id === id); url = (url || '').trim();
+  if (!/^https:\/\/\S+$/.test(url)) return toast('Paste a link that starts with https://');
+  const list = photosOf(c).slice(); if (list.length >= MAX_PHOTOS) return toast(`Up to ${MAX_PHOTOS} photos a card`);
+  keepPhoto(c, list, { u: driveImg(url), stock: 1 });
+}
+const imgSearch = c => 'https://www.google.com/search?tbm=isch&q=' + encodeURIComponent([c.player, c.line, c.desc].filter(Boolean).join(' '));
+const ebayListings = c => 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent([c.player, c.line, c.desc].filter(Boolean).join(' '));
 function removePhoto(id, i){
   const c = S.cards.find(x => x.id === id); if (!c) return;
-  const list = photosOf(c).slice(); list.splice(i, 1); S.photos[id] = list; save(); render(); openC(id, 'photos');
+  const list = photosOf(c).slice(); list.splice(i, 1); S.photos[id] = list; save(); render(); openC(id, list.length ? 'photos' : '');
 }
 
 // ---------- display (your cards as a photo showcase) ----------
@@ -929,7 +973,7 @@ function renderDisplay(){
   <div class="seg wide" style="margin-bottom:12px">${[['sale', 'For sale'], ['pc', 'PC'], ['sold', 'Sold']].map(([k, l]) => `<button data-dg="${k}" class="${g === k ? 'on' : ''}">${l} (${n(k)})</button>`).join('')}</div>`;
   if (!list.length) h += `<div class="empty">${g === 'sale' ? 'Nothing for sale yet. Give a card an asking price, or set its status to To list.' : g === 'pc' ? 'No PC cards yet.' : 'Nothing sold yet.'}</div>`;
   h += `<div class="dgrid">` + list.map(c => { const ph = photosOf(c)[0];
-    return `<button class="dtile${c.hideDisp ? ' hid' : ''}" data-c="${esc(c.id)}"><div class="dimg">${ph ? `<img src="${esc(ph)}" alt="" loading="lazy">` : `<span class="noph">${esc(initials(c))}<small>+ Add photo</small></span>`}
+    return `<button class="dtile${c.hideDisp ? ' hid' : ''}" data-c="${esc(c.id)}"><div class="dimg">${ph ? imgTag(ph) + (phStock(ph) ? '<i class="stk">Stock photo</i>' : '') : `<span class="noph">${esc(initials(c))}<small>+ Add photo</small></span>`}
     ${c.serial ? `<span class="dbadge">${esc(c.serial)}</span>` : ''}${c.grade && c.grade !== 'Raw' ? `<span class="dbadge gr">${esc(c.grade)}</span>` : ''}</div>
     <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'pu' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
   if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Cards with photos show first.</p>`;
@@ -948,7 +992,7 @@ function renderComps(){
   <div class="prog" style="margin:14px 0"><div class="pl"><span>${done} logged this sprint · ${skip.size} skipped</span><b>${left.length} to go</b></div><div class="bar"><i style="width:${pct(done + skip.size, done + q.length)}%;background:var(--accent)"></i></div></div>`;
   if (!c) return h + `<div class="empty">${q.length ? 'You skipped the rest. ' : 'Every card has a real sale logged. '}Nice work.</div>${skip.size ? `<button class="btn ghost" data-act="unskip">Go through the skipped ones again</button>` : ''}`;
   const ph = photosOf(c)[0];
-  return h + `<div class="prof">${ph ? `<img class="cimg" src="${esc(ph)}" alt="">` : ''}<h2 style="margin:0;font-size:19px">${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}</div>
+  return h + `<div class="prof">${ph ? `<div style="position:relative;width:fit-content;margin:0 auto">${imgTag(ph, 'cimg')}${phStock(ph) ? '<i class="stk">Stock photo</i>' : ''}</div>` : ''}<h2 style="margin:0;font-size:19px">${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}</div>
   <div style="margin-top:6px">${cardTags(c).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
   <dl class="kv"><dt>Your value now</dt><dd class="pu">${sgd(val(c).v)}</dd>${money(c.cost) !== null ? `<dt>Paid</dt><dd>${sgd(money(c.cost))}</dd>` : ''}</dl>
   <a class="btn" href="${ebaySold(c)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Check eBay sold ↗</a>
@@ -998,7 +1042,7 @@ function parseCSV(t){
 }
 const COLS = { id: ['id'], status: ['status'], hit: ['hit type'], sport: ['sport'], brand: ['brand'], line: ['product line'], desc: ['card / insert', 'card'], player: ['player'], serial: ['serial'], run: ['print run'],
   auto: ['auto'], patch: ['patch'], rc: ['rc'], grade: ['grade'], stage: ['grade stage'], qty: ['qty'], cost: ['total cost', 'bought for'], ask: ['asking'], sold: ['sold for'], soldDate: ['sold date'],
-  channel: ['channel'], comp: ['comp price'], compDate: ['comp date'], search: ['comp search'], notes: ['notes'] };
+  channel: ['channel'], comp: ['comp price'], compDate: ['comp date'], search: ['comp search'], notes: ['notes'], photoF: ['photo front'], photoB: ['photo back'] };
 function importRows(rows){
   const head = rows[0].map(x => x.trim().toLowerCase()), idx = {};
   for (const [k, names] of Object.entries(COLS)){
