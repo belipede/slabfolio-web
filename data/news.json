@@ -1,5 +1,5 @@
 {
-"pulled":"2026-11-17T20:55:12Z",
+"pulled":"2026-11-18T07:28:04Z",
 "sources":[
 "BBC Sport",
 "Cardboard Connection",
@@ -9,6 +9,389 @@
 "The Independent"
 ],
 "items":[
+{
+"k":"football",
+"t":"From one of Ajax's future stars to quitting football for music",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmly053x643ro?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T07:02:42Z",
+"n":[
+"ajax",
+"bbc",
+"elikia",
+"former",
+"mbinga",
+"sport"
+]
+},
+{
+"k":"football",
+"t":"Transfer Centre LIVE! Get your questions in for today's SSN transfer special!",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/12476234/transfer-centre-live-football-transfer-news-updates-and-rumours",
+"d":"2026-11-18T07:00:00Z",
+"n":[
+"centre",
+"get",
+"live",
+"ssn"
+]
+},
+{
+"k":"football",
+"t":"Who am I? Plus today's other quizzes",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6ly5dq07wk5o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T06:56:12Z",
+"n":[
+"am",
+"brainteaser",
+"five",
+"plus",
+"test"
+]
+},
+{
+"k":"football",
+"t":"The 3pm football blackout: outdated or still relevant in 2026?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cwvg2mxkd4x8o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T06:27:11Z",
+"n":[]
+},
+{
+"k":"football",
+"t":"A 2-0 win over Haiti ends Pochettino’s USMNT tenure with confident hope",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/17/usmnt-haiti-nations-league-mauricio-pochettino",
+"d":"2026-11-18T02:19:36Z",
+"n":[
+"christian",
+"cincinnati-hosted",
+"concacaf",
+"haiti",
+"hall",
+"julian",
+"man",
+"mauricio",
+"nations",
+"pochettino",
+"pulisic",
+"united",
+"us",
+"usmnt"
+]
+},
+{
+"k":"football",
+"t":"Belief and bench steer Northern Ireland into Nations League top tier",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cwp9dxr80p3po?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-17T23:49:31Z",
+"n":[
+"belief",
+"hungary",
+"ireland",
+"manager",
+"michael",
+"nations",
+"northern",
+"o'neill"
+]
+},
+{
+"k":"football",
+"t":"Bellamy convinced of Wales credentials despite defeat by Portugal",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmn507wn6gg3o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-17T23:37:45Z",
+"n":[
+"bellamy",
+"craig",
+"nations",
+"portugal",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"Nations League roundup: Devenny’s divine strike lifts Northern Ireland to top tier",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/17/nations-league-northern-ireland-hungary-norway-denmark",
+"d":"2026-11-17T23:35:42Z",
+"n":[
+"b2",
+"devenny",
+"group",
+"haaland",
+"hungary",
+"ireland",
+"justin",
+"michael",
+"nations",
+"ne",
+"northern",
+"norway",
+"parrott",
+"republic",
+"stoke"
+]
+},
+{
+"k":"football",
+"t":"Republic of Ireland talisman Parrott caps dream year with two more goals",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqzjr3yr2z0eo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-17T23:10:33Z",
+"n":[
+"ireland",
+"kosovo",
+"parrott",
+"republic",
+"troy"
+]
+},
+{
+"k":"football",
+"t":"Papers: Poch to appoint Man Utd's first-ever female coach",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13613427/man-utd-boss-mauricio-pochettino-to-appoint-clubs-first-ever-female-coach-paper-talk",
+"d":"2026-11-17T22:58:00Z",
+"n":[
+"man",
+"papers",
+"poch",
+"utd",
+"wednesday"
+]
+},
+{
+"k":"football",
+"t":"Senegal and Morocco lead Afcon qualifiers but Tunisia protest",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c5evrgrvw1ezo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-17T22:54:51Z",
+"n":[
+"afcon",
+"africa",
+"cameroon",
+"morocco",
+"nations",
+"nigeria",
+"senegal",
+"tunisia"
+]
+},
+{
+"k":"football",
+"t":"How does Euro 2028 qualifying work? Confirmed pots, format, and rules for co-hosts",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/euro-2028-qualifying-rules-hosts-home-nations-b3085950.html",
+"d":"2026-11-17T22:36:00Z",
+"n":[
+"belfast",
+"confirmed",
+"england",
+"euro",
+"ireland",
+"republic",
+"scotland",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"When is the Nations League draw and who could England play in quarter-finals?",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/nations-league-draw-england-quarter-final-opponents-b3086687.html",
+"d":"2026-11-17T22:30:02Z",
+"n":[
+"england",
+"nations"
+]
+},
+{
+"k":"football",
+"t":"Liverpool lead Chelsea in Camara race - Wednesday's gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cvx2xwx604y0o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-17T22:25:16Z",
+"n":[
+"barcelona",
+"bruno",
+"camara",
+"chelsea",
+"crystal",
+"dijk",
+"fernandes",
+"lamine",
+"liverpool",
+"monaco",
+"palace",
+"van",
+"virgil",
+"wednesday",
+"wilfried",
+"zaha"
+]
+},
+{
+"k":"football",
+"t":"Erling Haaland’s last-minute penalty sends Norway into Nations League quarter-finals",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/erling-haaland-norway-denmark-penalty-nations-league-b3086782.html",
+"d":"2026-11-17T22:24:53Z",
+"n":[
+"england",
+"erling",
+"france",
+"germany",
+"haaland",
+"nations",
+"norway"
+]
+},
+{
+"k":"football",
+"t":"Portugal’s new No 7 Forbs channels Ronaldo for winner as Wales are denied",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/17/wales-portugal-nations-league-match-report",
+"d":"2026-11-17T22:14:37Z",
+"n":[
+"cristiano",
+"federation",
+"forbs",
+"one",
+"perhaps",
+"portugal",
+"portuguese",
+"ronaldo",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"Wales beaten by 10-man Portugal in entertaining Nations League finale",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/wales-portugal-nations-league-result-report-b3086777.html",
+"d":"2026-11-17T22:14:07Z",
+"n":[
+"bellamy",
+"craig",
+"nations",
+"neto",
+"pedro",
+"portugal",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"Northern Ireland earn remarkable promotion to Nations League top tier",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/northern-ireland-hungary-nations-league-promotion-b3086778.html",
+"d":"2026-11-17T22:11:15Z",
+"n":[
+"b2",
+"budapest",
+"devenny",
+"group",
+"hungary",
+"ireland",
+"justin",
+"nations",
+"northern"
+]
+},
+{
+"k":"football",
+"t":"The three teams England could face in the Nations League quarter-finals",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13611876/nations-league-2026-27-england-into-quarter-finals-but-who-will-they-play-in-last-eight-in-march",
+"d":"2026-11-17T22:00:00Z",
+"n":[
+"england",
+"nations",
+"spain"
+]
+},
+{
+"k":"football",
+"t":"Highlights: Ten-man Portugal beat Wales to top group",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cmwy8p49xp25o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-17T21:56:04Z",
+"n":[
+"cardiff",
+"highlights",
+"nations",
+"portugal",
+"ten-man",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"Northern Ireland promoted to Nations League top tier with draw in Hungary",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/hungary-vs-northern-ireland/report/554131",
+"d":"2026-11-17T21:49:00Z",
+"n":[
+"budapest",
+"devenny",
+"hungary",
+"ireland",
+"justin",
+"nations",
+"northern"
+]
+},
+{
+"k":"football",
+"t":"Parrott fires Republic of Ireland into Nations League play-offs",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/republic-of-ireland-vs-kosovo/report/554134",
+"d":"2026-11-17T21:44:00Z",
+"n":[
+"aviva",
+"dublin",
+"ireland",
+"kosovo",
+"nations",
+"parrott",
+"republic",
+"stadium",
+"troy"
+]
+},
+{
+"k":"football",
+"t":"Wales beaten by 10-man Portugal as Neto scores but is sent off",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/wales-vs-portugal/report/554136",
+"d":"2026-11-17T21:40:00Z",
+"n":[
+"cardiff",
+"chelsea",
+"nations",
+"neto",
+"pedro",
+"portugal",
+"wales"
+]
+},
+{
+"k":"football",
+"t":"'A great of the club' - Rangers legend Brand dies aged 89",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c933g4eegmp8o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-17T21:02:57Z",
+"n":[
+"brand",
+"ralph",
+"rangers"
+]
+},
 {
 "k":"football",
 "t":"Wales v Portugal: Nations League football – live",
@@ -156,21 +539,6 @@
 "olwan",
 "sloppy",
 "socceroos"
-]
-},
-{
-"k":"football",
-"t":"Senegal become first side to book Afcon 2027 spot",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c5evrgrvw1ezo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-17T18:56:27Z",
-"n":[
-"afcon",
-"africa",
-"egypt",
-"nations",
-"nigeria",
-"senegal"
 ]
 },
 {
@@ -338,6 +706,25 @@
 },
 {
 "k":"football",
+"t":"Pocognoli’s aspiration for how Scotland must play is in danger of becoming unworkable",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/17/sebastien-pocognoli-scotland-nations-league-switzerland",
+"d":"2026-11-17T16:59:54Z",
+"n":[
+"association",
+"belgium",
+"clarke",
+"pocognoli",
+"russia",
+"scotland",
+"scottish",
+"steve",
+"successive",
+"switzerland"
+]
+},
+{
+"k":"football",
 "t":"Swansea boss Matos on brink of Strasbourg move",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/articles/cqly47zn8xlgo?at_medium=RSS&at_campaign=rss",
@@ -360,6 +747,19 @@
 "arsenal",
 "peter",
 "storey"
+]
+},
+{
+"k":"football",
+"t":"Arsenal latest: Gyokeres and Odegaard involved in Nations League goals",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025486/arsenal-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-17T16:45:00Z",
+"n":[
+"arsenal",
+"gyokeres",
+"nations",
+"odegaard"
 ]
 },
 {
@@ -731,15 +1131,15 @@
 },
 {
 "k":"football",
-"t":"Vinicius Junior scores 12-minute hat-trick as Brazil dominate Singapore",
+"t":"Haaland and Odegaard propel Norway into Nations League quarters",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/live-blog/11095/13575723/european-football-news-and-transfers-barcelona-real-madrid-psg-bayern-munich-latest-and-more",
 "d":"2026-11-17T12:38:00Z",
 "n":[
-"brazil",
-"junior",
-"singapore",
-"vinicius"
+"haaland",
+"nations",
+"norway",
+"odegaard"
 ]
 },
 {
@@ -1144,22 +1544,6 @@
 "owono",
 "pique",
 "tenerife"
-]
-},
-{
-"k":"football",
-"t":"Transfer Centre LIVE! McKennie speaks on USA players reuniting with Poch at Man Utd",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/12476234/transfer-centre-live-football-transfer-news-updates-and-rumours",
-"d":"2026-11-17T08:15:00Z",
-"n":[
-"centre",
-"live",
-"man",
-"mckennie",
-"poch",
-"usa",
-"utd"
 ]
 },
 {
@@ -2778,14 +3162,14 @@
 },
 {
 "k":"football",
-"t":"England latest: Tuchel addresses No 1 battle and Nations League ambitions",
+"t":"England latest: FA registers interest to host Nations League finals",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/live-blog/11095/13427059/england-football-news-live-updates-schedule-and-analysis-of-thomas-tuchels-three-lions",
 "d":"2026-11-16T07:20:00Z",
 "n":[
 "england",
-"nations",
-"tuchel"
+"fa",
+"nations"
 ]
 },
 {
@@ -3118,18 +3502,6 @@
 "nations",
 "spain",
 "ten-man"
-]
-},
-{
-"k":"football",
-"t":"Arsenal latest: VOTE - Is Rice the best midfielder in the league?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13025486/arsenal-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-"d":"2026-11-15T21:36:00Z",
-"n":[
-"arsenal",
-"rice",
-"vote"
 ]
 },
 {
@@ -5033,18 +5405,6 @@
 },
 {
 "k":"football",
-"t":"Who could England face in Nations League quarter-finals?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13611876/nations-league-2026-27-england-into-quarter-finals-but-who-will-they-play-in-last-eight-in-march",
-"d":"2026-11-13T11:56:00Z",
-"n":[
-"england",
-"nations",
-"spain"
-]
-},
-{
-"k":"football",
 "t":"BBC to show Dover v Leicester and Salisbury v Blackpool",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/articles/c64gndwd2l0xo?at_medium=RSS&at_campaign=rss",
@@ -5725,6 +6085,27 @@
 "john",
 "rongcheng",
 "super"
+]
+},
+{
+"k":"cards",
+"t":"2026 Topps Chrome Football Review: Rookies, Refractors And A High Price",
+"s":"Cardlines",
+"u":"https://cardlines.com/2026-topps-chrome-review/",
+"d":"2026-11-17T23:35:00Z",
+"tag":"Topps",
+"n":[
+"cardlines",
+"chrome",
+"high",
+"hobby",
+"nfl",
+"price",
+"refractor",
+"refractors",
+"review",
+"rookies",
+"topps"
 ]
 },
 {
