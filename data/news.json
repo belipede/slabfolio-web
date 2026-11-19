@@ -1,5 +1,5 @@
 {
-"pulled":"2026-11-18T20:30:48Z",
+"pulled":"2026-11-19T07:26:15Z",
 "sources":[
 "BBC Sport",
 "Cardboard Connection",
@@ -9,6 +9,261 @@
 "The Independent"
 ],
 "items":[
+{
+"k":"football",
+"t":"From Forest fringes to Glasner's go-to guy - the rise of McAtee",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/ck98z842gp11o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T07:14:11Z",
+"n":[
+"city",
+"forest",
+"glasner",
+"ground",
+"james",
+"mcatee",
+"nottingham"
+]
+},
+{
+"k":"football",
+"t":"Who am I? Plus today's other quizzes",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmde19r53008o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T07:06:18Z",
+"n":[
+"am",
+"brainteaser",
+"five",
+"plus",
+"test"
+]
+},
+{
+"k":"football",
+"t":"Vote for the first BBC Men's Footballer of the Year",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c61wrqr7l1d8o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T06:30:04Z",
+"n":[
+"bbc",
+"bellingham",
+"footballer",
+"harry",
+"jude",
+"kane",
+"kylian",
+"lamine",
+"mbappe",
+"men",
+"rodri",
+"vote",
+"yamal",
+"year"
+]
+},
+{
+"k":"football",
+"t":"'Best I've seen live': Watch as player scores ‘special’ goal",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/news/videos/cr4gn768pg5lo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T05:30:23Z",
+"n":[
+"best",
+"i've"
+]
+},
+{
+"k":"football",
+"t":"Buurman scores late winner for Chelsea while Man City earn back-to-back Champions League victories",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/chelsea-man-city-womens-champions-league-b3087584.html",
+"d":"2026-11-18T22:59:07Z",
+"n":[
+"buurman",
+"chelsea",
+"city",
+"elsewhere",
+"juventus",
+"madrid",
+"man",
+"real"
+]
+},
+{
+"k":"football",
+"t":"Man Utd pursuing Como's Paz - Thursday's gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cxnv4q2qnvjvo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T22:34:05Z",
+"n":[
+"alejandro",
+"amad",
+"balde",
+"barcelona",
+"besiktas",
+"como",
+"diallo",
+"man",
+"manchester",
+"nico",
+"paz",
+"thursday",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Manchester United’s infamous 1974 relegation is a warning from history",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/18/manchester-united-infamous-1974-relegation-is-a-warning-from-history",
+"d":"2026-11-18T22:30:10Z",
+"n":[
+"manchester",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Buurman rescues late Chelsea win against PSG",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cjy5xkq5wwrgo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T22:13:49Z",
+"n":[
+"buurman",
+"chelsea",
+"paris",
+"psg",
+"st-germain",
+"veerle",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Veerle Buurman scrambles late WCL winner to push blunt Chelsea past PSG",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/18/chelsea-paris-saint-germain-womens-champions-league-match-report",
+"d":"2026-11-18T22:06:45Z",
+"n":[
+"buurman",
+"chelsea",
+"city",
+"khadi",
+"manchester",
+"paris",
+"psg",
+"saint-germain",
+"veerle",
+"wcl"
+]
+},
+{
+"k":"football",
+"t":"Leicester City part ways with sponsor after controversial porn actress partnership",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/leicester-city-bc-game-sponsor-eva-elfie-b3087557.html",
+"d":"2026-11-18T22:06:23Z",
+"n":[
+"bc",
+"city",
+"elfie",
+"eva",
+"game",
+"leicester"
+]
+},
+{
+"k":"football",
+"t":"Euro Leagues",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sounds/play/p0pnqxmx?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T22:06:00Z",
+"n":[
+"century",
+"euro",
+"european",
+"leagues",
+"strikers",
+"top"
+]
+},
+{
+"k":"football",
+"t":"Chelsea snatch late winner vs PSG to move top of WCL table",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/chelsea-women-vs-paris-saint-germain-women/report/578268",
+"d":"2026-11-18T22:00:00Z",
+"n":[
+"buurman",
+"chelsea",
+"paris",
+"psg",
+"saint-germain",
+"veerle",
+"wcl"
+]
+},
+{
+"k":"football",
+"t":"Ukrainian FA to blame for failed drugs test - Mudryk",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cr930l71z5ejo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T21:22:18Z",
+"n":[
+"association",
+"chelsea",
+"fa",
+"mudryk",
+"mykhailo",
+"tottenham",
+"ukrainian"
+]
+},
+{
+"k":"football",
+"t":"England defender Carter joins Bay FC after Gotham exit",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/ck5y169v1262o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T21:07:26Z",
+"n":[
+"bay",
+"carter",
+"england",
+"fc",
+"gotham",
+"jess"
+]
+},
+{
+"k":"football",
+"t":"Strasbourg appoint Swansea boss Matos",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6174epxv1p4o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T20:57:54Z",
+"n":[
+"city",
+"matos",
+"strasbourg",
+"swansea",
+"vitor"
+]
+},
+{
+"k":"football",
+"t":"FA explored legal challenge to Infantino staying on",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm3eg1w4ypz5o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T20:55:01Z",
+"n":[
+"association",
+"fa",
+"fifa",
+"gianni",
+"infantino"
+]
+},
 {
 "k":"football",
 "t":"Hemp and Shaw star as Manchester City get vital win at Hacken",
@@ -103,6 +358,18 @@
 "man",
 "manchester",
 "women"
+]
+},
+{
+"k":"football",
+"t":"Leicester split with sponsor after porn actress row",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/news/articles/cq4gnx28zp5lo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-18T19:10:21Z",
+"n":[
+"bc",
+"game",
+"leicester"
 ]
 },
 {
@@ -404,7 +671,7 @@
 },
 {
 "k":"football",
-"t":"Man Utd latest: Pochettino's first words as he arrives at Carrington for first time",
+"t":"Man Utd latest: Pochettino's words as he arrived at Carrington for first time",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
 "d":"2026-11-18T15:00:00Z",
@@ -671,6 +938,19 @@
 "spaniard",
 "united",
 "world"
+]
+},
+{
+"k":"football",
+"t":"Matos completes Strasbourg switch with Williams in Swansea talks",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13163353/championship-news-transfer-latest-and-gossip-plus-efl-updates-from-league-one-and-league-two",
+"d":"2026-11-18T11:30:00Z",
+"n":[
+"matos",
+"strasbourg",
+"swansea",
+"williams"
 ]
 },
 {
@@ -1131,6 +1411,21 @@
 "poch",
 "utd",
 "wednesday"
+]
+},
+{
+"k":"football",
+"t":"Papers: Pochettino could help Man Utd's pursuit of Paz",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13613766/manchester-united-pursuit-of-nico-paz-boosted-by-mauricio-pochettino-arrival-paper-talk",
+"d":"2026-11-17T22:58:00Z",
+"n":[
+"man",
+"papers",
+"paz",
+"pochettino",
+"thursday",
+"utd"
 ]
 },
 {
@@ -1690,18 +1985,6 @@
 },
 {
 "k":"football",
-"t":"Strasbourg close to appointing Swansea boss Matos in £5m deal",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13163353/championship-news-transfer-latest-and-gossip-plus-efl-updates-from-league-one-and-league-two",
-"d":"2026-11-17T16:35:00Z",
-"n":[
-"matos",
-"strasbourg",
-"swansea"
-]
-},
-{
-"k":"football",
 "t":"Arsenal close to new deals for Raya, Timber and Hincapie",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/news/11095/13613327/arsenal-transfer-news-david-raya-jurrien-timber-and-piero-hincapie-close-to-finalising-new-contracts",
@@ -2038,7 +2321,7 @@
 },
 {
 "k":"football",
-"t":"Watch: Can Northern Ireland hit the right notes in Budapest?",
+"t":"Can Northern Ireland hit the right notes in Budapest?",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/videos/cxyvd3z52dq5o?at_medium=RSS&at_campaign=rss",
 "d":"2026-11-17T12:40:23Z",
@@ -6200,349 +6483,6 @@
 "tearful",
 "united",
 "utd"
-]
-},
-{
-"k":"football",
-"t":"Mauricio Pochettino to Manchester United and record breaker Kane | Football Weekly video",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/video/2026/nov/13/mauricio-pochettino-to-manchester-united-and-record-breaker-kane-football-weekly-video",
-"d":"2026-11-13T13:41:07Z",
-"n":[
-"continue",
-"cowen",
-"england",
-"harry",
-"jacob",
-"kane",
-"lars",
-"manchester",
-"mauricio",
-"paul",
-"pochettino",
-"robyn",
-"sivertsen",
-"steinberg",
-"united",
-"watson",
-"weekly"
-]
-},
-{
-"k":"football",
-"t":"How Ferguson-inspired Pochettino can succeed where Carrick failed at Man Utd",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cm2kljzkw77ko?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-13T12:09:48Z",
-"n":[
-"carrick",
-"ferguson-inspired",
-"man",
-"mauricio",
-"pochettino",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"How do Arsenal rediscover the 'fear factor' at the Emirates?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13610560/arsenal-vs-london-city-lionesses-have-renee-slegers-side-lost-the-fear-factor-of-playing-at-the-emirates-stadium",
-"d":"2026-11-13T12:00:00Z",
-"n":[
-"arsenal",
-"but",
-"emirates",
-"renee",
-"slegers",
-"stadium",
-"super",
-"that",
-"women"
-]
-},
-{
-"k":"football",
-"t":"BBC to show Dover v Leicester and Salisbury v Blackpool",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c64gndwd2l0xo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-13T10:49:07Z",
-"n":[
-"athletic",
-"bbc",
-"blackpool",
-"dover",
-"fa",
-"leicester",
-"non-league",
-"salisbury"
-]
-},
-{
-"k":"football",
-"t":"Fernandes rejects second Man Utd contract offer",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cm782d4pz9jyo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-13T09:55:01Z",
-"n":[
-"bruno",
-"fernandes",
-"man",
-"manchester",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"From postcards to texts, the different ways a manager gets the sack - Pulis",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cve8716dg46xo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-13T08:13:19Z",
-"n":[
-"bbc",
-"pulis",
-"sport",
-"tony"
-]
-},
-{
-"k":"football",
-"t":"The beautiful game: revived art prize gives football its creative due once more | Emma John",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/13/football-association-art-prize",
-"d":"2026-11-13T08:00:12Z",
-"n":[
-"beautiful",
-"boccioni",
-"dynamism",
-"emma",
-"futurist",
-"game",
-"italian",
-"john",
-"player",
-"umberto",
-"you"
-]
-},
-{
-"k":"football",
-"t":"Pochettino’s Chelsea maelstrom the best yardstick for what lies ahead at United",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/13/pochettino-chelsea-maelstrom-yardstick-what-lies-ahead-manchester-united",
-"d":"2026-11-13T07:00:12Z",
-"n":[
-"alex",
-"among",
-"argentinian",
-"arsene",
-"chelsea",
-"ferguson",
-"guardiola",
-"jose",
-"jurgen",
-"klopp",
-"manchester",
-"mauricio",
-"mourinho",
-"opta",
-"pep",
-"pochettino",
-"united",
-"wenger"
-]
-},
-{
-"k":"football",
-"t":"Nations League: Italy roar back to beat France despite Donnarumma’s early howler",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/12/nations-league-italy-france-spain-czechia",
-"d":"2026-11-12T22:31:35Z",
-"n":[
-"czechia",
-"donnarumma",
-"esposito",
-"france",
-"gianluigi",
-"italy",
-"loss",
-"michael",
-"nations",
-"olise",
-"pio",
-"san",
-"siro",
-"spain",
-"zidane",
-"zinedine"
-]
-},
-{
-"k":"football",
-"t":"Where does Kane rank among all-time England greats?",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cxj0lvqpn94qo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-12T22:09:59Z",
-"n":[
-"england",
-"harry",
-"kane",
-"lions",
-"three"
-]
-},
-{
-"k":"football",
-"t":"Arsenal dig in for draw at Barcelona to extend unbeaten start",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/videos/crlye55q790yo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-12T20:09:07Z",
-"n":[
-"arsenal",
-"barcelona",
-"camp",
-"nou",
-"renee",
-"slegers",
-"uefa",
-"women"
-]
-},
-{
-"k":"football",
-"t":"Arsenal dig deep to earn WCL draw in face of Barcelona dominance",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/12/barcelona-arsenal-womens-champions-league-match-report",
-"d":"2026-11-12T20:00:16Z",
-"n":[
-"arsenal",
-"barcelona",
-"camp",
-"caroline",
-"european",
-"frida",
-"graham",
-"gunners",
-"hansen",
-"maanum",
-"nou",
-"wcl"
-]
-},
-{
-"k":"football",
-"t":"How will the USMNT replace Mauricio Pochettino? There’s no clear answer",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/12/mauricio-pochettino-replacements-usmnt-manchester-united",
-"d":"2026-11-12T19:20:01Z",
-"n":[
-"even",
-"federation",
-"manchester",
-"mauricio",
-"pochettino",
-"sign",
-"there",
-"united",
-"us",
-"usmnt",
-"world"
-]
-},
-{
-"k":"football",
-"t":"How Pochettino came on Man Utd's radar - and what Carrick was told when",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cqdr1jlr1707o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-12T16:12:39Z",
-"n":[
-"carrick",
-"man",
-"mauricio",
-"michael",
-"pochettino",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Michael Carrick was just the latest fall guy for Manchester United’s dysfunctional hierarchy | Jamie Jackson",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/12/michael-carrick-manchester-united-sacked",
-"d":"2026-11-12T12:00:48Z",
-"n":[
-"alex",
-"carrick",
-"disastrous",
-"eddie",
-"ferguson",
-"howe",
-"jackson",
-"jamie",
-"manchester",
-"mauricio",
-"michael",
-"pochettino",
-"sir",
-"trafford",
-"united"
-]
-},
-{
-"k":"football",
-"t":"‘Pregnancy does not mean game over’: meet the footballers challenging the myths | Moving the Goalposts",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/12/pregnancy-womens-football-moving-the-goalposts-newsletter",
-"d":"2026-11-12T12:00:47Z",
-"n":[
-"angel",
-"city",
-"claire",
-"emma",
-"emslie",
-"fc",
-"goalposts",
-"kelly",
-"moving",
-"pregnancy",
-"scotland"
-]
-},
-{
-"k":"football",
-"t":"‘Second ball’ may be a Sunday league mantra but Yates showed its top-flight relevance",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/12/ryan-yates-nottingham-forest-manchester-city-premier-league-second-ball",
-"d":"2026-11-12T11:00:48Z",
-"n":[
-"city",
-"forest",
-"manchester",
-"midfielder",
-"modern",
-"nottingham",
-"second",
-"winning",
-"yates"
-]
-},
-{
-"k":"football",
-"t":"Less drama, more listening, but is Kozo Tashima the candidate to topple Infantino?",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/12/fifa-kozo-tashima-seeks-change-of-tone",
-"d":"2026-11-12T08:00:13Z",
-"n":[
-"association",
-"fa",
-"fifa",
-"giann",
-"infantino",
-"japan",
-"kozo",
-"tashima",
-"world"
 ]
 },
 {
