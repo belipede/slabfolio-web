@@ -346,6 +346,82 @@ nav.tabs .fab span{width:52px;height:52px;margin-top:-22px;border-radius:18px;ba
 nav.tabs .fab span svg{width:26px;height:26px}
 .toast{border-color:rgba(245,194,66,.35)}
 @media (prefers-reduced-motion: reduce){.burst{display:none}}
+/* ---------- polish (Impeccable critique, 20 Nov 2026) ---------- */
+/* one "your own value" tone instead of the leftover purple: a quiet steel colour with a dashed outline, so it reads as a caveat, not a feature */
+:root{--own:#c4cce0;--ph:#98a1ba}
+.pu{color:var(--own)}
+.chg.own{color:var(--own);font-size:11.5px;font-weight:650;border:1px dashed rgba(196,204,224,.45);border-radius:999px;padding:1px 7px}
+.crow .r .chg.own{display:inline-block;margin-top:4px}
+.dpr.sale{color:var(--accent)}
+.chip.c,.b-s{background:rgba(245,194,66,.12);color:#f1d27a}
+.acts button span{background:rgba(245,194,66,.12);color:var(--accent)}
+/* type floor: nothing under 11px, so tags and labels stay readable outdoors */
+.gln{font-size:10.5px;letter-spacing:.5px;color:rgba(255,255,255,.72)}
+.tag,.badge,.dbadge{font-size:11px}
+.gadd{font-size:11.5px}
+.dds{font-size:11.5px}
+.mchg .chg{font-size:11.5px}
+nav.tabs button{font-size:11px}
+/* streak week: readable letters on every state */
+.streak .wk i{font-size:10px;width:18px}
+.streak .wk i.on{color:#2a1203}
+.streak .wk i.fut{opacity:1;background:transparent;border:1px dashed var(--line);color:#6f7894}
+/* touch targets: small controls keep their look but get a 44px tall hit area */
+.lnk,.mini,.pill,.seg.mode button,.chip-streak,.tog{position:relative}
+.lnk::after,.mini::after,.pill::after,.seg.mode button::after,.chip-streak::after,.tog::before{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+/* browser surfaces in the palette */
+::selection{background:rgba(245,194,66,.35);color:#fff}
+input,textarea{caret-color:var(--accent)}
+.inp::placeholder,.search::placeholder{color:var(--ph);opacity:1}
+.inp:focus,.search:focus{border-color:rgba(245,194,66,.6)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=file].inp{padding:8px;color:var(--mute);font-size:13px}
+input[type=file].inp::file-selector-button{font:inherit;font-weight:700;background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-right:10px;cursor:pointer}
+/* a closed sheet leaves the screen-reader and tab order too */
+.sheet{visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s}
+.sheet.open{visibility:visible;transition:transform .25s ease}
+/* first-run style picker */
+.pick b em{font-style:normal;font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:2px}
+.pick.rec{border-color:rgba(245,194,66,.45)}
+.skip{display:block;width:100%;background:none;border:0;color:var(--mute);font-size:13.5px;font-weight:600;padding:14px 0 4px;cursor:pointer}
+/* price source line */
+.srcl{display:block;margin-top:4px;font-size:11.5px;color:var(--mute)}
+/* Display: cards with no photo fold into one row */
+.needph{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin:4px 0 8px;padding:12px 14px;border-radius:var(--r);border:1px dashed rgba(245,194,66,.45);background:rgba(245,194,66,.06);cursor:pointer;color:var(--text)}
+.needph .ti{color:var(--accent)}
+.needph>div{flex:1;min-width:0}
+.needph b{display:block;font-size:14.5px}
+.needph span:not(.ti){display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.needph i{font-style:normal;font-weight:750;font-size:13px;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:6px 14px}
+.needlist{margin-bottom:10px}
+.needlist .r b.sale{color:var(--accent)}
+/* Display carousel */
+.dcar{margin:0 -14px 6px}
+.dcnav{display:flex;align-items:center;justify-content:space-between;padding:0 16px 10px}
+.dcnav b{color:var(--text)}
+.dcarr{display:flex;gap:8px}
+.arr{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding-bottom:3px}
+.arr:active{border-color:var(--accent);color:var(--accent)}
+.feed{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 30px 4px;scroll-padding:0 30px;overscroll-behavior-x:contain}
+.feed::-webkit-scrollbar{display:none}
+.dslide{flex:0 0 calc(100% - 60px);scroll-snap-align:center;scroll-snap-stop:always;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0)),var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.dslide.hid{opacity:.5}
+.dsart{display:block;width:100%;border:0;padding:16px 16px 4px;cursor:pointer;background:radial-gradient(120% 90% at 50% 0%,#1d2640,transparent 70%)}
+.dsart .art{width:min(100%,250px);margin:0 auto;border-radius:14px;box-shadow:0 22px 40px -18px rgba(0,0,0,.95)}
+.dsart .gin{font-size:52px}
+.dsi{padding:10px 16px 16px}
+.dspl{display:block;font-family:var(--disp);font-size:21px;line-height:1.15;letter-spacing:-.2px}
+.dsi>.sub{display:block;margin-top:2px}
+.dstags{margin-top:8px}
+.dsprice{margin-top:12px;padding:10px 12px;border-radius:14px;background:var(--bg);border:1px solid var(--line)}
+.dsprice span{display:block;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--mute)}
+.dsprice b{display:block;font-family:var(--disp);font-size:24px;margin-top:2px}
+.dsprice b.sale{color:var(--accent)}
+.dsprice i{display:block;font-style:normal;font-size:11.5px;color:var(--mute);margin-top:2px}
+.dthumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 16px 6px}
+.dthumbs::-webkit-scrollbar{display:none}
+.dth{flex:0 0 auto;border:0;background:none;padding:2px;border-radius:10px;cursor:pointer;opacity:.55;outline:2px solid transparent;transition:opacity .2s}
+.dth.on{opacity:1;outline-color:var(--accent)}
 </style>
 </head>
 <body>

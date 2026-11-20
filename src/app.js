@@ -549,10 +549,22 @@ const compsOf = c => (S.comps[c.id] || []).slice().sort((a, b) => (b.d || '').lo
 // value = latest sale you logged, then the sheet's comp price, then your own asking price (purple)
 function val(c){
   const l = compsOf(c)[0];
-  if (l) return { v: l.p, kind: 'sold', src: `Sale you logged (${l.s}${l.d ? ', ' + l.d : ''})` };
-  if (money(c.comp) !== null) return { v: money(c.comp), kind: 'sold', src: 'Comp price from your sheet' + (c.compDate ? ` (${c.compDate})` : '') };
+  if (l) return { v: l.p, kind: 'sold', src: `Sale you logged (${l.s}${l.d ? ', ' + l.d : ''})`, via: l.s, d: l.d, n: compsOf(c).length };
+  if (money(c.comp) !== null) return { v: money(c.comp), kind: 'sold', src: 'Comp price from your sheet' + (c.compDate ? ` (${c.compDate})` : ''), via: 'your sheet', d: c.compDate, n: 0 };
   if (money(c.ask) !== null) return { v: money(c.ask), kind: 'own', src: 'Your asking price, no sale logged yet' };
   return { v: null, kind: 'none', src: 'No value yet' };
+}
+// where a value came from, in plain words: "Last sold 6 Nov · eBay sold · 3 sales logged"
+const shortDate = d => { if (!d) return ''; const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d); if (!m) return String(d);
+  const t = new Date(+m[1], +m[2] - 1, +m[3]); return t.toLocaleDateString('en-SG', { day: 'numeric', month: 'short', ...(t.getFullYear() !== new Date().getFullYear() ? { year: 'numeric' } : {}) }); };
+function srcLine(c, short){
+  const x = val(c);
+  if (x.kind === 'own') return short ? '' : 'Your asking price · no sale logged yet';
+  if (x.kind === 'none') return short ? '' : 'No value yet';
+  if (x.via === 'your sheet') return short ? (x.d ? `Comp ${shortDate(x.d)}` : 'Sheet comp') : `Comp from your sheet${x.d ? ' · ' + shortDate(x.d) : ' · no date'}`;
+  const d = shortDate(x.d);
+  if (short) return `Sold ${d || ''}${d ? ' · ' : ''}${x.via}`.replace(/^Sold $/, 'Sold');
+  return `Last sold${d ? ' ' + d : ''} · ${x.via}${x.n > 1 ? ` · ${x.n} sales logged` : ''}`;
 }
 function tone(c){
   const x = val(c), cost = money(c.cost);
@@ -582,8 +594,9 @@ const modeSeg = () => `<div class="seg mode" role="group" aria-label="App style"
 function setMode(m){ S.mode = m; save(true); closeSheet(); if (m !== 'pro' && view.tab === 'hunt') view.tab = 'home'; render(); }
 function askMode(){
   openSheet(`<h2>How do you collect?</h2><div class="sub" style="margin-top:4px">Pick a style. You can switch any time from Home or Me.</div>
-  <button class="pick" data-setmode="easy"><b>Easy</b><span>I want to see my cards, what they're worth, and show them off. Big photos, plain words.</span></button>
-  <button class="pick" data-setmode="pro"><b>Pro</b><span>I track costs, comps, profit and flips. Charts, % change, breakdowns and every tool.</span></button>`);
+  <button class="pick rec" data-setmode="easy"><b>Easy<em>Recommended</em></b><span>I want to see my cards, what they're worth, and show them off. Big photos, plain words.</span></button>
+  <button class="pick" data-setmode="pro"><b>Pro</b><span>I track costs, comps, profit and flips. Charts, % change, breakdowns and every tool.</span></button>
+  <button class="skip" data-setmode="easy">Not sure yet, start with Easy</button>`);
   $('#sheet').querySelectorAll('[data-setmode]').forEach(el => el.onclick = () => setMode(el.dataset.setmode));
 }
 
@@ -759,7 +772,7 @@ function celebrate(b){
 }
 function openBadges(){
   const list = badgesState(), n = list.filter(b => b.on).length;
-  openSheet(`<h2>Trophy cabinet</h2><div class="sub">${n} of ${list.length} badges earned</div><div class="cab">${list.map(b => `<div class="cb">${medal(b, b.on)}<b>${esc(b.n)}</b><span>${esc(b.d)}</span></div>`).join('')}</div>`);
+  openSheet(`<h2>Trophy cabinet</h2><div class="sub" style="margin-bottom:12px">${n} of ${list.length} badges earned</div>${streakHtml()}<div class="cab">${list.map(b => `<div class="cb">${medal(b, b.on)}<b>${esc(b.n)}</b><span>${esc(b.d)}</span></div>`).join('')}</div>`);
 }
 // card of the day: the same card all day, a new one tomorrow; cards with photos first
 function spotlight(){
@@ -800,7 +813,7 @@ function renderDash(){
   const carousel = topArt.length ? `<div class="sec row2"><span>${movers.length >= 3 ? 'Top movers' : 'Your top cards'}</span><button class="lnk" data-go="cards">See all</button></div>
     <div class="hscroll">${topArt.map(({ c, chg }) => `<button class="hcard" data-c="${esc(c.id)}">${artHtml(c, { chg: chg ? `<span class="mchg">${chg}</span>` : '' })}<div class="dpl">${esc(c.player)}</div><div class="dpr">${sgd(val(c).v)}</div></button>`).join('')}</div>` : '';
   const sp = spotlight(), spot = sp ? `<div class="sec">Card of the day</div><button class="spot ${rarityOf(sp)}" data-c="${esc(sp.id)}"><div class="spa">${artHtml(sp)}</div>
-    <div class="spi"><span class="sub">${esc(sp.line || sp.brand || '')}</span><b>${esc(sp.player)}</b><span class="sub">${esc(sp.desc || '')}</span><div class="spv">${sgd(val(sp).v)}</div>${chgOf(sp)}${sp.serial ? `<span class="tag" style="margin-top:6px;align-self:flex-start">${esc(sp.serial)}</span>` : ''}</div></button>` : '';
+    <div class="spi"><span class="sub">${esc(sp.line || sp.brand || '')}</span><b>${esc(sp.player)}</b><span class="sub">${esc(sp.desc || '')}</span><div class="spv">${sgd(val(sp).v)}</div>${chgOf(sp)}${srcLine(sp, true) ? `<span class="srcl">${esc(srcLine(sp, true))}</span>` : ''}${sp.serial ? `<span class="tag" style="margin-top:6px;align-self:flex-start">${esc(sp.serial)}</span>` : ''}</div></button>` : '';
   const goals = `<div class="sec row2"><span>Goals</span><button class="lnk" data-act="badges">Trophy cabinet</button></div>
     <div class="goals"><div class="goal">${ringSvg(ms.p)}<div><b>${sgd(ms.next - t.value)} to go</b><span>to the ${sgd(ms.next).replace('.00', '')} club</span></div></div>
     <button class="goal" data-act="badges"><div class="medals">${badges.filter(b => b.on).slice(-3).map(b => medal(b, true)).join('') || medal(badges[0], false)}</div><div><b>${earned} of ${badges.length} badges</b><span>Next: ${esc((badges.find(b => !b.on) || badges[0]).n)}</span></div></button></div>`;
@@ -816,15 +829,15 @@ function renderDash(){
     const noPh = own.filter(c => !photosOf(c).length).length;
     const next = backup || (needs ? `<button class="nudge" data-go="comps"><span class="ti">${ICONS.chart}</span><div><b>Check ${needs} ${needs === 1 ? 'price' : 'prices'}</b><span>${needs === 1 ? 'One card is' : 'Some cards are'} using your own guess. See what ${needs === 1 ? 'it' : 'they'} really sold for.</span></div><i>›</i></button>`
       : noPh ? `<button class="nudge" data-go="display"><span class="ti">${ICONS.cam}</span><div><b>Add photos to ${noPh} ${noPh === 1 ? 'card' : 'cards'}</b><span>Cards with photos look better on your Display.</span></div><i>›</i></button>` : '');
-    return head + hero + streakHtml() + `<div class="acts"><button data-act="addcard"><span>＋</span>Add a card</button><button data-go="comps"><span>${ICONS.chart}</span>Check prices</button><button data-go="display"><span>${ICONS.star}</span>Show off</button></div>`
-      + (next ? `<div class="sec">Next step</div>${next}` : '') + carousel + spot + goals + newsSec + explore
-      + `<p class="sub" style="margin-top:18px;text-align:center">Want % change, breakdowns and every tool? Switch to <b>Pro</b> at the top.</p>`;
+    return head + hero + `<div class="acts"><button data-act="addcard"><span>＋</span>Add a card</button><button data-go="comps"><span>${ICONS.chart}</span>Check prices</button><button data-go="display"><span>${ICONS.star}</span>Show off</button></div>`
+      + (next ? `<div class="sec">Next step</div>${next}` : '') + carousel + spot + goals + newsSec
+      + `<p class="sub" style="margin-top:18px;text-align:center">Grading calculator, Card Finder and more are in <b>Me</b>. Want % change and breakdowns? Switch to <b>Pro</b> at the top.</p>`;
   }
   const mv = view.mv || 'up', list = moves.filter(m => mv === 'up' ? m.d > 0 : m.d < 0).sort((a, b) => mv === 'up' ? b.p - a.p : a.p - b.p).slice(0, 5);
   const scan = invRows().filter(r => matchInv(r[1], r[2], r[3], r[4]).out && !S.invAdded[r[0]]).length;
   return head + hero + `<div class="kpis k4"><div><span>Cards</span><b>${t.n}</b></div><div><span>Paid</span><b>${sgd(t.paid)}</b></div><div><span>Sold</span><b>${sgd(t.got)}</b></div><div><span>Net cash</span><b class="${t.got - t.spent >= 0 ? 'g' : 'rd'}">${sgd(t.got - t.spent)}</b></div></div>`
     + backup + streakHtml() + carousel
-    + (needs ? `<button class="nudge" data-go="comps"><span class="ti">${ICONS.chart}</span><div><b>${needs} ${needs === 1 ? 'card needs' : 'cards need'} a comp</b><span>Purple values are your own until a real sale is logged. Start a comp sprint.</span></div><i>›</i></button>` : '')
+    + (needs ? `<button class="nudge" data-go="comps"><span class="ti">${ICONS.chart}</span><div><b>${needs} ${needs === 1 ? 'card needs' : 'cards need'} a comp</b><span>Values marked "Your value" are your own until a real sale is logged. Start a comp sprint.</span></div><i>›</i></button>` : '')
     + (moves.length ? `<div class="sec row2"><span>Movers</span><div class="seg sm">${[['up', 'Gainers'], ['dn', 'Losers']].map(([k, n]) => `<button data-mv="${k}" class="${mv === k ? 'on' : ''}">${n}</button>`).join('')}</div></div>
     ${list.map(m => tRow(m.c, `<b>${sgd(val(m.c).v)}</b>${delta(m.d, money(m.c.cost), { pctOnly: true })}`)).join('') || `<div class="sub" style="padding:4px 2px">No ${mv === 'up' ? 'gainers' : 'losers'} yet.</div>`}` : '')
     + breakdownHtml() + goals + spot
@@ -867,17 +880,17 @@ function renderCards(){
   if (pro() && view.cf === 'needs' && list.length) h += `<button class="btn" data-go="comps" style="margin:0 0 10px">Start a comp sprint (${compQueue().length} cards)</button>`;
   const shown = list.slice(0, view.cmore);
   if (grid) h += `<div class="dgrid">` + shown.map(c => `<button class="dtile" data-c="${esc(c.id)}">${artHtml(c, { add: true })}
-      <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dprow"><span class="dpr">${owned(c) ? sgd(val(c).v) : 'Sold ' + sgd(money(c.sold))}</span>${owned(c) ? chgOf(c) : ''}</div></button>`).join('') + `</div>`;
+      <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dprow"><span class="dpr">${owned(c) ? sgd(val(c).v) : 'Sold ' + sgd(money(c.sold))}</span>${owned(c) ? chgOf(c) : ''}</div>${owned(c) && srcLine(c, true) ? `<span class="srcl">${esc(srcLine(c, true))}</span>` : ''}</button>`).join('') + `</div>`;
   else for (const c of shown){
     let right;
     if (owned(c)) right = `<b>${sgd(val(c).v)}</b>${chgOf(c)}`;
     else { const p = profitSold(c); right = `<b>${sgd(money(c.sold))}</b>${p === null ? '<span>Sold</span>' : delta(p, money(c.cost))}`; }
     h += `<div class="crow" data-c="${esc(c.id)}">${thumbHtml(c)}<div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div>
-    <div class="tl">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}<span class="sub">${esc(c.status)}${money(c.cost) !== null ? ' · paid ' + sgd(money(c.cost)) : ''}</span></div></div><div class="r">${right}</div></div>`;
+    <div class="tl">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}<span class="sub">${esc(c.status)}${money(c.cost) !== null ? ' · paid ' + sgd(money(c.cost)) : ''}${owned(c) && srcLine(c, true) ? ' · ' + esc(srcLine(c, true)) : ''}</span></div></div><div class="r">${right}</div></div>`;
   }
   if (list.length > view.cmore) h += `<button class="btn ghost" data-act="more">Show ${Math.min(60, list.length - view.cmore)} more</button>`;
   if (!list.length) h += `<div class="empty">${view.cq ? 'No cards match.' : 'No cards here yet. Tap + to add one.'}</div>`;
-  return h + (pro() ? `<p class="sub">▲ ▼ show the change from what you paid, using the latest real sale. Purple "Your value" means no sale is logged yet, so it's your own asking price.</p>` : '');
+  return h + (pro() ? `<p class="sub">▲ ▼ show the change from what you paid, using the latest real sale. A dashed "Your value" means no sale is logged yet, so it's your own asking price.</p>` : '');
 }
 
 // ---------- card detail ----------
@@ -902,13 +915,13 @@ function openC(id, mode){
     <button class="mini" data-mode="" style="margin-top:10px">Cancel</button></div>` : ''}
   <h2>${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}${c.id && !/^S\d/.test(c.id) ? ' · ' + esc(c.id) : ''}</div>
   <div style="margin-top:8px">${cardTags(c).map(t => `<span class="tag">${esc(t)}</span>`).join('')}<span class="tag">${esc(c.status)}</span></div>
-  <dl class="kv">${owned(c) ? dl('Value', `<b class="${tone(c)}">${sgd(x.v)}</b>`) + dl('Based on', `<span class="sub">${esc(x.src)}</span>`) : dl('Sold for', sgd(money(c.sold))) + dl('Sold', esc([c.soldDate, c.channel].filter(Boolean).join(' · ')))}
+  <dl class="kv">${owned(c) ? dl('Value', `<b class="${tone(c)}">${sgd(x.v)}</b>`) + dl('Source', `<span class="sub">${esc(srcLine(c))}</span>`) : dl('Sold for', sgd(money(c.sold))) + dl('Sold', esc([c.soldDate, c.channel].filter(Boolean).join(' · ')))}
   ${dl('Paid', cost === null ? null : sgd(cost))}${owned(c) && x.v !== null && cost !== null ? dl('Up / down', `<span class="${tone(c)}">${x.v - cost >= 0 ? '+' : ''}${sgd(x.v - cost)}</span>`) : ''}
   ${!owned(c) && profitSold(c) !== null ? dl('Profit', `<span class="${profitSold(c) >= 0 ? 'g' : 'rd'}">${sgd(profitSold(c))}</span>`) : ''}
   ${dl('Asking', money(c.ask) === null ? null : sgd(money(c.ask)))}${dl('Grading', c.stage && c.stage !== 'Raw' ? esc(c.stage) : null)}</dl>
   ${owned(c) ? `<a class="btn${x.kind === 'sold' ? ' ghost' : ''}" data-ebay href="${ebaySold(c)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Check eBay sold ↗</a>` : ''}
   <div class="links"><a href="https://130point.com/sales/" target="_blank" rel="noopener">130point ↗</a>${owned(c) ? '' : `<a href="${ebaySold(c)}" target="_blank" rel="noopener">eBay sold ↗</a>`}</div>
-  <div class="switch" style="border:0;padding:12px 0 0"><span>Show on Display<br><span class="sub">${{ sale: 'Under For sale', pc: 'Under PC', sold: 'Under Sold' }[dispGroup(c)]}</span></span><button class="tog ${c.hideDisp ? '' : 'on'}" id="dtog"></button></div>`;
+  <div class="switch" style="border:0;padding:12px 0 0"><span>Show on Display<br><span class="sub">${{ sale: 'Under For sale', pc: 'Under PC', sold: 'Under Sold' }[dispGroup(c)]}</span></span><button class="tog ${c.hideDisp ? '' : 'on'}" id="dtog" role="switch" aria-checked="${!c.hideDisp}" aria-label="Show on Display"></button></div>`;
   if (comps.length) h += `<label class="f">Sales you logged</label>` + comps.map(s => `<div class="item"><div class="t">${sgd(s.p)}</div><div class="m">${esc(s.s)}${s.d ? ' · ' + esc(s.d) : ''}</div></div>`).join('');
   if (mode === 'sale') h += `<form id="cf"><label class="f">Sale price (S$, the price it actually sold for)</label><input class="inp" name="p" inputmode="decimal" required>
     <label class="f">Date sold</label><input class="inp" name="d" type="date" value="${new Date().toISOString().slice(0, 10)}">
@@ -1034,16 +1047,52 @@ function renderDisplay(){
   const g = view.dg || 'sale', all = S.cards.filter(c => dispGroup(c) === g), list = all.filter(c => view.dhidden || !c.hideDisp);
   const n = k => S.cards.filter(c => dispGroup(c) === k && !c.hideDisp).length, noPh = list.filter(c => !photosOf(c).length).length, hid = all.filter(c => c.hideDisp).length;
   list.sort((a, b) => (photosOf(b).length ? 1 : 0) - (photosOf(a).length ? 1 : 0) || (val(b).v ?? money(b.sold) ?? 0) - (val(a).v ?? money(a.sold) ?? 0));
+  const car = (view.dview || 'car') === 'car';
   let h = `<header class="top"><h1>Display</h1>${g === 'sale' && n('sale') ? `<button class="mini acc" data-act="saletext">Copy sale post</button>` : ''}</header>
   <div class="sub" style="margin:-6px 2px 12px">Your cards as a photo showcase, sorted into For sale, PC and Sold from your collection. Tap a card to add photos or hide it.</div>
-  <div class="seg wide" style="margin-bottom:12px">${[['sale', 'For sale'], ['pc', 'PC'], ['sold', 'Sold']].map(([k, l]) => `<button data-dg="${k}" class="${g === k ? 'on' : ''}">${l} (${n(k)})</button>`).join('')}</div>`;
+  <div class="row" style="margin-bottom:12px"><div class="seg wide" style="flex:1">${[['sale', 'For sale'], ['pc', 'PC'], ['sold', 'Sold']].map(([k, l]) => `<button data-dg="${k}" class="${g === k ? 'on' : ''}">${l} (${n(k)})</button>`).join('')}</div>
+  <button class="vt" data-dview="${car ? 'grid' : 'car'}" aria-label="${car ? 'Show as grid' : 'Show as carousel'}">${car ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="4" height="12" rx="1.5"/><rect x="8" y="3" width="8" height="18" rx="1.5"/><rect x="18" y="6" width="4" height="12" rx="1.5"/></svg>'}</button></div>`;
   if (!list.length) h += `<div class="empty">${g === 'sale' ? 'Nothing for sale yet. Give a card an asking price, or set its status to To list.' : g === 'pc' ? 'No PC cards yet.' : 'Nothing sold yet.'}</div>`;
-  h += `<div class="dgrid">` + list.map(c => { const ph = photosOf(c)[0];
+  const withPh = list.filter(c => photosOf(c).length), fold = withPh.length && withPh.length < list.length, shown = fold ? withPh : list, rest = fold ? list.filter(c => !photosOf(c).length) : [];
+  if (car && list.length) h += carouselHtml(list, g);
+  else h += `<div class="dgrid">` + shown.map(c => { const ph = photosOf(c)[0];
     return `<button class="dtile${c.hideDisp ? ' hid' : ''}" data-c="${esc(c.id)}">${artHtml(c, { add: true })}
-    <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'pu' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
-  if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Cards with photos show first.</p>`;
+    <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'sale' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
+  if (car){ if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. They show after the ones with photos.</p>`; }
+  else if (fold){
+    h += `<button class="needph" data-act="dnoph" aria-expanded="${!!view.dnoph}"><span class="ti">${ICONS.cam}</span><div><b>${rest.length} ${rest.length === 1 ? 'card needs' : 'cards need'} a photo</b><span>${view.dnoph ? 'Tap one to add its photo' : 'They join the showcase once they have one'}</span></div><i>${view.dnoph ? 'Hide' : 'Add'}</i></button>`;
+    if (view.dnoph) h += `<div class="needlist">${rest.map(c => tRow(c, `<b class="${g === 'sale' ? 'sale' : ''}">${dispPrice(c)}</b>`)).join('')}</div>`;
+  } else if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Tap a card to add one.</p>`;
   if (hid) h += `<button class="btn ghost" data-act="dhidden">${view.dhidden ? 'Hide' : 'Show'} ${hid} hidden ${hid === 1 ? 'card' : 'cards'}</button>`;
   return h + `<p class="sub">Only you see this for now. A public link you can put in your bio comes with accounts at launch.</p>`;
+}
+
+// Display carousel: one big card at a time, swipe or use the arrows, thumbnails underneath (same idea as the public Display page)
+function carouselHtml(list, g){
+  const i0 = Math.min(view.dpos || 0, list.length - 1);
+  return `<div class="dcar">
+  <div class="dcnav"><span class="sub" id="dcnt"><b>${i0 + 1}</b> of ${list.length} ${list.length === 1 ? 'card' : 'cards'}</span>
+  <div class="dcarr"><button class="arr" data-dstep="-1" aria-label="Previous card">‹</button><button class="arr" data-dstep="1" aria-label="Next card">›</button></div></div>
+  <div class="feed" id="dfeed" data-start="${i0}">${list.map((c, i) => `<div class="dslide${c.hideDisp ? ' hid' : ''}" role="group" aria-label="${i + 1} of ${list.length}: ${esc(c.player)}">
+    <button class="dsart" data-c="${esc(c.id)}">${artHtml(c, { add: true })}</button>
+    <div class="dsi"><b class="dspl">${esc(c.player)}</b><span class="sub">${esc(cardLine(c))}</span>
+    ${cardTags(c).length ? `<div class="dstags">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>` : ''}
+    <div class="dsprice"><span>${g === 'sale' ? 'Asking' : g === 'sold' ? 'Sold for' : 'Worth'}</span><b class="${g === 'sale' ? 'sale' : ''}">${dispPrice(c)}</b>${g !== 'sold' && srcLine(c, true) ? `<i>${esc(srcLine(c, true))}</i>` : ''}</div>
+    <button class="btn ghost" data-c="${esc(c.id)}" style="margin-top:10px">${photosOf(c).length ? 'Edit card' : 'Add a photo'}</button></div></div>`).join('')}</div>
+  <div class="dthumbs" id="dthumbs">${list.map((c, i) => `<button class="dth${i === i0 ? ' on' : ''}" data-dgo="${i}" aria-label="Show ${esc(c.player)}">${thumbHtml(c)}</button>`).join('')}</div>
+  <p class="sub" style="text-align:center;margin:4px 0 12px">Swipe for more cards · tap a card to add photos or edit it</p></div>`;
+}
+function bindCarousel(a){
+  const feed = a.querySelector('#dfeed'); if (!feed) return;
+  const slides = [...feed.children], n = slides.length, cnt = a.querySelector('#dcnt'), th = [...a.querySelectorAll('.dth')];
+  const at = () => Math.round(feed.scrollLeft / (slides[0].offsetWidth + 12));
+  const go = (i, smooth = true) => { i = Math.max(0, Math.min(n - 1, i)); feed.scrollTo({ left: slides[i].offsetLeft - feed.offsetLeft - (feed.clientWidth - slides[i].offsetWidth) / 2, behavior: smooth && !matchMedia('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'auto' }); };
+  const sync = () => { const i = Math.max(0, Math.min(n - 1, at())); view.dpos = i; cnt.innerHTML = `<b>${i + 1}</b> of ${n} ${n === 1 ? 'card' : 'cards'}`;
+    th.forEach((t, k) => t.classList.toggle('on', k === i)); const t = th[i]; if (t) t.parentNode.scrollTo({ left: t.offsetLeft - t.parentNode.clientWidth / 2 + t.offsetWidth / 2, behavior: 'auto' }); };
+  let tm; feed.addEventListener('scroll', () => { clearTimeout(tm); tm = setTimeout(sync, 60); }, { passive: true });
+  a.querySelectorAll('[data-dstep]').forEach(b => b.onclick = () => go(at() + +b.dataset.dstep));
+  th.forEach(b => b.onclick = () => go(+b.dataset.dgo));
+  go(+feed.dataset.start || 0, false); sync();
 }
 
 // ---------- comp sprint: log real sold prices for cards that only have your own value ----------
@@ -1145,7 +1194,7 @@ function renderMe(){
   ${view.exp ? `<textarea class="inp" id="expt" readonly style="margin-top:8px">${esc(JSON.stringify(S))}</textarea><div class="btns"><button class="btn" id="copyexp">Copy</button><button class="btn ghost" id="saveexp">Save as file</button></div>` : ''}
   ${view.rest ? `<textarea class="inp" id="restt" style="margin-top:8px" placeholder="Paste an export here"></textarea><button class="btn" id="restgo">Restore this backup</button>` : ''}</div>
   <div class="prof"><b>Tools</b><button class="btn ghost" data-act="badges">Trophy cabinet</button><button class="btn ghost" data-go="hunt">Card Finder (pull registry)</button><button class="btn ghost" data-go="news">News</button><button class="btn ghost" data-go="grade">Grading calculator</button><button class="btn ghost" data-go="scan">Scan my collection for the pull registry</button></div>
-  <div class="prof"><b>Card Finder points</b>
+  ${pro() ? `<div class="prof"><b>Card Finder points</b>
   <div class="sub" style="margin-top:6px">Username</div><input class="inp" id="uname" value="${esc(S.user)}" style="margin-top:6px">
   <div class="sub" style="margin-top:10px">GitHub username, so finds you share publicly count here</div><input class="inp" id="ghname" value="${esc(S.gh || '')}" placeholder="e.g. belipede" autocapitalize="off" autocorrect="off" style="margin-top:6px">
   ${S.gh ? `<div class="hint">${myShared().length} shared finds from @${esc(S.gh)} on the public registry.</div>` : ''}
@@ -1156,10 +1205,10 @@ function renderMe(){
   <div class="sub" style="margin-top:6px">${earned ? 'Free month of Pro already earned this month (limit 1 a month).' : `${POINTS_PER_MONTH - (pts % POINTS_PER_MONTH)} points to a free month of Pro`}</div>
   ${pts >= POINTS_PER_MONTH && !earned ? `<button class="btn" id="claim">Claim free month of Pro</button>` : ''}
   <ul class="rules"><li>Only the first verified report of each numbered copy earns points.</li><li>1/1 = 100 · /5 or lower = 40 · /10 or lower = 20 · /25 or lower = 10</li>
-  <li>${POINTS_PER_MONTH} points = 1 free month of Pro, at most 1 a month. A fake report costs 50 points.</li></ul></div>
-  <div class="prof"><b>Testing</b>
-  <div class="switch"><span>Moderator mode<br><span class="sub">Lets you verify reports on this phone. Shared finds are verified with labels on GitHub.</span></span><button class="tog ${S.mod ? 'on' : ''}" id="mod"></button></div>
-  <div class="switch"><span>Sample pull reports<br><span class="sub">Fills the registry with marked sample data</span></span><button class="pill" id="sample">${S.sampleLoaded ? 'Remove' : 'Load'}</button></div>
+  <li>${POINTS_PER_MONTH} points = 1 free month of Pro, at most 1 a month. A fake report costs 50 points.</li></ul></div>` : ''}
+  <div class="prof"><b>${pro() ? 'Testing' : 'Reset'}</b>
+  ${pro() ? `<div class="switch"><span>Moderator mode<br><span class="sub">Lets you verify reports on this phone. Shared finds are verified with labels on GitHub.</span></span><button class="tog ${S.mod ? 'on' : ''}" id="mod" role="switch" aria-checked="${!!S.mod}" aria-label="Moderator mode"></button></div>
+  <div class="switch"><span>Sample pull reports<br><span class="sub">Fills the registry with marked sample data</span></span><button class="pill" id="sample">${S.sampleLoaded ? 'Remove' : 'Load'}</button></div>` : ''}
   <div class="switch"><span>Start over<br><span class="sub">Deletes everything in this app. Export first.</span></span><button class="pill" id="clear">Delete</button></div></div>
   <p class="sub">Cappd test build ${APP_VERSION}. Checklists from collectosk.com and cardsmithsbreaks.com. Not affiliated with Topps, Panini or the leagues. Values are estimates, not financial advice.</p>`;
 }
@@ -1196,8 +1245,11 @@ function bindApp(a){
   a.querySelectorAll('[data-act=bug]').forEach(el => el.onclick = () => window.open(bugUrl(), '_blank'));
   a.querySelectorAll('[data-act=addcard]').forEach(el => el.onclick = openAdd);
   a.querySelectorAll('[data-act=more]').forEach(el => el.onclick = () => { view.cmore += 60; render(); });
-  a.querySelectorAll('[data-dg]').forEach(el => el.onclick = () => { view.dg = el.dataset.dg; render(); });
+  a.querySelectorAll('[data-dg]').forEach(el => el.onclick = () => { view.dg = el.dataset.dg; view.dpos = 0; render(); });
   a.querySelectorAll('[data-act=dhidden]').forEach(el => el.onclick = () => { view.dhidden = !view.dhidden; render(); });
+  a.querySelectorAll('[data-act=dnoph]').forEach(el => el.onclick = () => { view.dnoph = !view.dnoph; render(); });
+  a.querySelectorAll('[data-dview]').forEach(el => el.onclick = () => { view.dview = el.dataset.dview; render(); });
+  bindCarousel(a);
   a.querySelectorAll('[data-act=saletext]').forEach(el => el.onclick = async () => { try { await navigator.clipboard.writeText(saleText()); toast('Sale post copied. Paste it into Instagram, Facebook or Carousell.'); } catch (e) { openSheet(`<h2>Sale post</h2><textarea class="inp" style="min-height:220px">${esc(saleText())}</textarea><div class="hint">Select all and copy.</div>`); } });
   a.querySelectorAll('[data-act=backup]').forEach(el => el.onclick = () => { view.exp = true; view.rest = false; go('me'); const t = $('#expt'); if (t) t.scrollIntoView({ block: 'center' }); });
   bindComps(a);
