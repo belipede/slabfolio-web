@@ -2,17 +2,17 @@
 
 <!-- impeccable:product-schema 1 -->
 
-> Draft from `/impeccable init`, 20 Nov 2026. Filled in from the repo and project notes. Items marked **(to confirm)** are inferred and still need Ben's answer.
+> Written with `/impeccable init`, 20 Nov 2026, from the repo, project notes and Ben's answers.
 
 ## Platform
 
 web
 
-Mobile-first web app, tested as an iPhone Safari Home Screen app (GitHub Pages). A native iOS app (Xcode or Expo) is a possible later step, not decided. **(to confirm)**
+Mobile-first web app, used as an iPhone Safari Home Screen app (GitHub Pages). It stays web for the beta and for the public Display page. A native phone app comes later (Ben, 20 Nov 2026), so don't design anything that only works natively.
 
 ## Users
 
-- **Primary:** football (soccer) card collectors who own numbered parallels, autos and graded slabs, and want to know what their cards are worth. Ben (@bloopercollects, Singapore) is the first user and the model user. **(to confirm: hobby collectors in Singapore/SEA first, or global from day one?)**
+- **Primary:** football (soccer) card collectors who own numbered parallels, autos and graded slabs, and want to know what their cards are worth. Singapore and Southeast Asia first (confirmed by Ben), then wider. Ben (@bloopercollects, Singapore) is the first user and the model user.
 - **Secondary:** followers of Ben's TikTok and Instagram who land on the public Display page from his bio link, browse his cards, and may buy or make an offer.
 - Two styles of use, both supported by the app's Easy/Pro switch: **Easy** ("see my cards, what they're worth, and show them off"; big photos, plain words) and **Pro** (trading-app density: % change, breakdowns, every tool).
 
@@ -22,10 +22,12 @@ Cappd tracks a football card collection and its value in one place: what each ca
 
 ## Positioning
 
-**(to confirm)** Football-first, where most trackers are built around US sports and Pokémon. Inferred differentiators:
-- numbered parallels and print runs are first-class, with a community **Card Finder** (pull registry) showing which copies of a parallel have been found;
-- **news that moves your cards**: football headlines ranked by the players in the user's own collection;
-- a shareable **Display** of the collection that doubles as a shop window.
+Football-first, where most trackers are built around trading card games or US sports (Collectr is weak on sports cards). Ben's selling points, in his order:
+1. **Show your cards off easily.** The Display carousel turns a collection into a swipeable, shareable showcase that also works as a shop window (For sale, Buy / Make an offer).
+2. **Up-to-date last-sold prices with quantity sold.** Values come from real matching sales, and showing how many sold tells the collector how liquid a card is.
+3. **An easy tracker for everyone, detailed when you want it.** Easy mode for plain words and big photos; Pro mode for % change, breakdowns and every tool.
+
+Supporting, after the beta: a community **Card Finder** (pull registry) for numbered parallels, and **news that moves your cards** (headlines ranked by the players you own).
 
 ## Operating Context
 
@@ -41,7 +43,7 @@ Cappd tracks a football card collection and its value in one place: what each ca
 - Data stays in the browser (localStorage key `slabfolio-web-v1`). There are no accounts or a server. Users back up with Export.
 - News refreshes every 6 hours from publisher RSS. Only the headline, source, link and date are stored, never article text.
 - Card Finder reports are GitHub issues moderated by Ben (verified / rejected / fake labels).
-- **Prices:** no live price feed yet. Licensed sources (SportsCardsPro, Card Hedge) are pending. No scraping or bots, ever.
+- **Prices:** value = the last matching sale under strict matching (same print run, colour, auto/patch, grade and year; no lots, breaks or reprints; outliers dropped). With no sale yet, the collector's own value is shown and marked as theirs. Asking prices are never used as value. No live price feed yet; quantity sold depends on the licensed source. Licensed sources (SportsCardsPro, Card Hedge) are pending. No scraping or bots, ever.
 - Repo, URL, storage key and the `slabfolio-find` marker keep the old "Slabfolio" name on purpose. Don't rename them.
 - Feature freeze for v1: Display + Collection + comp sprint. News and the registry follow after the beta.
 
@@ -68,4 +70,4 @@ Cappd tracks a football card collection and its value in one place: what each ca
 
 ## Accessibility & Inclusion
 
-No product-specific standard has been set. The app already respects `prefers-reduced-motion` and labels charts for screen readers. Keep touch targets phone-sized and values readable in sunlight. **(to confirm)**
+No product-specific standard has been set. The app already respects `prefers-reduced-motion` and labels charts for screen readers. Keep touch targets phone-sized and values readable in sunlight. Easy mode must work for collectors who aren't confident with tech.
