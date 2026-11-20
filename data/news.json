@@ -1,5 +1,5 @@
 {
-"pulled":"2026-11-19T20:37:15Z",
+"pulled":"2026-11-20T07:14:51Z",
 "sources":[
 "BBC Sport",
 "Cardboard Connection",
@@ -9,6 +9,279 @@
 "The Independent"
 ],
 "items":[
+{
+"k":"football",
+"t":"Too late for Jackson? - FPL gameweek 11 dilemmas",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/ckp80q8p4yvyo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-20T07:08:51Z",
+"n":[
+"bbc",
+"buttice",
+"fantasy",
+"fpl",
+"gianni",
+"jackson",
+"sport",
+"too"
+]
+},
+{
+"k":"football",
+"t":"Who am I? Plus today's other quizzes",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cw772r7g87y0o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-20T06:43:38Z",
+"n":[
+"am",
+"brainteaser",
+"five",
+"plus",
+"test"
+]
+},
+{
+"k":"football",
+"t":"Loneliness & mood swings - what's it like to miss a season through injury?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqvg27m9xp1xo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-20T06:13:23Z",
+"n":[
+"loneliness",
+"world"
+]
+},
+{
+"k":"football",
+"t":"The male footballers best associated with each shirt number – the readers’ edition",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/ng-interactive/2026/nov/20/male-footballers-best-associated-each-shirt-number-readers-edit",
+"d":"2026-11-20T06:00:24Z",
+"n":[]
+},
+{
+"k":"football",
+"t":"Socceroos’ future looks bright as Australia stun Argentina in U17 World Cup",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/20/joeys-australia-stun-argentina-in-u17-world-cup",
+"d":"2026-11-20T01:31:38Z",
+"n":[
+"akol",
+"akon",
+"argentina",
+"australia",
+"australian",
+"fc",
+"joeys",
+"qatar",
+"socceroos",
+"sydney",
+"u17",
+"world"
+]
+},
+{
+"k":"football",
+"t":"Premier League: 10 things to look out for this weekend",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/20/premier-league-10-things-to-look-out-for-this-weekend",
+"d":"2026-11-20T00:00:15Z",
+"n":[
+"alex",
+"bruno",
+"cherries",
+"city",
+"fulham",
+"guimaraes",
+"manchester",
+"scott",
+"tyneside"
+]
+},
+{
+"k":"football",
+"t":"Arsenal 'have ingredients' but Europe's elite on another level",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm4gnxz8dvx1o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T23:57:54Z",
+"n":[
+"arsenal",
+"europe",
+"french",
+"lyon"
+]
+},
+{
+"k":"football",
+"t":"Lyon outclass Arsenal for Champions League win",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/c3dx1n4xp1xxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T22:56:07Z",
+"n":[
+"arsenal",
+"lyon",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Papers: Fulham pushing to extend contract of Man Utd target",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13614185/fulham-pushing-to-extend-contract-of-man-utd-target-calvin-bassey-paper-talk",
+"d":"2026-11-19T22:30:00Z",
+"n":[
+"friday",
+"fulham",
+"man",
+"papers",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"England get one-match suspended ban on away tickets for anti-pope chants in Spain",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/19/england-one-match-suspended-away-tickets-ban-anti-pope-chants-spain-uefa",
+"d":"2026-11-19T22:05:54Z",
+"n":[
+"association",
+"ban",
+"england",
+"fa",
+"nations",
+"spain",
+"uefa"
+]
+},
+{
+"k":"football",
+"t":"OL Lyonnes show their class to hit Arsenal’s ambitions for a top-four WCL finish",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/19/arsenal-ol-lyonnes-womens-champions-league-match-report",
+"d":"2026-11-19T22:05:36Z",
+"n":[
+"arsenal",
+"brand",
+"continue",
+"dumornay",
+"europe",
+"french",
+"goals",
+"jule",
+"lyonnes",
+"meadow",
+"melchie",
+"ol",
+"park",
+"wcl"
+]
+},
+{
+"k":"football",
+"t":"Drone footage posted on YouTube of Mauricio Pochettino’s first Man United training session",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/man-united-drone-pochettino-carrington-youtube-b3088307.html",
+"d":"2026-11-19T21:59:27Z",
+"n":[
+"anfield",
+"drone",
+"liverpool",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"united",
+"youtube"
+]
+},
+{
+"k":"football",
+"t":"Barcelona target Man Utd's Martinez - Friday's gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cj5y14g2wppko?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T21:57:22Z",
+"n":[
+"barcelona",
+"friday",
+"fulham",
+"lisandro",
+"liverpool",
+"man",
+"manchester",
+"martinez",
+"serie",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Arsenal outclassed in defeat to dominant Lyon",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/arsenal-women-vs-olympiques-lyon-women/report/578272",
+"d":"2026-11-19T21:28:00Z",
+"n":[
+"arsenal",
+"lyon",
+"women"
+]
+},
+{
+"k":"football",
+"t":"Blackpool boss Ian Evatt sacked hours after club sent him birthday message",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/ian-evatt-sacked-blackpool-happy-birthday-b3088288.html",
+"d":"2026-11-19T21:15:19Z",
+"n":[
+"blackpool",
+"evatt",
+"ian"
+]
+},
+{
+"k":"football",
+"t":"Man Utd latest: Drone footage 'a significant tactical advantage to Liverpool'",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-19T21:00:00Z",
+"n":[
+"drone",
+"liverpool",
+"man",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Shevchenko accuses Mudryk camp of 'baseless slander'",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmgqx908lk44o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-19T20:44:11Z",
+"n":[
+"andriy",
+"mudryk",
+"mykhailo",
+"shevchenko",
+"tottenham",
+"ukraine"
+]
+},
+{
+"k":"football",
+"t":"Drone footage of Pochettino's first Man Utd training session leaked online",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13614159/manchester-united-drone-footage-of-mauricio-pochettinos-first-training-session-leaked-online",
+"d":"2026-11-19T20:28:00Z",
+"n":[
+"drone",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"united",
+"utd"
+]
+},
 {
 "k":"football",
 "t":"Arsenal v OL Lyonnes: Women’s Champions League – live",
@@ -818,6 +1091,29 @@
 },
 {
 "k":"football",
+"t":"Race for the Fifa presidency: lineup revealed to challenge Gianni Infantino",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/19/fifa-president-election-philippe-diallo-kozo-tashima-challenge-gianni-infantino",
+"d":"2026-11-19T10:56:21Z",
+"n":[
+"but",
+"diallo",
+"fifa",
+"france",
+"french",
+"gianni",
+"infantino",
+"japan",
+"kozo",
+"philippe",
+"race",
+"ramon",
+"tashima",
+"vega"
+]
+},
+{
+"k":"football",
 "t":"Who is standing for Fifa president – and can anyone finally topple Gianni Infantino?",
 "s":"The Independent",
 "u":"https://www.independent.co.uk/sport/football/fifa-presidential-election-infantino-diallo-tashima-b3087810.html",
@@ -1500,14 +1796,13 @@
 },
 {
 "k":"football",
-"t":"Ward close to new deal as Noonan returns to squad",
+"t":"Ward close to new Republic of Ireland deal as World Cup chance beckons",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/articles/c6782xedd985o?at_medium=RSS&at_campaign=rss",
 "d":"2026-11-18T18:06:04Z",
 "n":[
 "carla",
 "ireland",
-"noonan",
 "republic",
 "ward",
 "world"
@@ -1726,19 +2021,6 @@
 "scotland",
 "scottish",
 "steven"
-]
-},
-{
-"k":"football",
-"t":"Man Utd latest: Pochettino's words as he arrived at Carrington for first time",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-"d":"2026-11-18T15:00:00Z",
-"n":[
-"carrington",
-"man",
-"pochettino",
-"utd"
 ]
 },
 {
@@ -6121,294 +6403,6 @@
 "pitch",
 "super",
 "vigar",
-"women"
-]
-},
-{
-"k":"football",
-"t":"Branthwaite, Garner and King omitted for Spain game",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cq4gn7014x76o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-15T13:15:15Z",
-"n":[
-"branthwaite",
-"england",
-"garner",
-"james",
-"jarrad",
-"josh",
-"king",
-"spain",
-"thomas",
-"tuchel"
-]
-},
-{
-"k":"football",
-"t":"How to watch Ronaldinho's return today live on Sky!",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13612463/ronaldinho-returns-how-to-watch-brazilian-icons-comeback-live-on-sky-sports",
-"d":"2026-11-15T12:49:00Z",
-"n":[
-"ronaldinho",
-"sky"
-]
-},
-{
-"k":"football",
-"t":"Record-breaking Andy Robertson is Scotland’s finest captain",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/15/record-breaking-andy-robertson-is-scotlands-finest-captain",
-"d":"2026-11-15T12:00:16Z",
-"n":[
-"andy",
-"dalglish",
-"kenny",
-"liverpool",
-"record-breaking",
-"robertson",
-"scotland",
-"youtube"
-]
-},
-{
-"k":"football",
-"t":"Erling Haaland snaps back at questions over Man City charges",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/haaland-man-city-charges-interview-b3085172.html",
-"d":"2026-11-15T11:30:03Z",
-"n":[
-"city",
-"erling",
-"haaland",
-"man",
-"nations",
-"norway",
-"oslo",
-"wales"
-]
-},
-{
-"k":"football",
-"t":"Wenger decides not to challenge Fifa chief Infantino",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c539gn33z1l3o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-15T11:28:25Z",
-"n":[
-"arsene",
-"fifa",
-"gianni",
-"infantino",
-"wenger"
-]
-},
-{
-"k":"football",
-"t":"Wales suffer big Nations League blow in Norway as Erling Haaland extends record",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/norway-wales-result-nations-league-erling-haaland-b3085049.html",
-"d":"2026-11-15T11:16:21Z",
-"n":[
-"a4",
-"andreas",
-"antonio",
-"erling",
-"group",
-"haaland",
-"nations",
-"norway",
-"nusa",
-"schjelderup",
-"wales"
-]
-},
-{
-"k":"football",
-"t":"Celtic have eye on midfielder Ebonog - gossip",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cvglr4d04x2go?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-15T10:45:52Z",
-"n":[
-"celtic",
-"ebonog",
-"rangers",
-"turkish",
-"two"
-]
-},
-{
-"k":"football",
-"t":"Thomas Tuchel fumes over ‘twisted’ comments on anti-racism protocol before Spain v England",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/thomas-tuchel-luis-de-la-fuente-racism-spain-england-b3085173.html",
-"d":"2026-11-15T10:45:14Z",
-"n":[
-"de",
-"england",
-"fuente",
-"luis",
-"madrid",
-"spain",
-"thomas",
-"tuchel"
-]
-},
-{
-"k":"football",
-"t":"Mauricio Pochettino gives Man Utd glimpse of future with thrashing in penultimate USA outing",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/usa-haiti-mauricio-pochettino-man-united-b3085162.html",
-"d":"2026-11-15T09:54:19Z",
-"n":[
-"haiti",
-"man",
-"mauricio",
-"pochettino",
-"united",
-"us",
-"usa",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Papers: Fernandes wants to see if Poch is 'real deal' before signing new contract",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13612415/x-paper-talk",
-"d":"2026-11-15T09:47:00Z",
-"n":[
-"fernandes",
-"papers",
-"poch",
-"sunday"
-]
-},
-{
-"k":"football",
-"t":"Arsene Wenger not expected to challenge Gianni Infantino for Fifa presidency",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/arsene-wenger-gianni-infantino-fifa-president-election-b3085154.html",
-"d":"2026-11-15T09:16:35Z",
-"n":[
-"arsene",
-"fifa",
-"gianni",
-"infantino",
-"wenger"
-]
-},
-{
-"k":"football",
-"t":"How life without Cristiano Ronaldo begun with humiliation for Portugal",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/portugal-denmark-result-score-cristiano-ronaldo-b3085152.html",
-"d":"2026-11-15T09:07:40Z",
-"n":[
-"cristiano",
-"denmark",
-"jesus",
-"jorge",
-"portugal",
-"ronaldo"
-]
-},
-{
-"k":"football",
-"t":"The needless trend illustrated by Spain v England that is hurting football",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/england-spain-nations-league-uefa-champions-league-safety-net-b3085066.html",
-"d":"2026-11-15T08:21:16Z",
-"n":[
-"endless",
-"england",
-"madrid",
-"nations",
-"spain"
-]
-},
-{
-"k":"football",
-"t":"Is Spain v England on TV? Channel, kick-off time and how to watch Nations League clash",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/spain-england-tv-channel-time-nations-league-b3084483.html",
-"d":"2026-11-15T08:16:13Z",
-"n":[
-"a3",
-"channel",
-"england",
-"madrid",
-"nations",
-"spain",
-"tv"
-]
-},
-{
-"k":"football",
-"t":"Terry Butcher: ‘I’ve learned to live with the Hand of God goal better’",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/15/terry-butcher-ive-learned-to-live-with-the-hand-of-god-goal-better",
-"d":"2026-11-15T08:00:09Z",
-"n":[
-"bobby",
-"butcher",
-"diego",
-"england",
-"god",
-"guardian",
-"hand",
-"london",
-"maradona",
-"robson",
-"terry",
-"world"
-]
-},
-{
-"k":"football",
-"t":"AFC Wimbledon, a failed £87m investment bid and the challenge for fan ownership",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/15/afc-wimbledon-a-failed-87m-investment-bid-and-the-challenge-for-fan-ownership",
-"d":"2026-11-15T08:00:09Z",
-"n":[
-"afc",
-"clubs",
-"fan",
-"haydons",
-"lane",
-"plough",
-"road",
-"there",
-"wi",
-"wimbledon"
-]
-},
-{
-"k":"football",
-"t":"How Spain's humble superstar Simon became world's best keeper",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cqvg23nv0jw2o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-15T07:29:30Z",
-"n":[
-"balague",
-"bbc",
-"england",
-"guillem",
-"nations",
-"simon",
-"spain",
-"sport",
-"unai"
-]
-},
-{
-"k":"football",
-"t":"How Aston Villa are reclaiming their identity",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cm4gkgnkkn9zo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-15T07:12:05Z",
-"n":[
-"aston",
-"villa",
 "women"
 ]
 },
