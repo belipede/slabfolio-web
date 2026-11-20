@@ -549,10 +549,22 @@ const compsOf = c => (S.comps[c.id] || []).slice().sort((a, b) => (b.d || '').lo
 // value = latest sale you logged, then the sheet's comp price, then your own asking price (purple)
 function val(c){
   const l = compsOf(c)[0];
-  if (l) return { v: l.p, kind: 'sold', src: `Sale you logged (${l.s}${l.d ? ', ' + l.d : ''})` };
-  if (money(c.comp) !== null) return { v: money(c.comp), kind: 'sold', src: 'Comp price from your sheet' + (c.compDate ? ` (${c.compDate})` : '') };
+  if (l) return { v: l.p, kind: 'sold', src: `Sale you logged (${l.s}${l.d ? ', ' + l.d : ''})`, via: l.s, d: l.d, n: compsOf(c).length };
+  if (money(c.comp) !== null) return { v: money(c.comp), kind: 'sold', src: 'Comp price from your sheet' + (c.compDate ? ` (${c.compDate})` : ''), via: 'your sheet', d: c.compDate, n: 0 };
   if (money(c.ask) !== null) return { v: money(c.ask), kind: 'own', src: 'Your asking price, no sale logged yet' };
   return { v: null, kind: 'none', src: 'No value yet' };
+}
+// where a value came from, in plain words: "Last sold 6 Nov · eBay sold · 3 sales logged"
+const shortDate = d => { if (!d) return ''; const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d); if (!m) return String(d);
+  const t = new Date(+m[1], +m[2] - 1, +m[3]); return t.toLocaleDateString('en-SG', { day: 'numeric', month: 'short', ...(t.getFullYear() !== new Date().getFullYear() ? { year: 'numeric' } : {}) }); };
+function srcLine(c, short){
+  const x = val(c);
+  if (x.kind === 'own') return short ? '' : 'Your asking price · no sale logged yet';
+  if (x.kind === 'none') return short ? '' : 'No value yet';
+  if (x.via === 'your sheet') return short ? (x.d ? `Comp ${shortDate(x.d)}` : 'Sheet comp') : `Comp from your sheet${x.d ? ' · ' + shortDate(x.d) : ' · no date'}`;
+  const d = shortDate(x.d);
+  if (short) return `Sold ${d || ''}${d ? ' · ' : ''}${x.via}`.replace(/^Sold $/, 'Sold');
+  return `Last sold${d ? ' ' + d : ''} · ${x.via}${x.n > 1 ? ` · ${x.n} sales logged` : ''}`;
 }
 function tone(c){
   const x = val(c), cost = money(c.cost);
@@ -760,7 +772,7 @@ function celebrate(b){
 }
 function openBadges(){
   const list = badgesState(), n = list.filter(b => b.on).length;
-  openSheet(`<h2>Trophy cabinet</h2><div class="sub">${n} of ${list.length} badges earned</div><div class="cab">${list.map(b => `<div class="cb">${medal(b, b.on)}<b>${esc(b.n)}</b><span>${esc(b.d)}</span></div>`).join('')}</div>`);
+  openSheet(`<h2>Trophy cabinet</h2><div class="sub" style="margin-bottom:12px">${n} of ${list.length} badges earned</div>${streakHtml()}<div class="cab">${list.map(b => `<div class="cb">${medal(b, b.on)}<b>${esc(b.n)}</b><span>${esc(b.d)}</span></div>`).join('')}</div>`);
 }
 // card of the day: the same card all day, a new one tomorrow; cards with photos first
 function spotlight(){
@@ -801,7 +813,7 @@ function renderDash(){
   const carousel = topArt.length ? `<div class="sec row2"><span>${movers.length >= 3 ? 'Top movers' : 'Your top cards'}</span><button class="lnk" data-go="cards">See all</button></div>
     <div class="hscroll">${topArt.map(({ c, chg }) => `<button class="hcard" data-c="${esc(c.id)}">${artHtml(c, { chg: chg ? `<span class="mchg">${chg}</span>` : '' })}<div class="dpl">${esc(c.player)}</div><div class="dpr">${sgd(val(c).v)}</div></button>`).join('')}</div>` : '';
   const sp = spotlight(), spot = sp ? `<div class="sec">Card of the day</div><button class="spot ${rarityOf(sp)}" data-c="${esc(sp.id)}"><div class="spa">${artHtml(sp)}</div>
-    <div class="spi"><span class="sub">${esc(sp.line || sp.brand || '')}</span><b>${esc(sp.player)}</b><span class="sub">${esc(sp.desc || '')}</span><div class="spv">${sgd(val(sp).v)}</div>${chgOf(sp)}${sp.serial ? `<span class="tag" style="margin-top:6px;align-self:flex-start">${esc(sp.serial)}</span>` : ''}</div></button>` : '';
+    <div class="spi"><span class="sub">${esc(sp.line || sp.brand || '')}</span><b>${esc(sp.player)}</b><span class="sub">${esc(sp.desc || '')}</span><div class="spv">${sgd(val(sp).v)}</div>${chgOf(sp)}${srcLine(sp, true) ? `<span class="srcl">${esc(srcLine(sp, true))}</span>` : ''}${sp.serial ? `<span class="tag" style="margin-top:6px;align-self:flex-start">${esc(sp.serial)}</span>` : ''}</div></button>` : '';
   const goals = `<div class="sec row2"><span>Goals</span><button class="lnk" data-act="badges">Trophy cabinet</button></div>
     <div class="goals"><div class="goal">${ringSvg(ms.p)}<div><b>${sgd(ms.next - t.value)} to go</b><span>to the ${sgd(ms.next).replace('.00', '')} club</span></div></div>
     <button class="goal" data-act="badges"><div class="medals">${badges.filter(b => b.on).slice(-3).map(b => medal(b, true)).join('') || medal(badges[0], false)}</div><div><b>${earned} of ${badges.length} badges</b><span>Next: ${esc((badges.find(b => !b.on) || badges[0]).n)}</span></div></button></div>`;
@@ -817,9 +829,9 @@ function renderDash(){
     const noPh = own.filter(c => !photosOf(c).length).length;
     const next = backup || (needs ? `<button class="nudge" data-go="comps"><span class="ti">${ICONS.chart}</span><div><b>Check ${needs} ${needs === 1 ? 'price' : 'prices'}</b><span>${needs === 1 ? 'One card is' : 'Some cards are'} using your own guess. See what ${needs === 1 ? 'it' : 'they'} really sold for.</span></div><i>›</i></button>`
       : noPh ? `<button class="nudge" data-go="display"><span class="ti">${ICONS.cam}</span><div><b>Add photos to ${noPh} ${noPh === 1 ? 'card' : 'cards'}</b><span>Cards with photos look better on your Display.</span></div><i>›</i></button>` : '');
-    return head + hero + streakHtml() + `<div class="acts"><button data-act="addcard"><span>＋</span>Add a card</button><button data-go="comps"><span>${ICONS.chart}</span>Check prices</button><button data-go="display"><span>${ICONS.star}</span>Show off</button></div>`
-      + (next ? `<div class="sec">Next step</div>${next}` : '') + carousel + spot + goals + newsSec + explore
-      + `<p class="sub" style="margin-top:18px;text-align:center">Want % change, breakdowns and every tool? Switch to <b>Pro</b> at the top.</p>`;
+    return head + hero + `<div class="acts"><button data-act="addcard"><span>＋</span>Add a card</button><button data-go="comps"><span>${ICONS.chart}</span>Check prices</button><button data-go="display"><span>${ICONS.star}</span>Show off</button></div>`
+      + (next ? `<div class="sec">Next step</div>${next}` : '') + carousel + spot + goals + newsSec
+      + `<p class="sub" style="margin-top:18px;text-align:center">Grading calculator, Card Finder and more are in <b>Me</b>. Want % change and breakdowns? Switch to <b>Pro</b> at the top.</p>`;
   }
   const mv = view.mv || 'up', list = moves.filter(m => mv === 'up' ? m.d > 0 : m.d < 0).sort((a, b) => mv === 'up' ? b.p - a.p : a.p - b.p).slice(0, 5);
   const scan = invRows().filter(r => matchInv(r[1], r[2], r[3], r[4]).out && !S.invAdded[r[0]]).length;
@@ -868,13 +880,13 @@ function renderCards(){
   if (pro() && view.cf === 'needs' && list.length) h += `<button class="btn" data-go="comps" style="margin:0 0 10px">Start a comp sprint (${compQueue().length} cards)</button>`;
   const shown = list.slice(0, view.cmore);
   if (grid) h += `<div class="dgrid">` + shown.map(c => `<button class="dtile" data-c="${esc(c.id)}">${artHtml(c, { add: true })}
-      <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dprow"><span class="dpr">${owned(c) ? sgd(val(c).v) : 'Sold ' + sgd(money(c.sold))}</span>${owned(c) ? chgOf(c) : ''}</div></button>`).join('') + `</div>`;
+      <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dprow"><span class="dpr">${owned(c) ? sgd(val(c).v) : 'Sold ' + sgd(money(c.sold))}</span>${owned(c) ? chgOf(c) : ''}</div>${owned(c) && srcLine(c, true) ? `<span class="srcl">${esc(srcLine(c, true))}</span>` : ''}</button>`).join('') + `</div>`;
   else for (const c of shown){
     let right;
     if (owned(c)) right = `<b>${sgd(val(c).v)}</b>${chgOf(c)}`;
     else { const p = profitSold(c); right = `<b>${sgd(money(c.sold))}</b>${p === null ? '<span>Sold</span>' : delta(p, money(c.cost))}`; }
     h += `<div class="crow" data-c="${esc(c.id)}">${thumbHtml(c)}<div class="l"><div class="pl">${esc(c.player)}</div><div class="ds">${esc(cardLine(c))}</div>
-    <div class="tl">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}<span class="sub">${esc(c.status)}${money(c.cost) !== null ? ' · paid ' + sgd(money(c.cost)) : ''}</span></div></div><div class="r">${right}</div></div>`;
+    <div class="tl">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}<span class="sub">${esc(c.status)}${money(c.cost) !== null ? ' · paid ' + sgd(money(c.cost)) : ''}${owned(c) && srcLine(c, true) ? ' · ' + esc(srcLine(c, true)) : ''}</span></div></div><div class="r">${right}</div></div>`;
   }
   if (list.length > view.cmore) h += `<button class="btn ghost" data-act="more">Show ${Math.min(60, list.length - view.cmore)} more</button>`;
   if (!list.length) h += `<div class="empty">${view.cq ? 'No cards match.' : 'No cards here yet. Tap + to add one.'}</div>`;
@@ -903,7 +915,7 @@ function openC(id, mode){
     <button class="mini" data-mode="" style="margin-top:10px">Cancel</button></div>` : ''}
   <h2>${esc(c.player)}</h2><div class="sub">${esc(cardLine(c))}${c.id && !/^S\d/.test(c.id) ? ' · ' + esc(c.id) : ''}</div>
   <div style="margin-top:8px">${cardTags(c).map(t => `<span class="tag">${esc(t)}</span>`).join('')}<span class="tag">${esc(c.status)}</span></div>
-  <dl class="kv">${owned(c) ? dl('Value', `<b class="${tone(c)}">${sgd(x.v)}</b>`) + dl('Based on', `<span class="sub">${esc(x.src)}</span>`) : dl('Sold for', sgd(money(c.sold))) + dl('Sold', esc([c.soldDate, c.channel].filter(Boolean).join(' · ')))}
+  <dl class="kv">${owned(c) ? dl('Value', `<b class="${tone(c)}">${sgd(x.v)}</b>`) + dl('Source', `<span class="sub">${esc(srcLine(c))}</span>`) : dl('Sold for', sgd(money(c.sold))) + dl('Sold', esc([c.soldDate, c.channel].filter(Boolean).join(' · ')))}
   ${dl('Paid', cost === null ? null : sgd(cost))}${owned(c) && x.v !== null && cost !== null ? dl('Up / down', `<span class="${tone(c)}">${x.v - cost >= 0 ? '+' : ''}${sgd(x.v - cost)}</span>`) : ''}
   ${!owned(c) && profitSold(c) !== null ? dl('Profit', `<span class="${profitSold(c) >= 0 ? 'g' : 'rd'}">${sgd(profitSold(c))}</span>`) : ''}
   ${dl('Asking', money(c.ask) === null ? null : sgd(money(c.ask)))}${dl('Grading', c.stage && c.stage !== 'Raw' ? esc(c.stage) : null)}</dl>
@@ -1039,10 +1051,14 @@ function renderDisplay(){
   <div class="sub" style="margin:-6px 2px 12px">Your cards as a photo showcase, sorted into For sale, PC and Sold from your collection. Tap a card to add photos or hide it.</div>
   <div class="seg wide" style="margin-bottom:12px">${[['sale', 'For sale'], ['pc', 'PC'], ['sold', 'Sold']].map(([k, l]) => `<button data-dg="${k}" class="${g === k ? 'on' : ''}">${l} (${n(k)})</button>`).join('')}</div>`;
   if (!list.length) h += `<div class="empty">${g === 'sale' ? 'Nothing for sale yet. Give a card an asking price, or set its status to To list.' : g === 'pc' ? 'No PC cards yet.' : 'Nothing sold yet.'}</div>`;
-  h += `<div class="dgrid">` + list.map(c => { const ph = photosOf(c)[0];
+  const withPh = list.filter(c => photosOf(c).length), fold = withPh.length && withPh.length < list.length, shown = fold ? withPh : list, rest = fold ? list.filter(c => !photosOf(c).length) : [];
+  h += `<div class="dgrid">` + shown.map(c => { const ph = photosOf(c)[0];
     return `<button class="dtile${c.hideDisp ? ' hid' : ''}" data-c="${esc(c.id)}">${artHtml(c, { add: true })}
     <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'sale' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
-  if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Cards with photos show first.</p>`;
+  if (fold){
+    h += `<button class="needph" data-act="dnoph" aria-expanded="${!!view.dnoph}"><span class="ti">${ICONS.cam}</span><div><b>${rest.length} ${rest.length === 1 ? 'card needs' : 'cards need'} a photo</b><span>${view.dnoph ? 'Tap one to add its photo' : 'They join the showcase once they have one'}</span></div><i>${view.dnoph ? 'Hide' : 'Add'}</i></button>`;
+    if (view.dnoph) h += `<div class="needlist">${rest.map(c => tRow(c, `<b class="${g === 'sale' ? 'sale' : ''}">${dispPrice(c)}</b>`)).join('')}</div>`;
+  } else if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Tap a card to add one.</p>`;
   if (hid) h += `<button class="btn ghost" data-act="dhidden">${view.dhidden ? 'Hide' : 'Show'} ${hid} hidden ${hid === 1 ? 'card' : 'cards'}</button>`;
   return h + `<p class="sub">Only you see this for now. A public link you can put in your bio comes with accounts at launch.</p>`;
 }
@@ -1199,6 +1215,7 @@ function bindApp(a){
   a.querySelectorAll('[data-act=more]').forEach(el => el.onclick = () => { view.cmore += 60; render(); });
   a.querySelectorAll('[data-dg]').forEach(el => el.onclick = () => { view.dg = el.dataset.dg; render(); });
   a.querySelectorAll('[data-act=dhidden]').forEach(el => el.onclick = () => { view.dhidden = !view.dhidden; render(); });
+  a.querySelectorAll('[data-act=dnoph]').forEach(el => el.onclick = () => { view.dnoph = !view.dnoph; render(); });
   a.querySelectorAll('[data-act=saletext]').forEach(el => el.onclick = async () => { try { await navigator.clipboard.writeText(saleText()); toast('Sale post copied. Paste it into Instagram, Facebook or Carousell.'); } catch (e) { openSheet(`<h2>Sale post</h2><textarea class="inp" style="min-height:220px">${esc(saleText())}</textarea><div class="hint">Select all and copy.</div>`); } });
   a.querySelectorAll('[data-act=backup]').forEach(el => el.onclick = () => { view.exp = true; view.rest = false; go('me'); const t = $('#expt'); if (t) t.scrollIntoView({ block: 'center' }); });
   bindComps(a);
