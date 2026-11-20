@@ -582,8 +582,9 @@ const modeSeg = () => `<div class="seg mode" role="group" aria-label="App style"
 function setMode(m){ S.mode = m; save(true); closeSheet(); if (m !== 'pro' && view.tab === 'hunt') view.tab = 'home'; render(); }
 function askMode(){
   openSheet(`<h2>How do you collect?</h2><div class="sub" style="margin-top:4px">Pick a style. You can switch any time from Home or Me.</div>
-  <button class="pick" data-setmode="easy"><b>Easy</b><span>I want to see my cards, what they're worth, and show them off. Big photos, plain words.</span></button>
-  <button class="pick" data-setmode="pro"><b>Pro</b><span>I track costs, comps, profit and flips. Charts, % change, breakdowns and every tool.</span></button>`);
+  <button class="pick rec" data-setmode="easy"><b>Easy<em>Recommended</em></b><span>I want to see my cards, what they're worth, and show them off. Big photos, plain words.</span></button>
+  <button class="pick" data-setmode="pro"><b>Pro</b><span>I track costs, comps, profit and flips. Charts, % change, breakdowns and every tool.</span></button>
+  <button class="skip" data-setmode="easy">Not sure yet, start with Easy</button>`);
   $('#sheet').querySelectorAll('[data-setmode]').forEach(el => el.onclick = () => setMode(el.dataset.setmode));
 }
 
@@ -824,7 +825,7 @@ function renderDash(){
   const scan = invRows().filter(r => matchInv(r[1], r[2], r[3], r[4]).out && !S.invAdded[r[0]]).length;
   return head + hero + `<div class="kpis k4"><div><span>Cards</span><b>${t.n}</b></div><div><span>Paid</span><b>${sgd(t.paid)}</b></div><div><span>Sold</span><b>${sgd(t.got)}</b></div><div><span>Net cash</span><b class="${t.got - t.spent >= 0 ? 'g' : 'rd'}">${sgd(t.got - t.spent)}</b></div></div>`
     + backup + streakHtml() + carousel
-    + (needs ? `<button class="nudge" data-go="comps"><span class="ti">${ICONS.chart}</span><div><b>${needs} ${needs === 1 ? 'card needs' : 'cards need'} a comp</b><span>Purple values are your own until a real sale is logged. Start a comp sprint.</span></div><i>›</i></button>` : '')
+    + (needs ? `<button class="nudge" data-go="comps"><span class="ti">${ICONS.chart}</span><div><b>${needs} ${needs === 1 ? 'card needs' : 'cards need'} a comp</b><span>Values marked "Your value" are your own until a real sale is logged. Start a comp sprint.</span></div><i>›</i></button>` : '')
     + (moves.length ? `<div class="sec row2"><span>Movers</span><div class="seg sm">${[['up', 'Gainers'], ['dn', 'Losers']].map(([k, n]) => `<button data-mv="${k}" class="${mv === k ? 'on' : ''}">${n}</button>`).join('')}</div></div>
     ${list.map(m => tRow(m.c, `<b>${sgd(val(m.c).v)}</b>${delta(m.d, money(m.c.cost), { pctOnly: true })}`)).join('') || `<div class="sub" style="padding:4px 2px">No ${mv === 'up' ? 'gainers' : 'losers'} yet.</div>`}` : '')
     + breakdownHtml() + goals + spot
@@ -877,7 +878,7 @@ function renderCards(){
   }
   if (list.length > view.cmore) h += `<button class="btn ghost" data-act="more">Show ${Math.min(60, list.length - view.cmore)} more</button>`;
   if (!list.length) h += `<div class="empty">${view.cq ? 'No cards match.' : 'No cards here yet. Tap + to add one.'}</div>`;
-  return h + (pro() ? `<p class="sub">▲ ▼ show the change from what you paid, using the latest real sale. Purple "Your value" means no sale is logged yet, so it's your own asking price.</p>` : '');
+  return h + (pro() ? `<p class="sub">▲ ▼ show the change from what you paid, using the latest real sale. A dashed "Your value" means no sale is logged yet, so it's your own asking price.</p>` : '');
 }
 
 // ---------- card detail ----------
@@ -908,7 +909,7 @@ function openC(id, mode){
   ${dl('Asking', money(c.ask) === null ? null : sgd(money(c.ask)))}${dl('Grading', c.stage && c.stage !== 'Raw' ? esc(c.stage) : null)}</dl>
   ${owned(c) ? `<a class="btn${x.kind === 'sold' ? ' ghost' : ''}" data-ebay href="${ebaySold(c)}" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Check eBay sold ↗</a>` : ''}
   <div class="links"><a href="https://130point.com/sales/" target="_blank" rel="noopener">130point ↗</a>${owned(c) ? '' : `<a href="${ebaySold(c)}" target="_blank" rel="noopener">eBay sold ↗</a>`}</div>
-  <div class="switch" style="border:0;padding:12px 0 0"><span>Show on Display<br><span class="sub">${{ sale: 'Under For sale', pc: 'Under PC', sold: 'Under Sold' }[dispGroup(c)]}</span></span><button class="tog ${c.hideDisp ? '' : 'on'}" id="dtog"></button></div>`;
+  <div class="switch" style="border:0;padding:12px 0 0"><span>Show on Display<br><span class="sub">${{ sale: 'Under For sale', pc: 'Under PC', sold: 'Under Sold' }[dispGroup(c)]}</span></span><button class="tog ${c.hideDisp ? '' : 'on'}" id="dtog" role="switch" aria-checked="${!c.hideDisp}" aria-label="Show on Display"></button></div>`;
   if (comps.length) h += `<label class="f">Sales you logged</label>` + comps.map(s => `<div class="item"><div class="t">${sgd(s.p)}</div><div class="m">${esc(s.s)}${s.d ? ' · ' + esc(s.d) : ''}</div></div>`).join('');
   if (mode === 'sale') h += `<form id="cf"><label class="f">Sale price (S$, the price it actually sold for)</label><input class="inp" name="p" inputmode="decimal" required>
     <label class="f">Date sold</label><input class="inp" name="d" type="date" value="${new Date().toISOString().slice(0, 10)}">
@@ -1040,7 +1041,7 @@ function renderDisplay(){
   if (!list.length) h += `<div class="empty">${g === 'sale' ? 'Nothing for sale yet. Give a card an asking price, or set its status to To list.' : g === 'pc' ? 'No PC cards yet.' : 'Nothing sold yet.'}</div>`;
   h += `<div class="dgrid">` + list.map(c => { const ph = photosOf(c)[0];
     return `<button class="dtile${c.hideDisp ? ' hid' : ''}" data-c="${esc(c.id)}">${artHtml(c, { add: true })}
-    <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'pu' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
+    <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'sale' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
   if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Cards with photos show first.</p>`;
   if (hid) h += `<button class="btn ghost" data-act="dhidden">${view.dhidden ? 'Hide' : 'Show'} ${hid} hidden ${hid === 1 ? 'card' : 'cards'}</button>`;
   return h + `<p class="sub">Only you see this for now. A public link you can put in your bio comes with accounts at launch.</p>`;
@@ -1145,7 +1146,7 @@ function renderMe(){
   ${view.exp ? `<textarea class="inp" id="expt" readonly style="margin-top:8px">${esc(JSON.stringify(S))}</textarea><div class="btns"><button class="btn" id="copyexp">Copy</button><button class="btn ghost" id="saveexp">Save as file</button></div>` : ''}
   ${view.rest ? `<textarea class="inp" id="restt" style="margin-top:8px" placeholder="Paste an export here"></textarea><button class="btn" id="restgo">Restore this backup</button>` : ''}</div>
   <div class="prof"><b>Tools</b><button class="btn ghost" data-act="badges">Trophy cabinet</button><button class="btn ghost" data-go="hunt">Card Finder (pull registry)</button><button class="btn ghost" data-go="news">News</button><button class="btn ghost" data-go="grade">Grading calculator</button><button class="btn ghost" data-go="scan">Scan my collection for the pull registry</button></div>
-  <div class="prof"><b>Card Finder points</b>
+  ${pro() ? `<div class="prof"><b>Card Finder points</b>
   <div class="sub" style="margin-top:6px">Username</div><input class="inp" id="uname" value="${esc(S.user)}" style="margin-top:6px">
   <div class="sub" style="margin-top:10px">GitHub username, so finds you share publicly count here</div><input class="inp" id="ghname" value="${esc(S.gh || '')}" placeholder="e.g. belipede" autocapitalize="off" autocorrect="off" style="margin-top:6px">
   ${S.gh ? `<div class="hint">${myShared().length} shared finds from @${esc(S.gh)} on the public registry.</div>` : ''}
@@ -1156,10 +1157,10 @@ function renderMe(){
   <div class="sub" style="margin-top:6px">${earned ? 'Free month of Pro already earned this month (limit 1 a month).' : `${POINTS_PER_MONTH - (pts % POINTS_PER_MONTH)} points to a free month of Pro`}</div>
   ${pts >= POINTS_PER_MONTH && !earned ? `<button class="btn" id="claim">Claim free month of Pro</button>` : ''}
   <ul class="rules"><li>Only the first verified report of each numbered copy earns points.</li><li>1/1 = 100 · /5 or lower = 40 · /10 or lower = 20 · /25 or lower = 10</li>
-  <li>${POINTS_PER_MONTH} points = 1 free month of Pro, at most 1 a month. A fake report costs 50 points.</li></ul></div>
-  <div class="prof"><b>Testing</b>
-  <div class="switch"><span>Moderator mode<br><span class="sub">Lets you verify reports on this phone. Shared finds are verified with labels on GitHub.</span></span><button class="tog ${S.mod ? 'on' : ''}" id="mod"></button></div>
-  <div class="switch"><span>Sample pull reports<br><span class="sub">Fills the registry with marked sample data</span></span><button class="pill" id="sample">${S.sampleLoaded ? 'Remove' : 'Load'}</button></div>
+  <li>${POINTS_PER_MONTH} points = 1 free month of Pro, at most 1 a month. A fake report costs 50 points.</li></ul></div>` : ''}
+  <div class="prof"><b>${pro() ? 'Testing' : 'Reset'}</b>
+  ${pro() ? `<div class="switch"><span>Moderator mode<br><span class="sub">Lets you verify reports on this phone. Shared finds are verified with labels on GitHub.</span></span><button class="tog ${S.mod ? 'on' : ''}" id="mod" role="switch" aria-checked="${!!S.mod}" aria-label="Moderator mode"></button></div>
+  <div class="switch"><span>Sample pull reports<br><span class="sub">Fills the registry with marked sample data</span></span><button class="pill" id="sample">${S.sampleLoaded ? 'Remove' : 'Load'}</button></div>` : ''}
   <div class="switch"><span>Start over<br><span class="sub">Deletes everything in this app. Export first.</span></span><button class="pill" id="clear">Delete</button></div></div>
   <p class="sub">Cappd test build ${APP_VERSION}. Checklists from collectosk.com and cardsmithsbreaks.com. Not affiliated with Topps, Panini or the leagues. Values are estimates, not financial advice.</p>`;
 }
