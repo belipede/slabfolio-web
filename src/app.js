@@ -1047,20 +1047,52 @@ function renderDisplay(){
   const g = view.dg || 'sale', all = S.cards.filter(c => dispGroup(c) === g), list = all.filter(c => view.dhidden || !c.hideDisp);
   const n = k => S.cards.filter(c => dispGroup(c) === k && !c.hideDisp).length, noPh = list.filter(c => !photosOf(c).length).length, hid = all.filter(c => c.hideDisp).length;
   list.sort((a, b) => (photosOf(b).length ? 1 : 0) - (photosOf(a).length ? 1 : 0) || (val(b).v ?? money(b.sold) ?? 0) - (val(a).v ?? money(a.sold) ?? 0));
+  const car = (view.dview || 'car') === 'car';
   let h = `<header class="top"><h1>Display</h1>${g === 'sale' && n('sale') ? `<button class="mini acc" data-act="saletext">Copy sale post</button>` : ''}</header>
   <div class="sub" style="margin:-6px 2px 12px">Your cards as a photo showcase, sorted into For sale, PC and Sold from your collection. Tap a card to add photos or hide it.</div>
-  <div class="seg wide" style="margin-bottom:12px">${[['sale', 'For sale'], ['pc', 'PC'], ['sold', 'Sold']].map(([k, l]) => `<button data-dg="${k}" class="${g === k ? 'on' : ''}">${l} (${n(k)})</button>`).join('')}</div>`;
+  <div class="row" style="margin-bottom:12px"><div class="seg wide" style="flex:1">${[['sale', 'For sale'], ['pc', 'PC'], ['sold', 'Sold']].map(([k, l]) => `<button data-dg="${k}" class="${g === k ? 'on' : ''}">${l} (${n(k)})</button>`).join('')}</div>
+  <button class="vt" data-dview="${car ? 'grid' : 'car'}" aria-label="${car ? 'Show as grid' : 'Show as carousel'}">${car ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="6" width="4" height="12" rx="1.5"/><rect x="8" y="3" width="8" height="18" rx="1.5"/><rect x="18" y="6" width="4" height="12" rx="1.5"/></svg>'}</button></div>`;
   if (!list.length) h += `<div class="empty">${g === 'sale' ? 'Nothing for sale yet. Give a card an asking price, or set its status to To list.' : g === 'pc' ? 'No PC cards yet.' : 'Nothing sold yet.'}</div>`;
   const withPh = list.filter(c => photosOf(c).length), fold = withPh.length && withPh.length < list.length, shown = fold ? withPh : list, rest = fold ? list.filter(c => !photosOf(c).length) : [];
-  h += `<div class="dgrid">` + shown.map(c => { const ph = photosOf(c)[0];
+  if (car && list.length) h += carouselHtml(list, g);
+  else h += `<div class="dgrid">` + shown.map(c => { const ph = photosOf(c)[0];
     return `<button class="dtile${c.hideDisp ? ' hid' : ''}" data-c="${esc(c.id)}">${artHtml(c, { add: true })}
     <div class="dpl">${esc(c.player)}</div><div class="dds">${esc(cardLine(c))}</div><div class="dpr ${g === 'sale' ? 'sale' : g === 'sold' ? '' : tone(c)}">${dispPrice(c)}</div></button>`; }).join('') + `</div>`;
-  if (fold){
+  if (car){ if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. They show after the ones with photos.</p>`; }
+  else if (fold){
     h += `<button class="needph" data-act="dnoph" aria-expanded="${!!view.dnoph}"><span class="ti">${ICONS.cam}</span><div><b>${rest.length} ${rest.length === 1 ? 'card needs' : 'cards need'} a photo</b><span>${view.dnoph ? 'Tap one to add its photo' : 'They join the showcase once they have one'}</span></div><i>${view.dnoph ? 'Hide' : 'Add'}</i></button>`;
     if (view.dnoph) h += `<div class="needlist">${rest.map(c => tRow(c, `<b class="${g === 'sale' ? 'sale' : ''}">${dispPrice(c)}</b>`)).join('')}</div>`;
   } else if (noPh) h += `<p class="sub">${noPh} ${noPh === 1 ? 'card has' : 'cards have'} no photo yet. Tap a card to add one.</p>`;
   if (hid) h += `<button class="btn ghost" data-act="dhidden">${view.dhidden ? 'Hide' : 'Show'} ${hid} hidden ${hid === 1 ? 'card' : 'cards'}</button>`;
   return h + `<p class="sub">Only you see this for now. A public link you can put in your bio comes with accounts at launch.</p>`;
+}
+
+// Display carousel: one big card at a time, swipe or use the arrows, thumbnails underneath (same idea as the public Display page)
+function carouselHtml(list, g){
+  const i0 = Math.min(view.dpos || 0, list.length - 1);
+  return `<div class="dcar">
+  <div class="dcnav"><span class="sub" id="dcnt"><b>${i0 + 1}</b> of ${list.length} ${list.length === 1 ? 'card' : 'cards'}</span>
+  <div class="dcarr"><button class="arr" data-dstep="-1" aria-label="Previous card">‹</button><button class="arr" data-dstep="1" aria-label="Next card">›</button></div></div>
+  <div class="feed" id="dfeed" data-start="${i0}">${list.map((c, i) => `<div class="dslide${c.hideDisp ? ' hid' : ''}" role="group" aria-label="${i + 1} of ${list.length}: ${esc(c.player)}">
+    <button class="dsart" data-c="${esc(c.id)}">${artHtml(c, { add: true })}</button>
+    <div class="dsi"><b class="dspl">${esc(c.player)}</b><span class="sub">${esc(cardLine(c))}</span>
+    ${cardTags(c).length ? `<div class="dstags">${cardTags(c).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>` : ''}
+    <div class="dsprice"><span>${g === 'sale' ? 'Asking' : g === 'sold' ? 'Sold for' : 'Worth'}</span><b class="${g === 'sale' ? 'sale' : ''}">${dispPrice(c)}</b>${g !== 'sold' && srcLine(c, true) ? `<i>${esc(srcLine(c, true))}</i>` : ''}</div>
+    <button class="btn ghost" data-c="${esc(c.id)}" style="margin-top:10px">${photosOf(c).length ? 'Edit card' : 'Add a photo'}</button></div></div>`).join('')}</div>
+  <div class="dthumbs" id="dthumbs">${list.map((c, i) => `<button class="dth${i === i0 ? ' on' : ''}" data-dgo="${i}" aria-label="Show ${esc(c.player)}">${thumbHtml(c)}</button>`).join('')}</div>
+  <p class="sub" style="text-align:center;margin:4px 0 12px">Swipe for more cards · tap a card to add photos or edit it</p></div>`;
+}
+function bindCarousel(a){
+  const feed = a.querySelector('#dfeed'); if (!feed) return;
+  const slides = [...feed.children], n = slides.length, cnt = a.querySelector('#dcnt'), th = [...a.querySelectorAll('.dth')];
+  const at = () => Math.round(feed.scrollLeft / (slides[0].offsetWidth + 12));
+  const go = (i, smooth = true) => { i = Math.max(0, Math.min(n - 1, i)); feed.scrollTo({ left: slides[i].offsetLeft - feed.offsetLeft - (feed.clientWidth - slides[i].offsetWidth) / 2, behavior: smooth && !matchMedia('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'auto' }); };
+  const sync = () => { const i = Math.max(0, Math.min(n - 1, at())); view.dpos = i; cnt.innerHTML = `<b>${i + 1}</b> of ${n} ${n === 1 ? 'card' : 'cards'}`;
+    th.forEach((t, k) => t.classList.toggle('on', k === i)); const t = th[i]; if (t) t.parentNode.scrollTo({ left: t.offsetLeft - t.parentNode.clientWidth / 2 + t.offsetWidth / 2, behavior: 'auto' }); };
+  let tm; feed.addEventListener('scroll', () => { clearTimeout(tm); tm = setTimeout(sync, 60); }, { passive: true });
+  a.querySelectorAll('[data-dstep]').forEach(b => b.onclick = () => go(at() + +b.dataset.dstep));
+  th.forEach(b => b.onclick = () => go(+b.dataset.dgo));
+  go(+feed.dataset.start || 0, false); sync();
 }
 
 // ---------- comp sprint: log real sold prices for cards that only have your own value ----------
@@ -1213,9 +1245,11 @@ function bindApp(a){
   a.querySelectorAll('[data-act=bug]').forEach(el => el.onclick = () => window.open(bugUrl(), '_blank'));
   a.querySelectorAll('[data-act=addcard]').forEach(el => el.onclick = openAdd);
   a.querySelectorAll('[data-act=more]').forEach(el => el.onclick = () => { view.cmore += 60; render(); });
-  a.querySelectorAll('[data-dg]').forEach(el => el.onclick = () => { view.dg = el.dataset.dg; render(); });
+  a.querySelectorAll('[data-dg]').forEach(el => el.onclick = () => { view.dg = el.dataset.dg; view.dpos = 0; render(); });
   a.querySelectorAll('[data-act=dhidden]').forEach(el => el.onclick = () => { view.dhidden = !view.dhidden; render(); });
   a.querySelectorAll('[data-act=dnoph]').forEach(el => el.onclick = () => { view.dnoph = !view.dnoph; render(); });
+  a.querySelectorAll('[data-dview]').forEach(el => el.onclick = () => { view.dview = el.dataset.dview; render(); });
+  bindCarousel(a);
   a.querySelectorAll('[data-act=saletext]').forEach(el => el.onclick = async () => { try { await navigator.clipboard.writeText(saleText()); toast('Sale post copied. Paste it into Instagram, Facebook or Carousell.'); } catch (e) { openSheet(`<h2>Sale post</h2><textarea class="inp" style="min-height:220px">${esc(saleText())}</textarea><div class="hint">Select all and copy.</div>`); } });
   a.querySelectorAll('[data-act=backup]').forEach(el => el.onclick = () => { view.exp = true; view.rest = false; go('me'); const t = $('#expt'); if (t) t.scrollIntoView({ block: 'center' }); });
   bindComps(a);

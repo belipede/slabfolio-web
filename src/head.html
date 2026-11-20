@@ -395,6 +395,33 @@ input[type=file].inp::file-selector-button{font:inherit;font-weight:700;backgrou
 .needph i{font-style:normal;font-weight:750;font-size:13px;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:6px 14px}
 .needlist{margin-bottom:10px}
 .needlist .r b.sale{color:var(--accent)}
+/* Display carousel */
+.dcar{margin:0 -14px 6px}
+.dcnav{display:flex;align-items:center;justify-content:space-between;padding:0 16px 10px}
+.dcnav b{color:var(--text)}
+.dcarr{display:flex;gap:8px}
+.arr{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding-bottom:3px}
+.arr:active{border-color:var(--accent);color:var(--accent)}
+.feed{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 30px 4px;scroll-padding:0 30px;overscroll-behavior-x:contain}
+.feed::-webkit-scrollbar{display:none}
+.dslide{flex:0 0 calc(100% - 60px);scroll-snap-align:center;scroll-snap-stop:always;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0)),var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.dslide.hid{opacity:.5}
+.dsart{display:block;width:100%;border:0;padding:16px 16px 4px;cursor:pointer;background:radial-gradient(120% 90% at 50% 0%,#1d2640,transparent 70%)}
+.dsart .art{width:min(100%,250px);margin:0 auto;border-radius:14px;box-shadow:0 22px 40px -18px rgba(0,0,0,.95)}
+.dsart .gin{font-size:52px}
+.dsi{padding:10px 16px 16px}
+.dspl{display:block;font-family:var(--disp);font-size:21px;line-height:1.15;letter-spacing:-.2px}
+.dsi>.sub{display:block;margin-top:2px}
+.dstags{margin-top:8px}
+.dsprice{margin-top:12px;padding:10px 12px;border-radius:14px;background:var(--bg);border:1px solid var(--line)}
+.dsprice span{display:block;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--mute)}
+.dsprice b{display:block;font-family:var(--disp);font-size:24px;margin-top:2px}
+.dsprice b.sale{color:var(--accent)}
+.dsprice i{display:block;font-style:normal;font-size:11.5px;color:var(--mute);margin-top:2px}
+.dthumbs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 16px 6px}
+.dthumbs::-webkit-scrollbar{display:none}
+.dth{flex:0 0 auto;border:0;background:none;padding:2px;border-radius:10px;cursor:pointer;opacity:.55;outline:2px solid transparent;transition:opacity .2s}
+.dth.on{opacity:1;outline-color:var(--accent)}
 </style>
 </head>
 <body>
