@@ -1,5 +1,5 @@
 {
-"pulled":"2026-11-22T19:39:36Z",
+"pulled":"2026-11-23T07:38:28Z",
 "sources":[
 "BBC Sport",
 "Cardboard Connection",
@@ -11,10 +11,473 @@
 "items":[
 {
 "k":"football",
+"t":"Who am I? Plus today's other quizzes",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c5zjred9vl7jo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-23T06:31:21Z",
+"n":[
+"am",
+"brainteaser",
+"five",
+"plus",
+"test"
+]
+},
+{
+"k":"football",
+"t":"One of football's most-hyped 16-year-olds - what next for JJ Gabriel?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6p9dym309nxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-23T06:17:59Z",
+"n":[
+"bbc",
+"gabriel",
+"jj",
+"madrid",
+"manchester",
+"one",
+"real",
+"sport",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Did Liverpool 'get lucky' with red card decision?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cq23jmklrj33o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T23:59:59Z",
+"n":[
+"anfield",
+"ashley",
+"danny",
+"day",
+"did",
+"leny",
+"liverpool",
+"manchester",
+"match",
+"murphy",
+"united",
+"yoro",
+"young"
+]
+},
+{
+"k":"football",
+"t":"How 'outstanding' Tzolakis kept Brighton at bay",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cm702nzyl8pzo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T23:59:57Z",
+"n":[
+"brighton",
+"danny",
+"day",
+"hull",
+"konstantinos",
+"match",
+"mkm",
+"murphy",
+"seagulls",
+"stadium",
+"tzolakis"
+]
+},
+{
+"k":"football",
+"t":"'We feel the pain': Pochettino on 4-0 defeat at Liverpool to start Manchester United era – video",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/video/2026/nov/22/we-feel-the-pain-pochettino-on-4-0-defeat-at-liverpool-to-start-manchester-united-era-video",
+"d":"2026-11-22T23:33:33Z",
+"n":[
+"alexander",
+"anfield",
+"but",
+"crystal",
+"isak",
+"leny",
+"liverpool",
+"manchester",
+"mauricio",
+"palace",
+"pochettino",
+"there",
+"united",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"A 'wow' player - why Ngumoha is already a Liverpool game-changer",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmn80y5w84qqo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T23:20:16Z",
+"n":[
+"danny",
+"day",
+"liverpool",
+"manchester",
+"match",
+"murphy",
+"ngumoha",
+"rio",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Football Daily",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sounds/play/p0ppcw2v?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T23:14:00Z",
+"n":[
+"daily",
+"dale",
+"irfan",
+"johnson",
+"liverpool",
+"lloyd",
+"man",
+"rick",
+"umir",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Ref Watch: Send in your questions for Dermot!",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13576553/ref-watch-premier-league-weekend-reaction-live-dermot-gallagher-assesses-the-big-refereeing-decisions",
+"d":"2026-11-22T23:00:00Z",
+"n":[
+"dermot",
+"ref",
+"send"
+]
+},
+{
+"k":"football",
+"t":"European football: Barcelona roar back from two goals down to sink Villarreal",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/22/european-football-barcelona-villarreal-juventus-milan-inter",
+"d":"2026-11-22T22:20:43Z",
+"n":[
+"atalanta",
+"barca",
+"barcelona",
+"buchanan",
+"camp",
+"european",
+"inter",
+"la",
+"lamine",
+"liga",
+"nou",
+"oluwaseyi",
+"tajon",
+"tani",
+"two",
+"villarreal",
+"yamal"
+]
+},
+{
+"k":"football",
+"t":"Fifa to confirm UK as host for 2035 Women's World Cup",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cx30g83716lzo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T21:44:37Z",
+"n":[
+"fifa",
+"kingdom",
+"uk",
+"united",
+"women",
+"world"
+]
+},
+{
+"k":"football",
+"t":"'World's best could've lost 4-0' - but should Man Utd have done more at Anfield?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm782j80yypwo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T21:36:00Z",
+"n":[
+"anfield",
+"devils",
+"liverpool",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"red",
+"united",
+"utd",
+"world"
+]
+},
+{
+"k":"football",
+"t":"‘It’s painful for me’: Pochettino criticises Yoro red card in Anfield humiliation",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/22/mauricio-pochettino-manchester-united-reign-begins-with-anfield-humiliation-liverpool",
+"d":"2026-11-22T21:31:03Z",
+"n":[
+"anfield",
+"argentinian",
+"hilditch",
+"lal",
+"leny",
+"liverpool",
+"manchester",
+"mauricio",
+"pochettino",
+"united",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Chaotic week, nightmare start and huge reality check for Pochettino",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cwd012903kvgo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T21:22:10Z",
+"n":[
+"chaotic",
+"manchester",
+"mauricio",
+"pochettino",
+"simon",
+"stone",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Pepe did not injure eyes staring at sun, say Villarreal",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c8zx9y6d29vyo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T21:04:55Z",
+"n":[
+"nicolas",
+"pepe",
+"villarreal"
+]
+},
+{
+"k":"football",
+"t":"Man Utd plotting Toney move - Monday's gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/ck053nyl6399o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T21:04:15Z",
+"n":[
+"al-ahli",
+"bassey",
+"calvin",
+"eli",
+"fulham",
+"ivan",
+"junior",
+"kroupi",
+"man",
+"manchester",
+"monday",
+"psg",
+"toney",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Pochettino’s new-manager bounce falls flat with De Ligt move a disastrous step | Jamie Jackson",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/22/mauricio-pochettino-matthijs-de-ligt-harry-maguire-manchester-united-liverpool-premier-league",
+"d":"2026-11-22T20:58:35Z",
+"n":[
+"anfield",
+"chaotic",
+"de",
+"decision",
+"dutch",
+"harry",
+"jackson",
+"jamie",
+"ligt",
+"liverpool",
+"maguire",
+"manchester",
+"mauricio",
+"pochettino",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Liverpool vs Man United player ratings: Two 9/10s inspire as Mauricio Pochettino endures nightmare bow",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/liverpool-man-united-player-ratings-wirtz-isak-yoro-b3089485.html",
+"d":"2026-11-22T20:39:03Z",
+"n":[
+"florian",
+"liverpool",
+"man",
+"manchester",
+"mauricio",
+"ngumoha",
+"pochettino",
+"rio",
+"two",
+"united",
+"wirtz"
+]
+},
+{
+"k":"football",
+"t":"Liverpool v Man United LIVE: Mauricio Pochettino off to worst possible start as United manager",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/liverpool-man-utd-live-stream-score-premier-league-b3088901.html",
+"d":"2026-11-22T20:31:13Z",
+"n":[
+"live",
+"liverpool",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Gary Neville on De Ligt selection and 'negligent' Man Utd",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13615413/liverpool-4-0-man-utd-gary-neville-on-matthijs-de-ligt-selection-and-negligent-red-devils",
+"d":"2026-11-22T20:25:00Z",
+"n":[
+"de",
+"europe",
+"gary",
+"ligt",
+"liverpool",
+"man",
+"manchester",
+"neville",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Slegers takes responsibility as Arsenal boss faces more questions on future",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13208899/wsl-news-transfers-rumours-gossip-and-womens-football-latest",
+"d":"2026-11-22T20:20:00Z",
+"n":[
+"arsenal",
+"slegers"
+]
+},
+{
+"k":"football",
+"t":"Mauricio Pochettino fumes over red card decision after nightmare start to life at Manchester United",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-leny-yoro-red-card-liverpool-man-utd-b3089492.html",
+"d":"2026-11-22T20:16:46Z",
+"n":[
+"alexander",
+"isak",
+"kobbie",
+"leny",
+"mainoo",
+"manchester",
+"mauricio",
+"pochettino",
+"united",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Welcome to Man United, Mauricio Pochettino. It’s awful",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/liverpool-man-united-mauricio-pochettino-score-result-b3089498.html",
+"d":"2026-11-22T20:05:19Z",
+"n":[
+"liverpool",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"united",
+"welcome"
+]
+},
+{
+"k":"football",
+"t":"McBurnie stoppage-time double earns Hull win over 10-man Brighton",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/ck62pzzezqz2o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T19:59:38Z",
+"n":[
+"brighton",
+"city",
+"hull",
+"mcburnie",
+"oli"
+]
+},
+{
+"k":"football",
+"t":"Ngumoha stars as Liverpool thrash 10-man Man Utd",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/c933g77knz00o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T19:59:35Z",
+"n":[
+"liverpool",
+"man",
+"manchester",
+"mauricio",
+"ngumoha",
+"pochettino",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Why was Leny Yoro sent off against Liverpool?",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/leny-yoro-red-card-liverpool-man-united-b3089457.html",
+"d":"2026-11-22T19:59:20Z",
+"n":[
+"leny",
+"liverpool",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"‘Sacked in the morning’: Mauricio Pochettino taunted by Liverpool fans during catastrophic Man Utd bow",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-man-united-liverpool-sacked-b3089491.html",
+"d":"2026-11-22T19:58:52Z",
+"n":[
+"liverpool",
+"man",
+"mauricio",
+"pochettino",
+"sacked",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
 "t":"Roy Keane accuses Man United fans of ‘applauding rubbish’ in Liverpool hammering",
 "s":"The Independent",
 "u":"https://www.independent.co.uk/sport/football/liverpool-man-united-roy-keane-mauricio-pochettino-b3089488.html",
-"d":"2026-11-22T19:29:47Z",
+"d":"2026-11-22T19:58:38Z",
 "n":[
 "keane",
 "leny",
@@ -29,6 +492,52 @@
 },
 {
 "k":"football",
+"t":"'Wake up, wake up!' - Gary Neville's plea to Man Utd's defenders",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/watch/video/13615415/liverpool-4-0-man-utd-gary-nevilles-passionate-plea-to-man-utds-defending",
+"d":"2026-11-22T19:51:00Z",
+"n":[
+"gary",
+"liverpool",
+"man",
+"manchester",
+"neville",
+"united",
+"utd",
+"wake"
+]
+},
+{
+"k":"football",
+"t":"Charlton earn maiden WSL point against Villa",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cwq6e7gl5r4yo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T19:50:45Z",
+"n":[
+"aston",
+"charlton",
+"villa",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Own-goal mishap gifts Brighton first away victory",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cqx2w0m8v84wo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-22T19:50:33Z",
+"n":[
+"brighton",
+"everton",
+"maz",
+"own-goal",
+"pacheco",
+"super",
+"women"
+]
+},
+{
+"k":"football",
 "t":"Iraola 'enjoyed' big win over Man Utd",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/videos/c3y0x55ey81yo?at_medium=RSS&at_campaign=rss",
@@ -39,38 +548,6 @@
 "liverpool",
 "man",
 "manchester",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Liverpool v Man United LIVE: Mauricio Pochettino off to worst possible start as United manager",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/liverpool-man-utd-live-stream-score-premier-league-b3088901.html",
-"d":"2026-11-22T19:18:58Z",
-"n":[
-"live",
-"liverpool",
-"man",
-"manchester",
-"mauricio",
-"pochettino",
-"united"
-]
-},
-{
-"k":"football",
-"t":"‘Sacked in the morning’: Mauricio Pochettino taunted by Liverpool fans during catastrophic Man Utd bow",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-man-united-liverpool-sacked-b3089491.html",
-"d":"2026-11-22T19:16:16Z",
-"n":[
-"liverpool",
-"man",
-"mauricio",
-"pochettino",
-"sacked",
 "united",
 "utd"
 ]
@@ -104,26 +581,6 @@
 "pochettino",
 "united",
 "utd"
-]
-},
-{
-"k":"football",
-"t":"Liverpool vs Man United player ratings: Two 9/10s inspire as Mauricio Pochettino endures nightmare bow",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/liverpool-man-united-player-ratings-wirtz-isak-yoro-b3089485.html",
-"d":"2026-11-22T19:02:43Z",
-"n":[
-"florian",
-"liverpool",
-"man",
-"manchester",
-"mauricio",
-"ngumoha",
-"pochettino",
-"rio",
-"two",
-"united",
-"wirtz"
 ]
 },
 {
@@ -183,7 +640,6 @@
 "d":"2026-11-22T18:35:14Z",
 "n":[
 "alexander",
-"andoni",
 "anfield",
 "green",
 "isak",
@@ -314,13 +770,12 @@
 },
 {
 "k":"football",
-"t":"Big wins as Celtic, Rangers, City & Hearts progress",
+"t":"Holders Celtic win 17-0 in Scottish Cup - Rangers, Hearts, City also through",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/articles/c8zx91z9xe9yo?at_medium=RSS&at_campaign=rss",
 "d":"2026-11-22T17:53:41Z",
 "n":[
 "aberdeen",
-"big",
 "celtic",
 "city",
 "falkirk",
@@ -349,18 +804,6 @@
 "spfl",
 "stuart",
 "thistle"
-]
-},
-{
-"k":"football",
-"t":"Why was Leny Yoro sent off against Liverpool?",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/leny-yoro-red-card-liverpool-man-united-b3089457.html",
-"d":"2026-11-22T17:35:00Z",
-"n":[
-"leny",
-"liverpool",
-"yoro"
 ]
 },
 {
@@ -448,6 +891,18 @@
 },
 {
 "k":"football",
+"t":"Hull City latest: Is goalkeeper Tzolakis destined for the top?",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13548674/hull-city-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
+"d":"2026-11-22T17:15:00Z",
+"n":[
+"city",
+"hull",
+"tzolakis"
+]
+},
+{
+"k":"football",
 "t":"Arsenal booed after another home WSL draw as Man Utd beat Blues",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/news/11095/13615326/wsl-arsenal-draw-again-at-home-man-utd-leave-it-late-to-beat-birmingham-and-charlton-earn-first-point-of-season",
@@ -480,47 +935,6 @@
 "trafford",
 "united",
 "zidane"
-]
-},
-{
-"k":"football",
-"t":"How did Spurs beat Man City?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13208899/wsl-news-transfers-rumours-gossip-and-womens-football-latest",
-"d":"2026-11-22T17:00:00Z",
-"n":[
-"city",
-"man",
-"spurs"
-]
-},
-{
-"k":"football",
-"t":"European football: Barcelona roar back from two goals down to sink Villarreal",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/22/european-football-barcelona-villarreal-juventus-milan-inter",
-"d":"2026-11-22T16:53:47Z",
-"n":[
-"barc",
-"barca",
-"barcelona",
-"buchanan",
-"camp",
-"european",
-"fc",
-"juventus",
-"la",
-"lamine",
-"liga",
-"nou",
-"oluwaseyi",
-"paris",
-"tajon",
-"tani",
-"two",
-"venezia",
-"villarreal",
-"yamal"
 ]
 },
 {
@@ -576,15 +990,11 @@
 "u":"https://www.bbc.co.uk/sport/football/articles/c6n901w453nlo?at_medium=RSS&at_campaign=rss",
 "d":"2026-11-22T16:25:35Z",
 "n":[
-"but",
 "city",
 "european",
-"hotspur",
-"lionesses",
-"london",
 "man",
+"manchester",
 "spurs",
-"super",
 "tottenham",
 "women"
 ]
@@ -773,7 +1183,7 @@
 },
 {
 "k":"football",
-"t":"Burnley’s wait for a home win goes on as Blackburn twice hit back in derby",
+"t":"Burnley's wait for a home win goes on as Blackburn twice hit back in derby",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/burnley-vs-blackburn-rovers/report/560679",
 "d":"2026-11-22T14:15:00Z",
@@ -1014,6 +1424,23 @@
 "manchester",
 "maresca",
 "richard"
+]
+},
+{
+"k":"football",
+"t":"Robins ‘aims for the stars’ as Stoke dream of Premier League return",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/22/mark-robins-stoke-birmingham-championship-premier-league-promotion",
+"d":"2026-11-22T08:00:22Z",
+"n":[
+"birmingham",
+"championship",
+"christmas",
+"plenty",
+"robins",
+"so",
+"stoke",
+"there"
 ]
 },
 {
@@ -1493,13 +1920,15 @@
 },
 {
 "k":"football",
-"t":"Euro latest: Barcelona score three times in 10 mins in epic comeback win",
+"t":"Euro latest: Amorim's Milan win big after Barca's epic comeback",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/live-blog/11095/13575723/european-football-news-and-transfers-barcelona-real-madrid-psg-bayern-munich-latest-and-more",
 "d":"2026-11-21T21:00:00Z",
 "n":[
-"barcelona",
-"euro"
+"amorim",
+"barca",
+"euro",
+"milan"
 ]
 },
 {
@@ -3377,18 +3806,6 @@
 "liverpool",
 "mikel",
 "tzolis"
-]
-},
-{
-"k":"football",
-"t":"Hull City latest: Is goalkeeper Tzolakis destined for the top?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13548674/hull-city-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-"d":"2026-11-20T15:25:00Z",
-"n":[
-"city",
-"hull",
-"tzolakis"
 ]
 },
 {
@@ -6099,373 +6516,6 @@
 "israel",
 "nations",
 "republic"
-]
-},
-{
-"k":"football",
-"t":"Toney loses bid to avoid Euro 2028 court clash",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/news/articles/ckm2m1899mqyo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T12:46:12Z",
-"n":[
-"euro",
-"ivan",
-"toney"
-]
-},
-{
-"k":"football",
-"t":"Joint-record six referee errors in last Premier League weekend",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c69q8jy924y4o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T12:38:38Z",
-"n":[
-"incidents",
-"joint-record",
-"key",
-"league",
-"match",
-"panel"
-]
-},
-{
-"k":"football",
-"t":"Man United want Mauricio Pochettino to turn them into Tottenham – it won’t be easy",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-man-united-tottenham-players-b3087093.html",
-"d":"2026-11-18T12:02:02Z",
-"n":[
-"man",
-"mauricio",
-"pochettino",
-"spurs",
-"tottenham",
-"trafford",
-"united"
-]
-},
-{
-"k":"football",
-"t":"Netflix, Fox and the $2bn bid for the 2030 World Cup that could reshape live sports",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/18/netflix-fox-2030-world-cup-television-rights",
-"d":"2026-11-18T12:01:00Z",
-"n":[
-"fox",
-"netflix",
-"sports",
-"states",
-"tv",
-"united",
-"us",
-"world"
-]
-},
-{
-"k":"football",
-"t":"‘When I walked for Burberry I met Kanye West’: the two lives of Bromley footballer Omar Sowunmi",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/18/omar-sowunmi-bromley-footballer-model-kanye-west",
-"d":"2026-11-18T12:00:59Z",
-"n":[
-"bromley",
-"burberry",
-"full-time",
-"kanye",
-"omar",
-"sowunmi",
-"west"
-]
-},
-{
-"k":"football",
-"t":"Your PL club's 'Unfinished Business' revealed ahead of January window",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13613290/transfer-news-your-premier-league-clubs-unfinished-business-ahead-of-january-window",
-"d":"2026-11-18T12:00:00Z",
-"n":[
-"business",
-"pl",
-"unfinished"
-]
-},
-{
-"k":"football",
-"t":"Man Utd expected to back Poch in January transfer window",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13613260/man-utd-transfer-news-calvin-bassey-and-jarrad-branthwaite-among-targets-with-mauricio-pochettino-set-to-be-backed-in-january",
-"d":"2026-11-18T12:00:00Z",
-"n":[
-"man",
-"manchester",
-"mauricio",
-"poch",
-"pochettino",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Kai Havertz should have been awarded penalty against Hull, KMI panel finds",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/kai-havertz-penalty-arsenal-hull-kmi-panel-b3087112.html",
-"d":"2026-11-18T11:57:34Z",
-"n":[
-"aston",
-"coventry",
-"everton",
-"havertz",
-"hull",
-"kai",
-"kmi",
-"manchester",
-"united",
-"villa"
-]
-},
-{
-"k":"football",
-"t":"Kozo Tashima submits Fifa presidential bid to signify rupture in Asia’s backing of Gianni Infantino",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/kozo-tashima-gianni-infantino-fifa-president-candidates-b3086973.html",
-"d":"2026-11-18T11:51:26Z",
-"n":[
-"asia",
-"fifa",
-"gianni",
-"infantino",
-"jfa",
-"kozo",
-"tashima"
-]
-},
-{
-"k":"football",
-"t":"Former Manchester United midfielder Juan Mata announces retirement from football",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/juan-mata-retirement-manchester-united-spain-b3087089.html",
-"d":"2026-11-18T11:34:16Z",
-"n":[
-"championship",
-"chelsea",
-"european",
-"former",
-"juan",
-"manchester",
-"mata",
-"spaniard",
-"united",
-"world"
-]
-},
-{
-"k":"football",
-"t":"Aston Villa latest: Onana signs new deal",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13025491/aston-villa-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-"d":"2026-11-18T11:00:00Z",
-"n":[
-"aston",
-"onana",
-"villa"
-]
-},
-{
-"k":"football",
-"t":"Record crowds, legends - Bordeaux bid to escape amateur game",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c63rgqrz9jgqo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T10:51:37Z",
-"n":[
-"bordeaux",
-"france",
-"record"
-]
-},
-{
-"k":"football",
-"t":"Williams to join temporary Swansea coaching team",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c5lyk9rp0vjgo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T10:48:39Z",
-"n":[
-"ashley",
-"championship",
-"city",
-"matos",
-"swansea",
-"vitor",
-"williams"
-]
-},
-{
-"k":"football",
-"t":"Former Spain midfielder Mata retires aged 38",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c8p3vwe1rrzqo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T10:12:46Z",
-"n":[
-"chelsea",
-"former",
-"juan",
-"manchester",
-"mata",
-"spain",
-"united"
-]
-},
-{
-"k":"football",
-"t":"NI will carry momentum into Euro 2028 qualifiers",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/ck9q8jg1l45do?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T10:04:44Z",
-"n":[
-"euro",
-"ireland",
-"michael",
-"nations",
-"ni",
-"northern",
-"o'neill"
-]
-},
-{
-"k":"football",
-"t":"What does Arteta do with Konsa once Saliba returns?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13610324/william-saliba-or-ezri-konsa-mikel-arteta-has-tough-arsenal-selection-dilemma-when-french-defender-returns-to-full-fitness",
-"d":"2026-11-18T10:00:00Z",
-"n":[
-"arsenal",
-"arteta",
-"big",
-"konsa",
-"mikel",
-"saliba"
-]
-},
-{
-"k":"football",
-"t":"Hall is England's best left-back - because he started out as a midfielder",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13549994/lewis-hall-is-englands-best-left-back-because-the-newcastle-player-started-out-as-a-midfielder-in-chelseas-youth-teams",
-"d":"2026-11-18T10:00:00Z",
-"n":[
-"but",
-"england",
-"fabian",
-"hall",
-"lewis",
-"merino",
-"mikel",
-"ruiz",
-"spain"
-]
-},
-{
-"k":"football",
-"t":"When is the Nations League quarter-final draw?",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cw20xnde3dyzo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T09:33:42Z",
-"n":[
-"anything",
-"ask",
-"me",
-"nations",
-"team"
-]
-},
-{
-"k":"football",
-"t":"Fifa’s World Cup TV rights documents indicate hydration breaks to stay in 2030",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/18/fifa-hydration-breaks-2030-world-cup-tv-right-documents",
-"d":"2026-11-18T09:29:03Z",
-"n":[
-"controversial",
-"fifa",
-"tv",
-"world"
-]
-},
-{
-"k":"football",
-"t":"Pochettino vows to make Manchester red again",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13613499/mauricio-pochettino-incoming-manchester-united-head-coach-calls-for-time-to-topple-manchester-city-ahead-of-old-trafford-arrival",
-"d":"2026-11-18T09:21:00Z",
-"n":[
-"city",
-"manchester",
-"mauricio",
-"pochettino",
-"united"
-]
-},
-{
-"k":"football",
-"t":"Troy Parrott dreaming of home Euros as Ireland boost seeding with Nations League win",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/ireland-kosovo-result-score-troy-parrott-nations-league-b3086823.html",
-"d":"2026-11-18T09:07:04Z",
-"n":[
-"euros",
-"ireland",
-"kosovo",
-"nations",
-"parrott",
-"republic",
-"troy"
-]
-},
-{
-"k":"football",
-"t":"Manchester won't always be blue - Pochettino",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cm782wnwzvq3o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-18T08:42:28Z",
-"n":[
-"manchester",
-"mauricio",
-"pochettino",
-"united"
-]
-},
-{
-"k":"football",
-"t":"Jack Grealish recalls a golden age of mavericks – but football has moved on",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/18/jack-grealish-recalls-a-golden-age-of-mavericks-but-football-has-moved-on",
-"d":"2026-11-18T08:00:36Z",
-"n":[
-"catch",
-"england",
-"everton",
-"grealish",
-"jack",
-"thomas",
-"tuchel"
-]
-},
-{
-"k":"football",
-"t":"Swing when you’re winning? Biggest leaps across Fifa’s football rankings | The Knowledge",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/18/biggest-leaps-across-fifa-football-rankings-the-knowledge",
-"d":"2026-11-18T08:00:36Z",
-"n":[
-"biggest",
-"bogdan",
-"fifa",
-"knowledge",
-"kotarlic",
-"mail",
-"plus",
-"scotland",
-"swing"
 ]
 },
 {
