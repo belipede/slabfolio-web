@@ -1,5 +1,5 @@
 {
-"pulled":"2026-11-24T09:53:43Z",
+"pulled":"2026-11-24T22:27:03Z",
 "sources":[
 "BBC Sport",
 "Cardboard Connection",
@@ -9,6 +9,1169 @@
 "The Independent"
 ],
 "items":[
+{
+"k":"football",
+"t":"Missed chances resurface old concerns for Mikel Arteta and Arsenal",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/arsenal-borussia-dortmund-goals-champions-league-viktor-gyokeres-b3090982.html",
+"d":"2026-11-24T22:25:57Z",
+"n":[
+"arsenal",
+"arteta",
+"borussia",
+"bundesliga",
+"dortmund",
+"emirates",
+"gunners",
+"mikel",
+"missed"
+]
+},
+{
+"k":"football",
+"t":"Manchester City nurse self-inflicted wounds again as Kevin De Bruyne’s return highlights decline",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/man-city-napoli-champions-league-de-bruyne-cherki-b3090981.html",
+"d":"2026-11-24T22:15:51Z",
+"n":[
+"belgian",
+"bruyne",
+"cherki",
+"city",
+"de",
+"kevin",
+"manchester",
+"napoli",
+"rayan"
+]
+},
+{
+"k":"football",
+"t":"Pochettino leads Man Utd fury at Yoro red card ruling",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqzr5ylmeerlo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T22:05:31Z",
+"n":[
+"brooks",
+"howard",
+"john",
+"leny",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"united",
+"utd",
+"var",
+"webb",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Rayan Cherki magic denies Napoli but Manchester City’s struggles continue",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/manchester-city-napoli-champions-league-match-report",
+"d":"2026-11-24T22:01:51Z",
+"n":[
+"ayyoub",
+"bouaddi",
+"cherki",
+"city",
+"hjlund",
+"lang",
+"manchester",
+"napoli",
+"noa",
+"rasmus",
+"rayan",
+"then"
+]
+},
+{
+"k":"football",
+"t":"Dortmund’s Beier halts Arsenal charge after thunderbolt from Gyökeres",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/arsenal-borussia-dortmund-champions-league-match-report",
+"d":"2026-11-24T22:01:50Z",
+"n":[
+"arsenal",
+"arteta",
+"beier",
+"borussia",
+"dortmund",
+"gyokeres",
+"mikel",
+"newcastle"
+]
+},
+{
+"k":"football",
+"t":"EFL: Alexandersson offer Swans job with Iordanescu set for Watford",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13163353/championship-news-transfer-latest-and-gossip-plus-efl-updates-from-league-one-and-league-two",
+"d":"2026-11-24T22:00:00Z",
+"n":[
+"alexandersson",
+"efl",
+"iordanescu",
+"swans",
+"watford"
+]
+},
+{
+"k":"football",
+"t":"Wasteful Arsenal held by Borussia Dortmund",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/arsenal-vs-borussia-dortmund/report/577669",
+"d":"2026-11-24T21:56:00Z",
+"n":[
+"arsenal",
+"beier",
+"borussia",
+"dortmund",
+"maximilian",
+"wasteful"
+]
+},
+{
+"k":"football",
+"t":"Arsenal v Borussia Dortmund LIVE: Gunners held to draw but remain unbeaten in Champions League",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/arsenal-borussia-dortmund-live-stream-score-champions-league-b3090541.html",
+"d":"2026-11-24T21:53:31Z",
+"n":[
+"arsenal",
+"borussia",
+"dortmund",
+"emirates",
+"gunners",
+"live"
+]
+},
+{
+"k":"football",
+"t":"Pochettino criticises Premier League officiating after Yoro red card overturned",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/23/manchester-united-appeal-leny-yoro-red-card-liverpool",
+"d":"2026-11-24T21:51:31Z",
+"n":[
+"anfield",
+"association",
+"despite",
+"english",
+"frenchman",
+"if",
+"leny",
+"manchester",
+"mauricio",
+"pochettino",
+"united",
+"var",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Poch fumes at Yoro red and thinks Szoboszlai goal shouldn't have stood",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13616134/mauricio-pochettino-man-utd-boss-fumes-at-var-in-liverpool-loss-over-leny-yoro-and-dominik-szoboszlai-calls",
+"d":"2026-11-24T21:50:00Z",
+"n":[
+"argentine",
+"dominik",
+"leny",
+"liverpool",
+"manchester",
+"mauricio",
+"poch",
+"pochettino",
+"szoboszlai",
+"united",
+"var",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Parker still winless as Portsmouth beat West Ham",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/portsmouth-vs-west-ham-united/report/560695",
+"d":"2026-11-24T21:35:00Z",
+"n":[
+"bailey",
+"fratton",
+"ham",
+"odin",
+"park",
+"parker",
+"portsmouth",
+"scott",
+"west"
+]
+},
+{
+"k":"football",
+"t":"Lankshear steers Boro back to the top of the Championship",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/middlesbrough-vs-swansea-city/report/560693",
+"d":"2026-11-24T21:35:00Z",
+"n":[
+"boro",
+"championship",
+"city",
+"lankshear",
+"middlesbrough",
+"swansea"
+]
+},
+{
+"k":"football",
+"t":"Armstrong nets twice in Wolves win",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/wolverhampton-wanderers-vs-derby-county/report/560697",
+"d":"2026-11-24T21:35:00Z",
+"n":[
+"adam",
+"armstrong",
+"bet",
+"championship",
+"derby",
+"molineux",
+"sky",
+"wolves"
+]
+},
+{
+"k":"football",
+"t":"Norwich hit back to hold QPR",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/norwich-city-vs-queens-park-rangers/report/560694",
+"d":"2026-11-24T21:35:00Z",
+"n":[
+"carrow",
+"norwich",
+"qpr",
+"road"
+]
+},
+{
+"k":"football",
+"t":"Mauricio Pochettino admits Man United’s ‘situation is fragile’ but insists he has a ‘strong team’",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-man-united-sporting-champions-league-b3091015.html",
+"d":"2026-11-24T21:20:02Z",
+"n":[
+"liverpool",
+"man",
+"manchester",
+"mauricio",
+"pochettino",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Aston Villa’s winless run continues with damaging Champions League defeat at Galatasaray",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/aston-villa-galatasaray-champions-league-result-unai-emery-b3090965.html",
+"d":"2026-11-24T21:16:25Z",
+"n":[
+"aston",
+"deniz",
+"galatasaray",
+"gul",
+"villa"
+]
+},
+{
+"k":"football",
+"t":"Oxford beat Spurs U21s to seal EFL Trophy progress",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmx20qn1dqv2o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T21:08:09Z",
+"n":[
+"aaron",
+"efl",
+"jersey",
+"mike",
+"oxford",
+"ramsey",
+"spurs",
+"tottenham",
+"trophy",
+"u21s",
+"under-21s",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Man Utd target Collins - Wednesday's gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm15en5je9eko?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T20:51:44Z",
+"n":[
+"bournemouth",
+"brentford",
+"collins",
+"eli",
+"junior",
+"kroupi",
+"liverpool",
+"man",
+"manchester",
+"nathan",
+"ngumoha",
+"rio",
+"united",
+"utd",
+"wednesday"
+]
+},
+{
+"k":"football",
+"t":"Aston Villa latest: Emery's blunt response when asked about Garnacho absence",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025491/aston-villa-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-24T20:40:00Z",
+"n":[
+"aston",
+"emery",
+"garnacho",
+"villa"
+]
+},
+{
+"k":"football",
+"t":"Ronaldo scores 987th career goal in Al Nassr victory",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/12507208/football-latest-news-gossip",
+"d":"2026-11-24T20:35:00Z",
+"n":[
+"al",
+"nassr",
+"ronaldo"
+]
+},
+{
+"k":"football",
+"t":"Howard Webb backs process of Leny Yoro red card despite successful appeal",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/leny-yoro-red-card-howard-webb-var-liverpool-man-utd-b3090966.html",
+"d":"2026-11-24T20:12:49Z",
+"n":[
+"fa",
+"howard",
+"leny",
+"webb",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Gul swoops late for buoyant Galatasaray to condemn Aston Villa to Champions League loss",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/galatasaray-aston-villa-champions-league-match-report",
+"d":"2026-11-24T20:03:50Z",
+"n":[
+"aston",
+"besiktas",
+"bosphorus",
+"deniz",
+"europa",
+"fenerbahce",
+"galatasaray",
+"gul",
+"istanbul",
+"park",
+"unlike",
+"villa"
+]
+},
+{
+"k":"football",
+"t":"Bayern hold 'constructive' talks over Musiala's health",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c9x2ejnypp8jo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T19:58:58Z",
+"n":[
+"bayern",
+"eberl",
+"jamal",
+"max",
+"munich",
+"musiala"
+]
+},
+{
+"k":"football",
+"t":"Liverpool’s Florian Wirtz enjoying and relishing uptick in form",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/liverpool-florian-wirtz-form-goals-assists-champions-league-b3090960.html",
+"d":"2026-11-24T19:46:28Z",
+"n":[
+"bayer",
+"england",
+"florian",
+"leverkusen",
+"liverpool",
+"reds",
+"wirtz"
+]
+},
+{
+"k":"football",
+"t":"Man Utd latest: Fernandes 'not worried' about future",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-24T19:43:00Z",
+"n":[
+"fernandes",
+"man",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Villa beaten late on at Galatasaray as winless run continues",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/galatasaray-vs-aston-villa/report/577673",
+"d":"2026-11-24T19:40:00Z",
+"n":[
+"aston",
+"deniz",
+"galatasaray",
+"gul",
+"villa"
+]
+},
+{
+"k":"football",
+"t":"Senegal re-crowned Afcon champions after appeal upheld",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/senegal-morocco-afcon-appeal-cas-b3063704.html",
+"d":"2026-11-24T19:17:41Z",
+"n":[
+"afcon",
+"morocco",
+"senegal"
+]
+},
+{
+"k":"football",
+"t":"Boro win to go top; West Ham beaten by Portsmouth - EFL highlights",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13616079/portsmouth-vs-west-ham-live-championship-match-updates-score-stream-and-free-highlights",
+"d":"2026-11-24T19:15:00Z",
+"n":[
+"boro",
+"efl",
+"ham",
+"portsmouth",
+"west"
+]
+},
+{
+"k":"football",
+"t":"Florian Wirtz hails Iraola and Klopp as he reaches new levels for Liverpool",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/florian-wirtz-hails-iraola-and-klopp-as-he-reaches-new-levels-for-liverpool",
+"d":"2026-11-24T19:02:09Z",
+"n":[
+"andoni",
+"anfield",
+"europe",
+"florian",
+"germany",
+"iraola",
+"klopp",
+"liverpool",
+"playmaker",
+"wirtz"
+]
+},
+{
+"k":"football",
+"t":"Morocco FA filed challenge against Cas arbitrator less than hour before Afcon final verdict",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/morocco-senegal-afcon-verdict-cas-b3090879.html",
+"d":"2026-11-24T17:29:10Z",
+"n":[
+"afcon",
+"cas",
+"fa",
+"morocco",
+"senegal"
+]
+},
+{
+"k":"football",
+"t":"US to host Copa America again in 2028 as Argentina target three-peat",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/usa-copa-america-host-2028-b3090881.html",
+"d":"2026-11-24T17:21:01Z",
+"n":[
+"america",
+"argentina",
+"colombia",
+"copa",
+"us"
+]
+},
+{
+"k":"football",
+"t":"Klopp advice and Iraola confidence boosts Wirtz",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c69w91k0j9zeo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T17:19:08Z",
+"n":[
+"florian",
+"iraola",
+"klopp",
+"liverpool",
+"wirtz"
+]
+},
+{
+"k":"football",
+"t":"Senegal reinstated as Afcon 2025 winners by court ruling",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/crn80y2l1404o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T17:16:09Z",
+"n":[
+"afcon",
+"africa",
+"arbitration",
+"court",
+"nations",
+"senegal",
+"sport",
+"ten"
+]
+},
+{
+"k":"football",
+"t":"How 'quick check' and unseen angle saw Timber's Isak shirt-pull go unpunished",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13616058/jurrien-timbers-shirt-pull-on-alexander-isak-ref-chief-howard-webb-admits-quick-check-in-arsenals-win-at-liverpool",
+"d":"2026-11-24T17:13:00Z",
+"n":[
+"alexander",
+"anfield",
+"arsenal",
+"gunners",
+"howard",
+"isak",
+"jurrien",
+"liverpool",
+"referees",
+"timber",
+"var",
+"webb"
+]
+},
+{
+"k":"football",
+"t":"Yoro red card overturned, but refs' chief Webb backs decision",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/ck868g93djl5o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T17:00:32Z",
+"n":[
+"anfield",
+"brentford",
+"leny",
+"manchester",
+"united",
+"webb",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Man Utd to contact PL and refs over 'totally wrong' Yoro red card interpretation",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13616033/leny-yoro-red-card-ref-chief-howard-webb-backs-process-that-saw-man-utd-defender-sent-off-at-liverpool",
+"d":"2026-11-24T17:00:00Z",
+"n":[
+"leny",
+"liverpool",
+"man",
+"manchester",
+"pl",
+"proref",
+"united",
+"utd",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Bayern Munich hold ‘constructive’ talks over Jamal Musiala’s health amid contract row",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/jamal-musiala-health-seizures-bayern-munich-contract-talks-b3090861.html",
+"d":"2026-11-24T16:57:10Z",
+"n":[
+"bayern",
+"jamal",
+"munich",
+"musiala"
+]
+},
+{
+"k":"football",
+"t":"Transfer Centre LIVE! Heaven open to leaving Man Utd in January",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/12476234/transfer-centre-live-football-transfer-news-updates-and-rumours",
+"d":"2026-11-24T16:55:00Z",
+"n":[
+"centre",
+"heaven",
+"live",
+"man",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Tottenham wonderkid Luca Williams-Barnett signs new contract: ‘This is only the start’",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/luca-williams-barnett-tottenham-contract-news-b3090849.html",
+"d":"2026-11-24T16:41:58Z",
+"n":[
+"ipswich",
+"luca",
+"tottenham",
+"williams-barnett"
+]
+},
+{
+"k":"football",
+"t":"Sadio Mane hails Cas decision to reinstate Senegal as Afcon champions",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/sadio-mane-senegal-morocco-afcon-verdict-cas-b3090831.html",
+"d":"2026-11-24T16:36:17Z",
+"n":[
+"afcon",
+"cas",
+"mane",
+"sadio",
+"senegal",
+"senegalese"
+]
+},
+{
+"k":"football",
+"t":"FA chief signs NDA to view Fifa sell-off plot documents",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqx2x4k74ryxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T16:34:18Z",
+"n":[
+"debbie",
+"fa",
+"fifa",
+"hewitt",
+"nda"
+]
+},
+{
+"k":"football",
+"t":"Morocco vow further legal action after Senegal reinstated Afcon champions",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/morocco-senegal-afcon-title-champions-cas-verdict-b3090841.html",
+"d":"2026-11-24T16:31:48Z",
+"n":[
+"afcon",
+"arbitration",
+"court",
+"morocco",
+"senegal",
+"sport"
+]
+},
+{
+"k":"football",
+"t":"Sporting boss wary of unpredictable Man United ahead of Champions League clash",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/man-united-pochettino-sporting-lisbon-paulo-fonseca-b3090844.html",
+"d":"2026-11-24T16:24:10Z",
+"n":[
+"man",
+"manchester",
+"sporting",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Football Daily | The game’s gone: has fantasy football been ruined by AI gafferbots?",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/fpl-ruined-ai-football-daily-newsletter",
+"d":"2026-11-24T16:16:52Z",
+"n":[
+"ai",
+"brentford",
+"daily",
+"even",
+"everton",
+"james",
+"sign",
+"sometimes",
+"tarkowski",
+"var"
+]
+},
+{
+"k":"football",
+"t":"2028 Copa América to be played in United States with six Concacaf teams",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/2028-copa-america-united-states-concacaf-conmebol",
+"d":"2026-11-24T16:08:56Z",
+"n":[
+"america",
+"american",
+"concacaf",
+"conmebol",
+"copa",
+"euro",
+"games",
+"gold",
+"olympics",
+"south",
+"states",
+"united",
+"us"
+]
+},
+{
+"k":"football",
+"t":"Berrada admits Man Utd transfer spending will be limited by stadium plans",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13615995/man-utd-transfer-spending-to-be-limited-by-new-stadium-plans-in-the-short-term-according-to-chief-executive-omar-berrada",
+"d":"2026-11-24T16:00:00Z",
+"n":[
+"berrada",
+"man",
+"manchester",
+"omar",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Defender Heaven open to leaving Man Utd",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/crd61gy4ednvo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T15:56:55Z",
+"n":[
+"ayden",
+"defender",
+"heaven",
+"man",
+"manchester",
+"united",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Non-league player injured falling down badger hole in training",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/chelmsford-city-cav-miley-badger-hole-injury-b3090770.html",
+"d":"2026-11-24T15:37:48Z",
+"n":[
+"cav",
+"chelmsford",
+"miley",
+"non-league"
+]
+},
+{
+"k":"football",
+"t":"Leny Yoro’s ban overturned after controversial sending off at Liverpool",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/leny-yoro-ban-red-card-b3090768.html",
+"d":"2026-11-24T15:37:23Z",
+"n":[
+"anfield",
+"association",
+"brentford",
+"leny",
+"liverpool",
+"yoro"
+]
+},
+{
+"k":"football",
+"t":"Millwall punished with partial stadium closure over ‘ableist and homophobic chanting’",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/millwall-fan-chants-partial-stadium-closure-b3090722.html",
+"d":"2026-11-24T14:48:43Z",
+"n":[
+"millwall",
+"sheffield",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Millwall face partial stadium closure after discriminatory chants",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6wy474lxd22o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T14:23:49Z",
+"n":[
+"millwall"
+]
+},
+{
+"k":"football",
+"t":"Senegal restored as Africa Cup of Nations champions after court ruling",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/afcon-verdict-senegal-morocco-africa-cup-of-nations-champions-court-ruling-cas",
+"d":"2026-11-24T14:22:36Z",
+"n":[
+"africa",
+"cas",
+"morocco",
+"nations",
+"result",
+"senegal",
+"swiss"
+]
+},
+{
+"k":"football",
+"t":"Senegal confirmed AFCON 2025 champions after appeal",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13615545/senegal-crowned-afcon-2025-champions-by-court-of-arbitration-for-sport-following-appeal",
+"d":"2026-11-24T14:20:00Z",
+"n":[
+"afcon",
+"africa",
+"arbitration",
+"cas",
+"court",
+"nations",
+"senegal",
+"sport"
+]
+},
+{
+"k":"football",
+"t":"SFA leads tributes to former president Peat",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cwz0kd0zjvkmo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T13:35:17Z",
+"n":[
+"fa",
+"former",
+"george",
+"peat",
+"scottish",
+"sfa"
+]
+},
+{
+"k":"football",
+"t":"Bruno Fernandes has huge question to ponder on emotional return to Sporting",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/bruno-fernandes-man-united-sporting-mauricio-pochettino-b3090657.html",
+"d":"2026-11-24T13:30:05Z",
+"n":[
+"bruno",
+"fernandes",
+"man",
+"sporting",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Jamie Carragher says Chelsea have ‘no chance of achieving anything’ with current defence",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/jamie-carragher-chelsea-levi-colwill-wesley-fofana-b3090646.html",
+"d":"2026-11-24T13:13:18Z",
+"n":[
+"alonso",
+"carragher",
+"chelsea",
+"colwill",
+"fofana",
+"jamie",
+"levi",
+"wesley",
+"xabi"
+]
+},
+{
+"k":"football",
+"t":"‘I’m loving it at Brugge’: Freddie Potts on going from West Ham’s bench to Champions League",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/freddie-potts-brugge-champions-league-liverpool-west-ham",
+"d":"2026-11-24T13:00:47Z",
+"n":[
+"belgium",
+"brugge",
+"espirito",
+"fa",
+"freddie",
+"ham",
+"leeds",
+"liverpool",
+"midfielder",
+"nuno",
+"potts",
+"santo",
+"west"
+]
+},
+{
+"k":"football",
+"t":"Mauricio Pochettino’s struggling Man United defence handed injury boost",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/man-utd-news-luke-shaw-injury-sporting-champions-b3090606.html",
+"d":"2026-11-24T12:32:45Z",
+"n":[
+"dalot",
+"diogo",
+"luke",
+"man",
+"mauricio",
+"pochettino",
+"shaw",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Non-league player injured falling down badger hole",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cw0k636m0vr3o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T12:31:12Z",
+"n":[
+"cav",
+"chelmsford",
+"city",
+"hersham",
+"miley",
+"non-league",
+"walton"
+]
+},
+{
+"k":"football",
+"t":"Cult hero Fiona the hippo to be honoured in FC Cincinnati tifo display after tragic death",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/fiona-hippo-death-cincinnati-fc-tifo-mls-b3090571.html",
+"d":"2026-11-24T12:21:43Z",
+"n":[
+"cincinnati",
+"cult",
+"fc",
+"fiona",
+"zoo"
+]
+},
+{
+"k":"football",
+"t":"Crystal Palace deducted three points for breaking WSL rule",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/crystal-palace-wsl-points-deduction-b3090599.html",
+"d":"2026-11-24T12:15:00Z",
+"n":[
+"crystal",
+"palace",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Palace docked points for using four sub windows in WSL win",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c8wy5vy160kpo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T12:14:19Z",
+"n":[
+"crystal",
+"palace",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Cherki salvages draw with Napoli but Man City frustrate",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/manchester-city-vs-napoli/report/577674",
+"d":"2026-11-24T12:09:00Z",
+"n":[
+"cherki",
+"city",
+"enzo",
+"man",
+"manchester",
+"maresca",
+"napoli",
+"rayan"
+]
+},
+{
+"k":"football",
+"t":"The NWSL 2026 goals, players and nutmegs we won’t forget",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/nwsl-awards-goals-players-moving-the-goalposts-newsletter",
+"d":"2026-11-24T12:00:45Z",
+"n":[
+"audi",
+"bethune",
+"city",
+"croix",
+"current",
+"field",
+"kansas",
+"nwsl",
+"olimpico",
+"surely",
+"washington"
+]
+},
+{
+"k":"football",
+"t":"Duncan Ferguson apologises for behaviour after accepting seven-game ban",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/duncan-ferguson-suspension-red-card-glentoran-b3090585.html",
+"d":"2026-11-24T11:51:55Z",
+"n":[
+"duncan",
+"everton",
+"ferguson",
+"glentoran"
+]
+},
+{
+"k":"football",
+"t":"Crystal Palace docked three WSL points for extra substitution against Everton",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/crystal-palace-docked-three-points-wsl-extra-substitution-everton",
+"d":"2026-11-24T11:40:14Z",
+"n":[
+"crystal",
+"everton",
+"palace",
+"super",
+"too",
+"women",
+"wsl"
+]
+},
+{
+"k":"football",
+"t":"Ferguson apologises after receiving seven-game ban as Glentoran boss",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm0evqv7nyq5o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T11:36:18Z",
+"n":[
+"cliftonville",
+"duncan",
+"ferguson",
+"glentoran"
+]
+},
+{
+"k":"football",
+"t":"David Squires on … Pochettino flying into a storm at Manchester United. Here we go again",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/picture/2026/nov/24/david-squires-on-mauricio-pochettino-manchester-united-here-we-go-again",
+"d":"2026-11-24T11:31:27Z",
+"n":[
+"argentinian",
+"box",
+"buy",
+"chaos",
+"continue",
+"david",
+"here",
+"manchester",
+"pochettino",
+"squires",
+"united"
+]
+},
+{
+"k":"football",
+"t":"Barnet footballer Isiah Noel-Williams charged with three counts of rape",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/uk-news/2026/nov/24/isiah-noel-williams-barnet-footballer-charged-with-rape",
+"d":"2026-11-24T11:03:14Z",
+"n":[
+"barnet",
+"charges",
+"hertfordshire",
+"isiah",
+"noel-williams",
+"two"
+]
+},
+{
+"k":"football",
+"t":"UK nations in dark over whether they will get automatic entry to 2035 Women’s World Cup",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/uk-automatic-qualification-2035-womens-world-cup-england-northern-ireland-scotland-wales",
+"d":"2026-11-24T11:00:43Z",
+"n":[
+"england",
+"fifa",
+"four",
+"guardian",
+"ireland",
+"northern",
+"scotland",
+"uk",
+"wales",
+"women",
+"world"
+]
+},
+{
+"k":"football",
+"t":"Republic of Ireland boss Ward signs new contract",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cm4gn31z553go?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T10:45:30Z",
+"n":[
+"carla",
+"euro",
+"ireland",
+"republic",
+"ward"
+]
+},
+{
+"k":"football",
+"t":"League Two player charged with rape and engaging in sexual communication with child",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/isiah-noel-williams-arrest-charged-rape-barnet-league-two-b3090449.html",
+"d":"2026-11-24T10:19:33Z",
+"n":[
+"barnet",
+"class",
+"isiah",
+"noel-williams",
+"two"
+]
+},
+{
+"k":"football",
+"t":"Arsenal vs Dortmund prediction, betting tips and odds",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/arsenal-dortmund-prediction-odds-betting-champions-league-24-11-26-b3089762.html",
+"d":"2026-11-24T09:55:32Z",
+"n":[
+"arsenal",
+"dortmund",
+"emirates",
+"follow"
+]
+},
 {
 "k":"football",
 "t":"Which Premier League players are set for yellow card suspensions?",
@@ -21,46 +1184,18 @@
 },
 {
 "k":"football",
-"t":"MLS side to honour deceased hippo with tifo",
+"t":"Dead hippo to be honoured on football club tifo",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/articles/c6n90jrvxrzpo?at_medium=RSS&at_campaign=rss",
 "d":"2026-11-24T09:43:38Z",
 "n":[
 "cincinnati",
+"dead",
 "fc",
 "fiona",
 "major",
-"mls",
 "nashville",
 "sc"
-]
-},
-{
-"k":"football",
-"t":"League Two player charged with rape and engaging in sexual communication with child",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/isiah-noel-williams-arrest-charged-rape-barnet-league-two-b3090449.html",
-"d":"2026-11-24T09:30:14Z",
-"n":[
-"barnet",
-"class",
-"isiah",
-"noel-williams",
-"two"
-]
-},
-{
-"k":"football",
-"t":"Transfer Centre LIVE! 'Real Madrid close to agreeing new contract with Bellingham'",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/12476234/transfer-centre-live-football-transfer-news-updates-and-rumours",
-"d":"2026-11-24T09:20:00Z",
-"n":[
-"bellingham",
-"centre",
-"live",
-"madrid",
-"real"
 ]
 },
 {
@@ -230,18 +1365,6 @@
 "psg",
 "real",
 "saint-germain"
-]
-},
-{
-"k":"football",
-"t":"Man Utd latest: 'No one is coming to save us from relegation' - Mainoo",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-"d":"2026-11-24T07:15:00Z",
-"n":[
-"mainoo",
-"man",
-"utd"
 ]
 },
 {
@@ -711,6 +1834,8 @@
 "d":"2026-11-23T19:45:00Z",
 "n":[
 "man",
+"manchester",
+"united",
 "utd"
 ]
 },
@@ -2931,17 +4056,6 @@
 },
 {
 "k":"football",
-"t":"Watford sack head coach Dionisi",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13163353/championship-news-transfer-latest-and-gossip-plus-efl-updates-from-league-one-and-league-two",
-"d":"2026-11-22T12:00:00Z",
-"n":[
-"dionisi",
-"watford"
-]
-},
-{
-"k":"football",
 "t":"Bruno Fernandes reveals talks over new Manchester United contract are on hold",
 "s":"The Guardian",
 "u":"https://www.theguardian.com/football/2026/nov/22/bruno-fernandes-reveals-talks-over-new-manchester-united-contract-are-on-hold",
@@ -3491,6 +4605,19 @@
 },
 {
 "k":"football",
+"t":"Rangers edge Aberdeen in five-goal thriller to cut Celtic's Premiership lead",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/rangers-vs-aberdeen/report/578619",
+"d":"2026-11-21T21:50:00Z",
+"n":[
+"aberdeen",
+"celtic",
+"premiership",
+"rangers"
+]
+},
+{
+"k":"football",
 "t":"‘Obviously it’s not good’: Arteta sweating over David Raya’s fitness after injury",
 "s":"The Guardian",
 "u":"https://www.theguardian.com/football/2026/nov/21/david-raya-shoulder-injury-arsenal-newcastle-mikel-arteta",
@@ -3918,7 +5045,7 @@
 },
 {
 "k":"football",
-"t":"'The world got to see today' - Williams-Barnett announces himself as Spurs star",
+"t":"Williams-Barnett announces himself as Spurs star, then signs new deal",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/articles/cm9d7jg50e12o?at_medium=RSS&at_campaign=rss",
 "d":"2026-11-21T19:21:01Z",
@@ -5417,1107 +6544,6 @@
 "joao",
 "pedro",
 "sport"
-]
-},
-{
-"k":"football",
-"t":"Filming training by drones should be illegal - Iraola",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cqdr1xmekmg5o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T15:08:51Z",
-"n":[
-"andoni",
-"filming",
-"iraola",
-"liverpool"
-]
-},
-{
-"k":"football",
-"t":"Mauricio Pochettino dismisses ‘dangerous’ Man United running stats and claims ‘we are animals of the grass’",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-man-united-running-stats-this-season-b3088755.html",
-"d":"2026-11-20T15:04:13Z",
-"n":[
-"man",
-"mauricio",
-"pochettino",
-"united"
-]
-},
-{
-"k":"football",
-"t":"Tom Brady in talks over buying Chelsea stake after Birmingham City exit",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/20/tom-brady-chelsea-talks-stake-birmingham-city",
-"d":"2026-11-20T14:50:09Z",
-"n":[
-"behdad",
-"birmingham",
-"brady",
-"bridge",
-"chelsea",
-"city",
-"club",
-"eghbali",
-"jersey",
-"nfl",
-"stamford",
-"tom",
-"world"
-]
-},
-{
-"k":"football",
-"t":"Celtic's Baur out for 10 weeks, says O'Neill",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cvrlgx1l4lnlo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T14:47:54Z",
-"n":[
-"baur",
-"celtic",
-"germany",
-"martin",
-"mika",
-"o'neill"
-]
-},
-{
-"k":"football",
-"t":"Xabi Alonso provides Joao Pedro, Emi Martinez and Moises Caicedo injury updates",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/chelsea-injury-updates-joao-pedro-emi-martinez-moises-caicedo-b3088747.html",
-"d":"2026-11-20T14:37:49Z",
-"n":[
-"alonso",
-"caicedo",
-"chelsea",
-"emi",
-"joao",
-"martinez",
-"moises",
-"pedro",
-"xabi"
-]
-},
-{
-"k":"football",
-"t":"Berrada on Carrick, Poch, defending club leadership and transfers",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13614312/omar-berrada-interview-manchester-united-chief-executive-on-michael-carrick-mauricio-pochettino-recent-transfer-activity-and-the-club-hierarchy",
-"d":"2026-11-20T14:36:00Z",
-"n":[
-"berrada",
-"carrick",
-"manchester",
-"omar",
-"poch",
-"sky",
-"sports",
-"united"
-]
-},
-{
-"k":"football",
-"t":"Manchester City handed Marc Guehi boost ahead of Premier League return",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/man-city-fulham-enzo-maresca-marc-guehi-injury-update-b3088734.html",
-"d":"2026-11-20T14:35:25Z",
-"n":[
-"city",
-"england",
-"forest",
-"guehi",
-"manchester",
-"marc",
-"nottingham"
-]
-},
-{
-"k":"football",
-"t":"Man United rule out legal action over ‘unethical’ drone filming of Pochettino’s training session",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/man-united-drone-footage-pochettino-carrington-b3088733.html",
-"d":"2026-11-20T14:20:34Z",
-"n":[
-"drone",
-"man",
-"pochettino",
-"united"
-]
-},
-{
-"k":"football",
-"t":"SFA should not change to pander to clubs - McLeish",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/crjeqv4353e7o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T14:09:07Z",
-"n":[
-"craig",
-"fa",
-"mcleish",
-"mirren",
-"mulholland",
-"scottish",
-"sfa",
-"st"
-]
-},
-{
-"k":"football",
-"t":"Arteta warns Arsenal players over FPL team news leak",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/ck62pz5r16pro?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T14:08:55Z",
-"n":[
-"arsenal",
-"arteta",
-"fantasy",
-"fpl",
-"mikel"
-]
-},
-{
-"k":"football",
-"t":"Key questions as Scottish Premiership returns",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c50mdwnn90jyo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T13:53:22Z",
-"n":[
-"key",
-"premiership",
-"saturday",
-"scottish"
-]
-},
-{
-"k":"football",
-"t":"Legendary Irish League manager Coyle dies aged 80",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/articles/c63eg4x112wqo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T13:52:15Z",
-"n":[
-"coyle",
-"irish",
-"league",
-"legendary",
-"roy"
-]
-},
-{
-"k":"football",
-"t":"When will England play Norway and who could they play in Nations League semi-finals?",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/england-norway-nations-league-draw-germany-belgium-b3088632.html",
-"d":"2026-11-20T13:44:59Z",
-"n":[
-"england",
-"germany",
-"jurgen",
-"klopp",
-"nations",
-"norway"
-]
-},
-{
-"k":"football",
-"t":"Mauricio Pochettino is Andoni Iraola’s ghost of football future and there are lessons to learn",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-andoni-iraola-liverpool-man-united-b3088091.html",
-"d":"2026-11-20T13:25:52Z",
-"n":[
-"andoni",
-"iraola",
-"liverpool",
-"manchester",
-"mauricio",
-"pochettino",
-"united"
-]
-},
-{
-"k":"football",
-"t":"Southampton give head coach Eckert new deal",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cwm25yx3kj5lo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T13:10:33Z",
-"n":[
-"eckert",
-"southampton",
-"tonda"
-]
-},
-{
-"k":"football",
-"t":"Arsenal’s Lisa Baum: ‘I believe in us. I think it’s all about the small margins’",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/20/arsenal-lisa-baum-germany-brother-dennis",
-"d":"2026-11-20T13:00:29Z",
-"n":[
-"arsenal",
-"baum",
-"dennis",
-"european",
-"germany",
-"lisa",
-"london"
-]
-},
-{
-"k":"football",
-"t":"Copa Independent | Is Pochettino the right man for Man Utd?",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/tv/copa-independent/manchester-united-pochettino-manager-b3088692.html",
-"d":"2026-11-20T12:59:53Z",
-"n":[
-"copa",
-"delaney",
-"independent",
-"jolly",
-"lawrence",
-"man",
-"manchester",
-"mauricio",
-"miguel",
-"ostlere",
-"pochettino",
-"richard",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Andriy Shevchenko slams Mykhailo Mudryk for ‘baseless slander’ after Ukraine doping claim",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/andriy-shevchenko-mykhailo-mudryk-doping-ukraine-b3088661.html",
-"d":"2026-11-20T12:38:43Z",
-"n":[
-"andriy",
-"mudryk",
-"mykhailo",
-"shevchenko",
-"ukraine",
-"ukrainian"
-]
-},
-{
-"k":"football",
-"t":"Liverpool fan found not guilty of racial abuse after Antoine Semenyo withdraws from case",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/20/liverpool-fan-not-guilty-racial-abuse-antoine-semenyo-withdraws-from-case-bournemouth-liverpool",
-"d":"2026-11-20T12:20:00Z",
-"n":[
-"alleged",
-"anfield",
-"antoine",
-"bournemouth",
-"city",
-"liverpool",
-"man",
-"manchester",
-"mark",
-"mogan",
-"semenyo"
-]
-},
-{
-"k":"football",
-"t":"How does Euro 2028 qualifying work? Confirmed pots, format, and rules for co-hosts",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/euro-2028-qualifying-rules-hosts-home-nations-b3085950.html",
-"d":"2026-11-20T12:07:24Z",
-"n":[
-"belfast",
-"confirmed",
-"england",
-"euro",
-"ireland",
-"republic",
-"scotland",
-"wales"
-]
-},
-{
-"k":"football",
-"t":"Nations League draw LIVE: England learn quarter-final opponents",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/nations-league-draw-live-england-quarter-finals-b3087542.html",
-"d":"2026-11-20T12:00:11Z",
-"n":[
-"england",
-"france",
-"live",
-"nations",
-"norway",
-"spain",
-"world"
-]
-},
-{
-"k":"football",
-"t":"Stoke and Birmingham proving you shouldn't judge a book by its cover",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cmy8670vjlx0o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T11:35:16Z",
-"n":[
-"birmingham",
-"championship",
-"stoke"
-]
-},
-{
-"k":"football",
-"t":"Fan found not guilty of racially abusing Semenyo",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/news/articles/c5y4jvg27j2po?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T11:12:35Z",
-"n":[
-"anfield",
-"antoine",
-"fan",
-"mark",
-"mogan",
-"semenyo"
-]
-},
-{
-"k":"football",
-"t":"Arsenal handed William Saliba boost as Mikel Arteta gives Bukayo Saka injury update",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/arsenal-bukayo-saka-injury-william-saliba-martin-zubimendi-b3088570.html",
-"d":"2026-11-20T10:53:12Z",
-"n":[
-"arsenal",
-"arteta",
-"bukayo",
-"mikel",
-"saka",
-"saliba",
-"william"
-]
-},
-{
-"k":"football",
-"t":"Bukayo Saka may not return for Arsenal before Christmas, Mikel Arteta admits",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/20/bukayo-saka-injury-may-not-play-arsenal-before-christmas-mikel-arteta",
-"d":"2026-11-20T10:46:32Z",
-"n":[
-"arsenal",
-"arteta",
-"bayern",
-"bukayo",
-"christmas",
-"fantasy",
-"mikel",
-"munich",
-"newcastle",
-"saka",
-"zubimendi"
-]
-},
-{
-"k":"football",
-"t":"Renee Slegers left wanting more as Arsenal’s Champions League hopes dented by superior Lyon",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/arsenal-lyon-champions-league-result-score-b3088575.html",
-"d":"2026-11-20T10:36:36Z",
-"n":[
-"arsenal",
-"borehamwood",
-"defeat",
-"gunners",
-"lyon",
-"renee",
-"slegers"
-]
-},
-{
-"k":"football",
-"t":"England handed suspended supporter ban for discriminatory chanting in Spain",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/england-supporter-ban-chants-spain-b3088567.html",
-"d":"2026-11-20T10:26:44Z",
-"n":[
-"catholic",
-"england",
-"irish",
-"spain"
-]
-},
-{
-"k":"football",
-"t":"Drone operator deletes footage of Mauricio Pochettino’s first Man Utd training session and issues apology",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/man-united-drone-training-video-mauricio-pochettino-b3088551.html",
-"d":"2026-11-20T10:10:52Z",
-"n":[
-"drone",
-"man",
-"mauricio",
-"pochettino",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Will Frank turn things around at Crystal Palace?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13613145/thomas-frank-what-should-crystal-palace-expect-from-their-new-manager-what-does-he-need-to-change-and-can-he-keep-the-eagles-up",
-"d":"2026-11-20T10:00:00Z",
-"n":[
-"crystal",
-"frank",
-"league",
-"one",
-"palace"
-]
-},
-{
-"k":"football",
-"t":"Guimaraes growing at Arsenal - but Arteta still wants more",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13612946/bruno-guimaraes-arsenal-midfielder-is-growing-in-stature-but-mikel-arteta-still-wants-more-from-brazilian-ahead-of-newcastle-return",
-"d":"2026-11-20T09:38:00Z",
-"n":[
-"arsenal",
-"arteta",
-"bruno",
-"guimaraes",
-"gunners",
-"it",
-"newcastle"
-]
-},
-{
-"k":"football",
-"t":"Thomas Frank hints there is more to tell from disastrous Spurs reign as he starts life at Palace",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/thomas-frank-crystal-palace-tottenham-b3088521.html",
-"d":"2026-11-20T09:37:06Z",
-"n":[
-"crystal",
-"frank",
-"palace",
-"spurs",
-"thomas",
-"tottenham"
-]
-},
-{
-"k":"football",
-"t":"EFL preview: Evans' gripes & unexpected departures",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/crwy4wl1n0q2o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T08:24:38Z",
-"n":[
-"bbc",
-"efl",
-"evans",
-"sport"
-]
-},
-{
-"k":"football",
-"t":"'Milan, Real & Man Utd eye Napoli's McTominay' - gossip",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/ckjwj2295640o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T08:07:48Z",
-"n":[
-"ac",
-"aston",
-"celtic",
-"john",
-"madrid",
-"man",
-"manchester",
-"mcginn",
-"mctominay",
-"milan",
-"napoli",
-"real",
-"scott",
-"united",
-"utd",
-"villa"
-]
-},
-{
-"k":"football",
-"t":"'CSKA Sofia interested in Rangers' Cortes' - gossip",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/ckregwp3glwwo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T08:07:48Z",
-"n":[
-"ac",
-"aston",
-"celtic",
-"cortes",
-"cska",
-"john",
-"madrid",
-"manchester",
-"mcginn",
-"mctominay",
-"milan",
-"napoli",
-"rangers",
-"real",
-"scott",
-"sofia",
-"united",
-"villa"
-]
-},
-{
-"k":"football",
-"t":"What history tells us about the Premier League table after 10 games of a season",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/20/premier-league-table-history-after-10-games-season",
-"d":"2026-11-20T08:00:26Z",
-"n":[
-"past",
-"yet"
-]
-},
-{
-"k":"football",
-"t":"Listen: Premiership preview - can Falkirk really finish third?",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sounds/play/p0pnz8rn?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T08:00:00Z",
-"n":[
-"falkirk",
-"listen",
-"premiership",
-"rangers"
-]
-},
-{
-"k":"football",
-"t":"From booed to beloved – how Hurzeler turned his Brighton fortunes around",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13613485/fabian-hurzeler-how-brighton-boss-won-fans-over-as-seagulls-relish-in-more-controlled-football",
-"d":"2026-11-20T08:00:00Z",
-"n":[
-"brighton",
-"de",
-"fabian",
-"graham",
-"hurzeler",
-"potter",
-"roberto",
-"zerbi"
-]
-},
-{
-"k":"football",
-"t":"Inside the rise of 'humble' Nyoni and why Iraola trusts him",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/ck24enjqvlyeo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T07:42:04Z",
-"n":[
-"andoni",
-"inside",
-"iraola",
-"liverpool",
-"nyoni",
-"teenage",
-"trey"
-]
-},
-{
-"k":"football",
-"t":"Moore eyes Kane shirt as Spurs' past and future stars meet",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cq0k65pyp4jvo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T07:26:36Z",
-"n":[
-"bayern",
-"cologne",
-"harry",
-"kane",
-"mikey",
-"moore",
-"munich",
-"spurs"
-]
-},
-{
-"k":"football",
-"t":"Too late for Jackson? - FPL gameweek 11 dilemmas",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/ckp80q8p4yvyo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T07:08:51Z",
-"n":[
-"bbc",
-"buttice",
-"fantasy",
-"fpl",
-"gianni",
-"jackson",
-"sport",
-"too"
-]
-},
-{
-"k":"football",
-"t":"Who am I? Plus today's other quizzes",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cw772r7g87y0o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T06:43:38Z",
-"n":[
-"am",
-"brainteaser",
-"five",
-"plus",
-"test"
-]
-},
-{
-"k":"football",
-"t":"'I felt like I was a ghost' - when players miss a season through injury",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cqvg27m9xp1xo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-20T06:13:23Z",
-"n":[
-"world"
-]
-},
-{
-"k":"football",
-"t":"The male footballers best associated with each shirt number – the readers’ edition",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/ng-interactive/2026/nov/20/male-footballers-best-associated-each-shirt-number-readers-edit",
-"d":"2026-11-20T06:00:24Z",
-"n":[]
-},
-{
-"k":"football",
-"t":"Socceroos’ future looks bright as Australia stun Argentina in U17 World Cup",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/20/joeys-australia-stun-argentina-in-u17-world-cup",
-"d":"2026-11-20T01:31:38Z",
-"n":[
-"akol",
-"akon",
-"argentina",
-"australia",
-"australian",
-"fc",
-"joeys",
-"qatar",
-"socceroos",
-"sydney",
-"u17",
-"world"
-]
-},
-{
-"k":"football",
-"t":"Premier League: 10 things to look out for this weekend",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/20/premier-league-10-things-to-look-out-for-this-weekend",
-"d":"2026-11-20T00:00:15Z",
-"n":[
-"alex",
-"bruno",
-"cherries",
-"city",
-"fulham",
-"guimaraes",
-"manchester",
-"scott",
-"tyneside"
-]
-},
-{
-"k":"football",
-"t":"Arsenal 'have ingredients' but Europe's elite on another level",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cm4gnxz8dvx1o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T23:57:54Z",
-"n":[
-"arsenal",
-"europe",
-"french",
-"lyon"
-]
-},
-{
-"k":"football",
-"t":"Lyon outclass Arsenal for Champions League win",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/videos/c3dx1n4xp1xxo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T22:56:07Z",
-"n":[
-"arsenal",
-"lyon",
-"women"
-]
-},
-{
-"k":"football",
-"t":"Papers: Fulham pushing to extend contract of Man Utd target",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13614185/fulham-pushing-to-extend-contract-of-man-utd-target-calvin-bassey-paper-talk",
-"d":"2026-11-19T22:30:00Z",
-"n":[
-"friday",
-"fulham",
-"man",
-"papers",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"England get one-match suspended ban on away tickets for anti-pope chants in Spain",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/19/england-one-match-suspended-away-tickets-ban-anti-pope-chants-spain-uefa",
-"d":"2026-11-19T22:05:54Z",
-"n":[
-"association",
-"ban",
-"england",
-"fa",
-"nations",
-"spain",
-"uefa"
-]
-},
-{
-"k":"football",
-"t":"OL Lyonnes show their class to hit Arsenal’s ambitions for a top-four WCL finish",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/19/arsenal-ol-lyonnes-womens-champions-league-match-report",
-"d":"2026-11-19T22:05:36Z",
-"n":[
-"arsenal",
-"brand",
-"continue",
-"dumornay",
-"europe",
-"french",
-"goals",
-"jule",
-"lyonnes",
-"meadow",
-"melchie",
-"ol",
-"park",
-"wcl"
-]
-},
-{
-"k":"football",
-"t":"Drone footage posted on YouTube of Mauricio Pochettino’s first Man United training session",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/man-united-drone-pochettino-carrington-youtube-b3088307.html",
-"d":"2026-11-19T21:59:27Z",
-"n":[
-"anfield",
-"drone",
-"liverpool",
-"man",
-"manchester",
-"mauricio",
-"pochettino",
-"united",
-"youtube"
-]
-},
-{
-"k":"football",
-"t":"Barcelona target Man Utd's Martinez - Friday's gossip",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cj5y14g2wppko?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T21:57:22Z",
-"n":[
-"barcelona",
-"friday",
-"fulham",
-"lisandro",
-"liverpool",
-"man",
-"manchester",
-"martinez",
-"serie",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Arsenal outclassed in defeat to dominant Lyon",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/arsenal-women-vs-olympiques-lyon-women/report/578272",
-"d":"2026-11-19T21:28:00Z",
-"n":[
-"arsenal",
-"lyon",
-"women"
-]
-},
-{
-"k":"football",
-"t":"Blackpool boss Ian Evatt sacked hours after club sent him birthday message",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/ian-evatt-sacked-blackpool-happy-birthday-b3088288.html",
-"d":"2026-11-19T21:15:19Z",
-"n":[
-"blackpool",
-"evatt",
-"ian"
-]
-},
-{
-"k":"football",
-"t":"Shevchenko accuses Mudryk camp of 'baseless slander'",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cmgqx908lk44o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T20:44:11Z",
-"n":[
-"andriy",
-"mudryk",
-"mykhailo",
-"shevchenko",
-"tottenham",
-"ukraine"
-]
-},
-{
-"k":"football",
-"t":"Drone footage of Pochettino's first Man Utd training session leaked online",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13614159/manchester-united-drone-footage-of-mauricio-pochettinos-first-training-session-leaked-online",
-"d":"2026-11-19T20:28:00Z",
-"n":[
-"drone",
-"man",
-"manchester",
-"mauricio",
-"pochettino",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Arsenal v OL Lyonnes: Women’s Champions League – live",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/live/2026/nov/19/arsenal-v-ol-lyonnes-womens-champions-league-live",
-"d":"2026-11-19T20:23:24Z",
-"n":[
-"arsenal",
-"continue",
-"gmt",
-"goalposts",
-"here",
-"lyon",
-"lyonnes",
-"mail",
-"meadow",
-"moving",
-"ol",
-"park",
-"read",
-"table",
-"women",
-"yara"
-]
-},
-{
-"k":"football",
-"t":"Frank happy to be 'back in the circus' at Palace",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cje3900n0vvro?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T20:16:10Z",
-"n":[
-"crystal",
-"frank",
-"palace",
-"thomas"
-]
-},
-{
-"k":"football",
-"t":"Thomas Frank admits he has a point to prove after taking reins at Crystal Palace",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/19/thomas-frank-crystal-palace-premier-league",
-"d":"2026-11-19T19:50:10Z",
-"n":[
-"crystal",
-"dane",
-"frank",
-"palace",
-"pierre",
-"sage",
-"thomas",
-"tottenham"
-]
-},
-{
-"k":"football",
-"t":"New manager Frick to take Aberdeen back to basics",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cq36gw03n17jo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T19:11:26Z",
-"n":[
-"aberdeen",
-"frick",
-"head",
-"mario"
-]
-},
-{
-"k":"football",
-"t":"England fined for fans' anti-Catholic chants in Spain",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cmlye2n7p7d9o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T19:11:03Z",
-"n":[
-"catholic",
-"england",
-"nations",
-"spain",
-"uefa"
-]
-},
-{
-"k":"football",
-"t":"WCL: Lyon take the lead at Arsenal through Brand LIVE!",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/arsenal-women-vs-olympiques-lyon-women/live/578272",
-"d":"2026-11-19T19:03:00Z",
-"n":[
-"arsenal",
-"brand",
-"live",
-"lyon",
-"wcl"
-]
-},
-{
-"k":"football",
-"t":"Sutton's predictions v world champion boxer Lauren Price",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c50mdnxy3ry0o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T18:52:00Z",
-"n":[
-"ai",
-"bbc",
-"chris",
-"lauren",
-"price",
-"sport",
-"sutton"
-]
-},
-{
-"k":"football",
-"t":"Pochettino's first Man Utd training session filmed by drone operator",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c6wy9d7wqy7wo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T18:45:56Z",
-"n":[
-"carrington",
-"man",
-"manchester",
-"mauricio",
-"pochettino",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"England handed suspended away ticket ban for fans' chants in Spain",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13614117/england-handed-suspended-away-ticket-ban-and-fine-by-uefa-for-fans-racist-and-or-discriminatory-behaviour-in-spain",
-"d":"2026-11-19T18:36:00Z",
-"n":[
-"england",
-"madrid",
-"spain",
-"uefa"
-]
-},
-{
-"k":"football",
-"t":"Summer signings join Lionel Messi among MLS’s top earners: Takeaways from the league’s salary release",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/19/mls-salary-release-lionel-messi-spent-per-point",
-"d":"2026-11-19T18:01:17Z",
-"n":[
-"barcelona",
-"inter",
-"lewandowski",
-"lionel",
-"messi",
-"miami",
-"mls",
-"robert",
-"summer",
-"takeaways"
-]
-},
-{
-"k":"football",
-"t":"PL Predictions: How will your club fare this weekend?",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13611640/premier-league-predictions-jones-knows-best-bets-newcastle-vs-arsenal-liverpool-vs-manchester-united-and-much-more",
-"d":"2026-11-19T18:00:00Z",
-"n":[
-"jones",
-"knows",
-"lewis",
-"pl",
-"predictions"
-]
-},
-{
-"k":"football",
-"t":"All done deals from September-November 2026",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cvgyxyxplkvo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T17:54:30Z",
-"n":[
-"check",
-"efl",
-"premiership",
-"scottish",
-"september-november",
-"super",
-"women"
-]
-},
-{
-"k":"football",
-"t":"Forest latest: PL vote not in support of Man City",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13279316/nottingham-forest-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-"d":"2026-11-19T17:38:00Z",
-"n":[
-"city",
-"forest",
-"man",
-"pl"
-]
-},
-{
-"k":"football",
-"t":"We'll only sell if offer makes club blink - McInnes",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cwlymr2159y5o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T17:11:51Z",
-"n":[
-"derek",
-"manager",
-"mcinnes",
-"rangers",
-"we'll"
 ]
 },
 {
