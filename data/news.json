@@ -1,5 +1,5 @@
 {
-"pulled":"2026-11-23T23:53:10Z",
+"pulled":"2026-11-24T09:53:43Z",
 "sources":[
 "BBC Sport",
 "Cardboard Connection",
@@ -9,6 +9,341 @@
 "The Independent"
 ],
 "items":[
+{
+"k":"football",
+"t":"Which Premier League players are set for yellow card suspensions?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/articles/cr3wj7wg35pxo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T09:47:51Z",
+"n":[
+"seventeen"
+]
+},
+{
+"k":"football",
+"t":"MLS side to honour deceased hippo with tifo",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6n90jrvxrzpo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T09:43:38Z",
+"n":[
+"cincinnati",
+"fc",
+"fiona",
+"major",
+"mls",
+"nashville",
+"sc"
+]
+},
+{
+"k":"football",
+"t":"League Two player charged with rape and engaging in sexual communication with child",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/isiah-noel-williams-arrest-charged-rape-barnet-league-two-b3090449.html",
+"d":"2026-11-24T09:30:14Z",
+"n":[
+"barnet",
+"class",
+"isiah",
+"noel-williams",
+"two"
+]
+},
+{
+"k":"football",
+"t":"Transfer Centre LIVE! 'Real Madrid close to agreeing new contract with Bellingham'",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/12476234/transfer-centre-live-football-transfer-news-updates-and-rumours",
+"d":"2026-11-24T09:20:00Z",
+"n":[
+"bellingham",
+"centre",
+"live",
+"madrid",
+"real"
+]
+},
+{
+"k":"football",
+"t":"The youngest Premier League goalscorers this season",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/videos/cme39v4w7ykqo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T09:10:34Z",
+"n":[
+"bbc",
+"liverpool",
+"luca",
+"ngumoha",
+"rio",
+"sport",
+"tottenham",
+"williams-barnett"
+]
+},
+{
+"k":"football",
+"t":"Barnet forward Noel-Williams charged with rape",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/news/articles/c8dx1v361vw7o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T08:50:17Z",
+"n":[
+"albans",
+"barnet",
+"isiah",
+"noel-williams",
+"st"
+]
+},
+{
+"k":"football",
+"t":"Why Potts swapped West Ham for Club Brugge after 16 years",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cxe89j8gj96jo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T08:36:50Z",
+"n":[
+"brugge",
+"club",
+"english",
+"freddie",
+"ham",
+"liverpool",
+"potts",
+"wendesday",
+"west"
+]
+},
+{
+"k":"football",
+"t":"Can returning Beattie and Haughey make an impact?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/articles/cm04wz6ez2rgo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T08:08:33Z",
+"n":[
+"bbc",
+"beattie",
+"ella",
+"greece",
+"haughey",
+"kerry",
+"mcardle",
+"michael",
+"ni",
+"sport"
+]
+},
+{
+"k":"football",
+"t":"Nwaneri at risk of becoming Arsenal’s forgotten teenager on return with Dortmund",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/ethan-nwaneri-arsenal-dortmund-mikel-arteta-champions-league",
+"d":"2026-11-24T08:00:11Z",
+"n":[
+"ar",
+"arsenal",
+"bundesliga",
+"but",
+"dortmund",
+"dowman",
+"end",
+"ethan",
+"hale",
+"max",
+"nwaneri",
+"youngest"
+]
+},
+{
+"k":"football",
+"t":"De Bruyne’s Napoli return will remind Manchester City what they are missing",
+"s":"The Guardian",
+"u":"https://www.theguardian.com/football/2026/nov/24/kevin-de-bruyne-napoli-manchester-city-champions-league",
+"d":"2026-11-24T08:00:10Z",
+"n":[
+"belgian",
+"bruyne",
+"city",
+"de",
+"enzo",
+"etihad",
+"even",
+"guardiola",
+"kevin",
+"manchester",
+"maresca",
+"napoli",
+"pep",
+"premi",
+"stadium"
+]
+},
+{
+"k":"football",
+"t":"Podcast: Hibs & Dundee hurting as confidence grows at Rangers",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sounds/play/p0ppl6tf?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T08:00:00Z",
+"n":[
+"dundee",
+"hibs",
+"rangers"
+]
+},
+{
+"k":"football",
+"t":"Celtic duo Duran and Nygren attract interest - gossip",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/c6d71gjnznz2o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T07:53:41Z",
+"n":[
+"celtic",
+"duran",
+"nygren",
+"serie",
+"swedish"
+]
+},
+{
+"k":"football",
+"t":"Arsenal latest: Carragher backs Gunners duo to become best Prem CB pairing",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025486/arsenal-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-24T07:50:00Z",
+"n":[
+"arsenal",
+"carragher",
+"cb",
+"gunners",
+"prem"
+]
+},
+{
+"k":"football",
+"t":"Champions League power rankings: PSG remain a joke – but who is catching them?",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/champions-league-table-standings-power-rankings-b3090375.html",
+"d":"2026-11-24T07:35:47Z",
+"n":[
+"fenerbahce",
+"liverpool",
+"madrid",
+"paris",
+"psg",
+"real",
+"saint-germain"
+]
+},
+{
+"k":"football",
+"t":"Man Utd latest: 'No one is coming to save us from relegation' - Mainoo",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
+"d":"2026-11-24T07:15:00Z",
+"n":[
+"mainoo",
+"man",
+"utd"
+]
+},
+{
+"k":"football",
+"t":"Is Arsenal v Borussia Dortmund on TV? Channel, kick-off time and how to watch Champions League fixture",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/arsenal-borussia-dortmund-tv-channel-time-champions-league-b3090086.html",
+"d":"2026-11-24T07:08:28Z",
+"n":[
+"arsenal",
+"borussia",
+"channel",
+"dortmund",
+"everything",
+"tv"
+]
+},
+{
+"k":"football",
+"t":"Wolves are clicking, Stoke are dreaming - but could QPR be dark horses?",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13615599/wolves-hit-their-stride-stoke-continue-to-dream-but-can-they-last-the-course-and-are-qpr-dark-horses-of-championship",
+"d":"2026-11-24T07:00:00Z",
+"n":[
+"qpr",
+"stoke",
+"wolves"
+]
+},
+{
+"k":"football",
+"t":"Why has De Bruyne struggled at Napoli as he returns to Man City?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cqglreexkk06o?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T06:57:16Z",
+"n":[
+"bruyne",
+"city",
+"de",
+"kevin",
+"man",
+"manchester",
+"napoli"
+]
+},
+{
+"k":"football",
+"t":"Two goals in 15 games - what's going on with Gyokeres?",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cklylr15gr2do?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T06:45:27Z",
+"n":[
+"arsenal",
+"gyokeres",
+"two",
+"viktor"
+]
+},
+{
+"k":"football",
+"t":"Who am I? Plus today's other quizzes",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cke89ve1lnzvo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T06:42:40Z",
+"n":[
+"am",
+"brainteaser",
+"five",
+"plus",
+"test"
+]
+},
+{
+"k":"football",
+"t":"Mikel Arteta confirms David Raya doesn’t need surgery in huge Arsenal injury boost",
+"s":"The Independent",
+"u":"https://www.independent.co.uk/sport/football/david-raya-injury-latest-arsenal-mikel-arteta-b3089915.html",
+"d":"2026-11-24T06:27:26Z",
+"n":[
+"arsenal",
+"arteta",
+"david",
+"mikel",
+"newcastle",
+"osula",
+"raya",
+"william"
+]
+},
+{
+"k":"football",
+"t":"115 days, 39 private-jet flights, one election - Infantino's globetrotting",
+"s":"BBC Sport",
+"u":"https://www.bbc.co.uk/sport/football/articles/cmkgk22w3vlvo?at_medium=RSS&at_campaign=rss",
+"d":"2026-11-24T06:16:53Z",
+"n":[
+"fifa",
+"gianni",
+"infantino",
+"world"
+]
+},
 {
 "k":"football",
 "t":"Who has made Troy's Premier League team of the week?",
@@ -464,19 +799,6 @@
 },
 {
 "k":"football",
-"t":"Transfer Centre LIVE! Williams-Barnett agrees long-term Spurs contract",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/12476234/transfer-centre-live-football-transfer-news-updates-and-rumours",
-"d":"2026-11-23T17:30:00Z",
-"n":[
-"centre",
-"live",
-"spurs",
-"williams-barnett"
-]
-},
-{
-"k":"football",
 "t":"Pioneer or coach-eater? The complex world of Pozzo's Watford",
 "s":"BBC Sport",
 "u":"https://www.bbc.co.uk/sport/football/articles/cq98z9p66g0xo?at_medium=RSS&at_campaign=rss",
@@ -503,18 +825,6 @@
 "manchester",
 "maresca",
 "pep"
-]
-},
-{
-"k":"football",
-"t":"Man Utd latest: Carragher gives relegation verdict",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13025492/man-utd-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-"d":"2026-11-23T17:00:00Z",
-"n":[
-"carragher",
-"man",
-"utd"
 ]
 },
 {
@@ -888,23 +1198,6 @@
 },
 {
 "k":"football",
-"t":"Mikel Arteta confirms David Raya doesn’t need surgery in huge Arsenal injury boost",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/david-raya-injury-latest-arsenal-mikel-arteta-b3089915.html",
-"d":"2026-11-23T13:48:24Z",
-"n":[
-"arsenal",
-"arteta",
-"david",
-"mikel",
-"newcastle",
-"osula",
-"raya",
-"william"
-]
-},
-{
-"k":"football",
 "t":"Arsenal's struggles explained - and why they should have signed Putellas",
 "s":"Sky Sports",
 "u":"https://www.skysports.com/football/news/11095/13615572/arsenals-shocking-wsl-season-analysed-no-home-win-a-lack-of-goals-and-a-disenfranchised-fanbase",
@@ -1027,6 +1320,23 @@
 },
 {
 "k":"football",
+"t":"Man Utd to appeal Yoro red card",
+"s":"Sky Sports",
+"u":"https://www.skysports.com/football/news/11095/13615539/manchester-united-to-appeal-leny-yoros-red-card-as-ex-pl-referee-dermot-gallagehr-casts-his-verdict",
+"d":"2026-11-23T12:30:00Z",
+"n":[
+"fa",
+"leny",
+"liverpool",
+"man",
+"manchester",
+"united",
+"utd",
+"yoro"
+]
+},
+{
+"k":"football",
 "t":"Jamal Musiala controversy the nadir of Bayern Munich’s turbulent week",
 "s":"The Guardian",
 "u":"https://www.theguardian.com/football/2026/nov/23/bayern-munich-jamal-musiala-controversy-bundesliga",
@@ -1105,19 +1415,6 @@
 "scottish",
 "sweden",
 "world"
-]
-},
-{
-"k":"football",
-"t":"Arsenal latest: Arteta discusses Nwaneri loan ahead of Dortmund reunion",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13025486/arsenal-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts",
-"d":"2026-11-23T11:45:00Z",
-"n":[
-"arsenal",
-"arteta",
-"dortmund",
-"nwaneri"
 ]
 },
 {
@@ -1232,16 +1529,6 @@
 "mainoo",
 "manchester",
 "united"
-]
-},
-{
-"k":"football",
-"t":"Which Premier League players are set for yellow card suspensions?",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/articles/cr3wj7wg35pxo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-23T10:36:38Z",
-"n":[
-"eighteen"
 ]
 },
 {
@@ -6231,264 +6518,6 @@
 "mcinnes",
 "rangers",
 "we'll"
-]
-},
-{
-"k":"football",
-"t":"Palace latest: Frank outlines three key areas of improvement ahead of first game",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13279298/crystal-palace-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-"d":"2026-11-19T17:00:00Z",
-"n":[
-"frank",
-"palace"
-]
-},
-{
-"k":"football",
-"t":"Coventry latest: Yirenkyi to face late fitness test before Palace clash",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/13541482/coventry-transfers-latest-news-rumours-and-gossip-live-updates-goals-and-highlights",
-"d":"2026-11-19T16:45:00Z",
-"n":[
-"coventry",
-"palace",
-"yirenkyi"
-]
-},
-{
-"k":"football",
-"t":"Football Daily",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sounds/play/m003501m?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T16:42:00Z",
-"n":[
-"bbc",
-"daily",
-"ellen",
-"footballer",
-"lloyd",
-"men",
-"rick",
-"white",
-"year"
-]
-},
-{
-"k":"football",
-"t":"Crawley keep Blackwell as boss until end of season",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c8zx975y67qdo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T16:40:30Z",
-"n":[
-"blackwell",
-"crawley",
-"kevin",
-"town"
-]
-},
-{
-"k":"football",
-"t":"Inside the Fifa power struggle – and one last game-changer that could defeat Infantino",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/fifa-elections-gianni-infantino-aleksander-ceferin-arsene-wenger-b3087496.html",
-"d":"2026-11-19T16:22:52Z",
-"n":[
-"fifa",
-"infantino",
-"inside",
-"uefa"
-]
-},
-{
-"k":"football",
-"t":"Struggling Blackpool sack Evatt on his birthday",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cm4g1rzjj4v2o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T16:12:14Z",
-"n":[
-"blackpool",
-"evatt",
-"ian",
-"struggling"
-]
-},
-{
-"k":"football",
-"t":"Premier League clubs vote through new rules to increase legal protection for board",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/19/premier-league-vote-new-rules-financial-indemnity-lawsuits",
-"d":"2026-11-19T16:03:07Z",
-"n":[
-"city",
-"clubs",
-"individual",
-"key",
-"manchester",
-"masters",
-"richard"
-]
-},
-{
-"k":"football",
-"t":"Fifa sparks tension with demand for tax-free status in UK for Women’s World Cup",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/19/fifa-demand-tax-free-status-in-uk-womens-world-cup-2035-government",
-"d":"2026-11-19T16:00:06Z",
-"n":[
-"fas",
-"fifa",
-"uk",
-"women",
-"world"
-]
-},
-{
-"k":"football",
-"t":"Concerns raised as Uefa’s shock candidate to challenge Gianni Infantino was chosen in just 15 minutes",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/uefa-fifa-presidency-philippe-diallo-gianni-infantino-b3087984.html",
-"d":"2026-11-19T15:51:59Z",
-"n":[
-"concerns",
-"diallo",
-"fifa",
-"gianni",
-"infantino",
-"philippe",
-"uefa"
-]
-},
-{
-"k":"football",
-"t":"Football Daily | Football’s political gamers face off at Fifa with the real-life final boss",
-"s":"The Guardian",
-"u":"https://www.theguardian.com/football/2026/nov/19/football-daily-fifa-presidential-election",
-"d":"2026-11-19T15:42:09Z",
-"n":[
-"although",
-"auto",
-"daily",
-"fifa",
-"grand",
-"sign",
-"theft",
-"vi",
-"zurich"
-]
-},
-{
-"k":"football",
-"t":"PL clubs vote to cover legal costs of board members if Man City sponsors sue",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13614031/premier-league-clubs-vote-to-cover-legal-costs-if-man-city-sponsors-sue-competitions-board-members",
-"d":"2026-11-19T15:26:00Z",
-"n":[
-"city",
-"man",
-"manchester",
-"pl"
-]
-},
-{
-"k":"football",
-"t":"Mauricio Pochettino: I was cheering for Man Utd at the 1999 Champions League final",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/mauricio-pochettino-man-united-new-manager-interview-b3088020.html",
-"d":"2026-11-19T15:19:21Z",
-"n":[
-"devils",
-"man",
-"mauricio",
-"pochettino",
-"red",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Culture, defence, Fernandes - Pochettino's priorities at Man Utd",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cxlylzyg38l8o?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T15:05:21Z",
-"n":[
-"bruno",
-"culture",
-"fernandes",
-"man",
-"manchester",
-"mauricio",
-"pochettino",
-"united",
-"utd"
-]
-},
-{
-"k":"football",
-"t":"Frick targets Premiership top-six for Aberdeen with 'heavy metal football'",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/news/11095/13613844/mario-frick-aberdeens-new-head-coach-targets-scottish-premiership-top-six-with-heavy-metal-football",
-"d":"2026-11-19T15:00:00Z",
-"n":[
-"aberdeen",
-"frick",
-"mario",
-"premiership",
-"scottish"
-]
-},
-{
-"k":"football",
-"t":"Premier League clubs to cover legal fees if Man City sponsors sue over financial breaches",
-"s":"The Independent",
-"u":"https://www.independent.co.uk/sport/football/man-city-guilty-charges-sponsors-sue-premier-league-b3088011.html",
-"d":"2026-11-19T14:55:12Z",
-"n":[
-"city",
-"etihad",
-"etisalat",
-"man"
-]
-},
-{
-"k":"football",
-"t":"PSG confirm Doue has ACL injury with surgery imminent",
-"s":"Sky Sports",
-"u":"https://www.skysports.com/football/live-blog/11095/12507208/football-latest-news-gossip",
-"d":"2026-11-19T14:00:00Z",
-"n":[
-"acl",
-"doue",
-"psg"
-]
-},
-{
-"k":"football",
-"t":"Five return for Wales' World Cup play-off final",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/c620535y8zpjo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T13:40:43Z",
-"n":[
-"ceri",
-"five",
-"holland",
-"norway",
-"wales",
-"women",
-"world"
-]
-},
-{
-"k":"football",
-"t":"Premier League clubs to cover legal costs if Man City sponsors sue",
-"s":"BBC Sport",
-"u":"https://www.bbc.co.uk/sport/football/articles/cqy4jvdw7jdlo?at_medium=RSS&at_campaign=rss",
-"d":"2026-11-19T13:29:42Z",
-"n":[
-"city",
-"man",
-"manchester"
 ]
 },
 {
